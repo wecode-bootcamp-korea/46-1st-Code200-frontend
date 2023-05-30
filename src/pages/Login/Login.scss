@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login {
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 3%;
+  background: whtie;
+  text-align: center;
+}
+
+.name {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  font-size: 38px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrap {
+  box-sizing: border-box;
+  align-items: center;
+  width: 450px;
+  height: 400px;
+  margin: 0 auto;
+  line-height: 30px;
+}
+
+.idcontent {
+  position: relative;
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.id {
+  width: 440px;
+  height: 50px;
+  margin-bottom: 35px;
+  border: 1px solid #00bfff;
+  border-radius: 10px;
+}
+
+.passwordcontent {
+  position: relative;
+  margin: 0;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.password {
+  width: 440px;
+  height: 50px;
+  margin-bottom: 35px;
+  border: 1px solid #00bfff;
+  border-radius: 10px;
+}
+
+.loginbutton {
+  width: 440px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 0.5px solid gray;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.findid {
+  margin-bottom: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.signup {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
