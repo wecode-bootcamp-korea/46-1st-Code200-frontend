@@ -3,3 +3,56 @@
   height: 618px;
   background-color: indianred;
 }
+
+.mainWeeklyBest {
+  display: block;
+  max-width: 1740px;
+  width: 90%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.mainTitle {
+  margin: 100px auto 60px;
+  color: #1a1a1a;
+  font-size: 50px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.weeklyTap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  height: 35px;
+  margin: 0 auto;
+  cursor: pointer;
+
+  .taps1,
+  .taps2,
+  .taps3 {
+    display: block;
+    color: #1a1a1a;
+    font-size: 23px;
+    position: relative;
+  }
+
+  .on {
+    transition: all 0.3s;
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 3px solid black;
+  }
+
+  .onRed {
+    position: absolute;
+    background-color: #cd5c5b;
+    width: 8px;
+    height: 8px;
+    left: 28px;
+    bottom: 21px;
+    border-radius: 50px;
+    margin: 10px;
+  }
+}
