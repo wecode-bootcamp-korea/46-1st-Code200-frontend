@@ -1,9 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Main.scss';
 
 function Main() {
   const [clicked, setClicked] = useState('');
   const [circle, setCircle] = useState('');
+
+  const [prdList, setPrdList] = useState([]);
+
+  // 위클리 베스트 데이터 받아오기
+  useEffect(() => {
+    if (clicked === 'taps1') {
+      fetch('/data/bean.json', {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(data => {
+          setPrdList(data);
+        });
+    } else if (clicked === 'taps2') {
+      fetch('/data/beverage.json', {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(data => {
+          setPrdList(data);
+        });
+    } else if (clicked === 'taps3') {
+      fetch('/data/food.json', {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(data => {
+          setPrdList(data);
+        });
+    }
+  }, [clicked]);
   return (
     <div>
       {/* 위클리 베스트 div 시작 */}
@@ -51,9 +82,19 @@ function Main() {
             </span>
           </li>
         </ul>
+        {/* 원두 카테고리 top4 */}
+
+        {prdList.map(prd => {
+          return (
+            <ul key={prd.id} className="prdList">
+              <li className="prdBox">
+                <div className="box">{prd.text}</div>
+              </li>
+            </ul>
+          );
+        })}
       </div>
     </div>
   );
 }
-
 export default Main;

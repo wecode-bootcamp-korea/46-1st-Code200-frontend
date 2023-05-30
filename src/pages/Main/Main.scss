@@ -39,20 +39,29 @@
   }
 
   .on {
-    transition: all 0.3s;
+    transition: all 0.6s;
     font-weight: 700;
-    padding-bottom: 5px;
+    padding-bottom: 1px;
     border-bottom: 3px solid black;
   }
 
   .onRed {
     position: absolute;
-    background-color: #cd5c5b;
+    background-color: #d1121c;
     width: 8px;
     height: 8px;
     left: 28px;
-    bottom: 21px;
+    bottom: 17px;
     border-radius: 50px;
     margin: 10px;
   }
+}
+
+.box {
+  width: 300px;
+  height: 549px;
+  background-color: cornflowerblue;
+  display: flex;
+  float: left;
+  margin: 5px;
 }
