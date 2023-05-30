@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Main.scss';
 
 function Main() {
-  const [clicked, setClicked] = useState('');
-  const [circle, setCircle] = useState('');
+  const [clicked, setClicked] = useState('taps1');
+  const [circle, setCircle] = useState('circle1');
 
   const [prdList, setPrdList] = useState([]);
 
@@ -84,15 +84,18 @@ function Main() {
         </ul>
         {/* 원두 카테고리 top4 */}
 
-        {prdList.map(prd => {
-          return (
-            <ul key={prd.id} className="prdList">
-              <li className="prdBox">
-                <div className="box">{prd.text}</div>
-              </li>
-            </ul>
-          );
-        })}
+        <div className="prdListWrap">
+          {' '}
+          {prdList.map(prd => {
+            return (
+              <ul key={prd.id} className="prdList">
+                <li className="prdBox">
+                  <div className="box">{prd.text}</div>
+                </li>
+              </ul>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
