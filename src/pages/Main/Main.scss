@@ -1,0 +1,30 @@
+.slide {
+  width: 1406px;
+  height: 619px;
+  background-color: indianred;
+}
+
+.weekly {
+  height: 750px;
+  width: 1406px;
+  background-color: cornflowerblue;
+}
+
+.title {
+  margin: 60px auto 50px;
+  color: #1a1a1a;
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+}
+.newBev {
+  height: 700px;
+  overflow: hidden;
+  max-width: 581px;
+}
+
+.newBev:hover {
+  transform: scale(1.5);
+  height: 700px;
+  max-width: 581px;
+}
