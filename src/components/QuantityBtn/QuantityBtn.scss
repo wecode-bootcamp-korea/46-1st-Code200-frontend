@@ -1,0 +1,11 @@
+@import '../../styles/mixin';
+
+.quantityBtn {
+  @include flexSort(row, center, center);
+
+  button {
+    width: 12px;
+    border: 1px solid grey;
+    background-color: white;
+  }
+}
