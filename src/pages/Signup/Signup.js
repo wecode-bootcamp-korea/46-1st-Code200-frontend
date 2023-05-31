@@ -4,11 +4,22 @@ import AGREEMENT_LIST from './Agreemnet';
 
 function Signup() {
   return (
-    <>
+    <div className="signup">
+      <div className="wediya">WEDIYA</div>
       <div className="signupTitle">
         <h2>회원가입</h2>
       </div>
-      <div className="signup">
+
+      <div className="inputForm">
+        <input type="email" placeholder="이메일" />
+
+        <input type="passwords" placeholder="비밀번호" />
+
+        <input type="text" placeholder="이름" />
+
+        <input type="number" placeholder="전화번호" />
+
+        <input type="text" placeholder="주소" />
         <div className="agreement">
           {AGREEMENT_LIST.map(list => (
             <>
@@ -29,23 +40,10 @@ function Signup() {
             </>
           ))}
         </div>
-        <div className="signupWrap">
-          <div className="inputForm">
-            이메일 아이디
-            <input type="email" placeholder="이메일을 입력해주세요." />
-            비밀번호
-            <input type="passwords" placeholder="비밀번호를 입력해주세요." />
-            이름
-            <input type="text" placeholder="이름을 입력해주세요." />
-            전화번호
-            <input type="number" placeholder="전화번호를 입력해주세요." />
-            주소
-            <input type="text" placeholder="주소를 입력해주세요." />
-            <button>회원가입하기</button>
-          </div>
-        </div>
+
+        <button>회원가입하기</button>
       </div>
-    </>
+    </div>
   );
 }
 

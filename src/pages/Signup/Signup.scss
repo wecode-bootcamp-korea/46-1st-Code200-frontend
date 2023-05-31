@@ -1,39 +1,42 @@
 @import '/src/styles/common.scss';
 @import '/src/styles/reset.scss';
 
+.wediya {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  color: #017042;
+  font-weight: 800;
+}
+
 .signupTitle {
   display: flex;
   font-size: 40px;
   font-weight: 500;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin: 30px auto;
 }
 .signup {
-  display: flex;
 }
 .agreement {
-  margin: 50px 10px 0 auto;
-  padding: 50px;
-  width: 600px;
-  border: 1px solid darkgray;
+  // margin: 50px 10px 0 auto;
+  // padding: 50px;
+  // width: 600px;
+  // border: 1px solid darkgray;
   .itemFlex {
     display: flex;
     margin: 10px;
     justify-content: space-between;
   }
-  .agreementTitle {
-    font-size: 20px;
-    font-weight: 500;
-    margin-right: 5px;
-  }
+
   .agree {
     border: 1px solid darkgray;
     background-color: #f7f7f7;
-    width: 500px;
   }
   .agreeScroll {
-    padding: 20px 15px;
+    // padding: 20px 15px;
     height: 176px;
     overflow: auto;
     color: #555;
@@ -104,10 +107,10 @@
   }
 }
 
-.signupWrap {
-  margin: 50px auto 0 10px;
+.signup {
+  margin: auto;
   padding: 50px;
-  width: 600px;
+  width: 60%;
   border: 1px solid darkgray;
   .inputForm {
     display: flex;
@@ -115,10 +118,27 @@
   }
 
   input {
-    margin-bottom: 30px;
-    height: 40px;
+    margin-bottom: 40px;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    font-size: 20px;
+    color: lightgrey;
   }
   button {
-    height: 40px;
+    margin: 30px 0;
+    height: 60px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #017042;
+    color: white;
   }
+}
+
+.agreementTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 5px;
 }
