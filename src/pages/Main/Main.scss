@@ -28,30 +28,44 @@
 }
 
 .newBevWrap {
-  height: 640px;
-  width: 620px;
+  width: 640px;
   margin: 0 20px;
-  overflow: hidden;
 
-  .newBev {
-    max-height: 640px;
+  .imgWrapper {
+    height: 640px;
     overflow: hidden;
-    width: 100%;
-    transition: 0.6s;
   }
 
-  .newBev:hover {
-    transform: scale(1.4);
-    cursor: pointer;
+  .newBev {
+    height: 100%;
+    width: 100%;
+    transition: 0.6s;
+
+    &:hover {
+      transform: scale(1.4);
+      cursor: pointer;
+    }
+  }
+  .description {
+    z-index: 1;
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
   }
 }
 
 .newFdWrap {
-  height: 640px;
-  width: 620px;
+  width: 640px;
   margin: 150px 20px 0 20px;
-  overflow: hidden;
   float: right;
+
+  .imgWrapper {
+    height: 640px;
+    overflow: hidden;
+  }
 
   .newFood {
     max-height: 640px;
@@ -63,14 +77,13 @@
     transform: scale(1.4);
     cursor: pointer;
   }
-}
-
-.description {
-  z-index: 1;
-  color: #1a1a1a;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 40px;
-  text-align: center;
-  background-color: #fff;
+  .description {
+    z-index: 1;
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
+  }
 }

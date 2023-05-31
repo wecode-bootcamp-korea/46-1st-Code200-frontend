@@ -11,29 +11,29 @@ function Main() {
 
         <div className="newWrap">
           <div className="newBevWrap">
-            <a href="@@">
+            <div className="imgWrapper">
               <img
                 className="newBev"
                 src="https://github.com/dxxcw/code200-images/blob/main/images/Main/new.png?raw=true"
                 alt="newbv"
               />
-            </a>
-            <div className="description">
-              <p> 2023 WEDIYA SUMMER SEASON | 리얼 생 초콜릿 라떼</p>
             </div>
+            <p className="description">
+              2023 WEDIYA SUMMER SEASON | 리얼 생 초콜릿 라떼
+            </p>
           </div>
 
           <div className="newFdWrap">
-            <a href="@@">
+            <div className="imgWrapper">
               <img
                 className="newFood"
                 src="https://github.com/dxxcw/code200-images/blob/main/images/Main/newFood.png?raw=true"
                 alt="newfd"
               />
-            </a>
-            <div className="description">
-              <p> 2023 WEDIYA'S NEW CHOICE | 스모어 모어 쿠키</p>
             </div>
+            <p className="description">
+              2023 WEDIYA'S NEW CHOICE | 스모어 모어 쿠키
+            </p>
           </div>
         </div>
       </div>
