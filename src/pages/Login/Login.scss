@@ -6,8 +6,8 @@
 
 .login {
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 1920px;
+  height: 800px;
   padding-top: 3%;
   background: whtie;
   text-align: center;
@@ -72,6 +72,7 @@
   font-weight: bold;
 }
 .findid {
+  width: auto;
   margin-bottom: 30px;
   font-size: 15px;
   font-weight: bold;
@@ -79,6 +80,7 @@
 }
 
 .signup {
+  width: auto;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
