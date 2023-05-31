@@ -1,0 +1,22 @@
+[
+  {
+    "category_id": "c011",
+    "category_name": "브레드"
+  },
+  {
+    "category_id": "c012",
+    "category_name": "케이크"
+  },
+  {
+    "category_id": "c013",
+    "category_name": "샌드위치 & 샐러드"
+  },
+  {
+    "category_id": "c014",
+    "category_name": "따뜻한 푸드"
+  },
+  {
+    "category_id": "c015",
+    "category_name": "과일 & 요거트"
+  }
+]

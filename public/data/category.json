@@ -1,0 +1,26 @@
+[
+  {
+    "category_id": "c001",
+    "category_name": "음료"
+  },
+  {
+    "category_id": "c002",
+    "category_name": "푸드"
+  },
+  {
+    "category_id": "c003",
+    "category_name": "상품"
+  },
+  {
+    "category_id": "c004",
+    "category_name": "매장찾기"
+  },
+  {
+    "category_id": "c005",
+    "category_name": "고객지원"
+  },
+  {
+    "category_id": "c006",
+    "category_name": "브랜드소식"
+  }
+]
