@@ -48,7 +48,6 @@
   }
   .right {
     right: 30px;
-
     background-image: url('https://github.com/dxxcw/code200-images/blob/main/images/Main/right-arrow.png?raw=true');
     background: center center 100% no-repeat;
     width: 10px;
@@ -62,9 +61,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 0 10px; */
   top: 93%;
   right: 45%;
-  accent-color: grey;
-  border: none;
+  accent-color: darkgrey;
+  appearance: none;
 }
