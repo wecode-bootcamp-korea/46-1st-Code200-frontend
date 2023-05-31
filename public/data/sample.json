@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "카페 베로나",
+    "url": "/images/coffeebean1.jpeg",
+    "price": "20,000",
+    "priceInt": 20000,
+    "rating": 3.2
+  },
+  {
+    "id": 2,
+    "name": "싱글 오리진 케냐",
+    "url": "/images/coffeebean2.jpeg",
+    "price": "32,000",
+    "priceInt": 30000,
+    "rating": 4.1
+  },
+  {
+    "id": 3,
+    "name": "싱글 오리진 케냐 키링야가",
+    "url": "/images/coffeebean3.jpeg",
+    "price": "35,000",
+    "priceInt": 35000,
+    "rating": 3.8
+  },
+  {
+    "id": 4,
+    "name": "수마트라",
+    "url": "/images/coffeebean4.jpeg",
+    "price": "15,000",
+    "priceInt": 15000,
+    "rating": 2.7
+  },
+  {
+    "id": 5,
+    "name": "리저브 니카과라",
+    "url": "/images/coffeebean5.jpeg",
+    "price": "50,000",
+    "priceInt": 50000,
+    "rating": 4.8
+  },
+  {
+    "id": 6,
+    "name": "리저브 콜롬비아",
+    "url": "/images/coffeebean6.jpeg",
+    "price": "56,000",
+    "priceInt": 56000,
+    "rating": 4.3
+  },
+  {
+    "id": 7,
+    "name": "리저브 코스타리카 ",
+    "url": "/images/coffeebean7.jpeg",
+    "price": "43,000",
+    "priceInt": 43000,
+    "rating": 5.0
+  }
+]
