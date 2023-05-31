@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './QuantityBtn.scss';
 
-const QuantityBtn = () => {
-  let [count, setCount] = useState(0);
-
+const QuantityBtn = ({ count, setCount }) => {
   function incrementCount() {
     count = count + 1;
     setCount(count);
   }
   function decrementCount() {
-    count = count - 1;
-    setCount(count);
+    if (count > 1) {
+      count = count - 1;
+      setCount(count);
+    }
   }
   return (
     <div className="quantityBtn">
-      <button onClick={incrementCount}>+</button>
+      <button
+        onClick={e => {
+          decrementCount;
+        }}
+      >
+        -
+      </button>
       <div>{count}</div>
-      <button onClick={decrementCount}>-</button>
+      <button onClick={incrementCount}>+</button>
     </div>
   );
 };

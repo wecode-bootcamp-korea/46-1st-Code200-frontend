@@ -4,8 +4,10 @@
   @include flexSort(row, center, center);
 
   button {
-    width: 12px;
+    width: 22px;
+    margin: 0 10px;
     border: 1px solid grey;
     background-color: white;
+    font-size: 16px;
   }
 }

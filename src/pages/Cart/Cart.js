@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import QuantityBtn from '../../components/QuantityBtn/QuantityBtn';
 import '../../styles/reset.scss';
 import '../../styles/common.scss';
 import './Cart.scss';
 
 function Cart() {
   const [productList, setProductList] = useState([]);
+  let [count, setCount] = useState(1);
 
   useEffect(() => {
     fetch('/data/cartSample.json')
@@ -47,9 +49,13 @@ function Cart() {
               <td className="productName">
                 <a href="#">{data.name}</a>
               </td>
-              <td className="quantity">1</td>
+              <td className="quantity">
+                <QuantityBtn count={count} setCount={setCount} id={data.id} />
+              </td>
               <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">{data.price.toLocaleString()}</td>
+              <td className="totalPrice">
+                {(data.priceInt * count).toLocaleString()}
+              </td>
               <td className="delete">
                 <button>삭제</button>
               </td>
