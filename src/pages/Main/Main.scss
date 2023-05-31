@@ -30,6 +30,7 @@
   overflow: hidden;
 
   .newBev {
+    max-height: 640px;
     overflow: hidden;
     width: 100%;
     transition: 0.6s;
@@ -49,6 +50,7 @@
   float: right;
 
   .newFood {
+    max-height: 640px;
     overflow: hidden;
     width: 100%;
     transition: 0.6s;
