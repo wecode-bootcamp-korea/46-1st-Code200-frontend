@@ -1,9 +1,22 @@
 @import '/src/styles/common.scss';
 @import '/src/styles/reset.scss';
 
+.signupTitle {
+  display: flex;
+  font-size: 40px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
 .signup {
+  display: flex;
+}
+.agreement {
+  margin: 50px 10px 0 auto;
   padding: 50px;
   width: 600px;
+  border: 1px solid darkgray;
   .itemFlex {
     display: flex;
     margin: 10px;
@@ -88,5 +101,24 @@
   span {
     color: #017042;
     font-weight: 600;
+  }
+}
+
+.signupWrap {
+  margin: 50px auto 0 10px;
+  padding: 50px;
+  width: 600px;
+  border: 1px solid darkgray;
+  .inputForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    margin-bottom: 30px;
+    height: 40px;
+  }
+  button {
+    height: 40px;
   }
 }
