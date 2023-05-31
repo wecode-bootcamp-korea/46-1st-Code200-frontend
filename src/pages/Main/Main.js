@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Main.scss';
+import RedDot from '../../components/RedDot/RedDot';
 
 function Main() {
   const [clicked, setClicked] = useState('taps1');
