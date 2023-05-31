@@ -8,6 +8,7 @@ function Main() {
       <div className="weekly">weekly best</div>
       <div className="newPrd">
         <div className="title">신메뉴</div>
+
         <div className="newWrap">
           <div className="newBevWrap">
             <a href="@@">

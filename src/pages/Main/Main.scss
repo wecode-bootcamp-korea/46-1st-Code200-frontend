@@ -1,3 +1,6 @@
+@import '/src/styles/common.scss';
+@import '/src/styles/reset.scss';
+
 .slide {
   width: 1406px;
   height: 619px;
@@ -21,6 +24,7 @@
 .newWrap {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .newBevWrap {
