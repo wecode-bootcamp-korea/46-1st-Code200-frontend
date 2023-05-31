@@ -38,21 +38,21 @@ const Nav = () => {
 
   return (
     <div className="nav">
-      <div className="top-nav">
-        <div className="top-logo">
+      <div className="topNav">
+        <div className="topLogo">
           <Link className="link" to="/">
             <img
-              className="logoicons"
-              src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/logo/big_logo.png"
+              className="logoIcons"
+              src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/logo/wediysda%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png"
               alt="spao_logo"
             />
           </Link>
         </div>
-        <div className="top_menu">
-          <ul className="top_menu_category_ul">
+        <div className="topMenu">
+          <ul className="topMenuCategoryUl">
             {categoryList.map(category => {
               return (
-                <li className="top_menu_category_li" key={category.category_id}>
+                <li className="topMenuCategoryLi" key={category.category_id}>
                   <Link
                     className="navLink"
                     to="/"
@@ -70,37 +70,37 @@ const Nav = () => {
             })}
           </ul>
         </div>
-        <div className="top_member">
+        <div className="topMember">
           <img
-            className="imgicons"
+            className="imgIcons"
             src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_mypage.png"
             alt="mypage"
           />
           <img
-            className="imgicons"
+            className="imgIcons"
             src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_search.png"
             alt="search"
           />
           <img
-            className="imgicons"
+            className="imgIcons"
             src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_wish.png"
             alt="wish"
           />
           <img
-            className="imgicons"
+            className="imgIcons"
             src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_cart_pc.png"
             alt="cart"
           />
         </div>
       </div>
-      <div className="bottom-nav">
-        <div className="sub-category">
+      <div className="bottomNav">
+        <div className="subCategory">
           <div className="dev">
-            <ul className="bottom-menu-category-ul">
+            <ul className="bottomMenuCategoryUl">
               {categoryListLev2.map(category2 => {
                 return (
                   <li
-                    className="bottom-menu-category-li"
+                    className="bottomMenuCategoryLi"
                     key={category2.category_id}
                   >
                     <Link className="dev1Link" to="/">
@@ -112,11 +112,11 @@ const Nav = () => {
             </ul>
           </div>
           <div className="dev">
-            <ul className="bottom-menu-category-ul">
+            <ul className="bottomMenuCategoryUl">
               {categoryListLev3.map(category3 => {
                 return (
                   <li
-                    className="bottom-menu-category-li"
+                    className="bottomMenuCategoryLi"
                     key={category3.category_id}
                   >
                     <Link className="dev1Link" to="/">
@@ -128,11 +128,11 @@ const Nav = () => {
             </ul>
           </div>
           <div className="dev">
-            <ul className="bottom-menu-category-ul">
+            <ul className="bottomMenuCategoryUl">
               {categoryListLev4.map(category4 => {
                 return (
                   <li
-                    className="bottom-menu-category-li"
+                    className="bottomMenuCategoryLi"
                     key={category4.category_id}
                   >
                     <Link className="dev1Link" to="/">
@@ -144,11 +144,11 @@ const Nav = () => {
             </ul>
           </div>
           <div className="dev">
-            <ul className="bottom-menu-category-ul">
+            <ul className="bottomMenuCategoryUl">
               {categoryListLev5.map(category5 => {
                 return (
                   <li
-                    className="bottom-menu-category-li"
+                    className="bottomMenuCategoryLi"
                     key={category5.category_id}
                   >
                     <Link className="dev1Link" to="/">
@@ -160,11 +160,11 @@ const Nav = () => {
             </ul>
           </div>
           <div className="dev">
-            <ul className="bottom-menu-category-ul">
+            <ul className="bottomMenuCategoryUl">
               {categoryListLev5.map(category5 => {
                 return (
                   <li
-                    className="bottom-menu-category-li"
+                    className="bottomMenuCategoryLi"
                     key={category5.category_id}
                   >
                     <Link className="dev1Link" to="/">
@@ -176,11 +176,11 @@ const Nav = () => {
             </ul>
           </div>
           <div className="dev">
-            <ul className="bottom-menu-category-ul">
+            <ul className="bottomMenuCategoryUl">
               {categoryListLev6.map(category6 => {
                 return (
                   <li
-                    className="bottom-menu-category-li"
+                    className="bottomMenuCategoryLi"
                     key={category6.category_id}
                   >
                     <Link className="dev1Link" to="/">
@@ -192,12 +192,7 @@ const Nav = () => {
             </ul>
           </div>
         </div>
-        <div className="sub-category-img">
-          {/* <img
-            className="bestItemImg"
-            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/coffe-bag/yukon-haughton-HIOtkLawMck-unsplash.jpg"
-            alt="bestitem"
-          /> */}
+        <div className="subCategoryImg">
           <img
             className="bestItemImg"
             src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/coffe-bag/brad-oqxYVNkWgQc-unsplash.jpg"
