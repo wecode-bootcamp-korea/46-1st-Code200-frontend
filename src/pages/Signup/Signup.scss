@@ -12,14 +12,13 @@
 
 .signupTitle {
   display: flex;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   justify-content: center;
   align-items: center;
-  margin: 30px auto;
+  margin: 30px auto 10px auto;
 }
-.signup {
-}
+
 .agreement {
   // margin: 50px 10px 0 auto;
   // padding: 50px;
@@ -116,23 +115,40 @@
     display: flex;
     flex-direction: column;
   }
+  .invaild {
+    color: white;
+    padding-top: 10px;
+  }
+  .vaild {
+    padding-top: 10px;
+    color: #017042;
+  }
 
   input {
-    margin-bottom: 40px;
+    margin-top: 40px;
     height: 60px;
     border: none;
     border-radius: 5px;
     background-color: #f7f7f7;
     font-size: 20px;
-    color: lightgrey;
   }
-  button {
+  .able {
     margin: 30px 0;
     height: 60px;
     font-size: 20px;
     border: none;
     border-radius: 5px;
     background-color: #017042;
+    color: white;
+  }
+
+  .disabled {
+    margin: 30px 0;
+    height: 60px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9dc594;
     color: white;
   }
 }
