@@ -20,7 +20,7 @@ function WeeklyBest() {
       url = '/data/food.json';
     }
 
-    if (url !== '') {
+    if (url) {
       fetch(url, {
         method: 'GET',
       })
@@ -62,7 +62,6 @@ function WeeklyBest() {
         {/* 원두 카테고리 top4 */}
 
         <div className="prdListWrap">
-          {' '}
           {prdList.map(prd => {
             return (
               <ul key={prd.id} className="prdList">
