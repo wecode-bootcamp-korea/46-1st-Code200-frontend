@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "카페 베로나",
+    "url": "/images/coffeebean1.jpeg",
+    "price": "20,000",
+    "priceInt": 20000,
+    "rating": 3.2,
+    "count": 5,
+    "shipping": "기본배송"
+  },
+  {
+    "id": 2,
+    "name": "싱글 오리진 케냐",
+    "url": "/images/coffeebean2.jpeg",
+    "price": "32,000",
+    "priceInt": 30000,
+    "rating": 4.1,
+    "count": 13,
+    "shipping": "기본배송"
+  }
+]
