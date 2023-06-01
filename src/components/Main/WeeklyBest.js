@@ -11,24 +11,17 @@ function WeeklyBest() {
 
   // 위클리 베스트 데이터 받아오기
   useEffect(() => {
+    let url = '';
     if (clicked === 'taps1') {
-      fetch('/data/bean.json', {
-        method: 'GET',
-      })
-        .then(res => res.json())
-        .then(data => {
-          setPrdList(data);
-        });
+      url = '/data/bean.json';
     } else if (clicked === 'taps2') {
-      fetch('/data/beverage.json', {
-        method: 'GET',
-      })
-        .then(res => res.json())
-        .then(data => {
-          setPrdList(data);
-        });
+      url = '/data/beverage.json';
     } else if (clicked === 'taps3') {
-      fetch('/data/food.json', {
+      url = '/data/food.json';
+    }
+
+    if (url !== '') {
+      fetch(url, {
         method: 'GET',
       })
         .then(res => res.json())
