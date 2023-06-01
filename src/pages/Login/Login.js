@@ -8,11 +8,6 @@ const Login = () => {
   const navigate = useNavigate();
   const isValid = email.includes('@') && pw.length >= 5;
 
-  // 1. input에서 onChange 이벤트로, 변경되는 이벤트를 감지해서 email, pw를 state에 저장한다
-  // 2. 저장된 email, pw state가 조건을 만족하는지 확인한다
-  // 3. 조건을 토대로 버튼 활성화/비활성화
-  // 4. 그에 따른 분기처리
-
   const handleEmailChange = e => {
     setEmail(e.target.value);
   };
@@ -22,11 +17,23 @@ const Login = () => {
   };
 
   const goMain = () => {
-    if (isValid) {
-      navigate('/');
-    } else {
-      alert('틀린 비밀번호 입니다');
-    }
+    fetch('http://10.58.52.134:3000/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        email: 'code200@gmail.com',
+        password: '!QWE123qwe',
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (isValid) {
+          navigate('/');
+        } else {
+          alert('틀린 비밀번호 입니다');
+        }
+      });
   };
 
   const handleOnKeyPress = e => {

@@ -9,7 +9,7 @@
   width: 1920px;
   height: 800px;
   padding-top: 3%;
-  background: whtie;
+  background: white;
   text-align: center;
 }
 
@@ -22,7 +22,6 @@
 }
 
 .wrap {
-  box-sizing: border-box;
   align-items: center;
   width: 450px;
   height: 400px;
@@ -74,15 +73,19 @@
 .findid {
   width: auto;
   margin-bottom: 30px;
+  color: black;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
+  text-decoration: none;
 }
 
 .signup {
   width: auto;
+  color: black;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
+  text-decoration: none;
 }

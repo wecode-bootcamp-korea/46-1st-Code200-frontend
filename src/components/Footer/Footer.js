@@ -1,21 +1,21 @@
 import React from 'react';
-import '../Footer/Footer.scss';
 import youtubeimg from '/Users/jinu/Desktop/46-1st-Code200-frontend/src/assets/image/youtube_logo.jpg';
 import instagramimg from '/Users/jinu/Desktop/46-1st-Code200-frontend/src/assets/image/instagram.jpg';
 import facebookimg from '/Users/jinu/Desktop/46-1st-Code200-frontend/src/assets/image/facebook.jpg';
+import '../Footer/Footer.scss';
 
 function Footer() {
   return (
     <footer>
       <nav className="all">
         <div className="wrapallright1">
-          <a href="##">
+          <a href="https://www.google.co.kr">
             <p>브랜드소개</p>
           </a>
-          <a href="##">
+          <a href="https://www.naver.com">
             <p>오프라인 매장안내</p>
           </a>
-          <a href="##">
+          <a href="https://www.youtube.co.kr">
             <p>개인정보처리방침</p>
           </a>
           <a href="##">
@@ -46,10 +46,10 @@ function Footer() {
         </div>
         <div className="underline" />
         <div className="uibutton">
-          <a href="##">
+          <a href="https://www.youtube.co.kr">
             <img className="ui" src={youtubeimg} alt="youtube_image" />
           </a>
-          <a href="##">
+          <a href="https://www.instagram.com/yum_6579/">
             <img className="ui" src={instagramimg} alt="instagram_image" />
           </a>
           <a href="##">
