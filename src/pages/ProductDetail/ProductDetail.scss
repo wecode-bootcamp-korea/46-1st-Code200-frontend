@@ -5,14 +5,15 @@
   @include componentSize(100%, 2000px);
 
   .productRoute {
-    @include componentSize(350px, 0px);
-
     .productRouteCategory {
       float: right;
       color: gray;
       margin-right: 3px;
       text-decoration: none;
       font-size: smaller;
+      .productSpan {
+        @include componentSize(10px, '');
+      }
     }
   }
 
@@ -23,7 +24,6 @@
 
   .productDetailImg {
     @include componentSize(40%, 1000px);
-
     border-bottom: 0.5px solid gainsboro;
   }
 
@@ -40,9 +40,8 @@
   }
 
   .productDetailInfo {
-    @include componentSize(40%, 1000px);
+    @include componentSize(20%, 1000px);
     @include flexSort(column, flex-start, center);
-    width: 40%;
     height: 1000px;
     border-bottom: 0.5px solid gainsboro;
 
@@ -202,44 +201,58 @@
   }
 
   .productInfo {
-    @include flexSort(row, flex-start, space-between);
+    @include componentSize(60%, 300px);
+    @include flexSort(row, center, center);
+    margin: 0 20%;
+    //background-color: red;
 
-    margin-top: 30px;
-    margin-left: 200px;
+    .productInfoInner {
+      @include flexSort(column, center, center);
+      @include componentSize(750px, 100%);
 
-    .productDescArea {
-      @include componentSize(800px, 100%);
-      text-align: start;
-      padding: 5px;
-      color: #afafaf;
+      .productDescArea {
+        @include componentSize(600px, 200px);
+        @include flexSort(column, center, center);
+        padding: 10px;
 
-      .productDescAreaPtag {
-        margin: 5px;
+        .productDescAreaPtag {
+          width: 628px;
+          line-height: 1.5;
+        }
       }
 
       .productDescAreaImg {
-        @include flexSort(row, flex-start, space-between);
-        @include componentSize('', 260px);
+        @include flexSort(row, center, space-between);
+        @include componentSize(600px, 50%);
 
         .productDescImg {
-          margin: 10px;
+          @include componentSize(100%, 200px);
+          padding: 5px;
         }
       }
     }
+  }
 
-    .productNoticeTop {
-      @include componentSize(540px, 560px);
-      @include flexSort(column, center, '');
-      margin-left: 30px;
-    }
+  .productNoticeTop {
+    @include componentSize(40%, 325px);
+    @include flexSort(column, center, '');
+    margin-left: 30px;
+    margin-top: 75px;
 
     .productNotice {
       background-color: #f4f4f2;
-      margin: 3px;
+      width: 90%;
+      height: 100%;
+      padding: 30px 40px;
+
       .productTastingNotes {
         @include componentSize(100%, 50px);
         margin-top: 10px;
         margin-left: 10px;
+      }
+
+      .border {
+        border-bottom: 1px solid grey;
       }
 
       .productTastingNotesExp {
@@ -259,7 +272,8 @@
         margin-left: 10px;
       }
       .bigSpan {
-        font-size: xx-large;
+        font-size: 22px;
+        font-weight: 500;
       }
       .smallSpan {
         font-size: smaller;
