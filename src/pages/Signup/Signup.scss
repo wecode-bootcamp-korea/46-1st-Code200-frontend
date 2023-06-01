@@ -16,7 +16,7 @@
   font-weight: 500;
   justify-content: center;
   align-items: center;
-  margin: 30px auto 10px auto;
+  margin: 20px auto 50px auto;
 }
 
 .agreement {
@@ -39,7 +39,7 @@
     height: 176px;
     overflow: auto;
     color: #555;
-    line-height: 17px;
+    line-height: 25px;
   }
 }
 
@@ -109,28 +109,33 @@
 .signup {
   margin: auto;
   padding: 50px;
-  width: 60%;
+  width: 70%;
   border: 1px solid darkgray;
+
   .inputForm {
     display: flex;
     flex-direction: column;
+
+    .textWrap {
+      display: flex;
+    }
   }
   .invaild {
     color: white;
-    padding-top: 10px;
   }
   .vaild {
-    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 15px;
     color: #017042;
   }
 
   input {
-    margin-top: 10px;
-    height: 80px;
+    margin-bottom: 30px;
+    height: 70px;
     border: none;
     border-radius: 5px;
     background-color: #f7f7f7;
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .able {
@@ -158,4 +163,32 @@
   font-size: 20px;
   font-weight: 500;
   margin-right: 5px;
+}
+
+.route {
+  border: 1px solid lightgrey;
+
+  padding: 20px 0px;
+}
+
+.inputTitle {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+table {
+  .tabletitle {
+    padding-right: 10px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  td {
+    margin-right: 20px;
+  }
+}
+
+.tdWrap {
+  display: flex;
+  justify-content: flex-start;
+  padding: 15px;
 }

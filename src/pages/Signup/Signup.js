@@ -1,36 +1,45 @@
 import React, { useState } from 'react';
-import './Signup.scss';
-import AGREEMENT_LIST from './Agreemnet';
+import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
+import CHECK_LIST from './checkList';
+import './Signup.scss';
 
 function Signup() {
-  const [isVaild, setIsVaild] = useState(true);
   const [inputValues, setInputValues] = useState({
     email: '',
     password: '',
     name: '',
     number: '',
     address: '',
+    detail: '',
+    date: '',
+    checked: '',
   });
+
+  const valueConditions = {
+    email: inputValues.email.includes('@'),
+    password: inputValues.password.length >= 5,
+    name: inputValues.name.length >= 1,
+    number: inputValues.number.length >= 11,
+    address: inputValues.address.length >= 1,
+    detail: inputValues.detail.length >= 1,
+    date: inputValues.date.length >= 1,
+  };
 
   const handleInput = event => {
     const { name, value } = event.target;
+    console.log(name);
+    console.log(value);
     setInputValues({ ...inputValues, [name]: value });
   };
 
-  const isActive = value => {
-    if (
-      setInputValues(value) === inputValues.email.value &&
-      inputValues.email.includes('@')
-    ) {
-      return true;
-    } else if (
-      setInputValues(value) === inputValues.password.value &&
-      inputValues.password.length >= 5
-    ) {
-      return true;
-    }
-  };
+  const isActive =
+    inputValues.email.includes('@') &&
+    inputValues.password.length >= 5 &&
+    inputValues.number.length >= 11 &&
+    inputValues.name.length >= 1 &&
+    inputValues.address.length >= 1 &&
+    inputValues.detail.length >= 1;
 
   return (
     <div className="signup">
@@ -41,57 +50,76 @@ function Signup() {
       <div className="inputForm">
         {INPUT_LIST.map(inputList => (
           <>
+            <div className="textWrap">
+              <p className="inputTitle">{inputList.title}</p>
+              {!valueConditions[inputList.name] && (
+                <span className="vaild">{inputList.vaild}</span>
+              )}
+            </div>
+
             <input
               key={inputList.id}
-              name={inputList.type}
+              name={inputList.name}
               type={inputList.type}
               placeholder={inputList.placeholder}
               onChange={handleInput}
             />
-            <p className={isActive ? 'invaild' : 'vaild'}>{inputList.vaild}</p>
           </>
         ))}
 
+        <div className="textWrap">
+          <p className="inputTitle">추가정보</p>
+        </div>
         <div className="route">
-          <div>
-            <p classname="signupTitle">가입 경로</p>
-          </div>
-          <div>
-            <p>
-              <label className="check">
-                <input type="checkbox" />
-                <span className="icon" />
-              </label>
-              <span>인터넷 검색</span>
-            </p>
-          </div>
-          <div>
-            <p>
-              <label className="check">
-                <input type="checkbox" />
-                <span className="icon" />
-              </label>
-              <span>블로그</span>
-            </p>
-          </div>
-          <div>
-            <p>
-              <label className="check">
-                <input type="checkbox" />
-                <span className="icon" />
-              </label>
-              <span>인스타그램</span>
-            </p>
-          </div>
-          <div>
-            <p>
-              <label className="check">
-                <input type="checkbox" />
-                <span className="icon" />
-              </label>
-              <span>지인추천</span>
-            </p>
-          </div>
+          <table>
+            {CHECK_LIST.map(checkList => (
+              <>
+                <thead key={checkList.id} />
+                <tbody>
+                  <tr>
+                    <td className="tabletitle">{checkList.th}</td>
+                    <div className="tdWrap">
+                      <td>
+                        <label className="check">
+                          <input type="checkbox" />
+                          <span className="icon" />
+                        </label>
+                        <span>{checkList.td1}</span>
+                      </td>
+                      <td>
+                        <label className="check">
+                          <input type="checkbox" />
+                          <span className="icon" />
+                        </label>
+                        <span>{checkList.td2}</span>
+                      </td>
+                      <td>
+                        <label className="check">
+                          <input type="checkbox" />
+                          <span className="icon" />
+                        </label>
+                        <span>{checkList.td3}</span>
+                      </td>
+                      <td>
+                        <label className="check">
+                          <input type="checkbox" />
+                          <span className="icon" />
+                        </label>
+                        <span>{checkList.td4}</span>
+                      </td>
+                      <td>
+                        <label className="check">
+                          <input type="checkbox" />
+                          <span className="icon" />
+                        </label>
+                        <span>{checkList.td5}</span>
+                      </td>
+                    </div>
+                  </tr>
+                </tbody>
+              </>
+            ))}
+          </table>
         </div>
 
         <div className="agreement">
@@ -103,7 +131,12 @@ function Signup() {
                 </h2>
                 <p>
                   <label className="check">
-                    <input type="checkbox" />
+                    <input
+                      name="checked"
+                      onChange={handleInput}
+                      type="checkbox"
+                      defaultValue="Y"
+                    />
                     <span className="icon" />
                   </label>
                 </p>
@@ -115,9 +148,7 @@ function Signup() {
           ))}
         </div>
 
-        <button className={isActive ? 'able' : 'disabled'} disabled={!isActive}>
-          회원가입하기
-        </button>
+        <button className={isActive ? 'able' : 'disabled'}>회원가입하기</button>
       </div>
     </div>
   );
