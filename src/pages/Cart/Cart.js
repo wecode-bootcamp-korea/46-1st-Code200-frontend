@@ -14,6 +14,20 @@ function Cart() {
       });
   }, []);
 
+  const deleteItem = id => {
+    fetch(`http://백엔드 주소/cart/data/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data deleted successfully');
+        } else {
+          console.log('Failed to delete data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
@@ -51,7 +65,7 @@ function Cart() {
               <td className="shippingType">{data.shipping}</td>
               <td className="totalPrice">{data.price.toLocaleString()}</td>
               <td className="delete">
-                <button>삭제</button>
+                <button onClick={deleteItem(data.id)}>삭제</button>
               </td>
             </tr>
           );
