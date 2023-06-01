@@ -5,9 +5,6 @@ import NEW_LIST from './NewList';
 function New() {
   return (
     <div>
-      <div className="slide">slide</div>
-      <div className="weekly">weekly best</div>
-
       {/* 신메뉴 Wrap */}
       <div className="newPrd">
         <div className="title">신메뉴</div>
