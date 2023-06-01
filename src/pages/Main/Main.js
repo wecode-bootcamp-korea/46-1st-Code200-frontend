@@ -1,11 +1,12 @@
 import './Main.scss';
 import React, { useState } from 'react';
 import SLIDE_LIST from './Slide/SlideList';
+import SLIDE_BUTTON_LIST from './Slide/SlideButtonList';
 
 function Main() {
   const [checked, setChecked] = useState(1);
 
-  const handleRight = evnet => {
+  const handleRight = () => {
     let slideNumer = checked;
     if (slideNumer === 4) {
       slideNumer = 1;
@@ -15,7 +16,7 @@ function Main() {
     setChecked(slideNumer);
   };
 
-  const handleLeft = evnet => {
+  const handleLeft = () => {
     let slideNumer = checked;
     if (slideNumer === 1) {
       slideNumer = 4;
@@ -53,34 +54,16 @@ function Main() {
           </ul>
 
           <div className="buttons">
-            <input
-              type="radio"
-              name="slide"
-              id="slide01"
-              onClick={() => setChecked(1)}
-              checked={checked === 1}
-            />
-            <input
-              type="radio"
-              name="slide"
-              id="slide02"
-              onClick={() => setChecked(2)}
-              checked={checked === 2}
-            />
-            <input
-              type="radio"
-              name="slide"
-              id="slide03"
-              onClick={() => setChecked(3)}
-              checked={checked === 3}
-            />
-            <input
-              type="radio"
-              name="slide"
-              id="slide04"
-              onClick={() => setChecked(4)}
-              checked={checked === 4}
-            />
+            {SLIDE_BUTTON_LIST.map(buttonList => (
+              <input
+                key={buttonList.id}
+                type="radio"
+                name="slide"
+                id={buttonList.idName}
+                onClick={() => setChecked(buttonList.id)}
+                checked={checked === buttonList.id}
+              />
+            ))}
           </div>
         </div>
       </div>
