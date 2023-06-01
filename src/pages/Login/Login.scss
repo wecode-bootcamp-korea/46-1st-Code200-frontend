@@ -9,7 +9,7 @@
   width: 100vw;
   height: 100vh;
   padding-top: 3%;
-  background: whtie;
+  background: white;
   text-align: center;
 }
 
@@ -41,14 +41,15 @@
   width: 440px;
   height: 50px;
   margin-bottom: 35px;
-  border: 1px solid #00bfff;
-  border-radius: 10px;
+  padding: darkgray;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+  font-size: 100%;
 }
 
 .passwordcontent {
   position: relative;
   margin: 0;
-  border-radius: 10px;
   font-weight: bold;
   text-align: left;
 }
@@ -57,8 +58,9 @@
   width: 440px;
   height: 50px;
   margin-bottom: 35px;
-  border: 1px solid #00bfff;
-  border-radius: 10px;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+  font-size: 100%;
 }
 
 .loginbutton {
@@ -67,8 +69,8 @@
   margin-top: 10px;
   margin-bottom: 20px;
   border: 0.5px solid gray;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: 2px;
+  font-size: 100%;
   font-weight: bold;
 }
 .findid {
