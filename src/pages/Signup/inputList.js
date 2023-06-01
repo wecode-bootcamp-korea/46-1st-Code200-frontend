@@ -18,16 +18,28 @@ const INPUT_LIST = [
     vaild: '이름을 입력해주세요.',
   },
   {
-    id: 2,
+    id: 4,
     type: 'number',
     placeholder: '전화번호',
     vaild: '전화번호를 입력해주세요.',
   },
   {
-    id: 2,
+    id: 5,
     type: 'text',
     placeholder: '주소',
     vaild: '주소를 입력해주세요.',
+  },
+  {
+    id: 6,
+    type: 'text',
+    placeholder: '상세주소',
+    vaild: '상세주소를 입력해주세요.',
+  },
+  {
+    id: 7,
+    type: 'date',
+    placeholder: '생년월일',
+    vaild: '생년월일 13자를 입력해주세요.',
   },
 ];
 

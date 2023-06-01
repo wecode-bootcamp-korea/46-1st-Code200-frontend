@@ -18,8 +18,19 @@ function Signup() {
     setInputValues({ ...inputValues, [name]: value });
   };
 
-  const isActive =
-    inputValues.email.includes('@') && inputValues.password.length >= 5;
+  const isActive = value => {
+    if (
+      setInputValues(value) === inputValues.email.value &&
+      inputValues.email.includes('@')
+    ) {
+      return true;
+    } else if (
+      setInputValues(value) === inputValues.password.value &&
+      inputValues.password.length >= 5
+    ) {
+      return true;
+    }
+  };
 
   return (
     <div className="signup">
@@ -40,6 +51,48 @@ function Signup() {
             <p className={isActive ? 'invaild' : 'vaild'}>{inputList.vaild}</p>
           </>
         ))}
+
+        <div className="route">
+          <div>
+            <p classname="signupTitle">가입 경로</p>
+          </div>
+          <div>
+            <p>
+              <label className="check">
+                <input type="checkbox" />
+                <span className="icon" />
+              </label>
+              <span>인터넷 검색</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              <label className="check">
+                <input type="checkbox" />
+                <span className="icon" />
+              </label>
+              <span>블로그</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              <label className="check">
+                <input type="checkbox" />
+                <span className="icon" />
+              </label>
+              <span>인스타그램</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              <label className="check">
+                <input type="checkbox" />
+                <span className="icon" />
+              </label>
+              <span>지인추천</span>
+            </p>
+          </div>
+        </div>
 
         <div className="agreement">
           {AGREEMENT_LIST.map(list => (
