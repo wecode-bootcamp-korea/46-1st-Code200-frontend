@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.cart {
+  min-width: 1100px;
+  margin: 90px 0;
+  font-family: 'Noto Sans KR', serif;
+
+  .header {
+    width: 100%;
+    padding: 50px 0;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .cartTable {
+    width: 80%;
+    margin: 0 10%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-top: 2px solid black;
+    text-align: center;
+
+    th {
+      font-size: 17px;
+    }
+
+    th,
+    td {
+      padding: 20px;
+      border-bottom: 1px solid lightgrey;
+      vertical-align: middle;
+
+      &:nth-child(1) {
+        width: 10%;
+
+        button {
+          border: 1px solid grey;
+          border-radius: 2px;
+          background-color: white;
+          color: grey;
+          font-size: 10px;
+          font-weight: 300;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 12%;
+      }
+      &:nth-child(3) {
+        width: 22%;
+      }
+      &:nth-child(4) {
+        width: 10%;
+      }
+      &:nth-child(5) {
+        width: 12%;
+      }
+      &:nth-child(6) {
+        width: 16%;
+      }
+      &:nth-child(7) {
+        width: 8%;
+      }
+    }
+
+    .thumbnail {
+      width: 100px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    .productName {
+      a:hover {
+        color: grey;
+      }
+    }
+
+    .totalPrice {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .delete {
+      button {
+        padding: 3px 10px;
+        border: 1px solid lightgrey;
+        border-radius: 2px;
+        background-color: white;
+        color: grey;
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .deleteBtnBox {
+    @include flexSort(row, space-between, center);
+    width: 80%;
+    margin: 40px 10%;
+
+    button {
+      padding: 10px 15px;
+      border: 1px solid lightgrey;
+      background-color: white;
+    }
+  }
+
+  .priceSummary {
+    @include flexSort(row, center, center);
+    width: 80%;
+    height: 150px;
+    margin: 65px 10%;
+    background-color: rgb(244, 244, 244);
+    text-align: center;
+
+    .totalItemPrice,
+    .totalShippingFee,
+    .finalPrice {
+      margin: 0 60px;
+    }
+
+    h3 {
+      margin: 10px 20px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  }
+
+  .orderBtnBox {
+    @include flexSort(row, center, center);
+
+    button {
+      margin: 0 4px;
+      padding: 18px 45px;
+      border: 1px solid lightgrey;
+      font-size: 18px;
+
+      &:hover {
+        transition: 0.4s;
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+      }
+    }
+
+    .orderSelectedBtn,
+    .continueShoppingBtn {
+      background-color: white;
+    }
+
+    .orderAllBtn {
+      background-color: black;
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import '../../styles/mixin';
+@import '../../styles/variables.scss';
+
+.productList {
+  @include flexSort(row, flex-start, flex-start);
+  margin-top: 100px;
+  font-family: 'Noto Sans KR', serif;
+  min-height: 100%;
+  position: relative;
+
+  .filtering {
+    min-width: 215px;
+    margin: 100px 20px 0 50px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 30px;
+
+    .h4 {
+      width: 198px;
+      padding-bottom: 12px;
+      font-size: 18px;
+      border-bottom: 2px solid lightgrey;
+    }
+
+    .option {
+      width: 198px;
+      background-color: white;
+      padding-bottom: 40px;
+      border-bottom: 1px solid lightgray;
+
+      h5 {
+        margin: 20px 2px;
+        padding: 10px 0 5px;
+      }
+
+      button {
+        width: 180px;
+        margin: 1px;
+        padding: 3px;
+        background-color: white;
+        border: 1px solid lightgrey;
+        font-size: 14px;
+        color: grey;
+
+        &:hover {
+          color: $primary-color;
+          border: 1px solid $primary-color;
+        }
+      }
+    }
+
+    .priceFilter {
+      @include flexSort(column, flex-start, flex-start);
+    }
+  }
+
+  .main {
+    @include flexSort(row, flex-start, space-between);
+    flex-wrap: wrap;
+    min-height: 100%;
+    position: relative;
+    margin: 10px;
+
+    .h3 {
+      display: block;
+      width: 95%;
+      margin: 20px 10px 20px 20px;
+      padding: 20px;
+      font-size: 24px;
+      border-bottom: 2px solid lightgrey;
+    }
+
+    .product {
+      @include flexSort(column, flex-start, space-between);
+      flex-wrap: wrap;
+      width: 350px;
+      height: 550px;
+      margin: 0 10px 50px 10px;
+
+      .thumbnail {
+        width: 350px;
+
+        &:hover {
+          opacity: 0.4;
+        }
+      }
+
+      .box {
+        padding-left: 100px;
+
+        .name {
+          font-size: 16px;
+          margin: 0 0 10px 0;
+        }
+
+        .price {
+          margin: 10px 0;
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        .rating {
+          margin: 10px 0;
+        }
+
+        .review {
+          margin: 10px 0;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
