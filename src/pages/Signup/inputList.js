@@ -53,7 +53,7 @@ const INPUT_LIST = [
     title: '생년월일',
     name: 'date',
     placeholder: '',
-    vaild: '생년월일을 입력해주세요.',
+    vaild: '',
   },
 ];
 

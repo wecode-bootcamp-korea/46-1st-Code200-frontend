@@ -27,9 +27,14 @@ function Signup() {
   };
 
   const handleInput = event => {
-    const { name, value } = event.target;
-    console.log(name);
-    console.log(value);
+    const { name, type, value } = event.target;
+
+    if (type === 'checkbox' && inputValues[name]) {
+      setInputValues({ ...inputValues, [name]: '' });
+
+      return;
+    }
+
     setInputValues({ ...inputValues, [name]: value });
   };
 
@@ -132,10 +137,9 @@ function Signup() {
                 <p>
                   <label className="check">
                     <input
-                      name="checked"
+                      name={list.name}
                       onChange={handleInput}
                       type="checkbox"
-                      defaultValue="Y"
                     />
                     <span className="icon" />
                   </label>

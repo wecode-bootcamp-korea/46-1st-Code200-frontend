@@ -1,6 +1,7 @@
 const AGREEMENT_LIST = [
   {
     id: 1,
+    name: 'useage',
     title: ' 홈페이지 이용약관 동의',
     span: '(필수)',
     content: `위디야는 고객님을 보호합니다.
@@ -38,6 +39,7 @@ const AGREEMENT_LIST = [
   {
     id: 2,
     title: '개인정보 수집 및 이용동의',
+    name: 'terms',
     span: '(필수)',
     content: `본인은 스타벅스 코리아를 운영하는 주식회사 에스씨케이컴퍼니
     (이하 '회사'라 합니다)가 제공하는 회원 서비스(이하 ‘서비스’라 합니다)를 
@@ -69,6 +71,7 @@ const AGREEMENT_LIST = [
   {
     id: 3,
     title: '광고성 정보 수신동의',
+    name: 'marketing',
     span: '(선택)',
     content: `
     목적 :	마케팅 정보 활용(상품정보 및 행사 정보 안내 등)
