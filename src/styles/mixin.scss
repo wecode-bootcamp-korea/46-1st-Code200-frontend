@@ -1,11 +1,26 @@
 @mixin flexSort($flexDirection, $justify, $alignItems) {
   display: flex;
   flex-direction: $flexDirection;
-  justify-content: $justify;
   align-items: $alignItems;
+  justify-content: $justify;
 }
 
 @mixin componentSize($width, $height) {
   width: $width;
   height: $height;
+}
+
+@mixin buttonStyle(
+  $width,
+  $height,
+  $font-size,
+  $font-color,
+  $background-color
+) {
+  width: $width;
+  height: $height;
+  border-radius: 2px;
+  background-color: $background-color;
+  color: $font-color;
+  font-size: $font-size;
 }

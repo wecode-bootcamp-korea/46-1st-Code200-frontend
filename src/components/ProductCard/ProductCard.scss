@@ -1,0 +1,39 @@
+.product {
+  @include flexSort(column, flex-start, space-between);
+  flex-wrap: wrap;
+  width: 350px;
+  height: 550px;
+  margin: 0 10px 50px 10px;
+
+  .thumbnail {
+    width: 350px;
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+
+  .box {
+    padding-left: 100px;
+
+    .name {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .rating {
+      margin: 10px 0;
+    }
+
+    .review {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+  }
+}
