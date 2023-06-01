@@ -129,7 +129,11 @@
     color: #017042;
   }
 
-  input {
+  .inputWrap {
+    position: relative;
+  }
+  .inputBox {
+    width: 100%;
     margin-bottom: 30px;
     height: 70px;
     border: none;
@@ -155,6 +159,19 @@
     border-radius: 5px;
     background-color: #9dc594;
     color: white;
+  }
+
+  .overlap {
+    position: absolute;
+    width: 100px;
+    height: 70px;
+    right: 0px;
+    border: none;
+    border-radius: 2px;
+    background-color: #017042;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
   }
 }
 

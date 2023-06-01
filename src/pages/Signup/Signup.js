@@ -61,14 +61,19 @@ function Signup() {
                 <span className="vaild">{inputList.vaild}</span>
               )}
             </div>
-
-            <input
-              key={inputList.id}
-              name={inputList.name}
-              type={inputList.type}
-              placeholder={inputList.placeholder}
-              onChange={handleInput}
-            />
+            <div className="inputWrap">
+              <input
+                className="inputBox"
+                key={inputList.id}
+                name={inputList.name}
+                type={inputList.type}
+                placeholder={inputList.placeholder}
+                onChange={handleInput}
+              />
+              {inputList.name == 'email' && (
+                <button className="overlap">중복확인</button>
+              )}
+            </div>
           </>
         ))}
 
