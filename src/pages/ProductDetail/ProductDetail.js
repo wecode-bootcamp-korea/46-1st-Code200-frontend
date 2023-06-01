@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductDetail.scss';
 
 function ProductDetail() {
+  const [productDetail, setProductDetail] = useState([]);
+  useEffect(() => {
+    fetch('http://10.58.52.145:8000/products/4', { method: 'GET' })
+      .then(res => res.json())
+      .then(res => {
+        setProductDetail(res);
+      });
+  }, []);
   return (
     <div className="productDetail">
       <div className="productContainer">
@@ -58,7 +66,7 @@ function ProductDetail() {
           </div>
           <div className="productDetail">
             <div className="productTitle">
-              <span className="title">디카페인 하우스 블렌드 250g</span>
+              <span className="title">{productDetail.data[0].name}</span>
             </div>
             <div className="productTag">
               <span className="freePrd">무료배송</span>
@@ -67,7 +75,7 @@ function ProductDetail() {
             </div>
             <div className="productDetailInner">
               <div className="productAmount">
-                <span>44,910</span>
+                <span>{productDetail.data[0].price}</span>
               </div>
               <div className="productShare">
                 <img
@@ -84,7 +92,7 @@ function ProductDetail() {
           <div className="detailDescription">
             <span className="welcomeSpan">신규가입 혜택</span>
             <Link to="/" className="welcomeLink">
-              신규 가입 시 웰컴 쿠폰팩 즉시 지급<sapn> </sapn>
+              신규 가입 시 웰컴 쿠폰팩 즉시 지급
               <img
                 className="shareSns"
                 src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/icon_arrow.png"
@@ -159,27 +167,8 @@ function ProductDetail() {
       <div className="productInfo">
         <div className="productDescArea">
           <p className="productDescAreaPtag">
-            인도네시아 커피는 묵직하고 흙 내음이 날 것이라는 편견을 가지고
-            있지는 않나요?
+            {productDetail.data[0].description}
           </p>
-          <p className="productDescAreaPtag">
-            하워드 슐츠가 사랑한 커피로 알려진 우리의 코어 수마트라 커피는
-            묵직한 바디감과 풍부한 흙 내음이 인상적인 커피입니다.
-          </p>
-          <p className="productDescAreaPtag">
-            하지만 인도네시아에는 여러 개의 섬이 있고, 각각의 섬에 위치한 수
-            많은 농장에서는 각양각색의 풍미를 가진 커피들이 재배되고 있습니다.
-          </p>
-          <p className="productDescAreaPtag">
-            웨스트 자바 프리앙 안도 이처럼 색다른 매력을 가진 커피 중
-            하나입니다.
-          </p>
-          <p className="productDescAreaPtag">
-            이 커피는 부드럽고 우아한 달콤함이 느껴지는 바닐라빈의 풍미와 함께
-            여름에 잘 어울리는 청매실 같은 새콤달콤한 산미가 아주 매력적인
-            블론드 로스트 커피입니다.
-          </p>
-
           <div className="productDescAreaImg">
             <img
               className="productDescImg"
@@ -192,7 +181,6 @@ function ProductDetail() {
               alt="productDescImg"
             />
           </div>
-
           <div />
         </div>
         <div className="productNoticeTop">
