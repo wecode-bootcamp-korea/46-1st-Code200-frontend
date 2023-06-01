@@ -6,7 +6,6 @@ import './Cart.scss';
 
 function Cart() {
   const [productList, setProductList] = useState([]);
-  let [count, setCount] = useState(1);
 
   useEffect(() => {
     fetch('/data/cartSample.json')
@@ -50,11 +49,16 @@ function Cart() {
                 <a href="#">{data.name}</a>
               </td>
               <td className="quantity">
-                <QuantityBtn count={count} setCount={setCount} id={data.id} />
+                <QuantityBtn
+                  count={data.count}
+                  productList={productList}
+                  setProductList={setProductList}
+                  id={data.id}
+                />
               </td>
               <td className="shippingType">{data.shipping}</td>
               <td className="totalPrice">
-                {(data.priceInt * count).toLocaleString()}
+                {(data.priceInt * data.count).toLocaleString()}
               </td>
               <td className="delete">
                 <button>삭제</button>
