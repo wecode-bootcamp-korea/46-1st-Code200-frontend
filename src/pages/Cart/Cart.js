@@ -28,6 +28,20 @@ function Cart() {
       .catch(error => console.error('error: ', error));
   };
 
+  const deleteAll = () => {
+    fetch('http://백엔드 주소/cart/data', {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('All data deleted successfully');
+        } else {
+          console.log('Failed to delete all data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
@@ -73,7 +87,9 @@ function Cart() {
       </table>
       <div className="deleteBtnBox">
         <button>선택상품 삭제</button>
-        <button>장바구니비우기</button>
+        <button className="deleteAll" onClick={deleteAll}>
+          장바구니비우기
+        </button>
       </div>
       <div className="priceSummary">
         <div className="totalItemPrice">
