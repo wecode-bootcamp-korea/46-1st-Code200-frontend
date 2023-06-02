@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
 function Signup() {
-  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
@@ -63,9 +62,7 @@ function Signup() {
         agreement_marketing: inputValues.marketing === 'on' ? 1 : 0,
         agreement_terms: inputValues.terms === 'on' ? 1 : 0,
       }),
-    })
-      .then(res => res.json())
-      .then(data => navigate('/'));
+    }).then(res => res.json());
   };
 
   useEffect(() => {
@@ -196,7 +193,7 @@ function Signup() {
         </div>
         <button
           id="popup"
-          onClick={() => (isChecked ? setPop('nonPopup') : setPop('popupWrap'))}
+          onClick={handleSignUp}
           className={isActive ? 'able' : 'disabled'}
         >
           회원가입하기

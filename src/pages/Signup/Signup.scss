@@ -257,3 +257,21 @@ table {
     z-index: 1;
   }
 }
+
+.gender {
+  .inputBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+.goToLogin {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  .loginBtn {
+    color: #017042;
+    font-weight: 600;
+  }
+}
