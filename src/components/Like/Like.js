@@ -3,12 +3,17 @@ import LikeImg from '../../assets/image/heart.png';
 import EmptyLikeImg from '../../assets/image/emptyheart.png';
 import '../Like/Like.scss';
 
-const Like = ({ like, onClick }) => {
-  return (
-    <div className="likeicons">
-      <img src={like ? LikeImg : EmptyLikeImg} alt="좋아요" onClick={onClick} />
-    </div>
-  );
+const [imgSrc, setImgSrc] = useState('../../assets/image/heart.png');
+const handleClick = () => {
+  if (isClicked) {
+    setImageSrc('../../assets/image/heart.png');
+    setIsClicked(false);
+  } else {
+    setImageSrc('../../assets/image/emptyheart.png');
+    setIsClicked(true);
+  }
+
+  return <img src={imgSrc} onClick={handleClick} />;
 };
 
 export default Like;
