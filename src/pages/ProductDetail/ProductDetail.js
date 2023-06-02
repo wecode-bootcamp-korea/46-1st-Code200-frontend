@@ -10,7 +10,7 @@ function ProductDetail() {
   const [productDetail, setProductDetail] = useState({});
   const [isImg, setIsImg] = useState(false);
 
-  let CATEGORY_ARR = [
+  const CATEGORY_ARR = [
     {
       id: '3',
       value: productDetail.product_name,
