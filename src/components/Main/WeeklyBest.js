@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './WeeklyBest.scss';
-import RedDot from '../../components/RedDot/RedDot';
-import TAP_LIST from './tapList';
+import TAP_LIST from './TapList';
 
 function WeeklyBest() {
   const [clicked, setClicked] = useState('taps1');
@@ -34,7 +33,6 @@ function WeeklyBest() {
     <div>
       <div className="mainTitle">위클리 베스트</div>
       {/* 위클리 베스트 카테고리 탭 */}
-
       <ul className="weeklyTap">
         {TAP_LIST.map(tapList => (
           <li key={tapList.id}>
