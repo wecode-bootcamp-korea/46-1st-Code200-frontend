@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
@@ -13,7 +13,8 @@ function Signup() {
     address: '',
     detail: '',
     date: '',
-    checked: '',
+    useage: '',
+    terms: '',
   });
 
   const valueConditions = {
@@ -34,7 +35,8 @@ function Signup() {
 
       return;
     }
-
+    console.log(name);
+    console.log(value);
     setInputValues({ ...inputValues, [name]: value });
   };
 
@@ -44,7 +46,27 @@ function Signup() {
     inputValues.number.length >= 11 &&
     inputValues.name.length >= 1 &&
     inputValues.address.length >= 1 &&
-    inputValues.detail.length >= 1;
+    inputValues.detail.length >= 1 &&
+    inputValues.useage == 'on' &&
+    inputValues.terms == 'on';
+
+  // const handleSignup = () => {
+  //   fetch('https://westagram-signup.herokuapp.com/signup', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json;charset=utf-8' },
+  //     body: JSON.stringify({
+  //       email: '',
+  //       password: '',
+  //       name: '',
+  //       number: '',
+  //       address: '',
+  //       detail: '',
+  //       checked: '',
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => console.log(data));
+  // };
 
   return (
     <div className="signup">

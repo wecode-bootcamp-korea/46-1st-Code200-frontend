@@ -5,7 +5,7 @@ const INPUT_LIST = [
     name: 'email',
     title: '이메일',
     placeholder: "이메일 주소('@'포함)",
-    vaild: '사용할 수 없는 이메일입니다',
+    vaild: '이메일을 입력해주세요',
   },
   {
     id: 2,

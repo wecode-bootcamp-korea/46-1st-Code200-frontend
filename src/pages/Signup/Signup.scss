@@ -1,13 +1,8 @@
-@import '/src/styles/common.scss';
-@import '/src/styles/reset.scss';
-
 .wediya {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 100px;
-  color: #017042;
-  font-weight: 800;
 }
 
 .signupTitle {
@@ -20,13 +15,9 @@
 }
 
 .agreement {
-  // margin: 50px 10px 0 auto;
-  // padding: 50px;
-  // width: 600px;
-  // border: 1px solid darkgray;
   .itemFlex {
     display: flex;
-    margin: 10px;
+    margin: 30px 10px 20px 0;
     justify-content: space-between;
   }
 
@@ -153,10 +144,10 @@
 
   .disabled {
     margin: 30px 0;
-    height: 60px;
+    height: 70px;
     font-size: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 2px;
     background-color: #9dc594;
     color: white;
   }
@@ -188,8 +179,9 @@
 }
 
 .inputTitle {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 5px;
 }
 
 table {
