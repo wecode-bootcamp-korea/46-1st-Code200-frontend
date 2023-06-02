@@ -23,14 +23,27 @@
   }
 
   .productDetailImg {
-    @include componentSize(40%, 1000px);
+    @include componentSize(780px, 1000px);
     border-bottom: 0.5px solid gainsboro;
+
+    .detailTopImg {
+      width: 800px;
+
+      .detailTopImgUl {
+        width: 100%;
+
+        .detailTopImgli {
+          width: 300px;
+          display: inline;
+        }
+      }
+    }
   }
 
   .bestItemImg {
     @include componentSize(300px, 450px);
-    margin: 10px;
-    margin-left: 50px;
+    margin: 20px;
+    margin-left: 20px;
     transition: scale(1);
     transition: transform 0.5s;
     &:hover {
@@ -279,5 +292,8 @@
         font-size: smaller;
       }
     }
+  }
+  .chevronRight {
+    color: #dcdcdc;
   }
 }
