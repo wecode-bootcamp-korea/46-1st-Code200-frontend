@@ -6,7 +6,6 @@ import './Signup.scss';
 
 function Signup() {
   const [pop, setPop] = useState('nonPopup');
-
   const [inputValues, setInputValues] = useState({
     email: '',
     password: '',
@@ -52,7 +51,7 @@ function Signup() {
     inputValues.useage == 'on' &&
     inputValues.terms == 'on';
 
-  const isChecked = inputValues.useage == 'on' && inputValues.terms == 'on';
+  const isChecked = inputValues.useage === 'on' && inputValues.terms === 'on';
 
   // const handleSignup = () => {
   //   fetch('https://westagram-signup.herokuapp.com/signup', {
@@ -74,7 +73,9 @@ function Signup() {
 
   return (
     <div className="signup">
-      <div className="wediya">WEDIYA</div>
+      <div className="wediya">
+        <img src="./images/wediya.png" alt="wediya" />
+      </div>
       <div className="signupTitle">
         <h2>회원가입</h2>
       </div>
@@ -102,7 +103,6 @@ function Signup() {
             </div>
           </>
         ))}
-
         <div className="textWrap">
           <p className="inputTitle">추가정보</p>
         </div>
@@ -157,7 +157,6 @@ function Signup() {
             ))}
           </table>
         </div>
-
         <div className="agreement">
           {AGREEMENT_LIST.map(list => (
             <div key={list.id}>
@@ -182,7 +181,6 @@ function Signup() {
             </div>
           ))}
         </div>
-
         <button
           id="popup"
           onClick={() => (isChecked ? setPop('nonPopup') : setPop('popupWrap'))}
@@ -193,7 +191,7 @@ function Signup() {
 
         <div className={pop}>
           <div className="popupBox">
-            <p>필수약관에 동의해주세요.</p>
+            <p>필수약관에 동의에 체크해주세요.</p>
             <button
               onClick={() => setPop('nonPopup')}
               className="close"
