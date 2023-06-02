@@ -265,3 +265,13 @@ table {
     justify-content: space-evenly;
   }
 }
+
+.goToLogin {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  .loginBtn {
+    color: #017042;
+    font-weight: 600;
+  }
+}

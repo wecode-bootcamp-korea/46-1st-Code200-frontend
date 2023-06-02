@@ -3,6 +3,7 @@ import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
 import './Signup.scss';
+import { Link } from 'react-router-dom';
 
 function Signup() {
   const [isActive, setIsActive] = useState(false);
@@ -245,6 +246,15 @@ function Signup() {
         >
           회원가입하기
         </button>
+
+        <div className="goToLogin">
+          <p>
+            <span>아이디가 있으신가요?</span>
+            <Link to="/login" className="loginBtn">
+              로그인하기
+            </Link>
+          </p>
+        </div>
 
         <div className={pop}>
           <div className="popupBox">
