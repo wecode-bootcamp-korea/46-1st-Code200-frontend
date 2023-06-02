@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
 import './Signup.scss';
 
 function Signup() {
-  const [isAgree, setIsAgree] = useState(0);
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
@@ -61,7 +61,9 @@ function Signup() {
         agreement_marketing: inputValues.marketing === 'on' ? 1 : 0,
         agreement_terms: inputValues.terms === 'on' ? 1 : 0,
       }),
-    }).then(res => res.json());
+    })
+      .then(res => res.json())
+      .then(navigate('/'));
   };
 
   useEffect(() => {
