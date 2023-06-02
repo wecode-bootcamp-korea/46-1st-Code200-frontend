@@ -4,37 +4,28 @@ import './Nav.scss';
 
 const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
-  const [categoryListLev2, setCategoryListLev2] = useState([]);
-  const [categoryListLev3, setCategoryListLev3] = useState([]);
-  const [categoryListLev4, setCategoryListLev4] = useState([]);
-  const [categoryListLev5, setCategoryListLev5] = useState([]);
-  const [categoryListLev6, setCategoryListLev6] = useState([]);
+  const [subCategoryList, setSubCategoryList] = useState([]);
   const [hide, setHide] = useState(true);
+
+  // let categoryTop = [
+  //   {
+  //     id: '1',
+  //     value: categoryListLev2,
+  //   },
+  //   {
+  //     id: '2',
+  //     value: categoryListLev3,
+  //   },
+  // ];
 
   useEffect(() => {
     fetch('data/category.json')
       .then(response => response.json())
       .then(result => setCategoryList(result));
-    fetch('data/categorylev2.json')
+    fetch('data/subCategory.json')
       .then(response => response.json())
-      .then(result => setCategoryListLev2(result));
-    fetch('data/categorylev3.json')
-      .then(response => response.json())
-      .then(result => setCategoryListLev3(result));
-    fetch('data/categorylev4.json')
-      .then(response => response.json())
-      .then(result => setCategoryListLev4(result));
-    fetch('data/categorylev5.json')
-      .then(response => response.json())
-      .then(result => setCategoryListLev5(result));
-    fetch('data/categorylev6.json')
-      .then(response => response.json())
-      .then(result => setCategoryListLev6(result));
+      .then(result => setSubCategoryList(result));
   }, []);
-
-  const mouseEnterEvent = e => {
-    return console.log(e.target);
-  };
 
   return (
     <div className="nav">
@@ -43,7 +34,7 @@ const Nav = () => {
           <Link className="link" to="/">
             <img
               className="logoIcons"
-              src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/logo/wediysda%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png"
+              src="https://raw.githubusercontent.com/dxxcw/code200-images/35f700c12816ed36ec7194d724a60969c7efaad7/images/Main/logo/3.png"
               alt="spao_logo"
             />
           </Link>
@@ -59,9 +50,6 @@ const Nav = () => {
                     onMouseEnter={() => {
                       setHide(false);
                     }}
-                    onMouseLeave={() => {
-                      setHide(true);
-                    }}
                   >
                     {category.category_name}
                   </Link>
@@ -71,137 +59,98 @@ const Nav = () => {
           </ul>
         </div>
         <div className="topMember">
-          <img
-            className="imgIcons"
-            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_mypage.png"
-            alt="mypage"
-          />
-          <img
-            className="imgIcons"
-            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_search.png"
-            alt="search"
-          />
-          <img
-            className="imgIcons"
-            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_wish.png"
-            alt="wish"
-          />
-          <img
-            className="imgIcons"
-            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_cart_pc.png"
-            alt="cart"
-          />
+          {/* {IMG_SRC.map(img =>
+            img.alt !== 'myPage' ? (
+              <img
+                className="imgIcons"
+                src={img.value}
+                alt={img.alt}
+                key={img.id}
+              />
+            ) : (
+              <img
+                className="imgIcons"
+                src={img.value}
+                alt={img.alt}
+                key={img.id}
+                onMouseEnter={() => {
+                  console.log(1);
+                }}
+              />
+            )
+          )} */}
         </div>
       </div>
-      <div className="bottomNav">
-        <div className="subCategory">
-          <div className="dev">
-            <ul className="bottomMenuCategoryUl">
-              {categoryListLev2.map(category2 => {
-                return (
-                  <li
-                    className="bottomMenuCategoryLi"
-                    key={category2.category_id}
-                  >
-                    <Link className="dev1Link" to="/">
-                      {category2.category_name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="dev">
-            <ul className="bottomMenuCategoryUl">
-              {categoryListLev3.map(category3 => {
-                return (
-                  <li
-                    className="bottomMenuCategoryLi"
-                    key={category3.category_id}
-                  >
-                    <Link className="dev1Link" to="/">
-                      {category3.category_name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="dev">
-            <ul className="bottomMenuCategoryUl">
-              {categoryListLev4.map(category4 => {
-                return (
-                  <li
-                    className="bottomMenuCategoryLi"
-                    key={category4.category_id}
-                  >
-                    <Link className="dev1Link" to="/">
-                      {category4.category_name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="dev">
-            <ul className="bottomMenuCategoryUl">
-              {categoryListLev5.map(category5 => {
-                return (
-                  <li
-                    className="bottomMenuCategoryLi"
-                    key={category5.category_id}
-                  >
-                    <Link className="dev1Link" to="/">
-                      {category5.category_name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="dev">
-            <ul className="bottomMenuCategoryUl">
-              {categoryListLev5.map(category5 => {
-                return (
-                  <li
-                    className="bottomMenuCategoryLi"
-                    key={category5.category_id}
-                  >
-                    <Link className="dev1Link" to="/">
-                      {category5.category_name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="dev">
-            <ul className="bottomMenuCategoryUl">
-              {categoryListLev6.map(category6 => {
-                return (
-                  <li
-                    className="bottomMenuCategoryLi"
-                    key={category6.category_id}
-                  >
-                    <Link className="dev1Link" to="/">
-                      {category6.category_name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-        <div className="subCategoryImg">
-          <img
-            className="bestItemImg"
-            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/coffe-bag/brad-oqxYVNkWgQc-unsplash.jpg"
-            alt="bestitem"
-          />
-        </div>
+      <div className="bottomNavMy">
+        <ul>
+          <li>LOGIN</li>
+          <li>LOGOUT</li>
+          <li>ORDER</li>
+        </ul>
       </div>
+      {!hide && (
+        <div
+          className="bottomNav"
+          onMouseLeave={() => {
+            setHide(true);
+          }}
+        >
+          <div className="subCategory">
+            {/* <div className="dev" key={top.id}>
+              <ul className="bottomMenuCategoryUl">
+                {top.value.map(category => {
+                  return (
+                    <li
+                      className="bottomMenuCategoryLi"
+                      key={category.category_id}
+                    >
+                      <Link className="dev1Link" to="/">
+                        {category.category_name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div> */}
+          </div>
+          <div className="subCategoryImg">
+            <img
+              className="bestItemImg"
+              src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/coffe-bag/brad-oqxYVNkWgQc-unsplash.jpg"
+              alt="bestItem"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Nav;
+
+const IMG_SRC = [
+  {
+    id: '1',
+    value:
+      'https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_mypage.png',
+    alt: 'myPage',
+  },
+  {
+    id: '2',
+    value:
+      'https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_search.png',
+    alt: 'search',
+  },
+  {
+    id: '3',
+    value:
+      'https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_wish.png',
+    alt: 'wish',
+  },
+  {
+    id: '4',
+    value:
+      'https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/icon/top_cart_pc.png',
+    alt: 'cart',
+  },
+];

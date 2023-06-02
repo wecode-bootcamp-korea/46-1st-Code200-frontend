@@ -1,0 +1,90 @@
+[
+  {
+    "category_id": "c07",
+    "category_name": "콜드브루"
+  },
+  {
+    "category_id": "c08",
+    "category_name": "브루드커피"
+  },
+  {
+    "category_id": "c09",
+    "category_name": "에스프레소"
+  },
+  {
+    "category_id": "c010",
+    "category_name": "프라푸치노"
+  },
+  {
+    "category_id": "c011",
+    "category_name": "블렌디드"
+  },
+  {
+    "category_id": "c011",
+    "category_name": "브레드"
+  },
+  {
+    "category_id": "c012",
+    "category_name": "케이크"
+  },
+  {
+    "category_id": "c013",
+    "category_name": "샌드위치 & 샐러드"
+  },
+  {
+    "category_id": "c014",
+    "category_name": "따뜻한 푸드"
+  },
+  {
+    "category_id": "c015",
+    "category_name": "과일 & 요거트"
+  },
+  {
+    "category_id": "c016",
+    "category_name": "머그"
+  },
+  {
+    "category_id": "c017",
+    "category_name": "글라스"
+  },
+  {
+    "category_id": "c018",
+    "category_name": "텀블러"
+  },
+  {
+    "category_id": "c020",
+    "category_name": "보온병"
+  },
+  {
+    "category_id": "c021",
+    "category_name": "이벤트"
+  },
+  {
+    "category_id": "c022",
+    "category_name": "공지사항"
+  },
+  {
+    "category_id": "c023",
+    "category_name": "고객지원"
+  },
+  {
+    "category_id": "c024",
+    "category_name": "지역사회참여활동"
+  },
+  {
+    "category_id": "c025",
+    "category_name": "환경보호활동"
+  },
+  {
+    "category_id": "c026",
+    "category_name": "윤리구매"
+  },
+  {
+    "category_id": "c027",
+    "category_name": "지역 검색"
+  },
+  {
+    "category_id": "c028",
+    "category_name": "퀵 검색"
+  }
+]

@@ -8,14 +8,15 @@
   position: sticky;
   position: -webkit-sticky;
   transition: all 0.5s;
-  overflow: hidden;
+  // overflow: hidden;
   background-color: white;
-  border-bottom: 0.3px solid #c0c3c5;
+  // border-bottom: 0.3px solid #c0c3c5;
 
-  &:hover {
-    @include componentSize('', 340px);
-    cursor: pointer;
-  }
+  // &:hover {
+  //   border-bottom: 0.1px solid #c0c3c5;
+  //   // @include componentSize('', 340px);
+  //   // cursor: pointer;
+  // }
 
   .topLogo {
     @include componentSize(15%, '');
@@ -81,8 +82,17 @@
     margin: 10px;
   }
 
+  .bottomNavMy {
+  }
+
   .bottomNav {
     margin-top: 0px;
+    // top: 0;
+    // z-index: 1;
+    // position: sticky;
+    // position: -webkit-sticky;
+    // transition: all 0.5s;
+    background-color: white;
     @include flexSort(row, space-around, '');
 
     .bottomMenuCategoryLi {
