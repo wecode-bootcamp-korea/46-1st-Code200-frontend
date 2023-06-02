@@ -257,3 +257,11 @@ table {
     z-index: 1;
   }
 }
+
+.gender {
+  .inputBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}

@@ -31,13 +31,39 @@ function Signup() {
 
   const handleInput = event => {
     const { name, type, value } = event.target;
-
+    console.log(inputValues);
     if (type === 'checkbox' && inputValues[name]) {
       setInputValues({ ...inputValues, [name]: '' });
 
       return;
     }
     setInputValues({ ...inputValues, [name]: value });
+  };
+
+  const handleSignUp = () => {
+    const popType = isChecked ? 'nonPopup' : 'popupWrap';
+    setPop(popType);
+
+    fetch('http://10.58.52.134:8000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        name: inputValues.name,
+        email: inputValues.email,
+        phone_number: inputValues.value,
+        birthday: inputValues.date,
+        gender: 'male',
+        address: inputValues.address,
+        address_detail: inputValues.detail,
+        password: inputValues.password,
+        point: 30000,
+        agreement_private: inputValues.useage,
+        agreement_marketing: inputValues.marketing,
+        agreement_terms: inputValues.terms,
+      }),
+    }).then(res => res.json());
+
+    // .then(data => console.log(data));
   };
 
   useEffect(() => {
@@ -66,7 +92,7 @@ function Signup() {
       </div>
       <div className="inputForm">
         {INPUT_LIST.map(inputList => (
-          <>
+          <div key={`input_${inputList.id}`}>
             <div className="textWrap">
               <p className="inputTitle">{inputList.title}</p>
               {!valueConditions[inputList.name] && (
@@ -86,19 +112,65 @@ function Signup() {
                 <button className="overlap">중복확인</button>
               )}
             </div>
-          </>
+          </div>
         ))}
+        <div className="gender">
+          <span className="inputTitle">성별</span>
+          <div className="inputBox">
+            <p>
+              <label className="check" for="female">
+                <input
+                  id="female"
+                  type="checkbox"
+                  value="female"
+                  name="gender"
+                  onChange={handleInput}
+                />
+                <span className="icon" />
+                여성
+              </label>
+            </p>
+            <p>
+              <label className="check" for="male">
+                <input
+                  id="male"
+                  type="checkbox"
+                  value="male"
+                  name="gender"
+                  onChange={handleInput}
+                />
+                <span className="icon" />
+                남성
+              </label>
+            </p>
+
+            <p>
+              <label className="check" for="none">
+                <input
+                  id="none"
+                  type="checkbox"
+                  value="null"
+                  name="gender"
+                  onClick={handleInput}
+                />
+                <span className="icon" />
+                선택안함
+              </label>
+            </p>
+          </div>
+        </div>
+
         <div className="textWrap">
           <p className="inputTitle">추가정보</p>
         </div>
         <div className="route">
           <table>
             {CHECK_LIST.map(checkList => (
-              <>
-                <thead key={checkList.id} />
+              <div key={`checkList_${checkList.id}`}>
+                <thead />
                 <tbody>
                   <tr>
-                    <td className="tabletitle">{checkList.th}</td>
+                    <th className="tabletitle">{checkList.th}</th>
                     <div className="tdWrap">
                       <td>
                         <label className="check">
@@ -138,13 +210,13 @@ function Signup() {
                     </div>
                   </tr>
                 </tbody>
-              </>
+              </div>
             ))}
           </table>
         </div>
         <div className="agreement">
           {AGREEMENT_LIST.map(list => (
-            <div key={list.id}>
+            <div key={`agreement_${list.id}`}>
               <div className="itemFlex">
                 <h2 className="agreementTitle">
                   {list.title} <span>{list.span}</span>
@@ -168,7 +240,7 @@ function Signup() {
         </div>
         <button
           id="popup"
-          onClick={() => (isChecked ? setPop('nonPopup') : setPop('popupWrap'))}
+          onClick={handleSignUp}
           className={isActive ? 'able' : 'disabled'}
         >
           회원가입하기
