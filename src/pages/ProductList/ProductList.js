@@ -8,9 +8,11 @@ function ProductList() {
   useEffect(() => {
     fetch('http://10.58.52.154:8000/products?categoryId=1')
       .then(res => res.json())
-      .then(data => {
-        console.log(data);
+      .then(({ data }) => {
         setProductList(data);
+      })
+      .catch(error => {
+        console.error('Error', error);
       });
   }, []);
 
