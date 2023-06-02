@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ProductCard = ({ key, imgUrl, name, price, rating, numReview }) => {
+const ProductCard = ({ imgUrl, name, price, rating, numReview }) => {
   return (
-    <div key={key} className="product">
+    <div className="product">
       <a href="#">
         <img src={imgUrl[0]} alt="coffee bean" className="thumbnail" />
       </a>
@@ -10,7 +10,7 @@ const ProductCard = ({ key, imgUrl, name, price, rating, numReview }) => {
         <a href="#">
           <p className="name">{name}</p>
         </a>
-        <p className="price">{price.toLocaleString()}</p>
+        <p className="price">{price}</p>
         <p className="rating">★★★★★ {rating}</p>
         <p className="review">리뷰 {numReview}건</p>
       </div>
