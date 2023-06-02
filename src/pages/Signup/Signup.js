@@ -5,6 +5,8 @@ import CHECK_LIST from './checkList';
 import './Signup.scss';
 
 function Signup() {
+  const [pop, setPop] = useState('nonPopup');
+
   const [inputValues, setInputValues] = useState({
     email: '',
     password: '',
@@ -49,6 +51,8 @@ function Signup() {
     inputValues.detail.length >= 1 &&
     inputValues.useage == 'on' &&
     inputValues.terms == 'on';
+
+  const isChecked = inputValues.useage == 'on' && inputValues.terms == 'on';
 
   // const handleSignup = () => {
   //   fetch('https://westagram-signup.herokuapp.com/signup', {
@@ -179,7 +183,22 @@ function Signup() {
           ))}
         </div>
 
-        <button className={isActive ? 'able' : 'disabled'}>회원가입하기</button>
+        <button
+          id="popup"
+          onClick={isChecked ? setPop('nonPopup') : setPop('popupWrap')}
+          className={isActive ? 'able' : 'disabled'}
+        >
+          회원가입하기
+        </button>
+        <div className={pop}>
+          <div className="popupBox">
+            <p>필수약관에 동의해주세요.</p>
+            <button className="close" htmlFor="popup">
+              닫기
+            </button>
+          </div>
+          <label className="popupBack" htmlFor="popup" />
+        </div>
       </div>
     </div>
   );
