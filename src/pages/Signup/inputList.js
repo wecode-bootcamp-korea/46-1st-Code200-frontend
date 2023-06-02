@@ -1,0 +1,60 @@
+const INPUT_LIST = [
+  {
+    id: 1,
+    type: 'email',
+    name: 'email',
+    title: '이메일',
+    placeholder: "이메일 주소('@'포함)",
+    vaild: '이메일을 입력해주세요',
+  },
+  {
+    id: 2,
+    type: 'password',
+    name: 'password',
+    title: '비밀번호',
+    placeholder: '비밀번호 입력',
+    vaild: '5자 이상의 비밀번호를 입력해주세요',
+  },
+  {
+    id: 3,
+    type: 'text',
+    title: '이름',
+    name: 'name',
+    placeholder: '이름 입력',
+    vaild: '이름을 입력해주세요',
+  },
+  {
+    id: 4,
+    type: 'number',
+    title: '전화번호',
+    name: 'number',
+    placeholder: "'-'제외 11 자리 입력",
+    vaild: '전화번호를 입력해주세요',
+  },
+  {
+    id: 5,
+    type: 'text',
+    title: '주소',
+    name: 'address',
+    placeholder: '주소',
+    vaild: '주소를 입력해주세요',
+  },
+  {
+    id: 6,
+    type: 'text',
+    title: '상세주소',
+    name: 'detail',
+    placeholder: '상세주소',
+    vaild: '상세주소를 입력해주세요.',
+  },
+  {
+    id: 7,
+    type: 'date',
+    title: '생년월일',
+    name: 'date',
+    placeholder: '',
+    vaild: '',
+  },
+];
+
+export default INPUT_LIST;
