@@ -11,6 +11,18 @@ const QuantityBtn = ({ count, productList, setProductList, id }) => {
       }
     });
     setProductList(arr);
+    postCount();
+  };
+
+  const postCount = () => {
+    fetch('API 주소', {
+      method: 'POST',
+      body: JSON.stringify({
+        count: count,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log(result));
   };
 
   return (
