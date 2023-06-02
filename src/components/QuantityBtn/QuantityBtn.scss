@@ -1,13 +1,25 @@
 @import '../../styles/mixin';
+@import '../../styles/variables';
 
 .quantityBtn {
   @include flexSort(row, center, center);
 
   button {
-    width: 22px;
-    margin: 0 10px;
-    border: 1px solid grey;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin: 0 15px;
+    padding: 0;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
     background-color: white;
-    font-size: 16px;
+    color: grey;
+    font-size: 15px;
+    vertical-align: middle;
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
   }
 }
