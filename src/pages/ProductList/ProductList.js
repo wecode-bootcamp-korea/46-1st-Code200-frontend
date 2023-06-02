@@ -6,9 +6,10 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    fetch('/data/sample.json')
+    fetch('http://10.58.52.154:8000/products?categoryId=1')
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         setProductList(data);
       });
   }, []);
@@ -38,11 +39,11 @@ function ProductList() {
           return (
             <ProductCard
               key={product.id}
-              url={product.url}
+              url={product.imageUrls[0]}
               productName={product.name}
               price={product.price}
-              rating={product.rating}
-              numReview={product.count_review}
+              rating={product.avgRating}
+              numReview={product.countReview}
             />
             // <div key={product.id} className="product">
             //   <a href="#">
