@@ -8,12 +8,19 @@ function Cart() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    fetch('/data/cartSample.json')
+    fetch('http://10.58.52.133:8000/carts?userId=2')
       .then(res => res.json())
       .then(data => {
-        setProductList(data);
+        console.log(data);
+        setProductList(data.data);
       });
   }, []);
+
+  const deleteItem = () => {
+    fetch('http://10.58.52.133:8000/carts/10', {
+      method: 'DELETE',
+    });
+  };
 
   return (
     <div className="cart">
@@ -50,18 +57,16 @@ function Cart() {
               </td>
               <td className="quantity">
                 <QuantityBtn
-                  count={data.count}
+                  count={data.quantity}
                   productList={productList}
                   setProductList={setProductList}
                   id={data.id}
                 />
               </td>
               <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">
-                {(data.priceInt * data.count).toLocaleString()}
-              </td>
+              <td className="totalPrice">{data.price * data.quantity}</td>
               <td className="delete">
-                <button>삭제</button>
+                <button onClick={deleteItem}>삭제</button>
               </td>
             </tr>
           );

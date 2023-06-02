@@ -15,10 +15,10 @@ const QuantityBtn = ({ count, productList, setProductList, id }) => {
   };
 
   const postCount = () => {
-    fetch('API 주소', {
-      method: 'POST',
+    fetch('http://10.58.52.133:8000/carts/10/2', {
+      method: 'PATCH',
       body: JSON.stringify({
-        count: count,
+        quantity: count,
       }),
     })
       .then(response => response.json())
