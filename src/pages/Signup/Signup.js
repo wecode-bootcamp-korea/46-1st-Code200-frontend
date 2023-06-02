@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
 import './Signup.scss';
-import { Link } from 'react-router-dom';
 
 function Signup() {
+  const [isAgree, setIsAgree] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
@@ -19,7 +20,6 @@ function Signup() {
     useage: '',
     terms: '',
   });
-
   const valueConditions = {
     email: inputValues.email.includes('@'),
     password: inputValues.password.length >= 5,
@@ -32,7 +32,6 @@ function Signup() {
 
   const handleInput = event => {
     const { name, type, value } = event.target;
-    console.log(inputValues);
     if (type === 'checkbox' && inputValues[name]) {
       setInputValues({ ...inputValues, [name]: '' });
 
@@ -51,20 +50,18 @@ function Signup() {
       body: JSON.stringify({
         name: inputValues.name,
         email: inputValues.email,
-        phone_number: inputValues.value,
+        phone_number: inputValues.number,
         birthday: inputValues.date,
-        gender: 'male',
+        gender: inputValues.gender,
         address: inputValues.address,
         address_detail: inputValues.detail,
         password: inputValues.password,
         point: 30000,
-        agreement_private: inputValues.useage,
-        agreement_marketing: inputValues.marketing,
-        agreement_terms: inputValues.terms,
+        agreement_private: inputValues.useage === 'on' ? 1 : 0,
+        agreement_marketing: inputValues.marketing === 'on' ? 1 : 0,
+        agreement_terms: inputValues.terms === 'on' ? 1 : 0,
       }),
     }).then(res => res.json());
-
-    // .then(data => console.log(data));
   };
 
   useEffect(() => {
