@@ -5,6 +5,7 @@ import CHECK_LIST from './checkList';
 import './Signup.scss';
 
 function Signup() {
+  const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
     email: '',
@@ -36,40 +37,24 @@ function Signup() {
 
       return;
     }
-    console.log(name);
-    console.log(value);
     setInputValues({ ...inputValues, [name]: value });
   };
 
-  const isActive =
-    inputValues.email.includes('@') &&
-    inputValues.password.length >= 5 &&
-    inputValues.number.length >= 11 &&
-    inputValues.name.length >= 1 &&
-    inputValues.address.length >= 1 &&
-    inputValues.detail.length >= 1 &&
-    inputValues.useage == 'on' &&
-    inputValues.terms == 'on';
+  useEffect(() => {
+    const isVaild =
+      inputValues.email.includes('@') &&
+      inputValues.password.length >= 5 &&
+      inputValues.number.length >= 11 &&
+      inputValues.name.length >= 1 &&
+      inputValues.address.length >= 1 &&
+      inputValues.detail.length >= 1 &&
+      inputValues.useage &&
+      inputValues.terms;
+
+    setIsActive(isVaild);
+  }, [inputValues]);
 
   const isChecked = inputValues.useage === 'on' && inputValues.terms === 'on';
-
-  // const handleSignup = () => {
-  //   fetch('https://westagram-signup.herokuapp.com/signup', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json;charset=utf-8' },
-  //     body: JSON.stringify({
-  //       email: '',
-  //       password: '',
-  //       name: '',
-  //       number: '',
-  //       address: '',
-  //       detail: '',
-  //       checked: '',
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => console.log(data));
-  // };
 
   return (
     <div className="signup">
