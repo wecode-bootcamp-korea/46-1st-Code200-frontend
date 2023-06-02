@@ -3,25 +3,38 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../Login/Login.scss';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
+  const [inputValues, setInputValues] = useState({
+    email: '',
+    password: '',
+  });
+
   const navigate = useNavigate();
-  const isValid = email.includes('@') && pw.length >= 5;
+  const isValid =
+    inputValues.email.includes('@') && inputValues.password.length >= 5;
 
-  const handleEmailChange = e => {
-    setEmail(e.target.value);
-  };
-
-  const handlePwChange = e => {
-    setPw(e.target.value);
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
   };
 
   const goMain = () => {
-    if (isValid) {
-      navigate('/');
-    } else {
-      alert('틀린 비밀번호 입니다');
-    }
+    fetch('http://10.58.52.134:3000/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        email: 'code200@gmail.com',
+        password: '!QWE123qwe',
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (isValid) {
+          navigate('/');
+        } else {
+          alert('틀린 비밀번호 입니다');
+        }
+      });
   };
 
   const handleOnKeyPress = e => {
@@ -39,16 +52,16 @@ const Login = () => {
           type="text"
           className="id"
           placeholder="이메일을 입력해 주세요."
-          value={email}
-          onChange={handleEmailChange}
+          value={inputValues.email}
+          onChange={handleInput}
         />
         <p className="passwordcontent">비밀번호 </p>
         <input
           type="password"
           className="password"
           placeholder="비밀번호를 입력해 주세요."
-          value={pw}
-          onChange={handlePwChange}
+          value={inputValues.password}
+          onChange={handleInput}
           onKeyDown={handleOnKeyPress}
         />
         <button
