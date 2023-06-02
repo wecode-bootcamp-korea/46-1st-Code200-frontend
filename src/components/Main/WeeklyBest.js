@@ -32,7 +32,6 @@ function WeeklyBest() {
   }, [clicked]);
   return (
     <div>
-      {/* 위클리 베스트 타이틀 */}
       <div className="mainTitle">위클리 베스트</div>
       {/* 위클리 베스트 카테고리 탭 */}
 
