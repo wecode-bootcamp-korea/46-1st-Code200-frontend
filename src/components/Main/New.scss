@@ -1,0 +1,86 @@
+.slide {
+  width: 1406px;
+  height: 619px;
+  background-color: indianred;
+}
+
+.weekly {
+  height: 750px;
+  width: 1406px;
+  background-color: cornflowerblue;
+}
+
+.title {
+  margin: 60px auto 50px;
+  color: #1a1a1a;
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.newWrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.newBevWrap {
+  width: 640px;
+  margin: 0 20px;
+
+  .imgWrapper {
+    height: 640px;
+    overflow: hidden;
+  }
+
+  .newBev {
+    height: 100%;
+    width: 100%;
+    transition: 0.6s;
+
+    &:hover {
+      transform: scale(1.4);
+      cursor: pointer;
+    }
+  }
+  .description {
+    z-index: 1;
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
+  }
+}
+
+.newFdWrap {
+  width: 640px;
+  margin: 150px 20px 0 20px;
+  float: right;
+
+  .imgWrapper {
+    height: 640px;
+    overflow: hidden;
+  }
+
+  .newFood {
+    max-height: 640px;
+    overflow: hidden;
+    width: 100%;
+    transition: 0.6s;
+  }
+  .newFood:hover {
+    transform: scale(1.4);
+    cursor: pointer;
+  }
+  .description {
+    z-index: 1;
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
+  }
+}
