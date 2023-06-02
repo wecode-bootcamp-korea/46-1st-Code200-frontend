@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
+import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
 function Signup() {
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
@@ -38,6 +40,32 @@ function Signup() {
       return;
     }
     setInputValues({ ...inputValues, [name]: value });
+  };
+
+  const handleSignUp = () => {
+    const popType = isChecked ? 'nonPopup' : 'popupWrap';
+    setPop(popType);
+
+    fetch('http://10.58.52.134:8000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        name: inputValues.name,
+        email: inputValues.email,
+        phone_number: inputValues.number,
+        birthday: inputValues.date,
+        gender: inputValues.gender,
+        address: inputValues.address,
+        address_detail: inputValues.detail,
+        password: inputValues.password,
+        point: 30000,
+        agreement_private: inputValues.useage === 'on' ? 1 : 0,
+        agreement_marketing: inputValues.marketing === 'on' ? 1 : 0,
+        agreement_terms: inputValues.terms === 'on' ? 1 : 0,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => navigate('/'));
   };
 
   useEffect(() => {
