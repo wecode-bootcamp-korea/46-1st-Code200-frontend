@@ -185,15 +185,20 @@ function Signup() {
 
         <button
           id="popup"
-          onClick={isChecked ? setPop('nonPopup') : setPop('popupWrap')}
+          onClick={() => (isChecked ? setPop('nonPopup') : setPop('popupWrap'))}
           className={isActive ? 'able' : 'disabled'}
         >
           회원가입하기
         </button>
+
         <div className={pop}>
           <div className="popupBox">
             <p>필수약관에 동의해주세요.</p>
-            <button className="close" htmlFor="popup">
+            <button
+              onClick={() => setPop('nonPopup')}
+              className="close"
+              htmlFor="popup"
+            >
               닫기
             </button>
           </div>
