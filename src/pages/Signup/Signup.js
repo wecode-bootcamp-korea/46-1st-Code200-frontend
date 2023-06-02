@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
 function Signup() {
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
@@ -35,12 +36,10 @@ function Signup() {
 
     if (type === 'checkbox' && inputValues[name]) {
       setInputValues({ ...inputValues, [name]: '' });
-
       return;
     }
     setInputValues({ ...inputValues, [name]: value });
   };
-
   const handleSignUp = () => {
     const popType = isChecked ? 'nonPopup' : 'popupWrap';
     setPop(popType);
