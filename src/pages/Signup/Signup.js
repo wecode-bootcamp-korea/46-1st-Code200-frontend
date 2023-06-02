@@ -63,7 +63,7 @@ function Signup() {
       }),
     })
       .then(res => res.json())
-      .then(navigate('/'));
+      .then(data => navigate('/'));
   };
 
   useEffect(() => {
