@@ -13,15 +13,15 @@ function ProductDetail() {
   let CATEGORY_ARR = [
     {
       id: '3',
-      value: productDetail.product_name, // 스노우
+      value: productDetail.product_name,
     },
     {
       id: '2',
-      value: productDetail.subcategory, // 커피
+      value: productDetail.subcategory,
     },
     {
       id: '1',
-      value: productDetail.category, //음료
+      value: productDetail.category,
     },
   ];
 
