@@ -32,43 +32,39 @@ function WeeklyBest() {
   }, [clicked]);
   return (
     <div>
-        {/* 위클리 베스트 타이틀 */}
-        <div className="mainTitle">위클리 베스트</div>
-        {/* 위클리 베스트 카테고리 탭 */}
+      <div className="mainTitle">위클리 베스트</div>
+      {/* 위클리 베스트 카테고리 탭 */}
 
-        <ul className="weeklyTap">
-          {TAP_LIST.map(tapList => (
-            <li key={tapList.id}>
-              <span
-                onClick={() => {
-                  setClicked(tapList.clicked);
-                  setCircle(tapList.circle);
-                }}
-                className={`${tapList.clicked} ${
-                  clicked === tapList.clicked ? 'on' : ''
-                }`}
-              >
-                {tapList.name}
-                <div
-                  className={`${circle === tapList.circle ? 'onRed' : ''}`}
-                />
-              </span>
-            </li>
-          ))}
-        </ul>
-        {/* 원두 카테고리 top4 */}
+      <ul className="weeklyTap">
+        {TAP_LIST.map(tapList => (
+          <li key={tapList.id}>
+            <span
+              onClick={() => {
+                setClicked(tapList.clicked);
+                setCircle(tapList.circle);
+              }}
+              className={`${tapList.clicked} ${
+                clicked === tapList.clicked ? 'on' : ''
+              }`}
+            >
+              {tapList.name}
+              <div className={`${circle === tapList.circle ? 'onRed' : ''}`} />
+            </span>
+          </li>
+        ))}
+      </ul>
+      {/* 원두 카테고리 top4 */}
 
-        <div className="prdListWrap">
-          {prdList.map(prd => {
-            return (
-              <ul key={prd.id} className="prdList">
-                <li className="prdBox">
-                  <div className="box">{prd.text}</div>
-                </li>
-              </ul>
-            );
-          })}
-        </div>
+      <div className="prdListWrap">
+        {prdList.map(prd => {
+          return (
+            <ul key={prd.id} className="prdList">
+              <li className="prdBox">
+                <div className="box">{prd.text}</div>
+              </li>
+            </ul>
+          );
+        })}
       </div>
     </div>
   );
