@@ -82,9 +82,6 @@
     margin: 10px;
   }
 
-  .bottomNavMy {
-  }
-
   .bottomNav {
     margin-top: 0px;
     // top: 0;
@@ -95,22 +92,26 @@
     background-color: white;
     @include flexSort(row, space-around, '');
 
-    .bottomMenuCategoryLi {
-      margin: 10px 4px;
-      text-align: left;
-      padding: 0;
-    }
-
     .dev {
-      @include componentSize(150px, '');
-      @include flexSort(row, flex-start, flex-start);
+      @include componentSize(100%, '');
+      @include flexSort(row, center, space-between);
       margin: 20px;
       padding: 20px 5px;
+
+      .bottomMenuCategoryUl {
+        margin-right: 100px;
+      }
+
+      .bottomMenuCategoryLi {
+        margin: 10px 4px;
+        text-align: left;
+        padding: 0;
+      }
     }
 
     .subCategory {
       @include flexSort(row, center, '');
-      margin-left: 312px;
+      margin-left: 300px;
     }
 
     .subCategoryImg {

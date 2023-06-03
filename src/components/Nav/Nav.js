@@ -1,30 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import MyPage from '../MyPage/MyPage';
 import './Nav.scss';
 
 const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
-  const [subCategoryList, setSubCategoryList] = useState([]);
   const [hide, setHide] = useState(true);
-
-  // let categoryTop = [
-  //   {
-  //     id: '1',
-  //     value: categoryListLev2,
-  //   },
-  //   {
-  //     id: '2',
-  //     value: categoryListLev3,
-  //   },
-  // ];
+  const [myHide, setMyHide] = useState(true);
+  const [isSubCategory, setIsSubCategory] = useState(false);
 
   useEffect(() => {
     fetch('data/category.json')
       .then(response => response.json())
-      .then(result => setCategoryList(result));
-    fetch('data/subCategory.json')
-      .then(response => response.json())
-      .then(result => setSubCategoryList(result));
+      .then(result => {
+        setCategoryList(result.data);
+        setIsSubCategory(true);
+      });
   }, []);
 
   return (
@@ -59,7 +50,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className="topMember">
-          {/* {IMG_SRC.map(img =>
+          {IMG_SRC.map(img =>
             img.alt !== 'myPage' ? (
               <img
                 className="imgIcons"
@@ -68,25 +59,21 @@ const Nav = () => {
                 key={img.id}
               />
             ) : (
-              <img
-                className="imgIcons"
-                src={img.value}
-                alt={img.alt}
-                key={img.id}
-                onMouseEnter={() => {
-                  console.log(1);
-                }}
-              />
+              <>
+                {!myHide && <MyPage />}
+                <img
+                  className="imgIcons"
+                  src={img.value}
+                  alt={img.alt}
+                  key={img.id}
+                  onClick={() => {
+                    setMyHide(!myHide);
+                  }}
+                />
+              </>
             )
-          )} */}
+          )}
         </div>
-      </div>
-      <div className="bottomNavMy">
-        <ul>
-          <li>LOGIN</li>
-          <li>LOGOUT</li>
-          <li>ORDER</li>
-        </ul>
       </div>
       {!hide && (
         <div
@@ -96,22 +83,30 @@ const Nav = () => {
           }}
         >
           <div className="subCategory">
-            {/* <div className="dev" key={top.id}>
-              <ul className="bottomMenuCategoryUl">
-                {top.value.map(category => {
+            <div className="dev">
+              {isSubCategory &&
+                categoryList.map(category => {
                   return (
-                    <li
-                      className="bottomMenuCategoryLi"
+                    <ul
+                      className="bottomMenuCategoryUl"
                       key={category.category_id}
                     >
-                      <Link className="dev1Link" to="/">
-                        {category.category_name}
-                      </Link>
-                    </li>
+                      {category.subCategories.map(subCategory => {
+                        return (
+                          <li
+                            className="bottomMenuCategoryLi"
+                            key={subCategory.subCategory_id}
+                          >
+                            <Link className="dev1Link" to="/">
+                              {subCategory.subCategory_name}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   );
                 })}
-              </ul>
-            </div> */}
+            </div>
           </div>
           <div className="subCategoryImg">
             <img

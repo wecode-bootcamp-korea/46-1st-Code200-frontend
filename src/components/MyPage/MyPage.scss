@@ -1,0 +1,18 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.bottomNavMy {
+  @include componentSize(50px, 100%);
+  margin: 10px;
+
+  .myPageLink {
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+    margin: 2px;
+    font-size: medium;
+    &:hover {
+      color: black;
+    }
+  }
+}
