@@ -19,7 +19,6 @@
   align-items: center;
   padding: 20px 30px;
   text-align: center;
-  border-bottom: 1px solid lightgray;
   width: 90%;
 
   .rating {
@@ -32,6 +31,11 @@
 
     .point {
       display: flex;
+
+      img {
+        width: 40px;
+        height: 40px;
+      }
 
       .start {
         font-size: 50px;

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Review.scss';
 
 function Review() {
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/reviewSample.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => setReview(data));
+  }, []);
+
   return (
     <div className="Review">
       <div className="reviewTitle">
@@ -15,11 +25,8 @@ function Review() {
       <div className="reviewSummary">
         <div className="rating">
           <div className="point">
-            <img alt="별" />
+            <img src="/images/star.png" alt="별" />
             <p className="start">5.0</p>
-          </div>
-          <div>
-            <p>의 구매자가 이 상품을 좋아합니다.</p>
           </div>
         </div>
 
@@ -46,16 +53,19 @@ function Review() {
           </div>
         </div>
       </div>
-
       <div className="oneLineReview">
-        <div className="oneLineWrap">
-          <div>별점</div>
+        {review.map(review => {
+          return (
+            <div key={review.id} className="oneLineWrap">
+              <div>{review.rating}</div>
 
-          <div className="userWrap">
-            <p className="oneLine">여전히 시원시원한 마동석의 손맛과 입담</p>
-            <p className="userId">userId</p>
-          </div>
-        </div>
+              <div className="userWrap">
+                <p className="oneLine">{review.review}</p>
+                <p className="userId">{review.userInfo}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
