@@ -9,6 +9,7 @@ function Signup() {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
+  const [vaildEmail, setVaildEmail] = useState('nonPopup');
   const [inputValues, setInputValues] = useState({
     email: '',
     password: '',
@@ -90,6 +91,19 @@ function Signup() {
       <div className="signupTitle">
         <h2>회원가입</h2>
       </div>
+      <div className={vaildEmail}>
+        <div className="emailBox">
+          <p>사용할 수 없는 이메일입니다.</p>
+          <button
+            className="emailClose"
+            onClick={() => setVaildEmail('nonPopup')}
+          >
+            닫기
+          </button>
+        </div>
+        <label className="emailPopupBack" />
+      </div>
+
       <div className="inputForm">
         {INPUT_LIST.map(inputList => (
           <div key={`input_${inputList.id}`}>
@@ -109,11 +123,31 @@ function Signup() {
                 onChange={handleInput}
               />
               {inputList.name == 'email' && (
-                <button className="overlap">중복확인</button>
+                <button
+                  className="overlap"
+                  onClick={() => setVaildEmail('emailPopupWrap')}
+                >
+                  중복확인
+                </button>
               )}
             </div>
           </div>
         ))}
+
+        <div className={pop}>
+          <div className="popupBox">
+            <p>필수약관에 동의에 체크해주세요.</p>
+            <button
+              onClick={() => setPop('nonPopup')}
+              className="close"
+              htmlFor="popup"
+            >
+              닫기
+            </button>
+          </div>
+          <label className="popupBack" htmlFor="popup" />
+        </div>
+
         <div className="gender">
           <span className="inputTitle">성별</span>
           <div className="inputBox">
