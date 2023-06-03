@@ -61,7 +61,7 @@ function Signup() {
         agreement_marketing: inputValues.marketing === 'on' ? 1 : 0,
         agreement_terms: inputValues.terms === 'on' ? 1 : 0,
       }),
-    }).then(res => res.json());
+    }).then(res => res.json(), [inputValues]);
   };
 
   useEffect(() => {
@@ -197,6 +197,15 @@ function Signup() {
         >
           회원가입하기
         </button>
+
+        <div className="goToLogin">
+          <p>
+            <span>아이디가 있으신가요?</span>
+            <Link to="/login" className="loginBtn">
+              로그인하기
+            </Link>
+          </p>
+        </div>
 
         <div className={pop}>
           <div className="popupBox">
