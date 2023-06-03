@@ -1,0 +1,117 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.order {
+  margin: auto;
+  // padding: 0px;
+  width: 70%;
+  border: 1px solid darkgray;
+  background-color: rgb(227, 228, 232);
+
+  .hStyle {
+    font-weight: 500;
+  }
+  input {
+    padding: 10px;
+    // border: 1px solid gray;
+  }
+
+  .orderTop {
+    @include componentSize(100%, 40px);
+    @include flexSort(row, space-between, center);
+    background-color: white;
+    .logoIcons {
+      @include componentSize('', 30px);
+    }
+  }
+
+  .orderTitle {
+    @include componentSize(100%, 50px);
+    @include flexSort(row, center, center);
+    background-color: $primary-color;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+  }
+  .orderDesc {
+    @include componentSize(100%, 80px);
+    @include flexSort(row, flex-start, center);
+    background-color: white;
+    .descPtag {
+      color: red;
+      line-height: 1.5;
+    }
+  }
+  .orderInfo {
+    @include componentSize(100%, 200px);
+    @include flexSort(column, center, flex-start);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .grayFont {
+      margin: 20px;
+      color: gray;
+      font-size: 12px;
+    }
+    .orderUserName {
+      border: none;
+    }
+    .orderUserPhone {
+      border: none;
+    }
+    .orderUserEmail {
+      border: none;
+    }
+  }
+  .orderAddress {
+    @include componentSize(100%, 350px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .selectDelivery {
+      @include componentSize(100%, 50px);
+      @include flexSort(row, flex-start, center);
+      border: 1px solid black;
+
+      .delivery {
+        @include componentSize(120px, 80%);
+        background-color: $primary-color;
+        color: white;
+        margin-left: 10px;
+        font-size: 5px;
+      }
+    }
+  }
+  .orderProduct {
+    @include componentSize(100%, 250px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .orderDisCount {
+    @include componentSize(100%, 250px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .orderPay {
+    @include componentSize(100%, 250px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .orderPaySelect {
+    @include componentSize(100%, 350px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .orderBottom {
+    @include componentSize(100%, 250px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
