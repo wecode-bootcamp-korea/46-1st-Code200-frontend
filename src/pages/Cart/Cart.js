@@ -16,27 +16,35 @@ function Cart() {
       });
   }, []);
 
-  const deleteItem = () => {
-    fetch('http://10.58.52.133:8000/carts/10', {
+  const deleteItem = id => {
+    fetch(`http://10.58.52.133:8000/carts/${id}`, {
       method: 'DELETE',
-    });
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Delete was not successful');
+        }
+      })
+      .catch(e => console.log(e));
   };
 
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
       <table className="cartTable">
-        <tr>
-          <th>
-            <button>v</button>
-          </th>
-          <th />
-          <th>상품정보</th>
-          <th>수량</th>
-          <th>배송구분</th>
-          <th>합계</th>
-          <th />
-        </tr>
+        <thead>
+          <tr>
+            <th>
+              <button>v</button>
+            </th>
+            <th />
+            <th>상품정보</th>
+            <th>수량</th>
+            <th>배송구분</th>
+            <th>합계</th>
+            <th />
+          </tr>
+        </thead>
         {productList.map(data => {
           return (
             <tr key={data.id}>
@@ -65,8 +73,14 @@ function Cart() {
               </td>
               <td className="shippingType">{data.shipping}</td>
               <td className="totalPrice">{data.price * data.quantity}</td>
-              <td className="delete">
-                <button onClick={deleteItem}>삭제</button>
+              <td className="deleteItem">
+                <button
+                  onClick={e => {
+                    deleteItem(e.data.id);
+                  }}
+                >
+                  삭제
+                </button>
               </td>
             </tr>
           );
@@ -74,7 +88,7 @@ function Cart() {
       </table>
       <div className="deleteBtnBox">
         <button>선택상품 삭제</button>
-        <button>장바구니비우기</button>
+        <button onClick={() => deleteItem('')}>장바구니비우기</button>
       </div>
       <div className="priceSummary">
         <div className="totalItemPrice">
