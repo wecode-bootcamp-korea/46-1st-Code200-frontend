@@ -8,7 +8,7 @@ function Cart() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.52.133:8000/carts?userId=2')
+    fetch('http://10.58.52.108:8000/carts?userId=10')
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -17,7 +17,7 @@ function Cart() {
   }, []);
 
   const deleteItem = id => {
-    fetch(`http://10.58.52.133:8000/carts/${id}`, {
+    fetch(`http://10.58.52.108:8000/carts/${id}}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -47,7 +47,7 @@ function Cart() {
         </thead>
         {productList.map(data => {
           return (
-            <tr key={data.id}>
+            <tr key={data.cartId}>
               <td className="checkbox">
                 <button>v</button>
               </td>
@@ -68,15 +68,15 @@ function Cart() {
                   count={data.quantity}
                   productList={productList}
                   setProductList={setProductList}
-                  id={data.id}
+                  id={data.cartId}
                 />
               </td>
               <td className="shippingType">{data.shipping}</td>
               <td className="totalPrice">{data.price * data.quantity}</td>
               <td className="deleteItem">
                 <button
-                  onClick={e => {
-                    deleteItem(e.data.id);
+                  onClick={() => {
+                    deleteItem(data.cartId);
                   }}
                 >
                   삭제
@@ -88,7 +88,13 @@ function Cart() {
       </table>
       <div className="deleteBtnBox">
         <button>선택상품 삭제</button>
-        <button onClick={() => deleteItem('')}>장바구니비우기</button>
+        <button
+          onClick={() => {
+            deleteItem('');
+          }}
+        >
+          장바구니비우기
+        </button>
       </div>
       <div className="priceSummary">
         <div className="totalItemPrice">
