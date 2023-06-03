@@ -62,7 +62,7 @@ const Nav = () => {
               <>
                 {!myHide && <MyPage />}
                 <img
-                  className="imgIcons"
+                  className="imgIcons login"
                   src={img.value}
                   alt={img.alt}
                   key={img.id}
@@ -75,45 +75,37 @@ const Nav = () => {
           )}
         </div>
       </div>
+
       {!hide && (
         <div
-          className="bottomNav"
+          className="subCategory"
           onMouseLeave={() => {
             setHide(true);
           }}
         >
-          <div className="subCategory">
-            <div className="dev">
-              {isSubCategory &&
-                categoryList.map(category => {
-                  return (
-                    <ul
-                      className="bottomMenuCategoryUl"
-                      key={category.category_id}
-                    >
-                      {category.subCategories.map(subCategory => {
-                        return (
-                          <li
-                            className="bottomMenuCategoryLi"
-                            key={subCategory.subCategory_id}
-                          >
-                            <Link className="dev1Link" to="/">
-                              {subCategory.subCategory_name}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  );
-                })}
-            </div>
-          </div>
-          <div className="subCategoryImg">
-            <img
-              className="bestItemImg"
-              src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/coffe-bag/brad-oqxYVNkWgQc-unsplash.jpg"
-              alt="bestItem"
-            />
+          <div className="dev">
+            {isSubCategory &&
+              categoryList.map(category => {
+                return (
+                  <ul
+                    className="bottomMenuCategoryUl"
+                    key={category.category_id}
+                  >
+                    {category.subCategories.map(subCategory => {
+                      return (
+                        <li
+                          className="bottomMenuCategoryLi"
+                          key={subCategory.subCategory_id}
+                        >
+                          <Link className="dev1Link" to="/">
+                            {subCategory.subCategory_name}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                );
+              })}
           </div>
         </div>
       )}

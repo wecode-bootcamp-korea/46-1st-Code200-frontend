@@ -1,121 +1,121 @@
 {
   "data": [
     {
-      "category_id": "01",
+      "category_id": 1,
       "category_name": "음료",
       "subCategories": [
         {
-          "subCategory_id": "01",
+          "subCategory_id": 1,
           "subCategory_name": "콜드브루"
         },
         {
-          "subCategory_id": "02",
+          "subCategory_id": 2,
           "subCategory_name": "브루드커피"
         },
         {
-          "subCategory_id": "03",
+          "subCategory_id": 3,
           "subCategory_name": "에스프레소"
         },
         {
-          "subCategory_id": "04",
+          "subCategory_id": 4,
           "subCategory_name": "프라푸치노"
         },
         {
-          "subCategory_id": "01",
+          "subCategory_id": 5,
           "subCategory_name": "블렌디드"
         }
       ]
     },
     {
-      "category_id": "02",
+      "category_id": 2,
       "category_name": "푸드",
       "subCategories": [
         {
-          "subCategory_id": "01",
+          "subCategory_id": 6,
           "subCategory_name": "브레드"
         },
         {
-          "subCategory_id": "02",
+          "subCategory_id": 7,
           "subCategory_name": "케이크"
         },
         {
-          "subCategory_id": "03",
+          "subCategory_id": 8,
           "subCategory_name": "샌드위치&샐러드"
         },
         {
-          "subCategory_id": "04",
+          "subCategory_id": 9,
           "subCategory_name": "따뜻한 푸드"
         },
         {
-          "subCategory_id": "05",
+          "subCategory_id": 10,
           "subCategory_name": "과일 & 요거트"
         }
       ]
     },
     {
-      "category_id": "03",
+      "category_id": 3,
       "category_name": "상품",
       "subCategories": [
         {
-          "subCategory_id": "01",
+          "subCategory_id": 11,
           "subCategory_name": "머그"
         },
         {
-          "subCategory_id": "02",
+          "subCategory_id": 12,
           "subCategory_name": "글라스"
         },
         {
-          "subCategory_id": "03",
-          "subCategory_name": "플라스틱 텀블러"
+          "subCategory_id": 13,
+          "subCategory_name": "텀블러"
         },
         {
-          "subCategory_id": "04",
+          "subCategory_id": 14,
           "subCategory_name": "커피 용품"
         }
       ]
     },
     {
-      "category_id": "04",
+      "category_id": 4,
       "category_name": "매장찾기",
       "subCategories": [
         {
-          "subCategory_id": "01",
+          "subCategory_id": 15,
           "subCategory_name": "퀵 검색"
         },
         {
-          "subCategory_id": "02",
+          "subCategory_id": 16,
           "subCategory_name": "지역 검색"
         }
       ]
     },
     {
-      "category_id": "05",
+      "category_id": 5,
       "category_name": "이벤트",
       "subCategories": [
         {
-          "subCategory_id": "01",
+          "subCategory_id": 17,
           "subCategory_name": "공지사항"
         },
         {
-          "subCategory_id": "02",
+          "subCategory_id": 18,
           "subCategory_name": "고객지원"
         }
       ]
     },
     {
-      "category_id": "06",
+      "category_id": 6,
       "category_name": "브랜드소식",
       "subCategories": [
         {
-          "subCategory_id": "01",
+          "subCategory_id": 19,
           "subCategory_name": "지역사회참여활동"
         },
         {
-          "subCategory_id": "02",
+          "subCategory_id": 20,
           "subCategory_name": "환경보호활동"
         },
         {
-          "subCategory_id": "03",
+          "subCategory_id": 21,
           "subCategory_name": "윤리구매"
         }
       ]
