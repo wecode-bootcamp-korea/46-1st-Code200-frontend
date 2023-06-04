@@ -103,6 +103,13 @@
   width: 70%;
   border: 1px solid darkgray;
 
+  .logo {
+    overflow: hidden;
+    height: 100px;
+    width: 350px;
+    margin-bottom: 40px;
+  }
+
   .inputForm {
     display: flex;
     flex-direction: column;

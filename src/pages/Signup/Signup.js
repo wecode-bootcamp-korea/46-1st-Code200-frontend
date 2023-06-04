@@ -86,7 +86,7 @@ function Signup() {
   return (
     <div className="signup">
       <div className="wediya">
-        <img src="./images/wediya.png" alt="wediya" />
+        <img className="logo" src="./images/logo.png" alt="wediya" />
       </div>
       <div className="signupTitle">
         <h2>회원가입</h2>
