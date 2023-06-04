@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import StarRating from '../StarRating/StarRating';
 import './Review.scss';
 
 function Review() {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
 
@@ -69,7 +73,13 @@ function Review() {
         <div className="submitReview">
           <div className="submitRating">
             <p>별점을 선택해주세요.</p>
-            <div className="starts">⭐️⭐️⭐️⭐️⭐️</div>
+            <StarRating
+              rating={rating}
+              setRating={setRating}
+              hover={hover}
+              setHover={setHover}
+            />
+            <div className="starts" />
           </div>
           <input onChange={handleReview} className="reviewBox" type="text" />
 
