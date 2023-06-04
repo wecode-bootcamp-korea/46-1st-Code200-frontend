@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
 import './Signup.scss';
 
 function Signup() {
+  const [alertMsg, setAlertMsg] = useState('');
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
@@ -41,11 +42,29 @@ function Signup() {
     setInputValues({ ...inputValues, [name]: value });
   };
 
+  const checkValidEmail = () => {
+    fetch('http://10.58.52.170:8000/users/checkemail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        email: inputValues.email,
+      }),
+    })
+      .then(res => res.json())
+
+      .then(data => {
+        setAlertMsg(
+          data.theEmailExist === 'true'
+            ? '사용할 수 없는 이메일입니다.'
+            : '사용가능한 이메일입니다.'
+        );
+      });
+  };
   const handleSignUp = () => {
     const popType = isChecked ? 'nonPopup' : 'popupWrap';
     setPop(popType);
 
-    fetch('http://10.58.52.134:8000/users/signup', {
+    fetch('http://10.58.52.170:8000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({
@@ -93,7 +112,7 @@ function Signup() {
       </div>
       <div className={vaildEmail}>
         <div className="emailBox">
-          <p>사용할 수 없는 이메일입니다.</p>
+          <p>{alertMsg}</p>
           <button
             className="emailClose"
             onClick={() => setVaildEmail('nonPopup')}
