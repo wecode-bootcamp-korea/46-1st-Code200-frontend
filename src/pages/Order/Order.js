@@ -115,7 +115,7 @@ function Order() {
               </td>
             </tr>
             <tr>
-              <td>휴대폰 *</td>
+              <td className="grayFont">휴대폰 *</td>
               <td>
                 <select className="phoneSelect">
                   <option>010</option>
@@ -238,12 +238,12 @@ function Order() {
                   <option className="message">5개월</option>
                   <option className="message">6개월</option>
                 </select>
-                <span className="grayFont">
-                  법인카드는 무이자 할부 적용이 되지 않습니다.
-                </span>
               </td>
             </tr>
           </table>
+          <span className="graySpan">
+            법인카드는 무이자 할부 적용이 되지 않습니다.
+          </span>
         </div>
       </div>
       <div className="orderBottom">

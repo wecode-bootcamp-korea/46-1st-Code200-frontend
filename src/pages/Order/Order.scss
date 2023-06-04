@@ -4,6 +4,7 @@
 .order {
   margin: auto;
   width: 70%;
+  // min-width: 700px;
   border: 1px solid darkgray;
   background-color: rgb(227, 228, 232);
 
@@ -29,15 +30,15 @@
     padding: 10px;
 
     &.userName {
-      @include componentSize(1200px, 40px);
+      @include componentSize(80%, 40px);
       border: none;
     }
     &.userPhone {
-      @include componentSize(1200px, 40px);
+      @include componentSize(150%, 40px);
       border: none;
     }
     &.userEmail {
-      @include componentSize(1200px, 40px);
+      @include componentSize(150%, 40px);
       border: none;
     }
     &[type='radio'] {
@@ -72,13 +73,15 @@
     text-align: center;
   }
   .orderDesc {
-    @include componentSize(100%, 80px);
+    @include componentSize(100%, 100%);
     @include flexSort(row, flex-start, center);
-    padding-left: 20px;
+
     background-color: white;
     .descPtag {
+      @include componentSize(100%, 100%);
       color: red;
       line-height: 1.5;
+      padding: 20px;
     }
   }
   .orderInfo {
@@ -103,7 +106,7 @@
     margin-bottom: 10px;
 
     .selectDelivery {
-      @include componentSize(95%, 80px);
+      @include componentSize(90%, 80px);
       @include flexSort(row, flex-start, center);
       border: 1px solid gray;
       margin: 20px;
@@ -127,23 +130,33 @@
       margin-bottom: 40px;
     }
     .userAddressInfo {
+      @include componentSize(100%, 100%);
+
       .userAddressTable {
         margin-left: 20px;
         margin-bottom: 50px;
+
+        td {
+          &:nth-child(2) {
+            width: 1000px;
+            max-width: 1000px;
+          }
+        }
+
         .orderUserName {
-          @include componentSize(900px, 40px);
+          @include componentSize(90%, 100%);
           margin: 3px;
         }
         .orderUserAdd {
-          @include componentSize(300px, 40px);
+          @include componentSize(60%, 40px);
           margin: 3px;
         }
         .orderUserAdd1 {
-          @include componentSize(300px, 40px);
+          @include componentSize(90%, 40px);
           margin: 3px;
         }
         .orderUserAdd2 {
-          @include componentSize(600px, 40px);
+          @include componentSize(90%, 40px);
           margin: 3px;
         }
         .addSearchBtn {
@@ -157,15 +170,22 @@
           margin: 3px;
         }
         .orderUserPhone1 {
+          @include componentSize(20%, 40px);
           margin: 3px;
         }
         .orderUserPhone2 {
+          @include componentSize(20%, 40px);
           margin: 3px;
+        }
+        .grayFont {
+          min-width: 100px;
+          color: gray;
+          font-size: 14px;
         }
       }
     }
     .deliveryMessage {
-      @include componentSize(95%, 40px);
+      @include componentSize(90%, 40px);
       margin-left: 20px;
 
       .message {
@@ -198,14 +218,19 @@
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
+
     .pointDiv {
-      margin-left: 20px;
+      @include componentSize(100%, 60px);
+      @include flexSort(row, flex-start, center);
+      padding: 10px;
       margin-bottom: 20px;
+
       .pointInput {
         @include componentSize(80%, 100%);
-        // border: gray;
       }
+
       .pointButton {
+        min-width: 20px;
         padding: 10px;
         background-color: white;
         margin-left: 5px;
@@ -226,7 +251,7 @@
     }
   }
   .orderPaySelect {
-    @include componentSize(100%, 320px);
+    @include componentSize(100%, 100%);
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -248,12 +273,20 @@
     .payMethodBottom {
       padding: 20px;
       background-color: rgb(248, 249, 250);
+      @include componentSize(100%, 100%);
 
       .cardSelect {
-        @include componentSize(1100px, 40px);
+        @include componentSize(200%, 40px);
         margin-bottom: 20px;
       }
       .grayFont {
+        min-width: 100px;
+        color: gray;
+        font-size: 14px;
+      }
+      .graySpan {
+        @include componentSize(100%, 100%);
+        margin-left: 100px;
         color: gray;
         font-size: 14px;
       }
@@ -264,6 +297,7 @@
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
+
     .orderBottomTitle {
       @include componentSize(100%, 50px);
       @include flexSort(row, center, center);
@@ -272,6 +306,7 @@
       font-size: 15px;
       text-align: center;
     }
+
     .orderBottomInfo {
       .orderBtn {
         @include componentSize(100%, 50px);
@@ -281,11 +316,13 @@
         font-size: 15px;
         text-align: center;
       }
+
       .descPtagBottom {
         @include flexSort(row, space-between, center);
         margin-left: 10px;
         margin-top: 20px;
         color: gray;
+        font-size: 13px;
       }
     }
   }
