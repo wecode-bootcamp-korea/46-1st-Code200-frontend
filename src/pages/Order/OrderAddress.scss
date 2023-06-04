@@ -1,0 +1,101 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.orderAddress {
+  @include componentSize(100%, 100%);
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .orderAddressInner {
+    animation: modalShowTop 0.3s;
+  }
+  .selectDelivery {
+    @include componentSize(90%, 80px);
+    @include flexSort(row, flex-start, center);
+    border: 1px solid gray;
+    margin: 20px;
+    padding: 10px;
+
+    .deliveryBtn {
+      @include componentSize(120px, 80%);
+      background-color: white;
+      margin-left: 10px;
+      font-size: 13px;
+      border: 1px solid gray;
+      &:hover {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+  .selectAddress {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+  }
+  .userAddressInfo {
+    @include componentSize(100%, 100%);
+
+    .userAddressTable {
+      margin-left: 20px;
+      margin-bottom: 50px;
+
+      td {
+        &:nth-child(2) {
+          width: 1000px;
+          max-width: 1000px;
+        }
+      }
+
+      .orderUserName {
+        @include componentSize(90%, 100%);
+        margin: 3px;
+      }
+      .orderUserAdd {
+        @include componentSize(60%, 40px);
+        margin: 3px;
+      }
+      .orderUserAdd1 {
+        @include componentSize(90%, 40px);
+        margin: 3px;
+      }
+      .orderUserAdd2 {
+        @include componentSize(90%, 40px);
+        margin: 3px;
+      }
+      .addSearchBtn {
+        padding: 10px;
+        margin-left: 2px;
+        background-color: white;
+        border: 1px solid gray;
+      }
+      .phoneSelect {
+        padding: 10px;
+        margin: 3px;
+      }
+      .orderUserPhone1 {
+        @include componentSize(20%, 40px);
+        margin: 3px;
+      }
+      .orderUserPhone2 {
+        @include componentSize(20%, 40px);
+        margin: 3px;
+      }
+      .grayFont {
+        min-width: 100px;
+        color: gray;
+        font-size: 14px;
+      }
+    }
+  }
+  .deliveryMessage {
+    @include componentSize(90%, 40px);
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+    .message {
+      margin-left: 10px;
+    }
+  }
+}

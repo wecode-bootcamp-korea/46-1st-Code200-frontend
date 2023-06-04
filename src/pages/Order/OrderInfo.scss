@@ -1,0 +1,36 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.orderInfo {
+  @include componentSize(100%, 100%);
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .grayFont {
+    margin: 20px;
+    color: gray;
+    font-size: 14px;
+  }
+  .userInfoTable {
+    animation: modalShowTop 0.3s;
+    margin-left: 20px;
+  }
+
+  input {
+    padding: 10px;
+
+    &.userName {
+      @include componentSize(80%, 40px);
+      border: none;
+    }
+    &.userPhone {
+      @include componentSize(150%, 40px);
+      border: none;
+    }
+    &.userEmail {
+      @include componentSize(150%, 40px);
+      border: none;
+    }
+  }
+}
