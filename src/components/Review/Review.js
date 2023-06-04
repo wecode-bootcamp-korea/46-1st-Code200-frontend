@@ -37,7 +37,16 @@ function Review() {
     })
       .then(res => res.json())
       .then(data => setReview(data));
-  }, []);
+  }, [inputReview]);
+
+  const startRating = rating => {
+    const startIcon = [];
+
+    for (let i = 0; i < rating; i++) {
+      startIcon.push(<img src="/images/star.png" alt="별" key={i} />);
+    }
+    return startIcon;
+  };
 
   return (
     <div className="Review">
@@ -72,7 +81,7 @@ function Review() {
         {review.map(review => {
           return (
             <div key={review.id} className="oneLineWrap">
-              <div>{review.rating}</div>
+              <div>{startRating(review.rating)}</div>
               <div className="userWrap">
                 <p className="oneLine">{review.review}</p>
                 <p className="userId">{review.userInfo}</p>
