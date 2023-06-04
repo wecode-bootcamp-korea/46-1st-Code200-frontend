@@ -13,6 +13,34 @@ function Cart() {
       });
   }, []);
 
+  const deleteItem = id => {
+    fetch(`http://백엔드 주소/cart/data/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data deleted successfully');
+        } else {
+          console.log('Failed to delete data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
+  const deleteAll = () => {
+    fetch('http://백엔드 주소/cart/data', {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('All data deleted successfully');
+        } else {
+          console.log('Failed to delete all data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
   const totalPrice = (productList.price * productList.count).toLocaleString();
 
   return (
