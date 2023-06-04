@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import QuantityBtn from '../../components/QuantityBtn/QuantityBtn';
 import './Cart.scss';
 
 function Cart() {
@@ -40,6 +41,8 @@ function Cart() {
       .catch(error => console.error('error: ', error));
   };
 
+  const totalPrice = (productList.price * productList.count).toLocaleString();
+
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
@@ -73,11 +76,18 @@ function Cart() {
               <td className="productName">
                 <a href="#">{data.name}</a>
               </td>
-              <td className="quantity">1</td>
+              <td className="quantity">
+                <QuantityBtn
+                  count={data.count}
+                  productList={productList}
+                  setProductList={setProductList}
+                  id={data.id}
+                />
+              </td>
               <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">{data.price.toLocaleString()}</td>
+              <td className="totalPrice">{totalPrice}</td>
               <td className="delete">
-                <button onClick={deleteItem(data.id)}>삭제</button>
+                <button>삭제</button>
               </td>
             </tr>
           );
@@ -85,9 +95,7 @@ function Cart() {
       </table>
       <div className="deleteBtnBox">
         <button>선택상품 삭제</button>
-        <button className="deleteAll" onClick={deleteAll}>
-          장바구니비우기
-        </button>
+        <button>장바구니비우기</button>
       </div>
       <div className="priceSummary">
         <div className="totalItemPrice">
