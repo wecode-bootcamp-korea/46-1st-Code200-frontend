@@ -59,6 +59,7 @@
     @include flexSort(row, flex-start, space-between);
     position: relative;
     flex-wrap: wrap;
+    width: 1000px;
     min-height: 100%;
     margin: 10px;
 
@@ -69,6 +70,41 @@
       padding: 20px;
       border-bottom: 2px solid lightgrey;
       font-size: 24px;
+    }
+
+    .sortDropDown {
+      display: block;
+      width: 100%;
+
+      .dropDownBtn {
+        width: 100px;
+        margin-right: 50px;
+        padding: 5px 12px;
+        float: right;
+        border: 1px solid #b2b2b2;
+        border-radius: 2px;
+        background-color: white;
+        font-size: 15px;
+
+        .arrow {
+          margin-left: 10px;
+          font-size: 10px;
+        }
+      }
+      .dropDownContent {
+        border: 1px solid lightgray;
+        border-top: none;
+
+        li {
+          padding: 8px 0;
+          font-size: 15px;
+          text-align: center;
+        }
+      }
+    }
+    .productContainer {
+      @include flexSort(row, flex-start, space-between);
+      flex-wrap: wrap;
     }
   }
 }

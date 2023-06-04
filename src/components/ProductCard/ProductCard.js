@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './ProductCard.scss';
 
-const ProductCard = ({ imgUrl, name, price, rating, numReview }) => {
+const ProductCard = ({ id, imgUrl, name, price, rating, numReview }) => {
   return (
     <div className="product">
-      <a href="#">
-        <img src={imgUrl[0]} alt="coffee bean" className="thumbnail" />
-      </a>
+      <Link to={`/product-detail/${id}`}>
+        <img src={imgUrl} alt="coffee bean" className="thumbnail" />
+      </Link>
       <div className="box">
-        <a href="#">
+        <Link to={`/product-detail/${id}`}>
           <p className="name">{name}</p>
-        </a>
+        </Link>
         <p className="price">{price}</p>
         <p className="rating">★★★★★ {rating}</p>
         <p className="review">리뷰 {numReview}건</p>

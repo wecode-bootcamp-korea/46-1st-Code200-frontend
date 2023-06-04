@@ -1,16 +1,13 @@
-.product {
-  @include flexSort(column, flex-start, space-between);
-  flex-wrap: wrap;
-  width: 350px;
-  height: 550px;
-  margin: 0 10px 50px 10px;
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
-  img {
-    width: 300px;
-  }
+.product {
+  width: 250px;
+  height: 300px;
+  margin: 0 10px 0 10px;
 
   .thumbnail {
-    width: 350px;
+    width: 200px;
 
     &:hover {
       opacity: 0.4;
@@ -18,7 +15,7 @@
   }
 
   .box {
-    padding-left: 100px;
+    padding-left: 10px;
 
     .name {
       margin: 0 0 10px 0;
