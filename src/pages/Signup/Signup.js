@@ -54,7 +54,7 @@ function Signup() {
 
       .then(data => {
         setAlertMsg(
-          data.theEmailExist === 'true'
+          data.theEmailExist == true
             ? '사용할 수 없는 이메일입니다.'
             : '사용가능한 이메일입니다.'
         );
@@ -83,7 +83,7 @@ function Signup() {
       }),
     })
       .then(res => res.json())
-      .then(data => navigate('/'));
+      .then(data => navigate('/login'));
   };
 
   useEffect(() => {
