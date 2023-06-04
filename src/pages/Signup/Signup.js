@@ -118,198 +118,199 @@ function Signup() {
         <h2>회원가입</h2>
       </div>
 
-      {/* 이메일 중복체크 팝업 */}
-      <div className={vaildEmail}>
-        <div className="emailBox">
-          <p>{alertMsg}</p>
-          <button
-            className="emailClose"
-            onClick={() => setVaildEmail('nonPopup')}
-          >
-            닫기
-          </button>
-        </div>
-        <label className="emailPopupBack" />
-      </div>
-
-      {/* input box wrap */}
-      <div className="inputForm">
-        {INPUT_LIST.map(inputList => (
-          <div key={`input_${inputList.id}`}>
-            <div className="textWrap">
-              <p className="inputTitle">{inputList.title}</p>
-              {!valueConditions[inputList.name] && (
-                <span className="vaild">{inputList.vaild}</span>
-              )}
-            </div>
-            <div className="inputWrap">
-              <input
-                className="inputBox"
-                key={inputList.id}
-                name={inputList.name}
-                type={inputList.type}
-                placeholder={inputList.placeholder}
-                onChange={handleInput}
-              />
-              {inputList.name == 'email' && (
-                <button className="overlap" onClick={checkValidEmail}>
-                  중복확인
-                </button>
-              )}
-            </div>
-          </div>
-        ))}
-
-        {/* 약관동의 */}
-        <div className={pop}>
-          <div className="popupBox">
-            <p>필수약관에 동의에 체크해주세요.</p>
+      <div className="inputBoxWrap">
+        {/* 이메일 중복체크 팝업 */}
+        <div className={vaildEmail}>
+          <div className="emailBox">
+            <p>{alertMsg}</p>
             <button
-              onClick={() => setPop('nonPopup')}
-              className="close"
-              htmlFor="popup"
+              className="emailClose"
+              onClick={() => setVaildEmail('nonPopup')}
             >
               닫기
             </button>
           </div>
-          <label className="popupBack" htmlFor="popup" />
+          <label className="emailPopupBack" />
         </div>
-
-        {/* 성별체크 */}
-        <div className="gender">
-          <span className="inputTitle">성별</span>
-          <div className="inputBox">
-            {GENDER_CHECK_LIST.map(gender => {
-              return (
-                <p key={gender.id}>
-                  <label className="check" htmlFor={gender.value}>
-                    <input
-                      id={gender.value}
-                      type="checkbox"
-                      value={gender.value}
-                      name="gender"
-                      onChange={handleInput}
-                    />
-                    <span className="icon" />
-                    {gender.text}
-                  </label>
-                </p>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* 추가정보 테이블 */}
-        <div className="textWrap">
-          <p className="inputTitle">추가정보</p>
-        </div>
-        <div className="route">
-          <table>
-            {CHECK_LIST.map(checkList => (
-              <div key={`checkList_${checkList.id}`}>
-                <thead />
-                <tbody>
-                  <tr>
-                    <th className="tabletitle">{checkList.th}</th>
-                    <div className="tdWrap">
-                      <td>
-                        <label className="check">
-                          <input type="checkbox" />
-                          <span className="icon" />
-                        </label>
-                        <span>{checkList.td1}</span>
-                      </td>
-                      <td>
-                        <label className="check">
-                          <input type="checkbox" />
-                          <span className="icon" />
-                        </label>
-                        <span>{checkList.td2}</span>
-                      </td>
-                      <td>
-                        <label className="check">
-                          <input type="checkbox" />
-                          <span className="icon" />
-                        </label>
-                        <span>{checkList.td3}</span>
-                      </td>
-                      <td>
-                        <label className="check">
-                          <input type="checkbox" />
-                          <span className="icon" />
-                        </label>
-                        <span>{checkList.td4}</span>
-                      </td>
-                      <td>
-                        <label className="check">
-                          <input type="checkbox" />
-                          <span className="icon" />
-                        </label>
-                        <span>{checkList.td5}</span>
-                      </td>
-                    </div>
-                  </tr>
-                </tbody>
+        {/* input box wrap */}
+        <div className="inputForm">
+          {INPUT_LIST.map(inputList => (
+            <div key={`input_${inputList.id}`}>
+              <div className="textWrap">
+                <p className="inputTitle">{inputList.title}</p>
+                {!valueConditions[inputList.name] && (
+                  <span className="vaild">{inputList.vaild}</span>
+                )}
               </div>
-            ))}
-          </table>
-        </div>
-
-        {/* 약관동의 */}
-        <div className="agreement">
-          {AGREEMENT_LIST.map(list => (
-            <div key={`agreement_${list.id}`}>
-              <div className="itemFlex">
-                <h2 className="agreementTitle">
-                  {list.title} <span>{list.span}</span>
-                </h2>
-                <p>
-                  <label className="check">
-                    <input
-                      name={list.name}
-                      onChange={handleInput}
-                      type="checkbox"
-                    />
-                    <span className="icon" />
-                  </label>
-                </p>
-              </div>
-              <div className="agree">
-                <div className="agreeScroll">{list.content}</div>
+              <div className="inputWrap">
+                <input
+                  className="inputBox"
+                  key={inputList.id}
+                  name={inputList.name}
+                  type={inputList.type}
+                  placeholder={inputList.placeholder}
+                  onChange={handleInput}
+                />
+                {inputList.name == 'email' && (
+                  <button className="overlap" onClick={checkValidEmail}>
+                    중복확인
+                  </button>
+                )}
               </div>
             </div>
           ))}
-        </div>
 
-        <button
-          id="popup"
-          onClick={handleSignUp}
-          className={isActive ? 'able' : 'disabled'}
-        >
-          회원가입하기
-        </button>
-
-        <div className="goToLogin">
-          <p>
-            <span>아이디가 있으신가요?</span>
-            <Link to="/login" className="loginBtn">
-              로그인하기
-            </Link>
-          </p>
-        </div>
-
-        <div className={pop}>
-          <div className="popupBox">
-            <p>필수약관에 동의에 체크해주세요.</p>
-            <button
-              onClick={() => setPop('nonPopup')}
-              className="close"
-              htmlFor="popup"
-            >
-              닫기
-            </button>
+          {/* 약관동의 */}
+          <div className={pop}>
+            <div className="popupBox">
+              <p>필수약관에 동의에 체크해주세요.</p>
+              <button
+                onClick={() => setPop('nonPopup')}
+                className="close"
+                htmlFor="popup"
+              >
+                닫기
+              </button>
+            </div>
+            <label className="popupBack" htmlFor="popup" />
           </div>
-          <label className="popupBack" htmlFor="popup" />
+
+          {/* 성별체크 */}
+          <div className="gender">
+            <span className="inputTitle">성별</span>
+            <div className="inputBox">
+              {GENDER_CHECK_LIST.map(gender => {
+                return (
+                  <p key={gender.id}>
+                    <label className="check" htmlFor={gender.value}>
+                      <input
+                        id={gender.value}
+                        type="checkbox"
+                        value={gender.value}
+                        name="gender"
+                        onChange={handleInput}
+                      />
+                      <span className="icon" />
+                      {gender.text}
+                    </label>
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 추가정보 테이블 */}
+          <div className="textWrap">
+            <p className="inputTitle">추가정보</p>
+          </div>
+          <div className="route">
+            <table>
+              {CHECK_LIST.map(checkList => (
+                <div key={`checkList_${checkList.id}`}>
+                  <thead />
+                  <tbody>
+                    <tr>
+                      <th className="tabletitle">{checkList.th}</th>
+                      <div className="tdWrap">
+                        <td>
+                          <label className="check">
+                            <input type="checkbox" />
+                            <span className="icon" />
+                          </label>
+                          <span>{checkList.td1}</span>
+                        </td>
+                        <td>
+                          <label className="check">
+                            <input type="checkbox" />
+                            <span className="icon" />
+                          </label>
+                          <span>{checkList.td2}</span>
+                        </td>
+                        <td>
+                          <label className="check">
+                            <input type="checkbox" />
+                            <span className="icon" />
+                          </label>
+                          <span>{checkList.td3}</span>
+                        </td>
+                        <td>
+                          <label className="check">
+                            <input type="checkbox" />
+                            <span className="icon" />
+                          </label>
+                          <span>{checkList.td4}</span>
+                        </td>
+                        <td>
+                          <label className="check">
+                            <input type="checkbox" />
+                            <span className="icon" />
+                          </label>
+                          <span>{checkList.td5}</span>
+                        </td>
+                      </div>
+                    </tr>
+                  </tbody>
+                </div>
+              ))}
+            </table>
+          </div>
+
+          {/* 약관동의 */}
+          <div className="agreement">
+            {AGREEMENT_LIST.map(list => (
+              <div key={`agreement_${list.id}`}>
+                <div className="itemFlex">
+                  <h2 className="agreementTitle">
+                    {list.title} <span>{list.span}</span>
+                  </h2>
+                  <p>
+                    <label className="check">
+                      <input
+                        name={list.name}
+                        onChange={handleInput}
+                        type="checkbox"
+                      />
+                      <span className="icon" />
+                    </label>
+                  </p>
+                </div>
+                <div className="agree">
+                  <div className="agreeScroll">{list.content}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            id="popup"
+            onClick={handleSignUp}
+            className={isActive ? 'able' : 'disabled'}
+          >
+            회원가입하기
+          </button>
+
+          <div className="goToLogin">
+            <p>
+              <span>아이디가 있으신가요?</span>
+              <Link to="/login" className="loginBtn">
+                로그인하기
+              </Link>
+            </p>
+          </div>
+
+          <div className={pop}>
+            <div className="popupBox">
+              <p>필수약관에 동의에 체크해주세요.</p>
+              <button
+                onClick={() => setPop('nonPopup')}
+                className="close"
+                htmlFor="popup"
+              >
+                닫기
+              </button>
+            </div>
+            <label className="popupBack" htmlFor="popup" />
+          </div>
         </div>
       </div>
     </div>
