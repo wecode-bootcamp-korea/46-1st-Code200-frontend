@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/reset.scss';
-import '../../styles/common.scss';
 import './Cart.scss';
 
 function Cart() {
