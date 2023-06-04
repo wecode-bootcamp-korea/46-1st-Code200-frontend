@@ -58,9 +58,9 @@ function Signup() {
         address_detail: inputValues.detail,
         password: inputValues.password,
         point: 30000,
-        agreement_private: inputValues.useage === 'on' ? 1 : 0,
-        agreement_marketing: inputValues.marketing === 'on' ? 1 : 0,
-        agreement_terms: inputValues.terms === 'on' ? 1 : 0,
+        agreement_private: inputValues.useage ? 1 : 0,
+        agreement_marketing: inputValues.marketing ? 1 : 0,
+        agreement_terms: inputValues.terms ? 1 : 0,
       }),
     })
       .then(res => res.json())
