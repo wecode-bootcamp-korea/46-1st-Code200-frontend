@@ -63,7 +63,7 @@ function Review() {
       </div>
 
       <div className="reviewSummary">
-        <div>
+        <div className="summary">
           <p>고객 평점</p>
           <div className="rating">
             <div className="point">
