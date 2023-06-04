@@ -12,7 +12,6 @@ function Review() {
 
   const handleReviewRating = index => {
     setReviewRating(index);
-    console.log(reviewRating);
   };
 
   const handleReview = event => {
@@ -36,7 +35,6 @@ function Review() {
       body: JSON.stringify(updateReview),
     })
       .then(res => res.json())
-      .then(data => console.log(data))
       .catch(error => console.error(error));
   }
 
