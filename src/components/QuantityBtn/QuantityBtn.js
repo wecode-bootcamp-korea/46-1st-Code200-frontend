@@ -20,9 +20,7 @@ const QuantityBtn = ({ count, productList, setProductList, id }) => {
       body: JSON.stringify({
         count: count,
       }),
-    })
-      .then(response => response.json())
-      .then(result => console.log(result));
+    }).then(response => response.json());
   };
 
   return (

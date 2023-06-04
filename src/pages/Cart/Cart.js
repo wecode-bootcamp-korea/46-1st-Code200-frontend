@@ -15,6 +15,8 @@ function Cart() {
       });
   }, []);
 
+  const totalPrice = (productList.price * productList.count).toLocaleString();
+
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
@@ -57,9 +59,7 @@ function Cart() {
                 />
               </td>
               <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">
-                {(data.priceInt * data.count).toLocaleString()}
-              </td>
+              <td className="totalPrice">{totalPrice}</td>
               <td className="delete">
                 <button>삭제</button>
               </td>
