@@ -10,7 +10,7 @@
 
 .signupTitle {
   display: flex;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   justify-content: center;
   align-items: center;
@@ -54,6 +54,8 @@
     border-radius: 1px;
     position: relative;
     cursor: pointer;
+    margin-right: 3px;
+    top: 2px;
   }
 
   .icon::before,
@@ -86,13 +88,13 @@
 
   input:checked ~ .icon::before {
     height: 15px;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
   }
 
   input:checked ~ .icon::after {
     height: 20px;
 
-    transition: all 0.4s ease 0.1s;
+    transition: all 0.2s ease 0.1s;
   }
 }
 
