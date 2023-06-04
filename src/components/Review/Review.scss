@@ -93,9 +93,11 @@
 
   .submitRating {
     height: 50px;
-    margin: 0 auto auto auto;
+    margin: auto;
+
     p {
       font-size: 16px;
+      margin: auto;
     }
 
     .starts {

@@ -10,10 +10,12 @@ function Review() {
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
 
+  // 별점
   const handleReviewRating = index => {
     setReviewRating(index);
   };
 
+  // 리뷰 등록
   const handleReview = event => {
     setInputReview(event.target.value);
   };
@@ -38,6 +40,7 @@ function Review() {
       .catch(error => console.error(error));
   }
 
+  // 기존 리뷰
   useEffect(() => {
     fetch('/data/reviewSample.json', {
       method: 'GET',
@@ -46,6 +49,7 @@ function Review() {
       .then(data => setReview(data));
   }, [inputReview]);
 
+  // rating 값 이미지로 변환
   const startRating = rating => {
     const startIcon = [];
 
@@ -73,6 +77,7 @@ function Review() {
           </div>
         </div>
 
+        {/* 한 줄 리뷰 등록 */}
         <div className="submitReview">
           <div className="submitRating">
             <p>별점을 선택해주세요.</p>
@@ -85,7 +90,6 @@ function Review() {
               setReviewRating={setReviewRating}
               handleReviewRating={handleReviewRating}
             />
-            <div className="starts" />
           </div>
           <input onChange={handleReview} className="reviewBox" type="text" />
 
