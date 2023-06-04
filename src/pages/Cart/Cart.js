@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/reset.scss';
-import '../../styles/common.scss';
+import QuantityBtn from '../../components/QuantityBtn/QuantityBtn';
 import './Cart.scss';
 
 function Cart() {
@@ -13,6 +12,36 @@ function Cart() {
         setProductList(data);
       });
   }, []);
+
+  const deleteItem = id => {
+    fetch(`http://백엔드 주소/cart/data/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data deleted successfully');
+        } else {
+          console.log('Failed to delete data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
+  const deleteAll = () => {
+    fetch('http://백엔드 주소/cart/data', {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('All data deleted successfully');
+        } else {
+          console.log('Failed to delete all data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
+  const totalPrice = (productList.price * productList.count).toLocaleString();
 
   return (
     <div className="cart">
@@ -47,9 +76,16 @@ function Cart() {
               <td className="productName">
                 <a href="#">{data.name}</a>
               </td>
-              <td className="quantity">1</td>
+              <td className="quantity">
+                <QuantityBtn
+                  count={data.count}
+                  productList={productList}
+                  setProductList={setProductList}
+                  id={data.id}
+                />
+              </td>
               <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">{data.price.toLocaleString()}</td>
+              <td className="totalPrice">{totalPrice}</td>
               <td className="delete">
                 <button>삭제</button>
               </td>
