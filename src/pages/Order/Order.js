@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faBagShopping,
-  faUser,
+  faChevronUp,
 } from '@fortawesome/free-solid-svg-icons';
 
 function Order() {
@@ -22,7 +22,6 @@ function Order() {
         </Link>
         <div className="rightInner">
           <FontAwesomeIcon className="bagShoppingIcon" icon={faBagShopping} />
-          <FontAwesomeIcon className="userIcon" icon={faUser} />
         </div>
       </div>
       <div className="orderTitle">
@@ -30,34 +29,43 @@ function Order() {
       </div>
       <div className="orderDesc">
         <p className="descPtag">
-          온라인몰 특성상 실시간 재고변동으로 인해 품절 시 별도의 안내 업시 취소
-          될 수 있으며 품절로 인해 결제 취소될 시 문자 또는 카카오톡으로 결제
-          취소 안내 문자를 드립니다. <br />
-          분리 배송 안내 : 주문하신 상품이 2개 이상인 경우 출고지별 재고 상황에
-          따라 분리 배송 될 수 있습니다.
+          &#8251;온라인몰 특성상 실시간 재고변동으로 인해 품절 시 별도의 안내
+          업시 취소 될 수 있으며 품절로 인해 결제 취소될 시 문자 또는
+          카카오톡으로 결제 취소 안내 문자를 드립니다. <br />
+          &#8251;분리 배송 안내 : 주문하신 상품이 2개 이상인 경우 출고지별 재고
+          상황에 따라 분리 배송 될 수 있습니다.
         </p>
       </div>
       <div className="orderInfo">
         <div className="orderArea">
           <h1 className="hStyle">주문자</h1>
+          <FontAwesomeIcon className="chevronUp" icon={faChevronUp} />
         </div>
-        <table>
+        <table className="userInfoTable">
           <tr>
             <td className="grayFont">주문자 *</td>
             <td>
-              <input type="text" className="orderUserName" />
+              <input type="text" className="userName" defaultValue="김유저" />
             </td>
           </tr>
           <tr>
             <td className="grayFont">휴대전화 *</td>
             <td>
-              <input type="text" className="orderUserPhone" />
+              <input
+                type="text"
+                className="userPhone"
+                defaultValue="010-1234-1234"
+              />
             </td>
           </tr>
           <tr>
-            <td className="grayFont">이메일 *</td>
-            <td>
-              <input type="text" className="orderUserEmail" />
+            <td className="grayFont">이메일</td>
+            <td className="">
+              <input
+                type="text"
+                className="userEmail"
+                defaultValue="wecode@wecode.com"
+              />
             </td>
           </tr>
         </table>
@@ -65,49 +73,63 @@ function Order() {
       <div className="orderAddress">
         <div className="orderArea">
           <h1 className="hStyle">배송지</h1>
+          <FontAwesomeIcon className="chevronUp" icon={faChevronUp} />
         </div>
         <span className="spanStyle">배송방법 선택</span>
         <div className="selectDelivery">
-          <button className="delivery">택배</button>
+          <button className="deliveryBtn">택배</button>
+          <button className="deliveryBtn">매장픽업</button>
         </div>
+        <hr />
         <div className="selectAddress">
-          <input type="radio" name="add" checked />
-          주문자 정보와 동일
           <input type="radio" name="add" />
+          주문자 정보와 동일
+          <input type="radio" name="add" checked />
           새로운 배송지
         </div>
         <div className="userAddressInfo">
-          <table>
+          <table className="userAddressTable">
             <tr>
               <td className="grayFont">받는사람 *</td>
               <td>
                 <input type="text" className="orderUserName" />
               </td>
-              <td className="grayFont">
-                <button>주소검색</button>
-              </td>
             </tr>
             <tr>
               <td className="grayFont">주소 *</td>
               <td>
-                <input type="text" className="orderUserPhone" />
+                <input type="text" className="orderUserAdd" />
+                <button className="addSearchBtn">주소검색</button>
               </td>
+            </tr>
+            <tr>
+              <td />
               <td>
-                <input type="text" className="orderUserPhone" />
+                <input type="text" className="orderUserAdd1" />
               </td>
+            </tr>
+            <tr>
+              <td />
               <td>
-                <input type="text" className="orderUserPhone" />
+                <input type="text" className="orderUserAdd2" />
               </td>
             </tr>
             <tr>
               <td>휴대폰 *</td>
               <td>
-                <input type="text" className="orderUserEmail" />
+                <select className="phoneSelect">
+                  <option>010</option>
+                  <option>011</option>
+                  <option>016</option>
+                </select>
+                -<input type="text" className="orderUserPhone1" />
+                -<input type="text" className="orderUserPhone2" />
               </td>
             </tr>
           </table>
+          <hr />
           <select className="deliveryMessage">
-            <option className="message">--메세지 선택(선택사항)--</option>
+            <option className="message">-- 메세지 선택 ( 선택사항 ) --</option>
             <option className="message">부재 시 경비실에 맡겨주세요.</option>
             <option className="message">부재 시 문 앞에 놓아주세요.</option>
             <option className="message">빠른 배송 부탁드립니다.</option>
@@ -118,138 +140,127 @@ function Order() {
       </div>
       <div className="orderProduct">
         <div className="orderArea">
-          <h1 className="hStyle">상품</h1>
+          <h1 className="hStyle">주문 상품</h1>
+          <FontAwesomeIcon className="chevronUp" icon={faChevronUp} />
         </div>
-        <div>
-          <div>
-            <img />
-            <div>
-              <p>(담곰이)날 안입겠담곰? 반팔 잠옷(BLACK)_SPPPD37U03</p>
-              <span>[옵션 : (19)BLACK/M(095)]</span>
-              <span>수량 : 1개</span>
-              <span>39,900</span>
-            </div>
-            <button>X</button>
+        <div className="orderProductImg">
+          <img
+            className="productOrder"
+            src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/wholebean/bean01.png"
+            alt="product"
+          />
+          <div className="orderProductInfo">
+            <p>(담곰이)날 안입겠담곰? 반팔 잠옷(BLACK)_SPPPD37U03</p>
+            <span className="grayFont">[옵션 : (19)BLACK/M(095)]</span>
+            <br />
+            <spa className="grayFont">수량 : 1개</spa>
+            <br />
+            <span className="">39,900</span>
           </div>
+        </div>
+        <div className="orderInner">
           <span>베송비</span>
           <span>0(무료)</span>
         </div>
       </div>
       <div className="orderDisCount">
         <div className="orderArea">
-          <h1 className="hStyle">할인/부가결제</h1>
+          <h1 className="hStyle">할인/포인트 </h1>
+          <FontAwesomeIcon className="chevronUp" icon={faChevronUp} />
         </div>
-        <div className="h">
-          <span>할인코드 적용</span>
-          <input />
-          <button>적용</button>
+        <div className="pointDiv">
+          <span className="blackSpan">포인트 적용</span>
+          <input className="pointInput" />
+          <button className="pointButton">적용</button>
+        </div>
+        <div className="orderInner">
+          <span>적용금액</span>
+          <span>-0</span>
         </div>
       </div>
       <div className="orderPay">
         <div className="orderArea">
           <h1 className="hStyle">결제정보</h1>
+          <FontAwesomeIcon className="chevronUp" icon={faChevronUp} />
         </div>
-        <table>
-          <tr>
-            <td className="grayFont">주문상품</td>
-            <td>
-              <input type="text" className="" />
-            </td>
-          </tr>
-          <tr>
-            <td className="grayFont">배송비</td>
-            <td>
-              <input type="text" className="" />
-            </td>
-          </tr>
-          <tr>
-            <td className="grayFont">할인/부가결제</td>
-            <td>
-              <input type="text" className="" />
-            </td>
-          </tr>
-        </table>
+        <div className="orderPayInfo">
+          <span>주문상품</span>
+          <span>39,900</span>
+        </div>
+        <div className="orderPayInfo">
+          <span>배송비</span>
+          <span>+0</span>
+        </div>
+        <div className="orderPayInfo">
+          <span>할인/포인트</span>
+          <span>-0</span>
+        </div>
+        <div className="orderInner">
+          <span>최종 결제 금액</span>
+          <span>39,900</span>
+        </div>
       </div>
       <div className="orderPaySelect">
         <div className="orderArea">
           <h1 className="hStyle">결제수단</h1>
+          <FontAwesomeIcon className="chevronUp" icon={faChevronUp} />
         </div>
-        <div>
-          <ul>
-            <li>
-              <button>신용카드</button>
-            </li>
-            <li>
-              <button>에스크로(계좌이체)</button>
-            </li>
-            <li>
-              <button>네이버페이</button>
-            </li>
-            <li>
-              <button>카카오페이</button>
-            </li>
-            <li>
-              <button>토스</button>
-            </li>
-            <li>
-              <button>페이코</button>
-            </li>
-          </ul>
+        <div className="payMethod">
+          <button className="payMethodBtn">신용카드</button>
+          <button className="payMethodBtn">에스크로(계좌이체)</button>
+          <button className="payMethodBtn">네이버페이</button>
+          <button className="payMethodBtn">카카오페이</button>
+          <button className="payMethodBtn">토스</button>
+          <button className="payMethodBtn">페이코</button>
         </div>
-        <div>
-          <table>
+        <hr />
+        <div className="payMethodBottom">
+          <table className="payMethodTable">
             <tr>
               <td className="grayFont">카드선택</td>
               <td>
-                <select>
-                  <option className="message">--메세지 선택(선택사항)--</option>
+                <select className="cardSelect">
+                  <option className="message">--선택해주세요--</option>
+                  <option className="message">신한카드</option>
+                  <option className="message">비씨카드</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td className="grayFont">할부기간</td>
               <td>
-                <select>
+                <select className="cardSelect">
                   <option className="message">일시불</option>
+                  <option className="message">1개월</option>
+                  <option className="message">2개월</option>
+                  <option className="message">3개월</option>
+                  <option className="message">4개월</option>
+                  <option className="message">5개월</option>
+                  <option className="message">6개월</option>
                 </select>
-                <span>법인카드는 무이자 할부 적용이 되지 않습니다.</span>
-              </td>
-            </tr>
-            <tr>
-              <td className="grayFont">결제안내</td>
-              <td>
-                <ul>
-                  <li>
-                    <button>공인인증서 발급안내</button>
-                  </li>
-                  <li>
-                    <button>안심클릭 안내</button>
-                  </li>
-                  <li>
-                    <button>안전결제(ISP) 안내</button>
-                  </li>
-                </ul>
+                <span className="grayFont">
+                  법인카드는 무이자 할부 적용이 되지 않습니다.
+                </span>
               </td>
             </tr>
           </table>
         </div>
-        <p className="descPtagBottom">
-          최소 결제 가능 금액은 총 결제금액에서 배송비를 제외한 금액입니다.
-          <br />
-          -소액 결제의 경우 PG사 정책에 따라 결제 금액 제한이 있을 수 있습니다.
-        </p>
       </div>
       <div className="orderBottom">
-        <h1 className="hStyle">최종 결제 금액</h1>
-        <span>39,900</span>
+        <div className="orderBottomTitle">
+          <span className="titleSpan">
+            주문 내용을 확인하였으며 약관에 동의합니다.
+          </span>
+        </div>
         <div className="orderBottomInfo">
-          <button>39,900원 결제하기</button>
+          <button className="orderBtn">39,900원 결제하기</button>
           <p className="descPtagBottom">
             - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을
             동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지
             않습니다. 무이자할부를 원하시는 경우 장바구니에서 무이자할부 상품만
-            선택하여 주문하여 주시기 바랍니다. <br />- 최소 결제 가능 금액은
-            결제금액에서 배송비를 제외한 금액입니다.
+            선택하여 주문하여 주시기 바랍니다. <br />
+            <br />- 최소 결제 가능 금액은 결제금액에서 배송비를 제외한
+            금액입니다.
           </p>
         </div>
       </div>
