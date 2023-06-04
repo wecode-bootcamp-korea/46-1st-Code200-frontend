@@ -5,13 +5,18 @@ import './Review.scss';
 function Review() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [reviewRating, setReviewRating] = useState('');
 
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
 
+  const handleReviewRating = index => {
+    setReviewRating(index);
+    console.log(reviewRating);
+  };
+
   const handleReview = event => {
     setInputReview(event.target.value);
-    console.log(inputReview);
   };
 
   function handleInputReview() {
@@ -19,7 +24,7 @@ function Review() {
       id: review.length + 1,
       userInfo: 'WECODE@gmail.com',
       review: inputReview,
-      rating: 5,
+      rating: reviewRating,
     };
 
     const updateReview = [newReview, ...review];
@@ -78,6 +83,9 @@ function Review() {
               setRating={setRating}
               hover={hover}
               setHover={setHover}
+              reviewRating={reviewRating}
+              setReviewRating={setReviewRating}
+              handleReviewRating={handleReviewRating}
             />
             <div className="starts" />
           </div>

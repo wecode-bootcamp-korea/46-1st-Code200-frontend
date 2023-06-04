@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import './StarRating.scss';
 
-const StarRating = ({ rating, setRating, hover, setHover }) => {
+const StarRating = ({
+  rating,
+  setRating,
+  hover,
+  setHover,
+  reviewRating,
+  setReviewRating,
+  handleReviewRating,
+}) => {
   return (
     <div className="starRating">
       {[...Array(5)].map((star, index) => {
@@ -11,7 +19,10 @@ const StarRating = ({ rating, setRating, hover, setHover }) => {
             type="button"
             key={index}
             className={index <= (hover || rating) ? 'on' : 'off'}
-            onClick={() => setRating(index)}
+            onClick={() => {
+              setRating(index);
+              handleReviewRating(index);
+            }}
             onMouseEnter={() => setHover(index)}
             onMouseLeave={() => setHover(rating)}
             onDoubleClick={() => {
