@@ -73,7 +73,12 @@ function Review() {
           </div>
           <input onChange={handleReview} className="reviewBox" type="text" />
 
-          <button onClick={handleInputReview}>등록하기</button>
+          <button
+            className={inputReview ? 'submitButton' : 'nonSubmitButton'}
+            onClick={handleInputReview}
+          >
+            등록하기
+          </button>
         </div>
       </div>
 
