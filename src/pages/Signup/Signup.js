@@ -4,10 +4,11 @@ import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
 import './Signup.scss';
+import GENDER_CHECK_LIST from './GenderCheckList';
 
 function Signup() {
-  const [alertMsg, setAlertMsg] = useState('');
   const navigate = useNavigate();
+  const [alertMsg, setAlertMsg] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [pop, setPop] = useState('nonPopup');
   const [vaildEmail, setVaildEmail] = useState('nonPopup');
@@ -18,10 +19,12 @@ function Signup() {
     number: '',
     address: '',
     detail: '',
+    gender: '',
     date: '',
     useage: '',
     terms: '',
   });
+
   const valueConditions = {
     email: inputValues.email.includes('@'),
     password: inputValues.password.length >= 5,
@@ -114,6 +117,8 @@ function Signup() {
       <div className="signupTitle">
         <h2>회원가입</h2>
       </div>
+
+      {/* 이메일 중복체크 팝업 */}
       <div className={vaildEmail}>
         <div className="emailBox">
           <p>{alertMsg}</p>
@@ -127,6 +132,7 @@ function Signup() {
         <label className="emailPopupBack" />
       </div>
 
+      {/* input box wrap */}
       <div className="inputForm">
         {INPUT_LIST.map(inputList => (
           <div key={`input_${inputList.id}`}>
@@ -154,6 +160,7 @@ function Signup() {
           </div>
         ))}
 
+        {/* 약관동의 */}
         <div className={pop}>
           <div className="popupBox">
             <p>필수약관에 동의에 체크해주세요.</p>
@@ -168,52 +175,31 @@ function Signup() {
           <label className="popupBack" htmlFor="popup" />
         </div>
 
+        {/* 성별체크 */}
         <div className="gender">
           <span className="inputTitle">성별</span>
           <div className="inputBox">
-            <p>
-              <label className="check" for="female">
-                <input
-                  id="female"
-                  type="checkbox"
-                  value="female"
-                  name="gender"
-                  onChange={handleInput}
-                />
-                <span className="icon" />
-                여성
-              </label>
-            </p>
-            <p>
-              <label className="check" for="male">
-                <input
-                  id="male"
-                  type="checkbox"
-                  value="male"
-                  name="gender"
-                  onChange={handleInput}
-                />
-                <span className="icon" />
-                남성
-              </label>
-            </p>
-
-            <p>
-              <label className="check" for="none">
-                <input
-                  id="none"
-                  type="checkbox"
-                  value="null"
-                  name="gender"
-                  onClick={handleInput}
-                />
-                <span className="icon" />
-                선택안함
-              </label>
-            </p>
+            {GENDER_CHECK_LIST.map(gender => {
+              return (
+                <p key={gender.id}>
+                  <label className="check" htmlFor={gender.value}>
+                    <input
+                      id={gender.value}
+                      type="checkbox"
+                      value={gender.value}
+                      name="gender"
+                      onChange={handleInput}
+                    />
+                    <span className="icon" />
+                    {gender.text}
+                  </label>
+                </p>
+              );
+            })}
           </div>
         </div>
 
+        {/* 추가정보 테이블 */}
         <div className="textWrap">
           <p className="inputTitle">추가정보</p>
         </div>
@@ -268,6 +254,8 @@ function Signup() {
             ))}
           </table>
         </div>
+
+        {/* 약관동의 */}
         <div className="agreement">
           {AGREEMENT_LIST.map(list => (
             <div key={`agreement_${list.id}`}>
@@ -292,6 +280,7 @@ function Signup() {
             </div>
           ))}
         </div>
+
         <button
           id="popup"
           onClick={handleSignUp}
