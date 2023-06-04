@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import QuantityBtn from '../../components/QuantityBtn/QuantityBtn';
-import '../../styles/reset.scss';
-import '../../styles/common.scss';
 import './Cart.scss';
 
 function Cart() {
