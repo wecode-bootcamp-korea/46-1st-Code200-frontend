@@ -42,6 +42,7 @@ function Signup() {
     setInputValues({ ...inputValues, [name]: value });
   };
 
+  // 이메일 중복확인
   const checkValidEmail = () => {
     fetch('http://10.58.52.170:8000/users/checkemail', {
       method: 'POST',
@@ -58,8 +59,11 @@ function Signup() {
             ? '사용할 수 없는 이메일입니다.'
             : '사용가능한 이메일입니다.'
         );
+        setVaildEmail('emailPopupWrap');
       });
   };
+
+  //회원가입
   const handleSignUp = () => {
     const popType = isChecked ? 'nonPopup' : 'popupWrap';
     setPop(popType);
@@ -142,10 +146,7 @@ function Signup() {
                 onChange={handleInput}
               />
               {inputList.name == 'email' && (
-                <button
-                  className="overlap"
-                  onClick={() => setVaildEmail('emailPopupWrap')}
-                >
+                <button className="overlap" onClick={checkValidEmail}>
                   중복확인
                 </button>
               )}
