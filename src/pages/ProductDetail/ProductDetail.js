@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ProductDetail.scss';
 import { DETAIL_INFO } from '../UiData/productDetailUiData';
 import { DETAIL_NOTE } from '../UiData/productDetailNote';
@@ -9,7 +9,8 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 function ProductDetail() {
   const [productDetail, setProductDetail] = useState({});
   const [isImg, setIsImg] = useState(false);
-
+  const params = useParams();
+  const productId = params.id;
   const CATEGORY_ARR = [
     {
       id: '3',
@@ -26,14 +27,13 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    // fetch('http://10.58.52.133:8000/products/7', { method: 'GET' })
-    fetch('data/productDetail.json')
+    fetch(`http://10.58.52.133:8000/products/${productId}`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setProductDetail(data.data[0]);
         setIsImg(true);
       });
-  }, []);
+  }, [productId]);
 
   return (
     <div className="productDetail">
