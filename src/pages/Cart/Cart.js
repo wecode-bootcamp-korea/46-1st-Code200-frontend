@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import QuantityBtn from '../../components/QuantityBtn/QuantityBtn';
 import '../../styles/reset.scss';
 import '../../styles/common.scss';
 import './Cart.scss';
 
 function Cart() {
-  const [productList, setProductList] = useState([]);
+  const [cartList, setCartList] = useState([]);
+  const totalPrice = (cartList.price * cartList.quantity).toLocaleString();
+  const [itemIdsToDelete, setItemIdsToDelete] = useState([]);
+  //const token =
+  //  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch('http://10.58.52.108:8000/carts?userId=10')
+    fetch('http://10.58.52.154:8000/carts?userId=14', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setProductList(data.data);
+        setCartList(data.data);
       });
   }, []);
 
   const deleteItem = id => {
-    fetch(`http://10.58.52.108:8000/carts/${id}}`, {
+    fetch(`http://10.58.52.154:8000/carts/${id}}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -25,7 +36,37 @@ function Cart() {
           throw new Error('Delete was not successful');
         }
       })
-      .catch(e => console.log(e));
+      .catch(error => console.error('error: ', error));
+  };
+
+  const deleteSelected = () => {
+    fetch('http://10.58.52.154:8000/carts', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        cartIds: itemIdsToDelete,
+      }),
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Selected data deleted successfully');
+        } else {
+          console.log('Failed to delete selected data');
+        }
+      })
+      .catch(error => console.error('error: ', error));
+  };
+
+  const addItemToDelete = cartId => {
+    cartList.map(list => {
+      if (list.cartId === cartId) {
+        setItemIdsToDelete([...itemIdsToDelete, cartId]);
+        console.log(itemIdsToDelete);
+      }
+      return list;
+    });
   };
 
   return (
@@ -45,34 +86,35 @@ function Cart() {
             <th />
           </tr>
         </thead>
-        {productList.map(data => {
+        {cartList.map(data => {
           return (
             <tr key={data.cartId}>
               <td className="checkbox">
-                <button>v</button>
+                <button onClick={() => addItemToDelete(data.cartId)}>v</button>
               </td>
               <td className="thumbnailBox">
-                <a href="#">
+                <Link to="/product-detail">
                   <img
                     src={data.url}
                     alt={`${data.name}`}
                     className="thumbnail"
                   />
-                </a>
+                </Link>
               </td>
               <td className="productName">
-                <a href="#">{data.name}</a>
+                <Link to="/product-detail">{data.name}</Link>
               </td>
               <td className="quantity">
                 <QuantityBtn
-                  count={data.quantity}
-                  productList={productList}
-                  setProductList={setProductList}
-                  id={data.cartId}
+                  quantity={data.quantity}
+                  cartList={cartList}
+                  setCartList={setCartList}
+                  cardId={data.cartId}
+                  userId={data.userId}
                 />
               </td>
               <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">{data.price * data.quantity}</td>
+              <td className="totalPrice">{totalPrice}</td>
               <td className="deleteItem">
                 <button
                   onClick={() => {
@@ -87,12 +129,10 @@ function Cart() {
         })}
       </table>
       <div className="deleteBtnBox">
-        <button>선택상품 삭제</button>
-        <button
-          onClick={() => {
-            deleteItem('');
-          }}
-        >
+        <button className="deleteSelected" onClick={deleteSelected}>
+          선택상품 삭제
+        </button>
+        <button className="deleteAll" onClick={deleteSelected}>
           장바구니비우기
         </button>
       </div>

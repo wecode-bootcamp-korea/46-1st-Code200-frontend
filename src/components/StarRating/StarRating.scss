@@ -1,0 +1,16 @@
+.starRating {
+  button {
+    padding: 2px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .on {
+    color: #ffd800;
+  }
+  .off {
+    color: #ccc;
+  }
+}
