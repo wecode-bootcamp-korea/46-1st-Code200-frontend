@@ -10,6 +10,10 @@ function Review() {
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
 
+  const scrollToBottom = () => {
+    window.scroll({ bottom: 0, behavior: 'smooth' });
+  };
+
   // 별점
   const handleReviewRating = index => {
     setReviewRating(index);
@@ -118,7 +122,10 @@ function Review() {
 
             <button
               className={inputReview ? 'submitButton' : 'nonSubmitButton'}
-              onClick={handleInputReview}
+              onClick={() => {
+                handleInputReview();
+                scrollToBottom();
+              }}
             >
               등록
             </button>
