@@ -1,7 +1,7 @@
 import React from 'react';
-import youtubeimg from '/Users/jinu/Desktop/46-1st-Code200-frontend/src/assets/image/youtube_logo.jpg';
-import instagramimg from '/Users/jinu/Desktop/46-1st-Code200-frontend/src/assets/image/instagram.jpg';
-import facebookimg from '/Users/jinu/Desktop/46-1st-Code200-frontend/src/assets/image/facebook.jpg';
+import youtubeimg from '../../../public/images/youtube_logo.jpg';
+import instagramimg from '../../../public/images/instagram.jpg';
+import facebookimg from '../../../public/images/facebook.jpg';
 import '../Footer/Footer.scss';
 
 function Footer() {
@@ -9,13 +9,13 @@ function Footer() {
     <footer>
       <nav className="all">
         <div className="wrapallright1">
-          <a href="https://www.google.co.kr">
+          <a href="##">
             <p>브랜드소개</p>
           </a>
-          <a href="https://www.naver.com">
+          <a href="##">
             <p>오프라인 매장안내</p>
           </a>
-          <a href="https://www.youtube.co.kr">
+          <a href="##">
             <p>개인정보처리방침</p>
           </a>
           <a href="##">
@@ -32,8 +32,8 @@ function Footer() {
         <div className="wrapall">
           <p className="wrapalltop">
             <h1>상담시간 : 오전 10시-오후5시 (토요일, 공휴일 휴무)</h1>
-            <h2>email : maplesyrupdd99@gmail.com(단체주문 문의)</h2>
-            <h3>email : importboss0917@naver.com (마케팅 협찬 문의)</h3>
+            <h2>email : helloworld@gmail.com(단체주문 문의)</h2>
+            <h3>email : goodbyeworld@naver.com (마케팅 협찬 문의)</h3>
           </p>
           <p className="wrapallmid">
             <h4>주식회사 WEDIYA </h4>
@@ -49,10 +49,10 @@ function Footer() {
           <a href="https://www.youtube.co.kr">
             <img className="ui" src={youtubeimg} alt="youtube_image" />
           </a>
-          <a href="https://www.instagram.com/yum_6579/">
+          <a href="https://www.instagram.com">
             <img className="ui" src={instagramimg} alt="instagram_image" />
           </a>
-          <a href="##">
+          <a href="https://www.facebook.com">
             <img className="ui" src={facebookimg} alt="facebook_image" />
           </a>
         </div>
