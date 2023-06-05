@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyPage from '../MyPage/MyPage';
 import './Nav.scss';
+import './navShowTop.scss';
 
 const Nav = () => {
   const [categoryList, setCategoryList] = useState([]);
@@ -34,7 +35,7 @@ const Nav = () => {
           <ul className="topMenuCategoryUl">
             {categoryList.map(category => {
               return (
-                <li className="topMenuCategoryLi" key={category.category_id}>
+                <li className="topMenuCategoryLi" key={category.categoryId}>
                   <Link
                     className="navLink"
                     to="/"
@@ -42,7 +43,7 @@ const Nav = () => {
                       setHide(false);
                     }}
                   >
-                    {category.category_name}
+                    {category.categoryName}
                   </Link>
                 </li>
               );
@@ -62,10 +63,9 @@ const Nav = () => {
               <>
                 {!myHide && <MyPage />}
                 <img
-                  className="imgIcons login"
+                  className="imgIcons"
                   src={img.value}
                   alt={img.alt}
-                  key={img.id}
                   onClick={() => {
                     setMyHide(!myHide);
                   }}
@@ -89,16 +89,16 @@ const Nav = () => {
                 return (
                   <ul
                     className="bottomMenuCategoryUl"
-                    key={category.category_id}
+                    key={category.categoryId}
                   >
                     {category.subCategories.map(subCategory => {
                       return (
                         <li
                           className="bottomMenuCategoryLi"
-                          key={subCategory.subCategory_id}
+                          key={subCategory.subCategoryId}
                         >
                           <Link className="dev1Link" to="/">
-                            {subCategory.subCategory_name}
+                            {subCategory.subCategoryName}
                           </Link>
                         </li>
                       );
@@ -107,6 +107,7 @@ const Nav = () => {
                 );
               })}
           </div>
+          <div className="topMember" />
         </div>
       )}
     </div>
