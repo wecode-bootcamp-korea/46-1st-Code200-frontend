@@ -70,7 +70,7 @@ const Login = () => {
         <Link to="#">아이디/비밀번호 찾기</Link>
       </div>
       <div className="signup">
-        <Link to="../Signup/Signup">이메일로 회원가입</Link>
+        <Link to="./signup">이메일로 회원가입</Link>
       </div>
     </div>
   );
