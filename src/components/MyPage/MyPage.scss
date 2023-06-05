@@ -1,0 +1,32 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.bottomNav {
+  @include componentSize(80px, 85px);
+  z-index: 2;
+  position: fixed;
+  top: 90px;
+  right: 200px;
+  margin-top: 0px;
+  background-color: white;
+}
+.bottomNavMy {
+  @include componentSize(50px, 100%);
+  margin: 10px;
+
+  .myPageLi {
+    margin: 9px 0;
+
+    .myPageLink {
+      text-align: center;
+      text-decoration: none;
+      color: gray;
+      margin: 12px 2px;
+      font-size: medium;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

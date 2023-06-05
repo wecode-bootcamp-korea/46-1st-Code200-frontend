@@ -29,12 +29,12 @@
 
     th,
     td {
-      padding: 20px;
-      border-bottom: 1px solid lightgrey;
+      padding: 20px 0;
+      border: 1px solid lightgrey;
       vertical-align: middle;
 
       &:nth-child(1) {
-        width: 10%;
+        width: 6%;
 
         button {
           border: 1px solid grey;
@@ -48,26 +48,28 @@
 
       &:nth-child(2) {
         width: 12%;
+        padding: 0;
       }
       &:nth-child(3) {
-        width: 22%;
+        width: 32%;
       }
       &:nth-child(4) {
-        width: 10%;
+        width: 16%;
       }
       &:nth-child(5) {
         width: 12%;
       }
       &:nth-child(6) {
         width: 16%;
+        padding: 0;
       }
       &:nth-child(7) {
-        width: 8%;
+        padding: 0;
       }
     }
 
     .thumbnail {
-      width: 100px;
+      width: 80px;
 
       &:hover {
         opacity: 0.7;
@@ -87,7 +89,7 @@
 
     .delete {
       button {
-        padding: 3px 10px;
+        padding: 3px 6px;
         border: 1px solid lightgrey;
         border-radius: 2px;
         background-color: white;
@@ -142,7 +144,7 @@
 
       &:hover {
         transition: 0.4s;
-        border: 1px solid black;
+        border: 1px solid $primary-color;
         background-color: white;
         color: black;
       }
@@ -154,7 +156,7 @@
     }
 
     .orderAllBtn {
-      background-color: black;
+      background-color: $primary-color;
       color: white;
     }
   }

@@ -1,21 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
 * {
   box-sizing: border-box;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
+
+// font 적용 위해서 아래 링크 세개 파일 상단에 써주세요!
+/*
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
+*/
 
 a {
   outline: none;
   text-decoration: none;
-  color: black;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-html {
-  position: relative;
-  min-height: 100%;
 }
