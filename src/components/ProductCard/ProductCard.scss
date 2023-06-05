@@ -1,0 +1,40 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.product {
+  width: 250px;
+  height: 500px;
+  margin: 0 10px 0 10px;
+
+  .thumbnail {
+    width: 100%;
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+
+  .box {
+    padding-left: 10px;
+
+    .name {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+
+    .price {
+      margin: 10px 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .rating {
+      margin: 10px 0;
+    }
+
+    .review {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+  }
+}

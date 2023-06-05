@@ -9,6 +9,7 @@ import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
+import Review from './components/Review/Review';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
         <Route path="/product-detail" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/review" element={<Review />} />
       </Routes>
       <Footer />
     </BrowserRouter>
