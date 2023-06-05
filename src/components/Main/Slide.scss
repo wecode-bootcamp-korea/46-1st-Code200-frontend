@@ -1,0 +1,68 @@
+.main {
+  width: 100%;
+}
+
+.slideWrap {
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100vw;
+  position: relative;
+
+  .slideList {
+    list-style-type: none;
+    white-space: nowrap;
+    font-size: 0;
+    position: relative;
+
+    img {
+      width: 100%;
+      max-width: 100vw;
+      object-fit: cover;
+    }
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      transform: all 0.5s;
+    }
+    a {
+      display: block;
+      position: relative;
+    }
+    label {
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 15px;
+      cursor: pointer;
+    }
+  }
+  .left {
+    left: 30px;
+    background-image: url('https://github.com/dxxcw/code200-images/blob/main/images/Main/left-arrow.png?raw=true');
+    background: center center 100% no-repeat;
+    width: 10px;
+    height: 10px;
+    background-size: cover;
+  }
+  .right {
+    right: 30px;
+    background-image: url('https://github.com/dxxcw/code200-images/blob/main/images/Main/right-arrow.png?raw=true');
+    background: center center 100% no-repeat;
+    width: 10px;
+    height: 10px;
+    background-size: cover;
+  }
+}
+
+.buttons {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 93%;
+  right: 45%;
+  accent-color: darkgrey;
+  appearance: none;
+}

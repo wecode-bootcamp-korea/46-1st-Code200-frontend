@@ -1,0 +1,32 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.orderDisCount {
+  @include componentSize(100%, 100%);
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .orderDisCountInner {
+    animation: modalShowTop 0.3s;
+  }
+
+  .pointDiv {
+    @include componentSize(100%, 60px);
+    @include flexSort(row, flex-start, center);
+    padding: 10px;
+    margin-bottom: 20px;
+
+    .pointInput {
+      @include componentSize(80%, 100%);
+    }
+
+    .pointButton {
+      min-width: 20px;
+      padding: 10px;
+      background-color: white;
+      margin-left: 5px;
+      border: 1px solid gray;
+    }
+  }
+}
