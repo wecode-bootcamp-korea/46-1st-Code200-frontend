@@ -1,0 +1,103 @@
+$primary-color: #017042;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login {
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 3%;
+  background: white;
+  text-align: center;
+}
+
+.name {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  font-size: 38px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrap {
+  box-sizing: border-box;
+  align-items: center;
+  width: 450px;
+  height: 400px;
+  margin: 0 auto;
+  line-height: 30px;
+}
+
+.idcontent {
+  position: relative;
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.id {
+  width: 440px;
+  height: 50px;
+  margin-bottom: 35px;
+  padding: darkgray;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+  font-size: 100%;
+}
+
+.passwordcontent {
+  position: relative;
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.password {
+  width: 440px;
+  height: 50px;
+  margin-bottom: 35px;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+  font-size: 100%;
+}
+
+.loginbutton {
+  width: 440px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 0.5px solid gray;
+  border-radius: 2px;
+  background-color: $primary-color;
+  &:hover {
+    background: lighten($primary-color, 10%);
+
+    &:active {
+      background: darken($primary-color, 10%);
+    }
+  }
+  font-size: 100%;
+  font-weight: bold;
+}
+.findid {
+  margin-bottom: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.signup {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
