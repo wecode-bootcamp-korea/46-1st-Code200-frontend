@@ -63,7 +63,7 @@ function Review() {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setReview(data);
+        setReview(data.data.content.content);
       });
   }, [inputReview]);
 
@@ -127,7 +127,7 @@ function Review() {
               <div>{startRating(review.rating)}</div>
               <div className="userWrap">
                 <p className="oneLine">{review.content}</p>
-                <p className="userId">{review.userInfo}</p>
+                <p className="userId">{review.userId}</p>
               </div>
             </div>
           );
