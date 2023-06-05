@@ -9,6 +9,7 @@ function Review() {
 
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
+  const [userEmail, setUserEmail] = useState('');
 
   // 별점
   const handleReviewRating = index => {
@@ -23,20 +24,32 @@ function Review() {
   function handleInputReview() {
     const newReview = {
       id: review.length + 1,
-      userInfo: 'WECODE@gmail.com',
-      review: inputReview,
+      userInfo: inputReview,
+      content: inputReview,
       rating: reviewRating,
+      productId: 'productId',
     };
+
+    const userToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
     const updateReview = [newReview, ...review];
     setReview(updateReview);
     setInputReview('');
-
-    fetch('/data/reviewSample.json', {
+    console.log(updateReview);
+    console.log(inputReview);
+    fetch('http://10.58.52.145:6000/userId/:productId', {
       method: 'POST',
-      body: JSON.stringify(updateReview),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: userToken,
+      },
+      body: JSON.stringify(newReview),
     })
       .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
       .catch(error => console.error(error));
   }
 

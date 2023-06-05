@@ -18,7 +18,9 @@
   align-items: center;
   padding: 20px 10px;
   text-align: center;
-  width: 100%;
+  width: 90%;
+  margin: auto;
+  border-bottom: 1px solid lightgray;
 
   .summary {
     border-right: 1px solid lightgray;
@@ -55,14 +57,13 @@
 }
 
 .oneLineReview {
-  border: 1px solid lightgrey;
-
   .oneLineWrap {
     border: 1px solid lightgrey;
     border-radius: 2px;
     width: 90%;
     margin: 10px auto;
     padding: 14px 15px 18px 15px;
+    border-top: 1px solid lightgray;
 
     .oneLine {
       margin-top: 10px;
