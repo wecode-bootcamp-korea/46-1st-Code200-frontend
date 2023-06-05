@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './WeeklyBest.scss';
+import ProductCard from '../ProductCard/ProductCard';
 import TAP_LIST from './TapList';
+import './WeeklyBest.scss';
 
 function WeeklyBest() {
   const [clicked, setClicked] = useState('taps1');
@@ -57,10 +58,14 @@ function WeeklyBest() {
         {prdList.map(prd => {
           return (
             <ul key={prd.id} className="prdList">
-              <li className="prdBox">
-                <div className="box">{prd.text}</div>
-              </li>
+              <ProductCard prdList={prdList} setPrdList={setPrdList} />
             </ul>
+
+            // <ul key={prd.id} className="prdList">
+            //   <li className="prdBox">
+            //     <div className="box">{prd.text}</div>
+            //   </li>
+            // </ul>
           );
         })}
       </div>

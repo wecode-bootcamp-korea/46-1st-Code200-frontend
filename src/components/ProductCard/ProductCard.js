@@ -2,7 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 
-const ProductCard = ({ id, imgUrl, name, price, rating, numReview }) => {
+const ProductCard = ({
+  id,
+  imgUrl,
+  name,
+  price,
+  rating,
+  numReview,
+  prdList,
+  setPrdList,
+}) => {
   return (
     <div className="product">
       <Link to={`/product-detail/${id}`}>
