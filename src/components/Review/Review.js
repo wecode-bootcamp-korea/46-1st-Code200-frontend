@@ -32,40 +32,43 @@ function Review() {
     const userToken =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
-    const updateReview = { newReview, ...review };
-    setReview(updateReview);
+    // const updateReview = { newReview, ...review };
+    // setReview(updateReview);
     setInputReview('');
-    console.log(updateReview);
-    console.log(inputReview);
-    fetch(
-      'http://10.58.52.154:8000/reviews/2', //동적라우팅
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: userToken,
-        },
-        body: JSON.stringify(newReview),
-      }
-    )
+    // console.log(updateReview);
+    // console.log(inputReview);
+    fetch('http://10.58.52.237:8000/reviews/2', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: userToken,
+      },
+      body: JSON.stringify(newReview),
+    })
       .then(res => res.json())
       .then(data => {
         console.log(data);
+
+        // getReview();
       })
       .catch(error => console.error(error));
   }
 
   // 기존 리뷰
-  useEffect(() => {
+  const getReview = () => {
     fetch('http://10.58.52.237:8000/products/2', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setReview(data.data.content.content);
+        console.log(data.data[0].content);
+        setReview(data.data[0].content);
       });
-  }, [inputReview]);
+  };
+
+  useEffect(() => {
+    getReview();
+  }, []);
 
   // rating 값 이미지로 변환
   const startRating = rating => {
@@ -123,7 +126,7 @@ function Review() {
       <div className="oneLineReview">
         {review.map(review => {
           return (
-            <div key={review.id} className="oneLineWrap">
+            <div key={review.userId} className="oneLineWrap">
               <div>{startRating(review.rating)}</div>
               <div className="userWrap">
                 <p className="oneLine">{review.content}</p>
