@@ -1,0 +1,18 @@
+.starRating {
+  button {
+    padding: 2px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .on {
+    font-size: 40px;
+    color: #ffd800;
+  }
+  .off {
+    font-size: 40px;
+    color: #ccc;
+  }
+}
