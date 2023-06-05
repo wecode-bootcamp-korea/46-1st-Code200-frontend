@@ -49,7 +49,7 @@ function Review() {
       .then(data => {
         console.log(data);
 
-        // getReview();
+        getReview();
       })
       .catch(error => console.error(error));
   }
@@ -61,8 +61,8 @@ function Review() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data.data[0].content);
-        setReview(data.data[0].content);
+        console.log(data.reviews);
+        setReview(data.reviews);
       });
   };
 
@@ -112,25 +112,28 @@ function Review() {
               handleReviewRating={handleReviewRating}
             />
           </div>
-          <input onChange={handleReview} className="reviewBox" type="text" />
 
-          <button
-            className={inputReview ? 'submitButton' : 'nonSubmitButton'}
-            onClick={handleInputReview}
-          >
-            등록하기
-          </button>
+          <div className="buttonWrap">
+            <input onChange={handleReview} className="reviewBox" type="text" />
+
+            <button
+              className={inputReview ? 'submitButton' : 'nonSubmitButton'}
+              onClick={handleInputReview}
+            >
+              등록
+            </button>
+          </div>
         </div>
       </div>
 
       <div className="oneLineReview">
         {review.map(review => {
           return (
-            <div key={review.userId} className="oneLineWrap">
+            <div key={review.user_Id} className="oneLineWrap">
               <div>{startRating(review.rating)}</div>
               <div className="userWrap">
                 <p className="oneLine">{review.content}</p>
-                <p className="userId">{review.userId}</p>
+                <p className="userId">{review.userName}</p>
               </div>
             </div>
           );
