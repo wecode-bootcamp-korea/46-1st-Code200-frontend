@@ -9,7 +9,6 @@ function Review() {
 
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
-  const [userEmail, setUserEmail] = useState('');
 
   // 별점
   const handleReviewRating = index => {
@@ -23,29 +22,32 @@ function Review() {
 
   function handleInputReview() {
     const newReview = {
-      id: review.length + 1,
-      userInfo: inputReview,
+      // id: review[review.length - 1].id + 1,
+      // userInfo: inputReview,
+      //어떤게 담기는지 데이터의 형태 객체인지 뭔지 uerinfo의 이메일? 1. UI변경 미루기 호출 먼저 2. post에 대한 res값으로 userinfo 객체 받아서 username받아오기 1.state 배열에 새로 입력한 댓글 추가 > UI바뀜 (post 직후 get요청 다시) 2.post요청에 res에 새로 입력한 댓글정보 받아와서 state 추가 3.post요청 res에 새로운 댓글이 추가된 전체배열을 받아노기
       content: inputReview,
       rating: reviewRating,
-      productId: 'productId',
     };
 
     const userToken =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
-    const updateReview = [newReview, ...review];
+    const updateReview = { newReview, ...review };
     setReview(updateReview);
     setInputReview('');
     console.log(updateReview);
     console.log(inputReview);
-    fetch('http://10.58.52.145:6000/userId/:productId', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: userToken,
-      },
-      body: JSON.stringify(newReview),
-    })
+    fetch(
+      'http://10.58.52.154:8000/reviews/2', //동적라우팅
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: userToken,
+        },
+        body: JSON.stringify(newReview),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -55,11 +57,14 @@ function Review() {
 
   // 기존 리뷰
   useEffect(() => {
-    fetch('/data/reviewSample.json', {
+    fetch('http://10.58.52.237:8000/products/2', {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => setReview(data));
+      .then(data => {
+        console.log(data);
+        setReview(data);
+      });
   }, [inputReview]);
 
   // rating 값 이미지로 변환
@@ -121,7 +126,7 @@ function Review() {
             <div key={review.id} className="oneLineWrap">
               <div>{startRating(review.rating)}</div>
               <div className="userWrap">
-                <p className="oneLine">{review.review}</p>
+                <p className="oneLine">{review.content}</p>
                 <p className="userId">{review.userInfo}</p>
               </div>
             </div>
