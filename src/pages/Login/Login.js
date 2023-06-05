@@ -67,10 +67,10 @@ const Login = () => {
         </button>
       </div>
       <div className="findid">
-        <Link to="#">아이디/비밀번호 찾기</Link>
+        <a href="##">아이디/비밀번호 찾기</a>
       </div>
       <div className="signup">
-        <Link to="./signup">이메일로 회원가입</Link>
+        <Link to="/signup">이메일로 회원가입</Link>
       </div>
     </div>
   );
