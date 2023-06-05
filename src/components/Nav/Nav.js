@@ -65,7 +65,6 @@ const Nav = () => {
                   className="imgIcons login"
                   src={img.value}
                   alt={img.alt}
-                  key={img.id}
                   onClick={() => {
                     setMyHide(!myHide);
                   }}

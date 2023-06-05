@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Count from '../../components/Count/Count';
+import Like from '../../components/Like/Like';
+import Review from '../../components/Review/Review';
 import './ProductDetail.scss';
 import { DETAIL_INFO } from '../UiData/productDetailUiData';
 import { DETAIL_NOTE } from '../UiData/productDetailNote';
+import { BOTTOM_IMG } from '../UiData/productDetailBottomImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,10 +15,15 @@ function ProductDetail() {
   const [isImg, setIsImg] = useState(false);
   const params = useParams();
   const productId = params.id;
+  const [count, setCount] = useState(1);
+  const price = productDetail?.price;
+  const totalPrice = Number(price) * Number(count);
+  const [isHeart, setIsHeart] = useState(false);
+
   const CATEGORY_ARR = [
     {
       id: '3',
-      value: productDetail.product_name,
+      value: productDetail.name,
     },
     {
       id: '2',
@@ -27,13 +36,24 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    fetch(`http://10.58.52.133:8000/products/${productId}`, { method: 'GET' })
+    //fetch('http://10.58.52.237:8000/products/2', { method: 'GET' })
+    // fetch(`data/productDetail.json/${productId}`, { method: 'GET' })
+    fetch('data/productDetail.json', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setProductDetail(data.data[0]);
         setIsImg(true);
       });
   }, [productId]);
+
+  const LikeUpdate = () => {
+    fetch('', {
+      method: 'POST',
+      body: JSON.stringify({
+        isHeart: isHeart,
+      }),
+    }).then(response => response.json());
+  };
 
   return (
     <div className="productDetail">
@@ -42,7 +62,7 @@ function ProductDetail() {
           <div className="detailTopImg">
             <ul className="detailTopImgUl">
               {isImg &&
-                productDetail.imageUrls.map(productDetailImg => {
+                productDetail.image.map(productDetailImg => {
                   return (
                     <li className="detailTopImgli" key={productDetailImg.index}>
                       <img
@@ -71,9 +91,8 @@ function ProductDetail() {
 
           <div className="productDetail">
             <div className="productTitle">
-              <span className="title">{productDetail.product_name}</span>
+              <span className="title">{productDetail.name}</span>
             </div>
-            {/* 태그 컴포넌트 */}
             <div className="productTag">
               <span className="freePrd">무료배송</span>
               <span className="redPrd">품절임박</span>
@@ -81,7 +100,7 @@ function ProductDetail() {
             </div>
             <div className="productDetailInner">
               <div className="productAmount">
-                <span>{productDetail.product_price}</span>
+                <span>{price.toLocaleString()}</span>
               </div>
               <div className="productShare">
                 <img
@@ -102,13 +121,19 @@ function ProductDetail() {
               <FontAwesomeIcon className="chevronRight" icon={faChevronRight} />
             </Link>
           </div>
-          <div className="detailSize">
-            <span> 수량 컴포넌트 </span>
+          <div className="detailDescription">
+            <span className="welcomeSpan">
+              [{productDetail.category}]{productDetail.name}
+            </span>
+            <Count count={count} setCount={setCount} />
           </div>
           <div className="buttonArea">
-            <button className="likeMove">
-              <FontAwesomeIcon className="chevronRight" icon={faChevronRight} />
-            </button>
+            {/* 좋아요 컴포넌트 */}
+            <Like
+              isHeart={isHeart}
+              setIsHeart={setIsHeart}
+              LikeUpdate={LikeUpdate}
+            />
             <button className="subCartMove">장바구니</button>
             <button className="buyMove">바로구매</button>
           </div>
@@ -126,9 +151,9 @@ function ProductDetail() {
             </div>
             <div className="productAllCount">
               <span className="productCountSmall">
-                {productDetail.product_price}
+                {totalPrice.toLocaleString()}
               </span>
-              <span className="productCountBig">(0개)</span>
+              <span className="productCountBig"> ({count}개)</span>
             </div>
           </div>
           {DETAIL_INFO.map(detailInfo => {
@@ -150,21 +175,12 @@ function ProductDetail() {
       <div className="productInfo">
         <div className="productInfoInner">
           <div className="productDescArea">
-            <p className="productDescAreaPtag">
-              {productDetail.product_description}
-            </p>
+            <p className="productDescAreaPtag">{productDetail.description}</p>
           </div>
           <div className="productDescAreaImg">
-            <img
-              className="productDescImg"
-              src="https://raw.githubusercontent.com/dxxcw/code200-images/d849eca915eb8e65f06ec390ea2590e85c6600fe/images/Main/coffe-bag/nathan-dumlao-KixfBEdyp64-unsplash.jpg"
-              alt="productDescImg"
-            />
-            <img
-              className="productDescImg"
-              src="https://raw.githubusercontent.com/dxxcw/code200-images/d849eca915eb8e65f06ec390ea2590e85c6600fe/images/Main/coffe-bag/pariwat-pannium-EdzGd9cTI0Y-unsplash.jpg"
-              alt="productDescImg"
-            />
+            {BOTTOM_IMG.map(({ id, className, src, alt }) => {
+              return <img key={id} className={className} src={src} alt={alt} />;
+            })}
           </div>
         </div>
 
@@ -184,7 +200,9 @@ function ProductDetail() {
           })}
         </div>
       </div>
-      <div>리뷰 컴포넌트</div>
+      <div className="review">
+        <Review />
+      </div>
     </div>
   );
 }
