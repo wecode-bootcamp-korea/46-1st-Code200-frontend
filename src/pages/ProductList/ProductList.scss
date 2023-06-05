@@ -75,12 +75,13 @@
     .sortDropDown {
       display: block;
       width: 100%;
+      margin-bottom: 20px;
 
       .dropDownBtn {
         width: 100px;
-        margin-right: 50px;
+        margin: 0 0 10px 20px;
         padding: 5px 12px;
-        float: right;
+        float: left;
         border: 1px solid #b2b2b2;
         border-radius: 2px;
         background-color: white;
@@ -92,6 +93,8 @@
         }
       }
       .dropDownContent {
+        width: 100px;
+        margin-left: 20px;
         border: 1px solid lightgray;
         border-top: none;
 
@@ -99,12 +102,18 @@
           padding: 8px 0;
           font-size: 15px;
           text-align: center;
+
+          button {
+            border: none;
+            background-color: white;
+          }
         }
       }
     }
     .productContainer {
       @include flexSort(row, flex-start, space-between);
       flex-wrap: wrap;
+      margin-left: 10px;
     }
   }
 }

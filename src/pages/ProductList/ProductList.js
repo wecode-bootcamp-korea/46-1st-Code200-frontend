@@ -7,23 +7,25 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sort = searchParams.get('sort');
+  const orderBy = searchParams.get('orderBy');
   const skip = searchParams.get('skip');
   const limit = searchParams.get('limit');
+  const minPrice = searchParams.get('minPrice');
+  const maxPrice = searchParams.get('maxPrice');
 
   useEffect(() => {
     fetch(
-      `https://fakestoreapi.com/products?sort=${sort}&limit=${limit}&skip=${skip}`
+      `http://10.58.52.196:8000/products/?categoryId=1&minPrice=${minPrice}&maxPrice=${maxPrice}&orderBy=${orderBy}&limit=${limit}&offset=${skip}`
     )
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setProductList(data);
+        setProductList(data.data);
       })
       .catch(error => {
         console.error('Error', error);
       });
-  }, [sort, skip, limit]);
+  }, [orderBy, skip, limit, minPrice, maxPrice]);
 
   const toggleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
@@ -40,9 +42,14 @@ function ProductList() {
   };
 
   const movePage = pageNumber => {
-    searchParams.set('sort', sort);
-    searchParams.set('skip', (pageNumber - 1) * 5);
-    searchParams.set('limit', 5);
+    searchParams.set('skip', (pageNumber - 1) * 12);
+    searchParams.set('limit', 12);
+    setSearchParams(searchParams);
+  };
+
+  const filterByPrice = (minPrice, maxPrice) => {
+    searchParams.set('minPrice', minPrice);
+    searchParams.set('maxPrice', maxPrice);
     setSearchParams(searchParams);
   };
 
@@ -54,14 +61,32 @@ function ProductList() {
           <h5>가격</h5>
           <button
             onClick={() => {
-              setSortParams();
+              filterByPrice(0, 29000);
             }}
           >
             ~ 29,000
           </button>
-          <button>30,000 ~ 39,000</button>
-          <button>40,000 ~ 49,000</button>
-          <button>50,000 ~ </button>
+          <button
+            onClick={() => {
+              filterByPrice(30000, 39000);
+            }}
+          >
+            30,000 ~ 39,000
+          </button>
+          <button
+            onClick={() => {
+              filterByPrice(40000, 49000);
+            }}
+          >
+            40,000 ~ 49,000
+          </button>
+          <button
+            onClick={() => {
+              filterByPrice(50000, '');
+            }}
+          >
+            50,000 ~{' '}
+          </button>
         </div>
         <div className="roastingFilter option">
           <h5>Category</h5>
@@ -83,17 +108,17 @@ function ProductList() {
           {isDropDownOpen && (
             <ul className="dropDownContent">
               <li>
-                <button onClick={() => setSortParams('sort', 'desc')}>
+                <button onClick={() => setSortParams('orderBy', 'incomingAsc')}>
                   최신순
                 </button>
               </li>
               <li>
-                <button onClick={() => setSortParams('sort', 'asc')}>
+                <button onClick={() => setSortParams('orderBy', 'best')}>
                   인기순
                 </button>
               </li>
               <li>
-                <button onClick={() => setSortParams('sort', 'review')}>
+                <button onClick={() => setSortParams('orderBy', 'ratingAsc')}>
                   별점순
                 </button>
               </li>
@@ -106,11 +131,11 @@ function ProductList() {
               <ProductCard
                 key={product.id}
                 id={product.id}
-                imgUrl={product.image}
-                name={product.title}
+                imgUrl={product.imageUrls}
+                name={product.name}
                 price={product.price}
-                rating={product.rating.rating}
-                numReview={product.rating.count}
+                rating={product.avgRating}
+                numReview={product.countReview}
               />
             );
           })}
