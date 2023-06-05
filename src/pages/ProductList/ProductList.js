@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './ProductList.scss';
 
@@ -7,16 +7,14 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const orderBy = searchParams.get('orderBy');
-  const skip = searchParams.get('skip');
-  const limit = searchParams.get('limit');
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
+  const subcategory = searchParams.getAll('subcategoryId');
+  const query = searchParams.toString();
 
+  console.log(subcategory);
   useEffect(() => {
-    fetch(
-      `http://10.58.52.196:8000/products/?categoryId=1&minPrice=${minPrice}&maxPrice=${maxPrice}&orderBy=${orderBy}&limit=${limit}&offset=${skip}`
-    )
+    fetch(`http://10.58.52.196:8000/products?${query}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -25,7 +23,7 @@ function ProductList() {
       .catch(error => {
         console.error('Error', error);
       });
-  }, [orderBy, skip, limit, minPrice, maxPrice]);
+  }, [searchParams]);
 
   const toggleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
@@ -36,20 +34,46 @@ function ProductList() {
     setSearchParams(searchParams);
   };
 
-  const appendSortParams = (key, params) => {
-    searchParams.append(key, params);
+  const filterByPrice = (selectedMinPrice, selectedMaxPrice) => {
+    const isSelected =
+      selectedMinPrice === Number(minPrice) &&
+      selectedMaxPrice === Number(maxPrice);
+
+    if (isSelected) {
+      searchParams.delete('minPrice');
+      searchParams.delete('maxPrice');
+    } else {
+      searchParams.set('minPrice', selectedMinPrice);
+      searchParams.set('maxPrice', selectedMaxPrice);
+    }
+    setSearchParams(searchParams);
+  };
+
+  const filterBySubcategory = sub => {
+    const subStr = sub.toLocaleString();
+    const subcategoryCopy = [...subcategory];
+    const isSelected = subcategoryCopy.includes(subStr);
+
+    if (!isSelected) searchParams.append('subcategoryId', subStr);
+    else {
+      if (subcategoryCopy.length === 1) {
+        searchParams.delete('subcategoryId');
+      }
+      const index = subcategoryCopy.indexOf(subStr);
+      if (index > -1) subcategoryCopy.splice(index, 1);
+      if (subcategoryCopy.length === 1) {
+        searchParams.set('subcategoryId', subcategoryCopy[0]);
+      } else if (subcategoryCopy.length === 2) {
+        searchParams.set('subcategoryId', subcategoryCopy[0]);
+        searchParams.append('subcategoryId', subcategoryCopy[1]);
+      }
+    }
     setSearchParams(searchParams);
   };
 
   const movePage = pageNumber => {
-    searchParams.set('skip', (pageNumber - 1) * 12);
+    searchParams.set('offset', (pageNumber - 1) * 12);
     searchParams.set('limit', 12);
-    setSearchParams(searchParams);
-  };
-
-  const filterByPrice = (minPrice, maxPrice) => {
-    searchParams.set('minPrice', minPrice);
-    searchParams.set('maxPrice', maxPrice);
     setSearchParams(searchParams);
   };
 
@@ -59,42 +83,36 @@ function ProductList() {
         <h4 className="h4">FILTER</h4>
         <div className="priceFilter option">
           <h5>가격</h5>
-          <button
-            onClick={() => {
-              filterByPrice(0, 29000);
-            }}
-          >
-            ~ 29,000
-          </button>
-          <button
-            onClick={() => {
-              filterByPrice(30000, 39000);
-            }}
-          >
-            30,000 ~ 39,000
-          </button>
-          <button
-            onClick={() => {
-              filterByPrice(40000, 49000);
-            }}
-          >
-            40,000 ~ 49,000
-          </button>
-          <button
-            onClick={() => {
-              filterByPrice(50000, '');
-            }}
-          >
-            50,000 ~{' '}
-          </button>
+          {PRICE_FILTER.map(({ id, min, max }) => {
+            const isSelected =
+              min === Number(minPrice) && max === Number(maxPrice);
+            return (
+              <button
+                key={id}
+                className={isSelected ? 'selected' : ''}
+                onClick={() => {
+                  filterByPrice(min, max);
+                }}
+              >
+                {min.toLocaleString()} ~ {max.toLocaleString()}
+              </button>
+            );
+          })}
         </div>
         <div className="roastingFilter option">
-          <h5>Category</h5>
-          <button onClick={() => setSortParams('category', 'smartphones')}>
-            Smartphone
-          </button>
-          <button>Frangrances</button>
-          <button>Grocery</button>
+          <h5>로스트</h5>
+          {ROAST_FILTER.map(({ id, type, subcategoryId }) => {
+            const test = subcategory.includes(String(subcategoryId));
+            return (
+              <button
+                key={id}
+                onClick={() => filterBySubcategory(subcategoryId)}
+                className={test ? 'selected' : ''}
+              >
+                {type}
+              </button>
+            );
+          })}
         </div>
       </aside>
 
@@ -107,26 +125,20 @@ function ProductList() {
           </button>
           {isDropDownOpen && (
             <ul className="dropDownContent">
-              <li>
-                <button onClick={() => setSortParams('orderBy', 'incomingAsc')}>
-                  최신순
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setSortParams('orderBy', 'best')}>
-                  인기순
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setSortParams('orderBy', 'ratingAsc')}>
-                  별점순
-                </button>
-              </li>
+              {SORTING.map(({ id, option, orderBy }) => {
+                return (
+                  <li key={id}>
+                    <button onClick={() => setSortParams('orderBy', orderBy)}>
+                      {option}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
         <div className="productContainer">
-          {productList.map(product => {
+          {productList?.map(product => {
             return (
               <ProductCard
                 key={product.id}
@@ -140,14 +152,72 @@ function ProductList() {
             );
           })}
         </div>
-        <div>
+        <div className="pagination">
           <button onClick={() => movePage(1)}>1</button>
           <button onClick={() => movePage(2)}>2</button>
-          <button onClick={() => movePage(3)}>3</button>
         </div>
       </main>
     </div>
   );
 }
+
+const PRICE_FILTER = [
+  {
+    id: 1,
+    min: 0,
+    max: 29000,
+  },
+  {
+    id: 2,
+    min: 30000,
+    max: 39000,
+  },
+  {
+    id: 3,
+    min: 40000,
+    max: 49000,
+  },
+  {
+    id: 4,
+    min: 50000,
+    max: 69000,
+  },
+];
+
+const ROAST_FILTER = [
+  {
+    id: 1,
+    type: '블론드',
+    subcategoryId: 6,
+  },
+  {
+    id: 2,
+    type: '미디엄',
+    subcategoryId: 7,
+  },
+  {
+    id: 3,
+    type: '다크',
+    subcategoryId: 8,
+  },
+];
+
+const SORTING = [
+  {
+    id: 1,
+    option: '최신순',
+    orderBy: 'incomingDsc',
+  },
+  {
+    id: 2,
+    option: '인기순',
+    orderBy: 'best',
+  },
+  {
+    id: 3,
+    option: '별점순',
+    orderBy: 'ratingAsc',
+  },
+];
 
 export default ProductList;

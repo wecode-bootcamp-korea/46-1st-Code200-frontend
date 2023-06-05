@@ -6,14 +6,14 @@
   @include flexSort(row, flex-start, flex-start);
   position: relative;
   min-height: 100%;
-  margin-top: 100px;
   font-family: 'Noto Sans KR', serif;
 
   .filtering {
     position: -webkit-sticky;
     position: sticky;
     top: 30px;
-    min-width: 215px;
+    width: 200px;
+    min-width: 200px;
     margin: 100px 20px 0 50px;
 
     .h4 {
@@ -43,7 +43,8 @@
         color: grey;
         font-size: 14px;
 
-        &:hover {
+        &:hover,
+        &.selected {
           border: 1px solid $primary-color;
           color: $primary-color;
         }
@@ -78,10 +79,11 @@
       margin-bottom: 20px;
 
       .dropDownBtn {
+        position: relative;
         width: 100px;
-        margin: 0 0 10px 20px;
+        margin: 0 20px 10px 0;
         padding: 5px 12px;
-        float: left;
+        float: right;
         border: 1px solid #b2b2b2;
         border-radius: 2px;
         background-color: white;
@@ -92,17 +94,24 @@
           font-size: 10px;
         }
       }
+
       .dropDownContent {
+        position: absolute;
+        z-index: 1;
+        top: 106px;
+        right: 20px;
         width: 100px;
-        margin-left: 20px;
+        margin: 30px 0 0 20px;
         border: 1px solid lightgray;
         border-top: none;
+        background-color: white;
 
         li {
           padding: 8px 0;
           font-size: 15px;
           text-align: center;
 
+          /* stylelint-disable-next-line max-nesting-depth */
           button {
             border: none;
             background-color: white;
@@ -110,10 +119,24 @@
         }
       }
     }
+
     .productContainer {
       @include flexSort(row, flex-start, space-between);
       flex-wrap: wrap;
       margin-left: 10px;
+    }
+
+    .pagination {
+      @include flexSort(row, center, center);
+      width: 100%;
+
+      button {
+        border: 1px solid lightgrey;
+        border-radius: 2px;
+        background-color: white;
+        color: grey;
+        font-size: 16px;
+      }
     }
   }
 }
