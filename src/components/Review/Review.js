@@ -36,9 +36,7 @@ function Review() {
     const userToken =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
-    setInputReview('');
-
-    fetch('http://10.58.52.237:8000/reviews/2', {
+    fetch('http://10.58.52.192:8000/reviews/2', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -49,21 +47,21 @@ function Review() {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-
         getReview();
+        setInputReview('');
       })
       .catch(error => console.error(error));
   }
 
   // 기존 리뷰
   const getReview = () => {
-    fetch('http://10.58.52.237:8000/products/2', {
+    fetch('http://10.58.52.192:8000/products/2', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         console.log(data.reviews);
-        setReview(data.reviews);
+        setReview(data.reviews.reverse());
       });
   };
 
@@ -119,10 +117,7 @@ function Review() {
 
             <button
               className={inputReview ? 'submitButton' : 'nonSubmitButton'}
-              onClick={() => {
-                handleInputReview();
-                scrollToBottom();
-              }}
+              onClick={handleInputReview}
             >
               등록
             </button>
