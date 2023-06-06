@@ -50,6 +50,20 @@ function MyWediya() {
             </li>
           </ul>
         </div>
+        <div className="myPageOrder">
+          <div className="mypageTitle">최근 주문내역</div>
+          <div className="myPageOrder">
+            <tr>
+              <th>주문일자 [주문번호]</th>
+              <th>상품정보</th>
+              <th>수량</th>
+              <th>주문금액</th>
+              <th>주문상태</th>
+              <th>취소/교환</th>
+            </tr>
+            <p className="contents">주문 내역이 없습니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
