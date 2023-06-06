@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "userInfo": [
+        {
+          "id": 1,
+          "name": "김유저",
+          "email": "exemail@wecode.com",
+          "phone": "010-1234-1234",
+          "address": "서울특별시 강남구 테헤란로 427",
+          "address2": "위워크 선릉 2호점",
+          "point": 50000
+        }
+      ],
+      "productInfo": [
+        {
+          "id": 1,
+          "name": "스노우아이스티",
+          "price": 6000,
+          "quantity": "5",
+          "category": "원두"
+        },
+        {
+          "id": 2,
+          "name": "아이스티",
+          "price": 6000,
+          "quantity": "3",
+          "category": "음료"
+        }
+      ]
+    }
+  ]
+}

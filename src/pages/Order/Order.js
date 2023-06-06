@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OrderInfo from '../Order/OrderInfo';
 import OrderAddress from './OrderAddress';
@@ -14,6 +14,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 function Order() {
+  const [userInfo, setUserInfo] = useState([]);
+  const [productInfo, setProductInfo] = useState([]);
+  const [isFetchTrueInfo, setisFetchTrueInfo] = useState(false);
+
+  useEffect(() => {
+    // fetch('http://10.58.52.133:8000/products/7', { method: 'GET' })
+    fetch('data/order.json')
+      .then(res => res.json())
+      .then(data => {
+        setUserInfo(data.data[0].userInfo);
+        setProductInfo(data.data[0].productInfo);
+        setisFetchTrueInfo(true);
+      });
+  }, []);
+
   return (
     <div className="order">
       <div className="orderTop">
@@ -42,17 +57,27 @@ function Order() {
         </p>
       </div>
       {/* OrderInfo 주문자 정보 컴포넌트 */}
-      <OrderInfo />
+      <OrderInfo userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
       {/* OrderAddress 배송지 컴포넌트 */}
-      <OrderAddress />
+      <OrderAddress userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
       {/* OrderPrduct 주문상품 컴포넌트 */}
-      <OrderProduct />
+      <OrderProduct
+        productInfo={productInfo}
+        isFetchTrueInfo={isFetchTrueInfo}
+      />
       {/* OrderDisCount 할인/포인트 컴포너트 */}
-      <OrderDisCount />
+      <OrderDisCount
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
+        isFetchTrueInfo={isFetchTrueInfo}
+      />
       {/* OrderPay 결제 컴포넌트*/}
-      <OrderPay />
+      <OrderPay productInfo={productInfo} isFetchTrueInfo={isFetchTrueInfo} />
       {/* OrderMethod 결제수단 컴포넌트*/}
-      <OrderMethod />
+      <OrderMethod
+        productInfo={productInfo}
+        isFetchTrueInfo={isFetchTrueInfo}
+      />
       <div className="orderBottom">
         <div className="orderBottomTitle">
           <span className="titleSpan">

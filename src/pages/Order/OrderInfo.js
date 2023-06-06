@@ -3,7 +3,7 @@ import './OrderInfo.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-function OrderInfo() {
+function OrderInfo({ userInfo, isFetchTrueInfo }) {
   const [isInfo, setIsInfo] = useState(false);
   return (
     <div className="orderInfo">
@@ -22,27 +22,40 @@ function OrderInfo() {
           <tr>
             <td className="grayFont">주문자 *</td>
             <td>
-              <input type="text" className="userName" defaultValue="김유저" />
+              {isFetchTrueInfo && (
+                <input
+                  type="text"
+                  readOnly="true"
+                  className="userName"
+                  value={userInfo[0].name}
+                />
+              )}
             </td>
           </tr>
           <tr>
             <td className="grayFont">휴대전화 *</td>
             <td>
-              <input
-                type="text"
-                className="userPhone"
-                defaultValue="010-1234-1234"
-              />
+              {isFetchTrueInfo && (
+                <input
+                  type="text"
+                  readOnly="true"
+                  className="userPhone"
+                  value={userInfo[0].phone}
+                />
+              )}
             </td>
           </tr>
           <tr>
             <td className="grayFont">이메일</td>
-            <td className="">
-              <input
-                type="text"
-                className="userEmail"
-                defaultValue="wecode@wecode.com"
-              />
+            <td>
+              {isFetchTrueInfo && (
+                <input
+                  type="text"
+                  readOnly="true"
+                  className="userEmail"
+                  value={userInfo[0].email}
+                />
+              )}
             </td>
           </tr>
         </table>

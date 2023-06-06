@@ -11,6 +11,7 @@ import { MESSAGE } from '../Order/OrderUiData/message';
 
 function OrderAddress() {
   const [isAddress, setIsAddress] = useState(false);
+  const [isDelivery, setIsDelivery] = useState(false);
 
   return (
     <div className="orderAddress">
@@ -30,7 +31,11 @@ function OrderAddress() {
           <div className="selectDelivery">
             {DELIVERY.map(del => {
               return (
-                <button className="deliveryBtn" key={del.id}>
+                <button
+                  className="deliveryBtn"
+                  key={del.id}
+                  onClick={() => setIsDelivery(true)}
+                >
                   {del.name}
                 </button>
               );
