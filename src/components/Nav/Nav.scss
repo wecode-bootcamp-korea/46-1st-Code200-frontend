@@ -11,10 +11,9 @@
   background-color: white;
 
   .topLogo {
-    @include componentSize(15%, '');
+    @include componentSize(280px, '');
     margin-left: 10px;
     margin-right: 10px;
-    width: 280px;
     min-width: 280px;
   }
 
@@ -29,25 +28,18 @@
   }
 
   .topMenu {
-    @include componentSize(70%, '');
+    @include componentSize(900px, '');
+    min-width: 900px;
     text-align: center;
-    // margin-right: 280px;
-    margin-left: 20px;
-  }
 
-  .topMenuCategoryUl {
-    @include flexSort(row, space-between, center);
-    @include componentSize(100%, 90px);
-    list-style: none;
-  }
-
-  .topMenuCategoryLi {
-    @include componentSize(150px, 90px);
-    text-align: left;
-    margin-top: 40px;
-    padding: 20px 5px;
-    font-size: large;
-    display: inline;
+    .topMenuCategoryLi {
+      @include componentSize(150px, 90px);
+      text-align: left;
+      margin-top: 40px;
+      padding: 20px 0;
+      font-size: large;
+      display: inline-block;
+    }
   }
 
   .navLink {
@@ -69,8 +61,10 @@
   }
 
   .topMember {
-    @include componentSize(15%, 90px);
-    position: relative;
+    @include componentSize(280px, 90px);
+    min-width: 280px;
+    margin-top: 40px;
+    //position: relative;
     top: 20px;
     right: 0;
 
@@ -81,11 +75,16 @@
   }
 
   .subCategory {
-    @include flexSort(row, space-between, center);
     @include componentSize(100%, 180px);
+    @include flexSort(row, space-between, center);
     background-color: white;
     min-width: 100%;
     animation: modalShowTop 0.5s;
+  }
+
+  .topLogo {
+    width: 280px;
+    height: 90px;
   }
 
   .subCategoryImg {
@@ -107,14 +106,13 @@
     }
   }
   .dev {
-    @include componentSize(100%, '');
+    @include componentSize(900px, '');
     background-color: white;
-    padding-left: 300px;
-    margin-left: 20px;
-    min-width: 100%;
+    margin-left: -5px;
+    min-width: 900px;
 
     .bottomMenuCategoryUl {
-      margin-right: 10px;
+      @include componentSize(150px, '');
       @include flexSort(row, space-between, center);
       // min-width: 155px;
       // width: 135px;
@@ -123,8 +121,7 @@
     }
 
     .bottomMenuCategoryLi {
-      @include componentSize(150px, '');
-      margin: 10px 4px;
+      margin: 10px 0;
       text-align: left;
       padding: 0;
       display: block;

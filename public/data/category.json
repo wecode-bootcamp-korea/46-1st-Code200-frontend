@@ -40,7 +40,7 @@
         },
         {
           "subCategoryId": 8,
-          "subCategoryName": "샌드위치&샐러드"
+          "subCategoryName": "샌드위치"
         },
         {
           "subCategoryId": 9,
@@ -48,7 +48,7 @@
         },
         {
           "subCategoryId": 10,
-          "subCategoryName": "과일 & 요거트"
+          "subCategoryName": "요거트"
         }
       ]
     },

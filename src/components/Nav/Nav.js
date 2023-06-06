@@ -32,23 +32,21 @@ const Nav = () => {
           </Link>
         </div>
         <div className="topMenu">
-          <ul className="topMenuCategoryUl">
-            {categoryList.map(category => {
-              return (
-                <li className="topMenuCategoryLi" key={category.categoryId}>
-                  <Link
-                    className="navLink"
-                    to="/"
-                    onMouseEnter={() => {
-                      setHide(false);
-                    }}
-                  >
-                    {category.categoryName}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          {categoryList.map(category => {
+            return (
+              <span className="topMenuCategoryLi" key={category.categoryId}>
+                <Link
+                  className="navLink"
+                  to="/"
+                  onMouseEnter={() => {
+                    setHide(false);
+                  }}
+                >
+                  {category.categoryName}
+                </Link>
+              </span>
+            );
+          })}
         </div>
         <div className="topMember">
           {IMG_SRC.map(img =>
@@ -76,13 +74,14 @@ const Nav = () => {
         </div>
       </div>
 
-      {!hide && (
+      {hide && (
         <div
           className="subCategory"
           onMouseLeave={() => {
             setHide(true);
           }}
         >
+          <div className="topLogo" />
           <div className="dev">
             {isSubCategory &&
               categoryList.map(category => {
