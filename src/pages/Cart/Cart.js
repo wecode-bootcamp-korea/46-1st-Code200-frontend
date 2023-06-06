@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import QuantityBtn from '../../components/QuantityBtn/QuantityBtn';
-import '../../styles/reset.scss';
-import '../../styles/common.scss';
 import './Cart.scss';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const totalPrice = (cartList.price * cartList.quantity).toLocaleString();
-  const [itemIdsToDelete, setItemIdsToDelete] = useState([]);
+  const [selectedItemIds, setSelectedItemIds] = useState([]);
   //const token =
   //  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
   const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://10.58.52.154:8000/carts?userId=14', {
@@ -27,8 +26,20 @@ function Cart() {
       });
   }, []);
 
+  const addSelectedItems = cartId => {
+    // cartList.map(list => {
+    //   if (list.cartId === cartId) {
+    //     setSelectedItemIds([...selectedItemIds, cartId]);
+    //     console.log(selectedItemIds);
+    //   }
+    //   return list;
+    // });
+    setSelectedItemIds([...selectedItemIds, cartId]);
+    console.log(selectedItemIds);
+  };
+
   const deleteItem = id => {
-    fetch(`http://10.58.52.154:8000/carts/${id}}`, {
+    fetch(`http://10.58.52.237:8000/carts/${id}}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -40,34 +51,28 @@ function Cart() {
   };
 
   const deleteSelected = () => {
-    fetch('http://10.58.52.154:8000/carts', {
-      method: 'PATCH',
+    fetch('http://10.58.52.237:8000/carts', {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        cartIds: itemIdsToDelete,
+        cartIds: selectedItemIds,
       }),
     })
-      .then(response => {
-        if (response.ok) {
-          console.log('Selected data deleted successfully');
-        } else {
-          console.log('Failed to delete selected data');
-        }
-      })
+      .then(response => response.json())
+      .then(data => console.log(data))
       .catch(error => console.error('error: ', error));
   };
 
-  const addItemToDelete = cartId => {
-    cartList.map(list => {
-      if (list.cartId === cartId) {
-        setItemIdsToDelete([...itemIdsToDelete, cartId]);
-        console.log(itemIdsToDelete);
-      }
-      return list;
-    });
-  };
+  // const orderSelected = () => {
+  //   fetch('http://10.58.52.237:8000/', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       id: selectedItemIds,
+  //     }),
+  //   }).then(response => response.json());
+  // };
 
   return (
     <div className="cart">
@@ -90,7 +95,7 @@ function Cart() {
           return (
             <tr key={data.cartId}>
               <td className="checkbox">
-                <button onClick={() => addItemToDelete(data.cartId)}>v</button>
+                <button onClick={() => addSelectedItems(data.cartId)}>v</button>
               </td>
               <td className="thumbnailBox">
                 <Link to="/product-detail">
@@ -154,7 +159,14 @@ function Cart() {
       </div>
       <div className="orderBtnBox">
         <button className="orderSelectedBtn">선택상품주문</button>
-        <button className="continueShoppingBtn">쇼핑계속하기</button>
+        <button
+          className="continueShoppingBtn"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          쇼핑계속하기
+        </button>
         <button className="orderAllBtn">전체상품주문</button>
       </div>
     </div>

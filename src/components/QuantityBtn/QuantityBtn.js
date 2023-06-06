@@ -15,7 +15,7 @@ const QuantityBtn = ({ quantity, cartList, setCartList, cartId, userId }) => {
   };
 
   const postQuantity = () => {
-    fetch('http://10.58.52.133:8000/carts/10/2', {
+    fetch('http://10.58.52.237:8000/carts/10', {
       method: 'PATCH',
       body: JSON.stringify({
         quantity: quantity,
