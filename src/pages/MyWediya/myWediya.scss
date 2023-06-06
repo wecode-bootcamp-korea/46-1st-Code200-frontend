@@ -1,0 +1,90 @@
+.myWediya {
+  width: 80%;
+  min-width: 1240px;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mypageSide {
+  width: 215px;
+  max-width: 215px;
+  float: left;
+  margin: auto 50px;
+
+  .subTitle {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer;
+  }
+
+  li {
+    color: #707070;
+    font-size: 14px;
+    line-height: 33px;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+.mypageTitle {
+  border-bottom: 2px solid #1a1a1a;
+  padding: 0;
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.myPageMain {
+  width: 70%;
+  .myPageContent {
+    width: 100%;
+    margin: 30px auto 0;
+    background-color: #f7f7f7;
+
+    ul {
+      display: flex;
+    }
+
+    .firstchild {
+      font-size: 16px;
+      color: #1a1a1a;
+      box-sizing: border-box;
+      text-align: center;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .listStyle {
+      font-size: 16px;
+      color: #1a1a1a;
+      box-sizing: border-box;
+      text-align: center;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: url('https://www.spao.com/morenvyimg/mypage_icon_arrow_big.png')
+        no-repeat left center;
+    }
+
+    span {
+      font-size: 24px;
+      color: #1a1a1a;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+  }
+}

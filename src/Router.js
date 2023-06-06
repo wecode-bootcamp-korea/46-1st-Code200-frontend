@@ -10,6 +10,7 @@ import Order from './pages/Order/Order';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Review from './components/Review/Review';
+import MyWediya from './pages/MyWediya/myWediya';
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/myWediya" element={<MyWediya />} />
       </Routes>
       <Footer />
     </BrowserRouter>
