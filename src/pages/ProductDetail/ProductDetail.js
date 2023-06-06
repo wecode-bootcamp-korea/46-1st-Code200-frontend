@@ -12,13 +12,14 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 function ProductDetail() {
   const [productDetail, setProductDetail] = useState({});
-  const [isImg, setIsImg] = useState(false);
+  const [isProduct, setIsProduct] = useState(false);
   const params = useParams();
   const productId = params.id;
   const [count, setCount] = useState(1);
   const price = productDetail?.price;
   const totalPrice = Number(price) * Number(count);
   const [isHeart, setIsHeart] = useState(false);
+  const userId = window.localStorage.getItem('userId');
 
   const CATEGORY_ARR = [
     {
@@ -36,21 +37,35 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    //fetch('http://10.58.52.237:8000/products/2', { method: 'GET' })
-    // fetch(`data/productDetail.json/${productId}`, { method: 'GET' })
-    fetch('data/productDetail.json', { method: 'GET' })
+    fetch('http://10.58.52.192:8000/products/1', { method: 'GET' })
+      // fetch(`data/productDetail.json/${productId}`, { method: 'GET' })
+      // fetch('data/productDetail.json', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
-        setProductDetail(data.data[0]);
-        setIsImg(true);
+        setProductDetail(data.product[0]);
+        setIsProduct(true);
       });
-  }, [productId]);
+  }, []);
 
   const LikeUpdate = () => {
     fetch('', {
       method: 'POST',
       body: JSON.stringify({
         isHeart: isHeart,
+        productId: productId,
+        userId: userId,
+      }),
+    }).then(response => response.json());
+  };
+
+  const cartInput = () => {
+    fetch('http://10.58.52.198:8000/carts/list', {
+      method: 'POST',
+      body: JSON.stringify({
+        productId: productId,
+        quantity: count,
+        userId: userId,
+        sizeId: 1,
       }),
     }).then(response => response.json());
   };
@@ -61,13 +76,13 @@ function ProductDetail() {
         <div className="productDetailImg">
           <div className="detailTopImg">
             <ul className="detailTopImgUl">
-              {isImg &&
-                productDetail.image.map(productDetailImg => {
+              {isProduct &&
+                productDetail.imageUrls.map((productDetailImg, index) => {
                   return (
-                    <li className="detailTopImgli" key={productDetailImg.index}>
+                    <li className="detailTopImgli" key={index}>
                       <img
                         className="bestItemImg"
-                        src={productDetailImg.imageUrl}
+                        src={productDetailImg}
                         alt="bestItem"
                       />
                     </li>
@@ -100,7 +115,7 @@ function ProductDetail() {
             </div>
             <div className="productDetailInner">
               <div className="productAmount">
-                <span>{price.toLocaleString()}</span>
+                {isProduct && <span>{Number(price).toLocaleString()}</span>}
               </div>
               <div className="productShare">
                 <img
@@ -123,7 +138,7 @@ function ProductDetail() {
           </div>
           <div className="detailDescription">
             <span className="welcomeSpan">
-              [{productDetail.category}]{productDetail.name}
+              [{productDetail.category}] {productDetail.name}
             </span>
             <Count count={count} setCount={setCount} />
           </div>
@@ -134,7 +149,9 @@ function ProductDetail() {
               setIsHeart={setIsHeart}
               LikeUpdate={LikeUpdate}
             />
-            <button className="subCartMove">장바구니</button>
+            <button className="subCartMove" onClick={() => cartInput()}>
+              장바구니
+            </button>
             <button className="buyMove">바로구매</button>
           </div>
           <div className="productReviewEventCard">
@@ -200,9 +217,7 @@ function ProductDetail() {
           })}
         </div>
       </div>
-      <div className="review">
-        <Review />
-      </div>
+      <div className="review">{/* <Review /> */}</div>
     </div>
   );
 }
