@@ -15,14 +15,18 @@ const QuantityBtn = ({ quantity, cartList, setCartList, cartId, userId }) => {
   };
 
   const postQuantity = () => {
-    fetch('http://10.58.52.237:8000/carts/10', {
+    fetch(`http://10.58.52.192:8000/carts/${cartId}`, {
       method: 'PATCH',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+        'Content-Type': 'application/json;charset=utf-8',
+      },
       body: JSON.stringify({
         quantity: quantity,
-        cartId: cartId,
-        userId: userId,
       }),
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   return (

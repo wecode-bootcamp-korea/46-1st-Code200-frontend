@@ -29,7 +29,7 @@
     th,
     td {
       padding: 20px 0;
-      border: 1px solid lightgrey;
+      border-bottom: 1px solid lightgrey;
       vertical-align: middle;
 
       &:nth-child(1) {
@@ -68,7 +68,8 @@
     }
 
     .thumbnail {
-      width: 80px;
+      width: 90px;
+      padding: 20px 0;
 
       &:hover {
         opacity: 0.7;

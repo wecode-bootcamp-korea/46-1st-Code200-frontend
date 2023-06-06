@@ -5,15 +5,19 @@ import './Cart.scss';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
-  const totalPrice = (cartList.price * cartList.quantity).toLocaleString();
   const [selectedItemIds, setSelectedItemIds] = useState([]);
-  //const token =
-  //  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
-  const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  let subTotal = 0;
+  let shippingFee = 0;
+  let totalPrice = 0;
+  let query = '';
 
   useEffect(() => {
-    fetch('http://10.58.52.154:8000/carts?userId=14', {
+    fetchCartList();
+  }, []);
+
+  const fetchCartList = () => {
+    fetch('http://10.58.52.192:8000/carts', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -23,46 +27,57 @@ function Cart() {
       .then(data => {
         console.log(data);
         setCartList(data.data);
-      });
-  }, []);
+      })
+      .catch(error => console.error('error: ', error));
+  };
 
   const addSelectedItems = cartId => {
-    // cartList.map(list => {
-    //   if (list.cartId === cartId) {
-    //     setSelectedItemIds([...selectedItemIds, cartId]);
-    //     console.log(selectedItemIds);
-    //   }
-    //   return list;
-    // });
-    setSelectedItemIds([...selectedItemIds, cartId]);
-    console.log(selectedItemIds);
+    // setSelectedItemIds([...selectedItemIds, cartId]);
+    if (query.includes(cartId)) {
+      console.log('included');
+      let lookFor = `cartId=${cartId}`;
+      const index = query.indexOf(lookFor);
+      console.log(index);
+      const test = '&' + lookFor;
+      if (index > 0) query = query.replace(test, '');
+      else query = query.replace(lookFor, '');
+      console.log(query);
+      return query;
+    }
+    if (query.length > 0) query += '&';
+    query += `cartId=${cartId}`;
+    console.log(query);
   };
 
   const deleteItem = id => {
-    fetch(`http://10.58.52.237:8000/carts/${id}}`, {
+    fetch(`http://10.58.52.192:8000/carts?cartId=${id}`, {
       method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
     })
       .then(response => {
-        if (!response.ok) {
+        if (response.ok) {
           throw new Error('Delete was not successful');
         }
+        setCartList(prevCartList =>
+          prevCartList.filter(item => item.cartId !== id)
+        );
       })
       .catch(error => console.error('error: ', error));
   };
 
   const deleteSelected = () => {
-    fetch('http://10.58.52.237:8000/carts', {
+    fetch(`http://10.58.52.192:8000/carts?${query}`, {
       method: 'DELETE',
       headers: {
+        Authorization: localStorage.getItem('token'),
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        cartIds: selectedItemIds,
-      }),
     })
-      .then(response => response.json())
-      .then(data => console.log(data))
+      .then(res => res.json())
       .catch(error => console.error('error: ', error));
+    fetchCartList();
   };
 
   // const orderSelected = () => {
@@ -73,7 +88,6 @@ function Cart() {
   //     }),
   //   }).then(response => response.json());
   // };
-
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
@@ -91,47 +105,56 @@ function Cart() {
             <th />
           </tr>
         </thead>
-        {cartList.map(data => {
-          return (
-            <tr key={data.cartId}>
-              <td className="checkbox">
-                <button onClick={() => addSelectedItems(data.cartId)}>v</button>
-              </td>
-              <td className="thumbnailBox">
-                <Link to="/product-detail">
-                  <img
-                    src={data.url}
-                    alt={`${data.name}`}
-                    className="thumbnail"
+        <tbody>
+          {cartList.map(data => {
+            const itemTotalPrice = Number(data.price) * data.quantity;
+            subTotal += itemTotalPrice;
+            const itemTotalPriceStr = itemTotalPrice.toLocaleString();
+            totalPrice = subTotal + shippingFee;
+
+            return (
+              <tr key={data.cartId}>
+                <td className="checkbox">
+                  <button onClick={() => addSelectedItems(data.cartId)}>
+                    v
+                  </button>
+                </td>
+                <td className="thumbnailBox">
+                  <Link to="/product-detail">
+                    <img
+                      src={data.image}
+                      alt={`${data.name}`}
+                      className="thumbnail"
+                    />
+                  </Link>
+                </td>
+                <td className="productName">
+                  <Link to="/product-detail">{data.name}</Link>
+                </td>
+                <td className="quantity">
+                  <QuantityBtn
+                    quantity={data.quantity}
+                    cartList={cartList}
+                    setCartList={setCartList}
+                    cartId={data.cartId}
+                    userId={data.userId}
                   />
-                </Link>
-              </td>
-              <td className="productName">
-                <Link to="/product-detail">{data.name}</Link>
-              </td>
-              <td className="quantity">
-                <QuantityBtn
-                  quantity={data.quantity}
-                  cartList={cartList}
-                  setCartList={setCartList}
-                  cardId={data.cartId}
-                  userId={data.userId}
-                />
-              </td>
-              <td className="shippingType">{data.shipping}</td>
-              <td className="totalPrice">{totalPrice}</td>
-              <td className="deleteItem">
-                <button
-                  onClick={() => {
-                    deleteItem(data.cartId);
-                  }}
-                >
-                  삭제
-                </button>
-              </td>
-            </tr>
-          );
-        })}
+                </td>
+                <td className="shippingType">{data.shipping}</td>
+                <td className="itemTotalPrice">{itemTotalPriceStr}</td>
+                <td className="deleteItem">
+                  <button
+                    onClick={() => {
+                      deleteItem(data.cartId);
+                    }}
+                  >
+                    삭제
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <div className="deleteBtnBox">
         <button className="deleteSelected" onClick={deleteSelected}>
@@ -144,17 +167,17 @@ function Cart() {
       <div className="priceSummary">
         <div className="totalItemPrice">
           <span>총 상품금액</span>
-          <h3>20,000</h3>
+          <h3>{subTotal.toLocaleString()}</h3>
         </div>
         <h3>+</h3>
         <div className="totalShippingFee">
           <span>총 배송비</span>
-          <h3>0</h3>
+          <h3>{shippingFee}</h3>
         </div>
         <h3>=</h3>
         <div className="finalPrice">
           <span>결제예정금액</span>
-          <h3>20,000</h3>
+          <h3>{totalPrice.toLocaleString()}</h3>
         </div>
       </div>
       <div className="orderBtnBox">
