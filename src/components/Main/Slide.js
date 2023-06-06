@@ -1,5 +1,5 @@
 import './Slide.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SLIDE_LIST from './SlideList';
 import SLIDE_BUTTON_LIST from './SlideButtonList';
 
@@ -25,6 +25,16 @@ function Slide() {
     }
     setChecked(slideNumer);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRight();
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  });
 
   return (
     <div className="main">
