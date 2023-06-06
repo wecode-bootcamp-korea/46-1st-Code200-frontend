@@ -11,11 +11,11 @@ function ProductList() {
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
   const subcategory = searchParams.getAll('subcategoryId');
-  const query = searchParams.toString();
 
-  console.log(subcategory);
   useEffect(() => {
-    fetch(`http://3.36.126.240:8000/products?${query}`)
+    const query = searchParams.toString();
+
+    fetch(`http://10.58.52.198:8000/products/?${query}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -24,7 +24,14 @@ function ProductList() {
       .catch(error => {
         console.error('Error', error);
       });
+    defaultParams();
   }, [searchParams]);
+
+  const defaultParams = () => {
+    searchParams.set('categoryId', 2);
+    searchParams.set('limit', 12);
+    setSearchParams(searchParams);
+  };
 
   const toggleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
@@ -74,7 +81,6 @@ function ProductList() {
 
   const movePage = pageNumber => {
     searchParams.set('offset', (pageNumber - 1) * 12);
-    searchParams.set('limit', 12);
     setSearchParams(searchParams);
   };
 
@@ -115,18 +121,19 @@ function ProductList() {
             );
           })}
         </div>
+        <div className="searchBar">
+          <input
+            type="text"
+            placeholder="제품을 검색해보세요 🔍"
+            onChange={e => setSearchInput(e.target.value)}
+            className="searchInput"
+          />
+        </div>
       </aside>
 
       <main className="main">
         <h3 className="h3">원두</h3>
-        <div className="searchBar">
-          <input
-            type="text"
-            placeholder="제품을 검색해보세요"
-            onChange={e => setSearchInput(e.target.value)}
-          />
-          <button>검색</button>
-        </div>
+
         <div className="sortDropDown">
           <button className="dropDownBtn" onClick={toggleDropDown}>
             <span>상품정렬</span>
