@@ -5,8 +5,43 @@ import './myWediya.scss';
 function MyWediya() {
   return (
     <div className="myWediya">
-      <div className="mypageTitle">
-        김유저 님 위디야를 이용해 주셔서 감사합니다.
+      <div className="mypageTop">
+        <div className="mypageTitle">
+          김유저 님 위디야를 이용해 주셔서 감사합니다.
+        </div>
+        <div>
+          <ul className="mainWrap">
+            <li>
+              <div className="box">
+                <span>NEW</span>
+                <p>다음 등급까지 남은 금액은 1입니다.</p>
+                <p>회원 등급별 혜택보기 ></p>
+              </div>
+            </li>
+            <li>
+              <div className="title box">총 적립금</div>
+              <p>0</p>
+              <span>원</span>
+            </li>
+            <li>
+              <div className="title box">사용 가능 적립금</div>
+              <div>
+                <p>0</p>
+                <span>원</span>
+              </div>
+            </li>
+            <li>
+              <div className="title box">사용 적립금</div>
+              <p>0</p>
+              <span>원</span>
+            </li>
+            <li>
+              <div className="title box">쿠폰</div>
+              <p>5</p>
+              <span>개</span>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="pageWrap">
