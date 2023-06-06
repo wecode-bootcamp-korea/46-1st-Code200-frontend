@@ -1,0 +1,16 @@
+.scroll {
+  position: relative;
+
+  .scrollBtn {
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 60px;
+      cursor: pointer;
+    }
+  }
+}
