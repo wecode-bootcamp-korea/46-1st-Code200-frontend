@@ -3,19 +3,14 @@ import StarRating from '../StarRating/StarRating';
 import './Review.scss';
 
 function Review() {
+  const [average, setAverage] = useState([]);
+  const [total, setTotal] = useState('');
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [reviewRating, setReviewRating] = useState('');
 
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
-
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth',
-    });
-  };
 
   // 별점
   const handleReviewRating = index => {
@@ -60,8 +55,9 @@ function Review() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data.reviews);
         setReview(data.reviews.reverse());
+        setAverage(data.product[0].average);
+        setTotal(data.reviews.length);
       });
   };
 
@@ -83,7 +79,7 @@ function Review() {
     <div className="Review">
       <div className="reviewTitle">
         <span>REVIEW</span>
-        <span>(total)</span>
+        <span>({total})</span>
       </div>
 
       <div className="reviewSummary">
@@ -92,7 +88,7 @@ function Review() {
           <div className="rating">
             <div className="point">
               <img src="/images/star.png" alt="별" />
-              <p className="start">5.0</p>
+              <p className="start">{average}</p>
             </div>
           </div>
         </div>
