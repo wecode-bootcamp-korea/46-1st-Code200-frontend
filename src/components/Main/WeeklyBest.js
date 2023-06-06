@@ -13,11 +13,11 @@ function WeeklyBest() {
   useEffect(() => {
     let url = '';
     if (clicked === 'taps1') {
-      url = '/data/bean.json';
+      url = 'http://3.36.126.240:800/products?categoryId=2';
     } else if (clicked === 'taps2') {
-      url = '/data/beverage.json';
+      url = 'http://3.36.126.240:800/products?categoryId=[categoryId]';
     } else if (clicked === 'taps3') {
-      url = '/data/food.json';
+      url = 'http://3.36.126.240:800/products?categoryId=[categoryId]';
     }
 
     if (url) {
@@ -26,6 +26,7 @@ function WeeklyBest() {
       })
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           setPrdList(data);
         });
     }
