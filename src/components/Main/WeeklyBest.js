@@ -16,9 +16,9 @@ function WeeklyBest() {
     if (clicked === 'taps1') {
       url = 'http://10.58.52.198:8000/products';
     } else if (clicked === 'taps2') {
-      url = 'http://10.58.52.198:8000/products';
+      url = 'http://10.58.52.198:8000/products/?subcategoryId=12';
     } else if (clicked === 'taps3') {
-      url = 'http://10.58.52.198:8000/products';
+      url = 'http://10.58.52.198:8000/products/?subcategoryId=10';
     }
 
     if (url) {
