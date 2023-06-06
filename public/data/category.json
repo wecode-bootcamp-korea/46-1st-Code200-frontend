@@ -3,120 +3,147 @@
     {
       "categoryId": 1,
       "categoryName": "음료",
+      "link": "/product-list",
       "subCategories": [
         {
           "subCategoryId": 1,
-          "subCategoryName": "콜드브루"
+          "subCategoryName": "콜드브루",
+          "subLink": "/"
         },
         {
           "subCategoryId": 2,
-          "subCategoryName": "브루드커피"
+          "subCategoryName": "브루드커피",
+          "subLink": "/"
         },
         {
           "subCategoryId": 3,
-          "subCategoryName": "에스프레소"
+          "subCategoryName": "에스프레소",
+          "subLink": "/"
         },
         {
           "subCategoryId": 4,
-          "subCategoryName": "프라푸치노"
+          "subCategoryName": "프라푸치노",
+          "subLink": "/"
         },
         {
           "subCategoryId": 5,
-          "subCategoryName": "블렌디드"
+          "subCategoryName": "블렌디드",
+          "subLink": "/"
         }
       ]
     },
     {
       "categoryId": 2,
-      "categoryName": "푸드",
+      "categoryName": "원두",
+      "link": "/product-list",
       "subCategories": [
         {
           "subCategoryId": 6,
-          "subCategoryName": "브레드"
+          "subCategoryName": "브레드",
+          "subLink": "/product-detail"
         },
         {
           "subCategoryId": 7,
-          "subCategoryName": "케이크"
+          "subCategoryName": "케이크",
+          "subLink": "/"
         },
         {
           "subCategoryId": 8,
-          "subCategoryName": "샌드위치"
+          "subCategoryName": "샌드위치",
+          "subLink": "/"
         },
         {
           "subCategoryId": 9,
-          "subCategoryName": "따뜻한 푸드"
+          "subCategoryName": "따뜻한 푸드",
+          "subLink": "/"
         },
         {
           "subCategoryId": 10,
-          "subCategoryName": "요거트"
+          "subCategoryName": "요거트",
+          "subLink": "/"
         }
       ]
     },
     {
       "categoryId": 3,
       "categoryName": "상품",
+      "link": "/product-list",
       "subCategories": [
         {
           "subCategoryId": 11,
-          "subCategoryName": "머그"
+          "subCategoryName": "머그",
+          "subLink": "/"
         },
         {
           "subCategoryId": 12,
-          "subCategoryName": "글라스"
+          "subCategoryName": "글라스",
+          "subLink": "/"
         },
         {
           "subCategoryId": 13,
-          "subCategoryName": "텀블러"
+          "subCategoryName": "텀블러",
+          "subLink": "/"
         },
         {
           "subCategoryId": 14,
-          "subCategoryName": "커피 용품"
+          "subCategoryName": "커피 용품",
+          "subLink": "/"
         }
       ]
     },
     {
       "categoryId": 4,
       "categoryName": "매장찾기",
+      "link": "/product-list",
       "subCategories": [
         {
           "subCategoryId": 15,
-          "subCategoryName": "퀵 검색"
+          "subCategoryName": "퀵 검색",
+          "subLink": "/"
         },
         {
           "subCategoryId": 16,
-          "subCategoryName": "지역 검색"
+          "subCategoryName": "지역 검색",
+          "subLink": "/"
         }
       ]
     },
     {
       "categoryId": 5,
       "categoryName": "이벤트",
+      "link": "/product-list",
       "subCategories": [
         {
           "subCategoryId": 17,
-          "subCategoryName": "공지사항"
+          "subCategoryName": "공지사항",
+          "subLink": "/"
         },
         {
           "subCategoryId": 18,
-          "subCategoryName": "고객지원"
+          "subCategoryName": "고객지원",
+          "subLink": "/"
         }
       ]
     },
     {
       "categoryId": 6,
       "categoryName": "브랜드소식",
+      "link": "/product-list",
       "subCategories": [
         {
           "subCategoryId": 19,
-          "subCategoryName": "지역사회참여활동"
+          "subCategoryName": "지역사회참여활동",
+          "subLink": "/"
         },
         {
           "subCategoryId": 20,
-          "subCategoryName": "환경보호활동"
+          "subCategoryName": "환경보호활동",
+          "subLink": "/"
         },
         {
           "subCategoryId": 21,
-          "subCategoryName": "윤리구매"
+          "subCategoryName": "윤리구매",
+          "subLink": "/"
         }
       ]
     }

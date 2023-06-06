@@ -23,7 +23,13 @@ const Nav = () => {
     <div className="nav">
       <div className="topNav">
         <div className="topLogo">
-          <Link className="link" to="/">
+          <Link
+            className="link"
+            to="/"
+            onClick={() => {
+              setHide(true);
+            }}
+          >
             <img
               className="logoIcons"
               src="https://raw.githubusercontent.com/dxxcw/code200-images/35f700c12816ed36ec7194d724a60969c7efaad7/images/Main/logo/3.png"
@@ -37,7 +43,7 @@ const Nav = () => {
               <span className="topMenuCategoryLi" key={category.categoryId}>
                 <Link
                   className="navLink"
-                  to="/"
+                  to={category.link}
                   onMouseEnter={() => {
                     setHide(false);
                   }}
@@ -74,7 +80,7 @@ const Nav = () => {
         </div>
       </div>
 
-      {hide && (
+      {!hide && (
         <div
           className="subCategory"
           onMouseLeave={() => {
@@ -96,7 +102,13 @@ const Nav = () => {
                           className="bottomMenuCategoryLi"
                           key={subCategory.subCategoryId}
                         >
-                          <Link className="dev1Link" to="/">
+                          <Link
+                            className="dev1Link"
+                            to={subCategory.subLink}
+                            onClick={() => {
+                              setHide(true);
+                            }}
+                          >
                             {subCategory.subCategoryName}
                           </Link>
                         </li>
