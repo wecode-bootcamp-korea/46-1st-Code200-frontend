@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+import { Link } from 'react-router-dom';
 import TAP_LIST from './TapList';
 import './WeeklyBest.scss';
 
@@ -13,11 +14,11 @@ function WeeklyBest() {
   useEffect(() => {
     let url = '';
     if (clicked === 'taps1') {
-      url = 'http://3.36.126.240:800/products?categoryId=2';
+      url = 'http://10.58.52.198:8000/products';
     } else if (clicked === 'taps2') {
-      url = 'http://3.36.126.240:800/products?categoryId=[categoryId]';
+      url = 'http://10.58.52.198:8000/products';
     } else if (clicked === 'taps3') {
-      url = 'http://3.36.126.240:800/products?categoryId=[categoryId]';
+      url = 'http://10.58.52.198:8000/products';
     }
 
     if (url) {
@@ -26,8 +27,8 @@ function WeeklyBest() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
-          setPrdList(data);
+          console.log(data.data);
+          setPrdList(data.data);
         });
     }
   }, [clicked]);
@@ -54,22 +55,48 @@ function WeeklyBest() {
         ))}
       </ul>
       {/* 원두 카테고리 top4 */}
-
-      <div className="prdListWrap">
-        {prdList.map(prd => {
+      <div className="prdList">
+        {prdList.slice(0, 4).map(prd => {
           return (
-            <ul key={prd.id} className="prdList">
-              <ProductCard prdList={prdList} setPrdList={setPrdList} />
-            </ul>
-
             // <ul key={prd.id} className="prdList">
-            //   <li className="prdBox">
-            //     <div className="box">{prd.text}</div>
-            //   </li>
+            <ProductCard
+              key={prd.id}
+              prd={prd}
+              prdList={prdList}
+              setPrdList={setPrdList}
+              imgUrl={prd.imageUrls}
+              id={prd.id}
+              name={prd.name}
+              price={prd.price}
+              rating={prd.avgRating}
+              numReview={prd.countReview}
+            />
             // </ul>
           );
         })}
       </div>
+
+      {/* 
+      <div className="prdListWrap">
+        {prdList.slice(0, 4).map(prd => {
+          return (
+            // <ul key={prd.id} className="prdList">
+            <ProductCard
+              key={prd.id}
+              prd={prd}
+              prdList={prdList}
+              setPrdList={setPrdList}
+              imgUrl={prd.imageUrls}
+              id={prd.id}
+              name={prd.name}
+              price={prd.price}
+              rating={prd.avgRating}
+              numReview={prd.countReview}
+            />
+            // </ul>
+          );
+        })}
+      </div> */}
     </div>
   );
 }

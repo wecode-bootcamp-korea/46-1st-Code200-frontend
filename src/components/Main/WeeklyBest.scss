@@ -1,7 +1,6 @@
 .slide {
   width: 1406px;
   height: 618px;
-  background-color: indianred;
 }
 
 .mainWeeklyBest {
@@ -56,6 +55,7 @@
     margin: 10px;
   }
 }
+
 .prdListWrap {
   display: flex;
   justify-content: center;
@@ -63,9 +63,16 @@
   .box {
     width: 300px;
     height: 549px;
-    background-color: cornflowerblue;
+
     display: flex;
     float: left;
     margin: 5px;
   }
+}
+
+.prdList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
