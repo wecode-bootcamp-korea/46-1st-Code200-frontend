@@ -11,7 +11,10 @@ function Review() {
   const [review, setReview] = useState([]);
 
   const scrollToBottom = () => {
-    window.scroll({ bottom: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
   };
 
   // 별점
