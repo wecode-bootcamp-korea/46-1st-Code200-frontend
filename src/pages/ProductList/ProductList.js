@@ -7,6 +7,7 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchInput, setSearchInput] = useState('');
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
   const subcategory = searchParams.getAll('subcategoryId');
@@ -14,7 +15,7 @@ function ProductList() {
 
   console.log(subcategory);
   useEffect(() => {
-    fetch(`http://10.58.52.196:8000/products?${query}`)
+    fetch(`http://3.36.126.240:8000/products?${query}`)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -118,6 +119,14 @@ function ProductList() {
 
       <main className="main">
         <h3 className="h3">원두</h3>
+        <div className="searchBar">
+          <input
+            type="text"
+            placeholder="제품을 검색해보세요"
+            onChange={e => setSearchInput(e.target.value)}
+          />
+          <button>검색</button>
+        </div>
         <div className="sortDropDown">
           <button className="dropDownBtn" onClick={toggleDropDown}>
             <span>상품정렬</span>
@@ -138,19 +147,21 @@ function ProductList() {
           )}
         </div>
         <div className="productContainer">
-          {productList?.map(product => {
-            return (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                imgUrl={product.imageUrls}
-                name={product.name}
-                price={product.price}
-                rating={product.avgRating}
-                numReview={product.countReview}
-              />
-            );
-          })}
+          {productList
+            .filter(product => product.name.includes(searchInput))
+            .map(product => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  imgUrl={product.imageUrls}
+                  name={product.name}
+                  price={product.price}
+                  rating={product.avgRating}
+                  numReview={product.countReview}
+                />
+              );
+            })}
         </div>
         <div className="pagination">
           <button onClick={() => movePage(1)}>1</button>
