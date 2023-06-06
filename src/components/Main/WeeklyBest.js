@@ -56,47 +56,28 @@ function WeeklyBest() {
       </ul>
       {/* 원두 카테고리 top4 */}
       <div className="prdList">
-        {prdList.slice(0, 4).map(prd => {
+        {prdList.slice(0, 4).map((prd, index) => {
           return (
-            // <ul key={prd.id} className="prdList">
-            <ProductCard
-              key={prd.id}
-              prd={prd}
-              prdList={prdList}
-              setPrdList={setPrdList}
-              imgUrl={prd.imageUrls}
-              id={prd.id}
-              name={prd.name}
-              price={prd.price}
-              rating={prd.avgRating}
-              numReview={prd.countReview}
-            />
-            // </ul>
+            <div key={prd.id}>
+              <div className="rank">
+                <span className="rankNum">{index + 1}</span>
+              </div>
+
+              <ProductCard
+                prd={prd}
+                prdList={prdList}
+                setPrdList={setPrdList}
+                imgUrl={prd.imageUrls}
+                id={prd.id}
+                name={prd.name}
+                price={prd.price}
+                rating={prd.avgRating}
+                numReview={prd.countReview}
+              />
+            </div>
           );
         })}
       </div>
-
-      {/* 
-      <div className="prdListWrap">
-        {prdList.slice(0, 4).map(prd => {
-          return (
-            // <ul key={prd.id} className="prdList">
-            <ProductCard
-              key={prd.id}
-              prd={prd}
-              prdList={prdList}
-              setPrdList={setPrdList}
-              imgUrl={prd.imageUrls}
-              id={prd.id}
-              name={prd.name}
-              price={prd.price}
-              rating={prd.avgRating}
-              numReview={prd.countReview}
-            />
-            // </ul>
-          );
-        })}
-      </div> */}
     </div>
   );
 }
