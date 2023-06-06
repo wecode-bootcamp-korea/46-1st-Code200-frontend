@@ -285,6 +285,7 @@ function Signup() {
             id="popup"
             onClick={handleSignUp}
             className={isActive ? 'able' : 'disabled'}
+            disabled={!isActive}
           >
             회원가입하기
           </button>
