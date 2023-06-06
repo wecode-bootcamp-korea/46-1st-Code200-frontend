@@ -1,7 +1,4 @@
 import React from 'react';
-import youtubeimg from '../../../public/images/youtube_logo.jpg';
-import instagramimg from '../../../public/images/instagram.jpg';
-import facebookimg from '../../../public/images/facebook.jpg';
 import '../Footer/Footer.scss';
 
 function Footer() {
@@ -47,13 +44,25 @@ function Footer() {
         <div className="underline" />
         <div className="uibutton">
           <a href="https://www.youtube.co.kr">
-            <img className="ui" src={youtubeimg} alt="youtube_image" />
+            <img
+              className="ui"
+              src="process.env.PUBLIC_URL + /public/facebook.jpg"
+              alt="youtube_image"
+            />
           </a>
-          <a href="https://www.instagram.com">
-            <img className="ui" src={instagramimg} alt="instagram_image" />
+          <a href="https://www.instagram.com/yum_6579">
+            <img
+              className="ui"
+              src="process.env.PUBLIC_URL + /public/instagram.jpg"
+              alt="instagram_image"
+            />
           </a>
           <a href="https://www.facebook.com">
-            <img className="ui" src={facebookimg} alt="facebook_image" />
+            <img
+              className="ui"
+              src="process.env.PUBLIC_URL + /public/youtube_logo.jpg"
+              alt="facebook_image"
+            />
           </a>
         </div>
       </nav>
