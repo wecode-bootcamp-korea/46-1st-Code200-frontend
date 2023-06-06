@@ -147,9 +147,14 @@
 
       .subCartMove {
         @include componentSize(120px, 60px);
-        background-color: white;
+        background-color: $primary-color;
+        color: white;
         border: 0.5px solid gainsboro;
         margin: 8px;
+        &:hover {
+          background-color: white;
+          color: black;
+        }
       }
       .buyMove {
         @include componentSize(120px, 60px);

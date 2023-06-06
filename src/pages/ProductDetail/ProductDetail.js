@@ -19,7 +19,7 @@ function ProductDetail() {
   const price = productDetail?.price;
   const totalPrice = Number(price) * Number(count);
   const [isHeart, setIsHeart] = useState(false);
-  const userId = window.localStorage.getItem('userId');
+  //const userId = window.localStorage.getItem('userId');
 
   const CATEGORY_ARR = [
     {
@@ -42,32 +42,50 @@ function ProductDetail() {
       // fetch('data/productDetail.json', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         setProductDetail(data.product[0]);
         setIsProduct(true);
       });
   }, []);
 
+  const userId =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyS1WQiOjEzLCJpYXQiOjE2ODYwNDU0NDIsImV4cCI6MTY4NjgyMzA0Mn0.zwQj2MUAUly7EgqjOlZ6f10YXMcS5x71ljVF_vZB_3c';
+
   const LikeUpdate = () => {
-    fetch('', {
+    fetch('http://10.58.52.192:8000/likes/1', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: userId,
+      },
       body: JSON.stringify({
         isHeart: isHeart,
         productId: productId,
-        userId: userId,
       }),
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
+
+  const cartToken =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyLCJpYXQiOjE2ODYwNDA2ODEsImV4cCI6MTY4NjgxODI4MX0.a0G1a7wic-TIKAIltdhnP1Hw9UUV3loJy_ICSY2InMQ';
 
   const cartInput = () => {
     fetch('http://10.58.52.198:8000/carts/list', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: cartToken,
+      },
       body: JSON.stringify({
         productId: productId,
         quantity: count,
-        userId: userId,
         sizeId: 1,
+        userId: userId,
       }),
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   return (
@@ -188,7 +206,6 @@ function ProductDetail() {
           })}
         </div>
       </div>
-
       <div className="productInfo">
         <div className="productInfoInner">
           <div className="productDescArea">
