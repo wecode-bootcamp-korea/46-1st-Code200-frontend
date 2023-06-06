@@ -46,21 +46,21 @@ function Footer() {
           <a href="https://www.youtube.co.kr">
             <img
               className="ui"
-              src="process.env.PUBLIC_URL + /public/facebook.jpg"
+              src="https://github-production-user-asset-6210df.s3.amazonaws.com/128045089/242558580-a9e182f9-9b7b-4efb-8a1a-059bd55f0894.jpg"
               alt="youtube_image"
             />
           </a>
           <a href="https://www.instagram.com/yum_6579">
             <img
               className="ui"
-              src="process.env.PUBLIC_URL + /public/instagram.jpg"
+              src="https://user-images.githubusercontent.com/128045089/242558577-7ac98533-0a3a-4d0c-9726-121625ed1ade.jpg"
               alt="instagram_image"
             />
           </a>
           <a href="https://www.facebook.com">
             <img
               className="ui"
-              src="process.env.PUBLIC_URL + /public/youtube_logo.jpg"
+              src="https://user-images.githubusercontent.com/128045089/242558576-67271c44-cbb5-4cba-a9cd-b96ea3190b8d.jpg"
               alt="facebook_image"
             />
           </a>
