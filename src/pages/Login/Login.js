@@ -24,17 +24,22 @@ const Login = () => {
 
   const goMain = () => {
     if (isValid) {
-      fetch('http://10.58.52.134:3000/users/signin', {
+      fetch('http://10.58.52.62:8000/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         body: JSON.stringify(inputValues),
       })
         .then(res => res.json())
         .then(data => {
-          navigate('/');
+          if (data.message === 'USER_CORRECT') {
+            localStorage.setItem('token', data.token);
+            navigate('/');
+          } else {
+            alert('잘못된 아이디나 비밀번호입니다');
+          }
         });
     } else {
-      alert('잘못된 아이디나 비밀번호입니다');
+      alert('email과 비밀번호를 입력해주세요');
     }
   };
 
@@ -65,10 +70,10 @@ const Login = () => {
           로그인
         </button>
       </div>
-      <div className="findid">
+      <div className="findidd">
         <a href="##">아이디/비밀번호 찾기</a>
       </div>
-      <div className="signup">
+      <div className="signupp">
         <Link to="/signup">이메일로 회원가입</Link>
       </div>
     </div>
