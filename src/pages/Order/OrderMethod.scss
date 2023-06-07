@@ -1,0 +1,50 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.orderMethod {
+  @include componentSize(100%, 100%);
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .payMethod {
+    .payMethodBtn {
+      @include componentSize(170px, 50px);
+      padding: 10px;
+      margin: 10px;
+      background-color: white;
+      border: 1px solid gray;
+
+      &:hover {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+}
+
+.payMethodInner {
+  animation: modalShowTop 0.3s;
+}
+
+.payMethodBottom {
+  padding: 20px;
+  background-color: rgb(248, 249, 250);
+  @include componentSize(100%, 100%);
+
+  .cardSelect {
+    @include componentSize(200%, 40px);
+    margin-bottom: 20px;
+  }
+  .grayFont {
+    min-width: 100px;
+    color: gray;
+    font-size: 14px;
+  }
+  .graySpan {
+    @include componentSize(100%, 100%);
+    margin-left: 100px;
+    color: gray;
+    font-size: 14px;
+  }
+}

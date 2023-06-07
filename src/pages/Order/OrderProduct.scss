@@ -1,0 +1,26 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.orderProduct {
+  @include componentSize(100%, 100%);
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .orderProductInner {
+    animation: modalShowTop 0.3s;
+  }
+  .orderProductImg {
+    @include flexSort(row, flex-start, center);
+    @include componentSize(100%, 150px);
+    margin-left: 20px;
+
+    .productOrder {
+      @include componentSize(90px, 90px);
+    }
+  }
+
+  .orderProductInfo {
+    margin-left: 20px;
+  }
+}

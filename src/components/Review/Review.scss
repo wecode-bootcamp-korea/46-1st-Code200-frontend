@@ -1,7 +1,7 @@
 .reviewTitle {
-  border-bottom: 2px solid black;
   width: 90%;
   margin: auto;
+  border-bottom: 2px solid black;
   span {
     font-size: 20px;
     font-weight: 800;
@@ -14,17 +14,17 @@
 
 .reviewSummary {
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 20px 10px;
   text-align: center;
   width: 90%;
   margin: auto;
+  padding: 20px 10px;
   border-bottom: 1px solid lightgray;
+  text-align: center;
 
   .summary {
     border-right: 1px solid lightgray;
-    padding: 50px;
+    padding: 50px 70px 50px 50px;
   }
 
   p {
@@ -35,9 +35,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-items: center;
-    margin: auto;
     width: 200px;
+    margin: auto;
 
     .point {
       display: flex;
@@ -58,15 +57,15 @@
 
 .oneLineReview {
   .oneLineWrap {
-    border: 1px solid lightgrey;
-    border-radius: 2px;
     width: 90%;
     margin: 10px auto;
     padding: 14px 15px 18px 15px;
+    border: 1px solid lightgrey;
     border-top: 1px solid lightgray;
+    border-radius: 2px;
 
     .oneLine {
-      margin-top: 10px;
+      margin: 12px 0;
       font-size: 17px;
     }
     .userInfo {
@@ -75,30 +74,38 @@
 
     .userId {
       margin-top: 10px;
+      color: dimgray;
     }
   }
   img {
     width: 20px;
     height: 18px;
   }
+
+  .starRationgWrap {
+    display: flex;
+
+    span {
+      padding: 3px 0 0 3px;
+    }
+  }
 }
 
 .submitReview {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 300px;
-  width: 70%;
+  height: 200px;
+  width: 800px;
   padding: 10px 10px 30px 70px;
 
   .submitRating {
-    height: 50px;
     margin: auto;
+    width: 800px;
 
     p {
-      font-size: 16px;
       margin: auto;
+      font-size: 16px;
     }
 
     .starts {
@@ -106,31 +113,37 @@
     }
   }
 
-  .reviewBox {
-    width: 100%;
-    height: 100px;
-    border: 1px solid lightgrey;
-  }
+  .buttonWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    margin: auto;
 
-  .nonSubmitButton {
-    width: 100%;
-    height: 50px;
-    background-color: #9dc594;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    font-size: 18px;
-    margin-top: 10px;
-  }
+    .reviewBox {
+      width: 100%;
+      height: 60px;
+      border: 1px solid lightgrey;
+    }
 
-  .submitButton {
-    width: 100%;
-    height: 50px;
-    background-color: #017042;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    font-size: 18px;
-    margin-top: 10px;
+    .nonSubmitButton {
+      width: 100px;
+      height: 60px;
+      background-color: #9dc594;
+      border: none;
+      border-radius: 2px;
+      color: white;
+      font-size: 18px;
+    }
+
+    .submitButton {
+      width: 100px;
+      height: 60px;
+      background-color: #017042;
+      border: none;
+      border-radius: 2px;
+      color: white;
+      font-size: 18px;
+    }
   }
 }
