@@ -6,39 +6,45 @@ function MyWediya() {
   return (
     <div className="myWediya">
       <div className="mypageTop">
-        <div className="mypageTitle">
+        <div className="welcome">
           김유저 님 위디야를 이용해 주셔서 감사합니다.
         </div>
         <div>
           <ul className="mainWrap">
             <li>
-              <div className="box">
-                <span>NEW</span>
+              <div className="mypageBox">
+                <span className="mypageNew">NEW</span>
                 <p>다음 등급까지 남은 금액은 1입니다.</p>
-                <p>회원 등급별 혜택보기 ></p>
+                <p>회원 등급별 혜택보기 > </p>
               </div>
             </li>
             <li>
               <div className="title box">총 적립금</div>
-              <p>0</p>
-              <span>원</span>
+              <div>
+                <span className="mypageNum">0</span>
+                <span>원</span>
+              </div>
             </li>
             <li>
               <div className="title box">사용 가능 적립금</div>
               <div>
-                <p>0</p>
+                <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
             <li>
               <div className="title box">사용 적립금</div>
-              <p>0</p>
-              <span>원</span>
+              <div>
+                <span className="mypageNum">0</span>
+                <span>원</span>
+              </div>
             </li>
             <li>
               <div className="title box">쿠폰</div>
-              <p>5</p>
-              <span>개</span>
+              <div>
+                <span className="mypageNum">5</span>
+                <span>개</span>
+              </div>
             </li>
           </ul>
         </div>
