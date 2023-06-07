@@ -8,6 +8,8 @@ function ProductList() {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState('');
+  const [pageNumArray, setPageNumArray] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
   const subcategory = searchParams.getAll('subcategoryId');
@@ -19,7 +21,9 @@ function ProductList() {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setProductList(data.data);
+        setProductList(data.data.products);
+        setPageNum(Math.ceil(Number(data.data.total) / 12));
+        addPageNum();
       })
       .catch(error => {
         console.error('Error', error);
@@ -79,11 +83,18 @@ function ProductList() {
     setSearchParams(searchParams);
   };
 
+  const addPageNum = () => {
+    const arr = [];
+    for (let i = 1; i <= pageNum; i++) {
+      arr.push(i);
+    }
+    setPageNumArray(arr);
+  };
+
   const movePage = pageNumber => {
     searchParams.set('offset', (pageNumber - 1) * 12);
     setSearchParams(searchParams);
   };
-
   return (
     <div className="productList">
       <aside className="filtering">
@@ -171,8 +182,13 @@ function ProductList() {
             })}
         </div>
         <div className="pagination">
-          <button onClick={() => movePage(1)}>1</button>
-          <button onClick={() => movePage(2)}>2</button>
+          {pageNumArray.map(num => {
+            return (
+              <button key={num} onClick={() => movePage(num)}>
+                {num}
+              </button>
+            );
+          })}
         </div>
       </main>
     </div>
