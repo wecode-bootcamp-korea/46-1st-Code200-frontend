@@ -1,7 +1,7 @@
 .reviewTitle {
-  border-bottom: 2px solid black;
   width: 90%;
   margin: auto;
+  border-bottom: 2px solid black;
   span {
     font-size: 20px;
     font-weight: 800;
@@ -18,7 +18,9 @@
   text-align: center;
   width: 90%;
   margin: auto;
+  padding: 20px 10px;
   border-bottom: 1px solid lightgray;
+  text-align: center;
 
   .summary {
     border-right: 1px solid lightgray;
@@ -33,9 +35,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-items: center;
-    margin: auto;
     width: 200px;
+    margin: auto;
 
     .point {
       display: flex;
@@ -56,12 +57,12 @@
 
 .oneLineReview {
   .oneLineWrap {
-    border: 1px solid lightgrey;
-    border-radius: 2px;
     width: 90%;
     margin: 10px auto;
     padding: 14px 15px 18px 15px;
+    border: 1px solid lightgrey;
     border-top: 1px solid lightgray;
+    border-radius: 2px;
 
     .oneLine {
       margin: 12px 0;
@@ -93,7 +94,6 @@
 .submitReview {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 200px;
   width: 800px;
@@ -104,8 +104,8 @@
     width: 800px;
 
     p {
-      font-size: 16px;
       margin: auto;
+      font-size: 16px;
     }
 
     .starts {
