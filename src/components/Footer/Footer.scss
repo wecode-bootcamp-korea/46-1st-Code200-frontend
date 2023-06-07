@@ -7,7 +7,8 @@
 footer {
   display: grid;
   align-items: start;
-  width: 1920px;
+  width: 100%;
+  max-width: 100vw;
   height: 400px;
   margin: 0;
   padding-top: 3%;
