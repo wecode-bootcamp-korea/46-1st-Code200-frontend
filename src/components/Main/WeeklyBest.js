@@ -27,7 +27,6 @@ function WeeklyBest() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data.data);
           setPrdList(data.data);
         });
     }
@@ -57,8 +56,9 @@ function WeeklyBest() {
       {/* 원두 카테고리 top4 */}
       <div className="prdList">
         {prdList.slice(0, 4).map((prd, index) => {
+          const { id, imageUrls, name, price, avgRating, countReview } = prd;
           return (
-            <div key={prd.id}>
+            <div key={id}>
               <div className="rank">
                 <span className="rankNum">{index + 1}</span>
               </div>
@@ -67,12 +67,12 @@ function WeeklyBest() {
                 prd={prd}
                 prdList={prdList}
                 setPrdList={setPrdList}
-                imgUrl={prd.imageUrls}
-                id={prd.id}
-                name={prd.name}
-                price={prd.price}
-                rating={prd.avgRating}
-                numReview={prd.countReview}
+                imgUrl={imageUrls}
+                id={id}
+                name={name}
+                price={price}
+                rating={avgRating}
+                numReview={countReview}
               />
             </div>
           );
