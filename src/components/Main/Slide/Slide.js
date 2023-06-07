@@ -29,7 +29,7 @@ function Slide() {
   useEffect(() => {
     const interval = setInterval(() => {
       handleRight();
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
