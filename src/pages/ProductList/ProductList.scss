@@ -6,6 +6,7 @@
   @include flexSort(row, center, flex-start);
   position: relative;
   min-height: 100%;
+  padding-bottom: 50px;
   font-family: 'Noto Sans KR', serif;
 
   .filtering {
@@ -100,13 +101,13 @@
         position: relative;
         width: 100px;
         margin: 0 60px 10px 0;
-        padding: 5px 12px;
+        padding: 5px 10px;
         float: right;
         border: 1px solid #b2b2b2;
         border-radius: 2px;
         background-color: white;
         color: $primary-color;
-        font-size: 15px;
+        font-size: 14px;
 
         .arrow {
           margin-left: 10px;
@@ -149,6 +150,7 @@
     .pagination {
       @include flexSort(row, center, center);
       width: 100%;
+      margin: 50px 0 10px 0;
 
       button {
         margin: 0 3px;
