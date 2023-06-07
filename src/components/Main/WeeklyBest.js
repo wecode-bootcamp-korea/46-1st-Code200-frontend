@@ -27,8 +27,6 @@ function WeeklyBest() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data.data.products);
-          setPrdList(data.data);
           setPrdList(data.data.products);
         });
     }
