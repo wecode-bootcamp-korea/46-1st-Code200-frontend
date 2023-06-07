@@ -7,10 +7,10 @@
   flex-wrap: wrap;
 
   .mypageTop {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: left;
-    margin: 60px auto auto auto;
+
     flex-direction: column;
 
     .mypageTitle {
