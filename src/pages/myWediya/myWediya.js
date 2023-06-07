@@ -11,35 +11,35 @@ function MyWediya() {
         </div>
         <div>
           <ul className="mainWrap">
-            <li>
+            <li className="mainWrapList">
               <div className="mypageBox">
                 <span className="mypageNew">NEW</span>
                 <p classNeme="mypageText">다음 등급까지 남은 금액은 1입니다.</p>
                 <p classNeme="mypageText">회원 등급별 혜택보기 </p>
               </div>
             </li>
-            <li>
+            <li className="mainWrapList">
               <div className="mypageTitle box">총 적립금</div>
               <div>
                 <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
-            <li>
+            <li className="mainWrapList">
               <div className="mypageTitle box">사용 가능 적립금</div>
               <div>
                 <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
-            <li>
+            <li className="mainWrapList">
               <div className="mypageTitle box">사용 적립금</div>
               <div>
                 <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
-            <li>
+            <li className="mainWrapList">
               <div className="mypageTitle box">쿠폰</div>
               <div>
                 <span className="mypageNum">5</span>

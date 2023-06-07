@@ -52,7 +52,7 @@
     }
   }
 
-  li {
+  .mainWrapList {
     @include flexSort(column, center, center);
     padding: 0 40px;
     width: 100%;
