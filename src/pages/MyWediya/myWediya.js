@@ -14,8 +14,8 @@ function MyWediya() {
             <li>
               <div className="mypageBox">
                 <span className="mypageNew">NEW</span>
-                <p>다음 등급까지 남은 금액은 1입니다.</p>
-                <p>회원 등급별 혜택보기 > </p>
+                <p classNeme="mypageText">다음 등급까지 남은 금액은 1입니다.</p>
+                <p classNeme="mypageText">회원 등급별 혜택보기 > </p>
               </div>
             </li>
             <li>
