@@ -1,20 +1,28 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .nav {
   @include componentSize(100%, 90px);
-  top: 0;
-  z-index: 1;
   position: sticky;
   position: -webkit-sticky;
+  z-index: 1;
+  top: 0;
   transition: all 0.5s;
   background-color: white;
+  font-family: 'Noto Sans KR', serif;
 
   .topLogo {
+<<<<<<< HEAD
     @include componentSize(280px, '');
     margin-left: 10px;
     margin-right: 10px;
+=======
+    @include componentSize(15%, '');
+    width: 280px;
+>>>>>>> main
     min-width: 280px;
+    margin-right: 18px;
+    padding-left: 20px;
   }
 
   .topNav {
@@ -45,15 +53,14 @@
   .navLink {
     color: black;
     text-decoration: none;
-    display: inline-block;
 
     &:after {
       @include componentSize(100%, '');
-      display: block;
       content: '';
-      border-bottom: solid 2px black;
+      display: block;
       transform: scaleX(0);
       transition: transform 250ms ease-in-out;
+      border-bottom: solid 2px black;
     }
     &:hover:after {
       transform: scaleX(1);
@@ -76,6 +83,7 @@
 
   .subCategory {
     @include componentSize(100%, 180px);
+<<<<<<< HEAD
     @include flexSort(row, space-between, center);
     background-color: white;
     min-width: 100%;
@@ -85,6 +93,10 @@
   .topLogo {
     width: 280px;
     height: 90px;
+=======
+    min-width: 100%;
+    background-color: white;
+>>>>>>> main
   }
 
   .subCategoryImg {
@@ -97,15 +109,16 @@
   }
 
   .dev1Link {
-    color: gray;
-    text-decoration: none;
     margin: 2px;
+    color: gray;
     font-size: medium;
+    text-decoration: none;
     &:hover {
       color: black;
     }
   }
   .dev {
+<<<<<<< HEAD
     @include componentSize(900px, '');
     background-color: white;
     margin-left: -5px;
@@ -116,15 +129,33 @@
       @include flexSort(row, space-between, center);
       // min-width: 155px;
       // width: 135px;
+=======
+    @include componentSize(100%, '');
+    min-width: 100%;
+    padding-bottom: 20px;
+    padding-left: 300px;
+    background-color: white;
+
+    .bottomMenuCategoryUl {
+>>>>>>> main
       display: inline-block;
+      width: 135px;
+      min-width: 135px;
+      margin-right: 50px;
       vertical-align: top;
     }
 
     .bottomMenuCategoryLi {
+<<<<<<< HEAD
       margin: 10px 0;
       text-align: left;
       padding: 0;
+=======
+>>>>>>> main
       display: block;
+      margin: 10px 4px;
+      padding: 0;
+      text-align: left;
     }
   }
 }

@@ -14,11 +14,14 @@
       margin: 10px;
       background-color: white;
       border: 1px solid gray;
-
-      &:hover {
-        background-color: $primary-color;
-        color: white;
-      }
+    }
+    .selectedBtn {
+      @include componentSize(170px, 50px);
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid gray;
+      background-color: $primary-color;
+      color: white;
     }
   }
 }

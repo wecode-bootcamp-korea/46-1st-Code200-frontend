@@ -1,11 +1,5 @@
 $primary-color: #017042;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .login {
   align-items: center;
   width: 100vw;
@@ -35,44 +29,50 @@ $primary-color: #017042;
 .idcontent {
   position: relative;
   margin: 0;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 500;
   text-align: left;
 }
 
 .id {
-  width: 440px;
-  height: 50px;
-  margin-bottom: 35px;
-  padding: darkgray;
-  border: 1px solid darkgray;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 30px;
+  border: none;
   border-radius: 2px;
-  font-size: 100%;
+  background-color: #f7f7f7;
+  font-size: 17px;
 }
 
 .passwordcontent {
   position: relative;
   margin: 0;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 500;
   text-align: left;
 }
 
 .password {
-  width: 440px;
-  height: 50px;
+  width: 100%;
+  height: 70px;
   margin-bottom: 35px;
-  border: 1px solid darkgray;
+  border: none;
   border-radius: 2px;
-  font-size: 100%;
+  background-color: #f7f7f7;
+  font-size: 17px;
 }
 
 .loginbutton {
-  width: 440px;
-  height: 50px;
+  width: 450px;
+  height: 70px;
   margin-top: 10px;
   margin-bottom: 20px;
   border: 0.5px solid gray;
   border-radius: 2px;
   background-color: $primary-color;
+  color: white;
+  font-size: 100%;
+  font-weight: bold;
   &:hover {
     background: lighten($primary-color, 10%);
 
@@ -80,17 +80,19 @@ $primary-color: #017042;
       background: darken($primary-color, 10%);
     }
   }
-  font-size: 100%;
-  font-weight: bold;
 }
-.findid {
-  margin-bottom: 30px;
+.findidd {
+  position: center;
+  width: 100%;
+  height: 10%;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
 }
 
-.signup {
+.signupp {
+  width: 100%;
+  height: 10%;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
