@@ -2,7 +2,7 @@
 @import '../../styles/variables.scss';
 
 .bottomNav {
-  @include componentSize(80px, 85px);
+  @include componentSize(80px, '');
   z-index: 2;
   position: fixed;
   top: 90px;

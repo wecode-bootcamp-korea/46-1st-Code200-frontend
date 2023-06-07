@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MyPage.scss';
 
-function MyPage({ userId }) {
+function MyPage({ userId, setMyHide, myHide }) {
   return (
     <div className="bottomNav">
       <div className="bottomNavMy">
@@ -11,7 +11,13 @@ function MyPage({ userId }) {
             LOGIN.map(myPage => {
               return (
                 <li className="myPageLi" key={myPage.id}>
-                  <Link className="myPageLink" to={myPage.to}>
+                  <Link
+                    className="myPageLink"
+                    to={myPage.to}
+                    onClick={() => {
+                      setMyHide(!myHide);
+                    }}
+                  >
                     {myPage.name}
                   </Link>
                 </li>
@@ -21,7 +27,13 @@ function MyPage({ userId }) {
             NOT_LOGIN.map(myPage => {
               return (
                 <li className="myPageLi" key={myPage.id}>
-                  <Link className="myPageLink" to={myPage.to}>
+                  <Link
+                    className="myPageLink"
+                    to={myPage.to}
+                    onClick={() => {
+                      setMyHide(!myHide);
+                    }}
+                  >
                     {myPage.name}
                   </Link>
                 </li>

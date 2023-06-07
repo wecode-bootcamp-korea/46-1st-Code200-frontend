@@ -1,23 +1,20 @@
-@import '../../styles/mixin';
-@import '../../styles/variables';
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
 
 .nav {
   @include componentSize(100%, 90px);
+  top: 0;
+  z-index: 1;
   position: sticky;
   position: -webkit-sticky;
-  z-index: 1;
-  top: 0;
   transition: all 0.5s;
   background-color: white;
-  font-family: 'Noto Sans KR', serif;
 
   .topLogo {
     @include componentSize(280px, '');
     margin-left: 10px;
     margin-right: 10px;
     min-width: 280px;
-    margin-right: 18px;
-    padding-left: 20px;
   }
 
   .topNav {
@@ -48,14 +45,15 @@
   .navLink {
     color: black;
     text-decoration: none;
+    display: inline-block;
 
     &:after {
       @include componentSize(100%, '');
-      content: '';
       display: block;
+      content: '';
+      border-bottom: solid 2px black;
       transform: scaleX(0);
       transition: transform 250ms ease-in-out;
-      border-bottom: solid 2px black;
     }
     &:hover:after {
       transform: scaleX(1);
@@ -66,7 +64,6 @@
     @include componentSize(280px, 90px);
     min-width: 280px;
     margin-top: 40px;
-    //position: relative;
     top: 20px;
     right: 0;
 
@@ -99,10 +96,10 @@
   }
 
   .dev1Link {
-    margin: 2px;
     color: gray;
-    font-size: medium;
     text-decoration: none;
+    margin: 2px;
+    font-size: medium;
     &:hover {
       color: black;
     }
@@ -116,12 +113,7 @@
     .bottomMenuCategoryUl {
       @include componentSize(150px, '');
       @include flexSort(row, space-between, center);
-      // min-width: 155px;
-      // width: 135px;
       display: inline-block;
-      width: 135px;
-      min-width: 135px;
-      margin-right: 50px;
       vertical-align: top;
     }
 
@@ -130,9 +122,6 @@
       text-align: left;
       padding: 0;
       display: block;
-      margin: 10px 4px;
-      padding: 0;
-      text-align: left;
     }
   }
 }

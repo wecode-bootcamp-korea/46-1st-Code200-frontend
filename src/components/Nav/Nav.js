@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MyPage from '../MyPage/MyPage';
 import './Nav.scss';
 import './navShowTop.scss';
 
 const Nav = () => {
+  const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
   const [hide, setHide] = useState(true);
   const [myHide, setMyHide] = useState(true);
   const [isSubCategory, setIsSubCategory] = useState(false);
   const userId = window.localStorage.getItem('userId');
 
+  const handleIcon = name => {
+    if (userId !== null) {
+      if (name === 'search') {
+        navigate('/');
+      } else if (name === 'wish') {
+        navigate('/');
+      } else if (name === 'cart') {
+        navigate('/cart');
+      }
+    } else {
+      alert('로그인 후 이용 바랍니다.');
+    }
+  };
   useEffect(() => {
     fetch('data/category.json')
       .then(response => response.json())
@@ -63,10 +77,19 @@ const Nav = () => {
                 src={img.value}
                 alt={img.alt}
                 key={img.id}
+                onClick={() => {
+                  handleIcon(img.alt);
+                }}
               />
             ) : (
               <>
-                {!myHide && <MyPage userId={userId} />}
+                {!myHide && (
+                  <MyPage
+                    userId={userId}
+                    setMyHide={setMyHide}
+                    myHide={myHide}
+                  />
+                )}
                 <img
                   className="imgIcons"
                   src={img.value}
