@@ -46,6 +46,7 @@ $primary-color: #017042;
   padding: darkgray;
   border: 1px solid darkgray;
   border-radius: 2px;
+  background-color: rgb(239, 239, 239);
   font-size: 100%;
 }
 
@@ -62,6 +63,7 @@ $primary-color: #017042;
   margin-bottom: 35px;
   border: 1px solid darkgray;
   border-radius: 2px;
+  background-color: rgb(239, 239, 239);
   font-size: 100%;
 }
 
@@ -73,6 +75,9 @@ $primary-color: #017042;
   border: 0.5px solid gray;
   border-radius: 2px;
   background-color: $primary-color;
+  color: aliceblue;
+  font-size: 100%;
+  font-weight: bold;
   &:hover {
     background: lighten($primary-color, 10%);
 
@@ -80,17 +85,15 @@ $primary-color: #017042;
       background: darken($primary-color, 10%);
     }
   }
-  font-size: 100%;
-  font-weight: bold;
 }
-.findid {
+.findidd {
   margin-bottom: 30px;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
 }
 
-.signup {
+.signupp {
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
