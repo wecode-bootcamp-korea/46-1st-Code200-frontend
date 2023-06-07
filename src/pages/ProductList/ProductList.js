@@ -4,12 +4,10 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import './ProductList.scss';
 
 function ProductList() {
-  const [productList, setProductList] = useState([]);
+  const [dataList, setDataList] = useState([]);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState('');
-  const [pageNumArray, setPageNumArray] = useState([]);
-  const [pageNum, setPageNum] = useState(0);
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
   const subcategory = searchParams.getAll('subcategoryId');
@@ -20,16 +18,15 @@ function ProductList() {
     fetch(`http://10.58.52.198:8000/products/?${query}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setProductList(data.data.products);
-        setPageNum(Math.ceil(Number(data.data.total) / 12));
-        addPageNum();
+        setDataList(data.data);
       })
       .catch(error => {
         console.error('Error', error);
       });
     defaultParams();
   }, [searchParams]);
+
+  // const pageBtnArr =
 
   const defaultParams = () => {
     searchParams.set('categoryId', 2);
@@ -58,6 +55,7 @@ function ProductList() {
       searchParams.set('minPrice', selectedMinPrice);
       searchParams.set('maxPrice', selectedMaxPrice);
     }
+    searchParams.set('offset', 0);
     setSearchParams(searchParams);
   };
 
@@ -80,21 +78,20 @@ function ProductList() {
         searchParams.append('subcategoryId', subcategoryCopy[1]);
       }
     }
+    searchParams.set('offset', 0);
     setSearchParams(searchParams);
-  };
-
-  const addPageNum = () => {
-    const arr = [];
-    for (let i = 1; i <= pageNum; i++) {
-      arr.push(i);
-    }
-    setPageNumArray(arr);
   };
 
   const movePage = pageNumber => {
     searchParams.set('offset', (pageNumber - 1) * 12);
     setSearchParams(searchParams);
   };
+
+  if (!dataList.products) return null;
+
+  const { products, total } = dataList;
+  const pagenationBtnArr = new Array(Math.ceil(total / 12)).fill(1);
+
   return (
     <div className="productList">
       <aside className="filtering">
@@ -165,7 +162,7 @@ function ProductList() {
           )}
         </div>
         <div className="productContainer">
-          {productList
+          {products
             .filter(product => product.name.includes(searchInput))
             .map(product => {
               return (
@@ -182,10 +179,10 @@ function ProductList() {
             })}
         </div>
         <div className="pagination">
-          {pageNumArray.map(num => {
+          {pagenationBtnArr.map((num, idx) => {
             return (
-              <button key={num} onClick={() => movePage(num)}>
-                {num}
+              <button key={num + idx} onClick={() => movePage(num + idx)}>
+                {num + idx}
               </button>
             );
           })}

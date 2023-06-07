@@ -12,7 +12,7 @@ const ProductCard = ({ id, imgUrl, name, price, rating, numReview }) => {
         <Link to={`/product-detail/${id}`}>
           <p className="name">{name}</p>
         </Link>
-        <p className="price">{price}</p>
+        <p className="price">{Number(price).toLocaleString()}</p>
         <p className="rating">★★★★★ {rating}</p>
         <p className="review">리뷰 {numReview}건</p>
       </div>
