@@ -38,16 +38,11 @@ export default MyPage;
 const LOGIN = [
   {
     id: '1',
-    name: 'LOGIN',
-    to: '/login',
-  },
-  {
-    id: '2',
     name: 'MYPAGE',
     to: '/myWediya',
   },
   {
-    id: '3',
+    id: '2',
     name: 'LOGOUT',
     to: '/',
   },
