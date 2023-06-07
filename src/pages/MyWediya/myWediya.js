@@ -19,28 +19,28 @@ function MyWediya() {
               </div>
             </li>
             <li>
-              <div className="title box">총 적립금</div>
+              <div className="mypageTitle box">총 적립금</div>
               <div>
                 <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
             <li>
-              <div className="title box">사용 가능 적립금</div>
+              <div className="mypageTitle box">사용 가능 적립금</div>
               <div>
                 <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
             <li>
-              <div className="title box">사용 적립금</div>
+              <div className="mypageTitle box">사용 적립금</div>
               <div>
                 <span className="mypageNum">0</span>
                 <span>원</span>
               </div>
             </li>
             <li>
-              <div className="title box">쿠폰</div>
+              <div className="mypageTitle box">쿠폰</div>
               <div>
                 <span className="mypageNum">5</span>
                 <span>개</span>
