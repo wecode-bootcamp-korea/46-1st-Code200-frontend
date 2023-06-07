@@ -1,7 +1,6 @@
 .slide {
   width: 1406px;
   height: 618px;
-  background-color: indianred;
 }
 
 .mainWeeklyBest {
@@ -15,7 +14,7 @@
 .mainTitle {
   margin: 100px auto 60px;
   color: #1a1a1a;
-  font-size: 50px;
+  font-size: 42px;
   font-weight: 800;
   text-align: center;
 }
@@ -26,7 +25,7 @@
   justify-content: space-between;
   width: 200px;
   height: 35px;
-  margin: 0 auto;
+  margin: 50px auto 0 auto;
   cursor: pointer;
 
   .taps1,
@@ -56,6 +55,7 @@
     margin: 10px;
   }
 }
+
 .prdListWrap {
   display: flex;
   justify-content: center;
@@ -63,9 +63,37 @@
   .box {
     width: 300px;
     height: 549px;
-    background-color: cornflowerblue;
+
     display: flex;
     float: left;
     margin: 5px;
+  }
+}
+
+.prdList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+
+  .rank {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+
+    .rankNum {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 54px;
+      text-align: center;
+      background-color: #9dc594;
+    }
   }
 }

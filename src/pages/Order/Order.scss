@@ -1,0 +1,132 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.order {
+  margin: auto;
+  width: 70%;
+  // min-width: 700px;
+  border: 1px solid darkgray;
+  background-color: rgb(227, 228, 232);
+
+  .orderArea {
+    @include flexSort(row, space-between, center);
+    @include componentSize(100%, 50px);
+    padding: 20px;
+
+    .chevronUp {
+      color: gray;
+    }
+    .chevronDown {
+      color: gray;
+    }
+  }
+
+  .hStyle {
+    font-weight: 500;
+  }
+
+  td {
+    @include componentSize(100px, '');
+  }
+
+  input {
+    padding: 10px;
+
+    &[type='radio'] {
+      vertical-align: middle;
+      appearance: none;
+      border: max(2px, 0.3em) solid gray;
+      border-radius: 50%;
+      width: 0.2em;
+      height: 0.2em;
+    }
+    &[type='radio']:checked {
+      border: 0.3em solid $primary-color;
+    }
+  }
+
+  .orderTop {
+    @include componentSize(100%, 40px);
+    @include flexSort(row, space-between, center);
+    background-color: white;
+    .logoIcons {
+      @include componentSize('', 30px);
+    }
+    padding: 20px;
+  }
+
+  .orderTitle {
+    @include componentSize(100%, 50px);
+    @include flexSort(row, center, center);
+    background-color: $primary-color;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+  }
+  .orderDesc {
+    @include componentSize(100%, 100%);
+    @include flexSort(row, flex-start, center);
+
+    background-color: white;
+    .descPtag {
+      @include componentSize(100%, 100%);
+      color: red;
+      line-height: 1.5;
+      padding: 20px;
+    }
+  }
+
+  .orderBottom {
+    @include componentSize(100%, 200px);
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .orderBottomTitle {
+      @include componentSize(100%, 50px);
+      @include flexSort(row, center, center);
+      background-color: white;
+      color: black;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .orderBottomInfo {
+      .orderBtn {
+        @include componentSize(100%, 50px);
+        border: none;
+        background-color: $primary-color;
+        color: white;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      .descPtagBottom {
+        @include flexSort(row, space-between, center);
+        margin-left: 10px;
+        margin-top: 20px;
+        color: gray;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .orderInner {
+    @include flexSort(row, space-between, center);
+    @include componentSize(100%, 50px);
+    padding: 20px;
+    background-color: rgb(248, 249, 250);
+  }
+  .spanStyle {
+    font-size: 14px;
+    margin-left: 20px;
+  }
+  hr {
+    color: gray;
+  }
+  .blackSpan {
+    margin: 20px;
+    color: gray;
+    font-size: 14px;
+  }
+}

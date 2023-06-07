@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import ProductCard from '../../ProductCard/ProductCard';
+import { Link } from 'react-router-dom';
+import TAP_LIST from '../Data/TapList';
 import './WeeklyBest.scss';
-import TAP_LIST from './TapList';
 
 function WeeklyBest() {
   const [clicked, setClicked] = useState('taps1');
@@ -12,11 +14,11 @@ function WeeklyBest() {
   useEffect(() => {
     let url = '';
     if (clicked === 'taps1') {
-      url = '/data/bean.json';
+      url = 'http://10.58.52.198:8000/products/?categoryId=2';
     } else if (clicked === 'taps2') {
-      url = '/data/beverage.json';
+      url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=12';
     } else if (clicked === 'taps3') {
-      url = '/data/food.json';
+      url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=10';
     }
 
     if (url) {
@@ -25,7 +27,7 @@ function WeeklyBest() {
       })
         .then(res => res.json())
         .then(data => {
-          setPrdList(data);
+          setPrdList(data.data.products);
         });
     }
   }, [clicked]);
@@ -52,15 +54,26 @@ function WeeklyBest() {
         ))}
       </ul>
       {/* 원두 카테고리 top4 */}
-
-      <div className="prdListWrap">
-        {prdList.map(prd => {
+      <div className="prdList">
+        {prdList.slice(0, 4).map((prd, index) => {
+          const { id, imageUrls, name, price, avgRating, countReview } = prd;
           return (
-            <ul key={prd.id} className="prdList">
-              <li className="prdBox">
-                <div className="box">{prd.text}</div>
-              </li>
-            </ul>
+            <div key={id}>
+              <div className="rank">
+                <span className="rankNum">{index + 1}</span>
+              </div>
+
+              <ProductCard
+                prdList={prdList}
+                setPrdList={setPrdList}
+                imgUrl={imageUrls}
+                id={id}
+                name={name}
+                price={price}
+                rating={avgRating}
+                numReview={countReview}
+              />
+            </div>
           );
         })}
       </div>

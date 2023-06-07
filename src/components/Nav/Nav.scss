@@ -1,21 +1,22 @@
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
 .nav {
   @include componentSize(100%, 90px);
-  top: 0;
-  z-index: 1;
   position: sticky;
   position: -webkit-sticky;
+  z-index: 1;
+  top: 0;
   transition: all 0.5s;
   background-color: white;
+  font-family: 'Noto Sans KR', serif;
 
   .topLogo {
     @include componentSize(15%, '');
-    padding-left: 20px;
-    margin-right: 18px;
     width: 280px;
     min-width: 280px;
+    margin-right: 18px;
+    padding-left: 20px;
   }
 
   .topNav {
@@ -30,9 +31,9 @@
 
   .topMenu {
     @include componentSize(1100px, '');
-    text-align: center;
     margin-right: 280px;
     margin-left: 20px;
+    text-align: center;
   }
 
   .topMenuCategoryUl {
@@ -43,26 +44,26 @@
 
   .topMenuCategoryLi {
     @include componentSize(150px, 90px);
-    text-align: left;
+    display: inline;
     margin-top: 40px;
     padding: 20px 5px;
     font-size: large;
-    display: inline;
+    text-align: left;
   }
 
   .navLink {
     @include componentSize('', 90px);
+    display: inline-block;
     color: black;
     text-decoration: none;
-    display: inline-block;
 
     &:after {
       @include componentSize(100%, '');
-      display: block;
       content: '';
-      border-bottom: solid 2px black;
+      display: block;
       transform: scaleX(0);
       transition: transform 250ms ease-in-out;
+      border-bottom: solid 2px black;
     }
     &:hover:after {
       transform: scaleX(1);
@@ -84,8 +85,8 @@
   .subCategory {
     @include flexSort(row, center, '');
     @include componentSize(100%, 180px);
-    background-color: white;
     min-width: 100%;
+    background-color: white;
   }
 
   .subCategoryImg {
@@ -98,34 +99,34 @@
   }
 
   .dev1Link {
-    color: gray;
-    text-decoration: none;
     margin: 2px;
+    color: gray;
     font-size: medium;
+    text-decoration: none;
     &:hover {
       color: black;
     }
   }
   .dev {
     @include componentSize(100%, '');
-    padding-left: 300px;
-    padding-bottom: 20px;
-    background-color: white;
     min-width: 100%;
+    padding-bottom: 20px;
+    padding-left: 300px;
+    background-color: white;
 
     .bottomMenuCategoryUl {
-      margin-right: 50px;
-      min-width: 135px;
-      width: 135px;
       display: inline-block;
+      width: 135px;
+      min-width: 135px;
+      margin-right: 50px;
       vertical-align: top;
     }
 
     .bottomMenuCategoryLi {
-      margin: 10px 4px;
-      text-align: left;
-      padding: 0;
       display: block;
+      margin: 10px 4px;
+      padding: 0;
+      text-align: left;
     }
   }
 }

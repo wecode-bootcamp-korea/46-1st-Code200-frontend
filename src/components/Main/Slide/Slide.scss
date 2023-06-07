@@ -13,6 +13,7 @@
     white-space: nowrap;
     font-size: 0;
     position: relative;
+    transition: transform 0.8s ease-in-out;
 
     img {
       width: 100%;
