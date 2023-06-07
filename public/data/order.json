@@ -18,14 +18,16 @@
           "name": "스노우아이스티",
           "price": 6000,
           "quantity": "5",
-          "category": "원두"
+          "category": "원두",
+          "imgUrl": "https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/wholebean/bean01.png"
         },
         {
           "id": 2,
           "name": "아이스티",
-          "price": 6000,
+          "price": 12000,
           "quantity": "3",
-          "category": "음료"
+          "category": "음료",
+          "imgUrl": "https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/wholebean/bean01.png"
         }
       ]
     }

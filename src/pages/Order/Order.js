@@ -17,6 +17,8 @@ function Order() {
   const [userInfo, setUserInfo] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [isFetchTrueInfo, setisFetchTrueInfo] = useState(false);
+  const [point, setIsPoint] = useState('');
+  const [isTotalPrice, setIsTotalPrice] = useState(0);
 
   useEffect(() => {
     // fetch('http://10.58.52.133:8000/products/7', { method: 'GET' })
@@ -29,6 +31,15 @@ function Order() {
       });
   }, []);
 
+  useEffect(() => {
+    const totalPrice = productInfo.reduce(
+      (acc, cur) => acc + cur.price * Number(cur.quantity),
+      0
+    );
+    setIsTotalPrice(totalPrice);
+  }, [productInfo]);
+
+  // console.log(totalPrice);
   return (
     <div className="order">
       <div className="orderTop">
@@ -56,24 +67,25 @@ function Order() {
           상황에 따라 분리 배송 될 수 있습니다.
         </p>
       </div>
-      {/* OrderInfo 주문자 정보 컴포넌트 */}
       <OrderInfo userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
-      {/* OrderAddress 배송지 컴포넌트 */}
       <OrderAddress userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
-      {/* OrderPrduct 주문상품 컴포넌트 */}
       <OrderProduct
         productInfo={productInfo}
         isFetchTrueInfo={isFetchTrueInfo}
+        // totalPrice={totalPrice}
       />
-      {/* OrderDisCount 할인/포인트 컴포너트 */}
       <OrderDisCount
         userInfo={userInfo}
         setUserInfo={setUserInfo}
         isFetchTrueInfo={isFetchTrueInfo}
+        point={point}
+        setIsPoint={setIsPoint}
       />
-      {/* OrderPay 결제 컴포넌트*/}
-      <OrderPay productInfo={productInfo} isFetchTrueInfo={isFetchTrueInfo} />
-      {/* OrderMethod 결제수단 컴포넌트*/}
+      <OrderPay
+        isFetchTrueInfo={isFetchTrueInfo}
+        point={point}
+        isTotalPrice={isTotalPrice}
+      />
       <OrderMethod
         productInfo={productInfo}
         isFetchTrueInfo={isFetchTrueInfo}
@@ -85,7 +97,9 @@ function Order() {
           </span>
         </div>
         <div className="orderBottomInfo">
-          <button className="orderBtn">39,900원 결제하기</button>
+          <button className="orderBtn">
+            {isTotalPrice - point}원 결제하기
+          </button>
           <p className="descPtagBottom">
             - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을
             동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지
