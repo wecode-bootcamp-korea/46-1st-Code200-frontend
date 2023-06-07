@@ -14,7 +14,7 @@ function WeeklyBest() {
   useEffect(() => {
     let url = '';
     if (clicked === 'taps1') {
-      url = 'http://10.58.52.198:8000/products';
+      url = 'http://10.58.52.198:8000/products/?categoryId=2';
     } else if (clicked === 'taps2') {
       url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=12';
     } else if (clicked === 'taps3') {
@@ -28,6 +28,7 @@ function WeeklyBest() {
         .then(res => res.json())
         .then(data => {
           console.log(data.data.products);
+          setPrdList(data.data);
           setPrdList(data.data.products);
         });
     }
