@@ -47,7 +47,7 @@ function Signup() {
 
   // 이메일 중복확인
   const checkValidEmail = () => {
-    fetch('http://10.58.52.86:8000/users/checkemail', {
+    fetch('http://10.58.52.62:7000/users/checkemail', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({
@@ -71,7 +71,7 @@ function Signup() {
     const popType = isChecked ? 'nonPopup' : 'popupWrap';
     setPop(popType);
 
-    fetch('http://10.58.52.86:8000/users/signup', {
+    fetch('http://10.58.52.62:7000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({

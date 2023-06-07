@@ -12,8 +12,8 @@ const INPUT_LIST = [
     type: 'password',
     name: 'password',
     title: '비밀번호',
-    placeholder: '비밀번호 입력',
-    vaild: '5자 이상의 비밀번호를 입력해주세요',
+    placeholder: '대문자, 소문자, 특수문자 포함 입력',
+    vaild: '8~20글자 비밀번호를 입력해주세요',
   },
   {
     id: 3,
