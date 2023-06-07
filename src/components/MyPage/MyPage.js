@@ -2,20 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MyPage.scss';
 
-function MyPage() {
+function MyPage({ userId }) {
   return (
     <div className="bottomNav">
       <div className="bottomNavMy">
         <ul className="myPageUl">
-          {MY_PAGE.map(myPage => {
-            return (
-              <li className="myPageLi" key={myPage.id}>
-                <Link className="myPageLink" to={myPage.to}>
-                  {myPage.name}
-                </Link>
-              </li>
-            );
-          })}
+          {userId !== null &&
+            LOGIN.map(myPage => {
+              return (
+                <li className="myPageLi" key={myPage.id}>
+                  <Link className="myPageLink" to={myPage.to}>
+                    {myPage.name}
+                  </Link>
+                </li>
+              );
+            })}
+          {userId === null &&
+            NOT_LOGIN.map(myPage => {
+              return (
+                <li className="myPageLi" key={myPage.id}>
+                  <Link className="myPageLink" to={myPage.to}>
+                    {myPage.name}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>
@@ -24,20 +35,28 @@ function MyPage() {
 
 export default MyPage;
 
-const MY_PAGE = [
+const LOGIN = [
   {
     id: '1',
     name: 'LOGIN',
-    to: '/',
+    to: '/login',
   },
   {
     id: '2',
-    name: 'LOGOUT',
-    to: '/',
+    name: 'MYPAGE',
+    to: '/myWediya',
   },
   {
     id: '3',
-    name: 'ORDER',
+    name: 'LOGOUT',
     to: '/',
+  },
+];
+
+const NOT_LOGIN = [
+  {
+    id: '1',
+    name: 'LOGIN',
+    to: '/login',
   },
 ];
