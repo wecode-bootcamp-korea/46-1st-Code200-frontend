@@ -16,18 +16,18 @@ import {
 function Order() {
   const [userInfo, setUserInfo] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
-  const [isFetchTrueInfo, setisFetchTrueInfo] = useState(false);
+  const [isFetchTrueInfo, setIsFetchTrueInfo] = useState(false);
   const [point, setIsPoint] = useState('');
   const [isTotalPrice, setIsTotalPrice] = useState(0);
 
   useEffect(() => {
-    // fetch('http://10.58.52.133:8000/products/7', { method: 'GET' })
+    // fetch('http://10.58.52.133:8000/order/7', { method: 'GET' })
     fetch('data/order.json')
       .then(res => res.json())
       .then(data => {
         setUserInfo(data.data[0].userInfo);
         setProductInfo(data.data[0].productInfo);
-        setisFetchTrueInfo(true);
+        setIsFetchTrueInfo(true);
       });
   }, []);
 
@@ -39,7 +39,6 @@ function Order() {
     setIsTotalPrice(totalPrice);
   }, [productInfo]);
 
-  // console.log(totalPrice);
   return (
     <div className="order">
       <div className="orderTop">
@@ -72,7 +71,7 @@ function Order() {
       <OrderProduct
         productInfo={productInfo}
         isFetchTrueInfo={isFetchTrueInfo}
-        // totalPrice={totalPrice}
+        setProductInfo={setProductInfo}
       />
       <OrderDisCount
         userInfo={userInfo}

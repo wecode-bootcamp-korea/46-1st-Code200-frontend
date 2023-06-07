@@ -3,8 +3,15 @@ import './OrderProduct.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-function OrderProduct({ productInfo, isFetchTrueInfo }) {
+function OrderProduct({ productInfo, isFetchTrueInfo, setProductInfo }) {
   const [isProduct, setIsProduct] = useState(false);
+
+  const cancelProduct = id => {
+    const resultProduct = productInfo.filter(
+      productInfo => productInfo.id !== id
+    );
+    setProductInfo(resultProduct);
+  };
 
   return (
     <div className="orderProduct">
@@ -45,7 +52,12 @@ function OrderProduct({ productInfo, isFetchTrueInfo }) {
                   )}
                 </div>
                 <div>
-                  <button className="cancelBtn">✖</button>
+                  <button
+                    className="cancelBtn"
+                    onClick={() => cancelProduct(product.id)}
+                  >
+                    ✖
+                  </button>
                 </div>
               </div>
             );
@@ -62,3 +74,9 @@ function OrderProduct({ productInfo, isFetchTrueInfo }) {
 }
 
 export default OrderProduct;
+
+const test = () => {
+  //
+};
+
+test();
