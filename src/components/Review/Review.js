@@ -109,7 +109,12 @@ function Review() {
           </div>
 
           <div className="buttonWrap">
-            <input onChange={handleReview} className="reviewBox" type="text" />
+            <input
+              onChange={handleReview}
+              value={inputReview}
+              className="reviewBox"
+              type="text"
+            />
 
             <button
               className={inputReview ? 'submitButton' : 'nonSubmitButton'}
