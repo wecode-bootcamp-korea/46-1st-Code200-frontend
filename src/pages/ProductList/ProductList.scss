@@ -3,18 +3,19 @@
 @import '../../styles/variables';
 
 .productList {
-  @include flexSort(row, flex-start, flex-start);
+  @include flexSort(row, center, flex-start);
   position: relative;
   min-height: 100%;
-  margin-top: 100px;
+  padding-bottom: 50px;
   font-family: 'Noto Sans KR', serif;
 
   .filtering {
     position: -webkit-sticky;
     position: sticky;
-    top: 30px;
-    min-width: 215px;
-    margin: 100px 20px 0 50px;
+    top: 120px;
+    width: 200px;
+    min-width: 200px;
+    margin: 100px 40px 0 50px;
 
     .h4 {
       width: 198px;
@@ -36,14 +37,15 @@
 
       button {
         width: 180px;
-        margin: 1px;
+        margin: 1px 0 1px 9px;
         padding: 3px;
         border: 1px solid lightgrey;
         background-color: white;
         color: grey;
         font-size: 14px;
 
-        &:hover {
+        &:hover,
+        &.selected {
           border: 1px solid $primary-color;
           color: $primary-color;
         }
@@ -53,13 +55,31 @@
     .priceFilter {
       @include flexSort(column, flex-start, flex-start);
     }
+
+    .searchBar {
+      margin: 30px 0;
+
+      .searchInput {
+        width: 180px;
+        margin: 1px 0 1px 9px;
+        padding: 5px;
+        border: 1px solid $primary-color;
+        background-color: white;
+        font-size: 12px;
+        text-align: center;
+
+        &::placeholder {
+          color: $primary-color;
+        }
+      }
+    }
   }
 
   .main {
     @include flexSort(row, flex-start, space-between);
     position: relative;
     flex-wrap: wrap;
-    width: 1000px;
+    width: 1150px;
     min-height: 100%;
     margin: 10px;
 
@@ -78,42 +98,69 @@
       margin-bottom: 20px;
 
       .dropDownBtn {
+        position: relative;
         width: 100px;
-        margin: 0 0 10px 20px;
-        padding: 5px 12px;
-        float: left;
+        margin: 0 60px 10px 0;
+        padding: 5px 10px;
+        float: right;
         border: 1px solid #b2b2b2;
         border-radius: 2px;
         background-color: white;
-        font-size: 15px;
+        color: $primary-color;
+        font-size: 14px;
 
         .arrow {
           margin-left: 10px;
           font-size: 10px;
         }
       }
+
       .dropDownContent {
+        position: absolute;
+        z-index: 1;
+        top: 106px;
+        right: 60px;
         width: 100px;
-        margin-left: 20px;
-        border: 1px solid lightgray;
+        margin: 30px 0 0 20px;
+        border: 1px solid #b2b2b2;
         border-top: none;
+        background-color: white;
 
         li {
           padding: 8px 0;
           font-size: 15px;
           text-align: center;
 
+          /* stylelint-disable-next-line max-nesting-depth */
           button {
             border: none;
             background-color: white;
+            color: gray;
           }
         }
       }
     }
+
     .productContainer {
       @include flexSort(row, flex-start, space-between);
       flex-wrap: wrap;
-      margin-left: 10px;
+      margin-left: 20px;
+    }
+
+    .pagination {
+      @include flexSort(row, center, center);
+      width: 100%;
+      margin: 50px 0 10px 0;
+
+      button {
+        margin: 0 3px;
+        padding: 4px 8px;
+        border: 1px solid lightgray;
+        border-radius: 2px;
+        background-color: white;
+        color: $primary-color;
+        font-size: 14px;
+      }
     }
   }
 }

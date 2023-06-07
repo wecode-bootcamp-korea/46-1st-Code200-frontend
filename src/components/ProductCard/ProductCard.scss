@@ -4,7 +4,7 @@
 .product {
   width: 250px;
   height: 500px;
-  margin: 0 10px 0 10px;
+  margin: 0 10px 20px 10px;
 
   .thumbnail {
     width: 100%;
@@ -18,22 +18,23 @@
     padding-left: 10px;
 
     .name {
-      margin: 0 0 10px 0;
+      margin: 10px 0;
       font-size: 16px;
+      text-align: left;
     }
 
     .price {
-      margin: 10px 0;
+      margin: 8px 0;
       font-size: 20px;
       font-weight: 500;
     }
 
     .rating {
-      margin: 10px 0;
+      margin: 8px 0;
     }
 
     .review {
-      margin: 10px 0;
+      margin: 8px 0;
       font-size: 14px;
     }
   }
