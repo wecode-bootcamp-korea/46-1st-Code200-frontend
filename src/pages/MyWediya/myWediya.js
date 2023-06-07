@@ -7,7 +7,7 @@ function MyWediya() {
     <div className="myWediya">
       <div className="mypageTop">
         <div className="welcome">
-          김유저 님 위디야를 이용해 주셔서 감사합니다.
+          김유저 님 위디야를 이용해 주셔서 감사합니다💚
         </div>
         <div>
           <ul className="mainWrap">
