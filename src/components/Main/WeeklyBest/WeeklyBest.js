@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../../ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
-import TAP_LIST from './TapList';
+import TAP_LIST from '../Data/TapList';
 import './WeeklyBest.scss';
 
 function WeeklyBest() {
