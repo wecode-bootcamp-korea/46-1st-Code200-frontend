@@ -26,8 +26,6 @@ function ProductList() {
     defaultParams();
   }, [searchParams]);
 
-  // const pageBtnArr =
-
   const defaultParams = () => {
     searchParams.set('categoryId', 2);
     searchParams.set('limit', 12);
@@ -117,12 +115,12 @@ function ProductList() {
         <div className="roastingFilter option">
           <h5>로스트</h5>
           {ROAST_FILTER.map(({ id, type, subcategoryId }) => {
-            const test = subcategory.includes(String(subcategoryId));
+            const isSelected = subcategory.includes(String(subcategoryId));
             return (
               <button
                 key={id}
                 onClick={() => filterBySubcategory(subcategoryId)}
-                className={test ? 'selected' : ''}
+                className={isSelected ? 'selected' : ''}
               >
                 {type}
               </button>
@@ -164,16 +162,16 @@ function ProductList() {
         <div className="productContainer">
           {products
             .filter(product => product.name.includes(searchInput))
-            .map(product => {
+            .map(({ id, imageUrls, name, price, avgRating, countReview }) => {
               return (
                 <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  imgUrl={product.imageUrls}
-                  name={product.name}
-                  price={product.price}
-                  rating={product.avgRating}
-                  numReview={product.countReview}
+                  key={id}
+                  id={id}
+                  imgUrl={imageUrls}
+                  name={name}
+                  price={price}
+                  rating={avgRating}
+                  numReview={countReview}
                 />
               );
             })}
