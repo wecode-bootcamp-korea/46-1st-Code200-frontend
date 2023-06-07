@@ -9,6 +9,7 @@ const Nav = () => {
   const [hide, setHide] = useState(true);
   const [myHide, setMyHide] = useState(true);
   const [isSubCategory, setIsSubCategory] = useState(false);
+  const userId = window.localStorage.getItem('userId');
 
   useEffect(() => {
     fetch('data/category.json')
@@ -65,7 +66,7 @@ const Nav = () => {
               />
             ) : (
               <>
-                {!myHide && <MyPage />}
+                {!myHide && <MyPage userId={userId} />}
                 <img
                   className="imgIcons"
                   src={img.value}
