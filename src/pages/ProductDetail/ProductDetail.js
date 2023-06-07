@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Count from '../../components/Count/Count';
 import Like from '../../components/Like/Like';
 import Review from '../../components/Review/Review';
@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 function ProductDetail() {
+  const navigate = useNavigate();
   const [productDetail, setProductDetail] = useState({});
   const [isProduct, setIsProduct] = useState(false);
   const params = useParams();
@@ -18,8 +19,8 @@ function ProductDetail() {
   const [count, setCount] = useState(1);
   const price = productDetail?.price;
   const totalPrice = Number(price) * Number(count);
-  const [isHeart, setIsHeart] = useState(false);
-  //const userId = window.localStorage.getItem('userId');
+  const [isHeart, setIsHeart] = useState(productDetail.isHeart || '');
+  const userId = window.localStorage.getItem('userId');
 
   const CATEGORY_ARR = [
     {
@@ -37,45 +38,40 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    fetch('http://10.58.52.192:8000/products/1', { method: 'GET' })
-      // fetch(`data/productDetail.json/${productId}`, { method: 'GET' })
-      // fetch('data/productDetail.json', { method: 'GET' })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setProductDetail(data.product[0]);
-        setIsProduct(true);
-      });
-  }, []);
-
-  const userId =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyS1WQiOjEzLCJpYXQiOjE2ODYwNDU0NDIsImV4cCI6MTY4NjgyMzA0Mn0.zwQj2MUAUly7EgqjOlZ6f10YXMcS5x71ljVF_vZB_3c';
-
-  const LikeUpdate = () => {
-    fetch('http://10.58.52.192:8000/likes/1', {
-      method: 'POST',
+    fetch(`http://10.58.52.62:7000/products/${productId}`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization: userId,
       },
-      body: JSON.stringify({
-        isHeart: isHeart,
-        productId: productId,
-      }),
     })
-      .then(response => response.json())
-      .then(data => console.log(data));
-  };
+      .then(res => res.json())
+      .then(data => {
+        setProductDetail(data.product[0]);
+        setIsProduct(true);
+        setIsHeart(data.product[0].isLiked);
+      });
+  }, []);
 
-  const cartToken =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyLCJpYXQiOjE2ODYwNDA2ODEsImV4cCI6MTY4NjgxODI4MX0.a0G1a7wic-TIKAIltdhnP1Hw9UUV3loJy_ICSY2InMQ';
+  const LikeUpdate = () => {
+    const METHOD = isHeart ? 'DELETE' : 'POST';
+
+    setIsHeart(!isHeart);
+    fetch('http://10.58.52.62:7000/likes/5', {
+      method: METHOD,
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: userId,
+      },
+    }).then(response => response.json());
+  };
 
   const cartInput = () => {
     fetch('http://10.58.52.198:8000/carts/list', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization: cartToken,
+        Authorization: userId,
       },
       body: JSON.stringify({
         productId: productId,
@@ -85,7 +81,15 @@ function ProductDetail() {
       }),
     })
       .then(response => response.json())
-      .then(data => console.log(data)); //POSTUP_SUCCESS
+      .then(data => {
+        if (data.message === 'POSTUP_SUCCESS') {
+          if (window.confirm('장바구니로 이동하시겠습니까?')) {
+            navigate('/cart');
+          } else {
+            return;
+          }
+        }
+      });
   };
 
   return (
@@ -162,11 +166,7 @@ function ProductDetail() {
           </div>
           <div className="buttonArea">
             {/* 좋아요 컴포넌트 */}
-            <Like
-              isHeart={isHeart}
-              setIsHeart={setIsHeart}
-              LikeUpdate={LikeUpdate}
-            />
+            <Like isHeart={isHeart} LikeUpdate={LikeUpdate} />
             <button className="subCartMove" onClick={() => cartInput()}>
               장바구니
             </button>
