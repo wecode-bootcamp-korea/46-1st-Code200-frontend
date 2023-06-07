@@ -80,6 +80,14 @@
     width: 20px;
     height: 18px;
   }
+
+  .starRationgWrap {
+    display: flex;
+
+    span {
+      padding: 3px 0 0 3px;
+    }
+  }
 }
 
 .submitReview {

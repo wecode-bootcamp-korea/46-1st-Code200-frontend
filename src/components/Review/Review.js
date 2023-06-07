@@ -31,7 +31,7 @@ function Review() {
     const userToken =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
-    fetch('http://10.58.52.192:8000/reviews/2', {
+    fetch('http://10.58.52.62:8000/reviews/2', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -50,7 +50,7 @@ function Review() {
 
   // 기존 리뷰
   const getReview = () => {
-    fetch('http://10.58.52.192:8000/products/2', {
+    fetch('http://10.58.52.62:8000/products/2', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -130,7 +130,11 @@ function Review() {
         {review.map(review => {
           return (
             <div key={review.user_Id} className="oneLineWrap">
-              <div>{startRating(review.rating)}</div>
+              <div className="starRationgWrap">
+                <div>{startRating(review.rating)}</div>
+                <span>{Map.floor(review.rating)}</span>
+              </div>
+
               <div className="userWrap">
                 <p className="oneLine">{review.content}</p>
                 <p className="userId">{review.userName}</p>
