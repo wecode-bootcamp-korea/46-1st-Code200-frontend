@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 const Login = () => {
   const [inputValues, setInputValues] = useState({
@@ -39,7 +40,7 @@ const Login = () => {
           }
         });
     } else {
-      alert('email과 비밀번호를 입력해주세요');
+      alert('이메일과 비밀번호를 입력해주세요');
     }
   };
 
