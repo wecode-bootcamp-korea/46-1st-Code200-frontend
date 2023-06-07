@@ -14,8 +14,8 @@
 
 .reviewSummary {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 20px 10px;
+  text-align: center;
   width: 90%;
   margin: auto;
   padding: 20px 10px;
@@ -23,8 +23,8 @@
   text-align: center;
 
   .summary {
-    padding: 50px;
     border-right: 1px solid lightgray;
+    padding: 50px 70px 50px 50px;
   }
 
   p {
@@ -65,7 +65,7 @@
     border-radius: 2px;
 
     .oneLine {
-      margin-top: 10px;
+      margin: 12px 0;
       font-size: 17px;
     }
     .userInfo {
@@ -74,11 +74,20 @@
 
     .userId {
       margin-top: 10px;
+      color: dimgray;
     }
   }
   img {
     width: 20px;
     height: 18px;
+  }
+
+  .starRationgWrap {
+    display: flex;
+
+    span {
+      padding: 3px 0 0 3px;
+    }
   }
 }
 
@@ -86,14 +95,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 70%;
-  height: 300px;
+  height: 200px;
+  width: 800px;
   padding: 10px 10px 30px 70px;
 
   .submitRating {
-    height: 50px;
     margin: auto;
+    width: 800px;
 
     p {
       margin: auto;
@@ -105,31 +113,37 @@
     }
   }
 
-  .reviewBox {
-    width: 100%;
-    height: 100px;
-    border: 1px solid lightgrey;
-  }
+  .buttonWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    margin: auto;
 
-  .nonSubmitButton {
-    width: 100%;
-    height: 50px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 2px;
-    background-color: #9dc594;
-    color: white;
-    font-size: 18px;
-  }
+    .reviewBox {
+      width: 100%;
+      height: 60px;
+      border: 1px solid lightgrey;
+    }
 
-  .submitButton {
-    width: 100%;
-    height: 50px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 2px;
-    background-color: #017042;
-    color: white;
-    font-size: 18px;
+    .nonSubmitButton {
+      width: 100px;
+      height: 60px;
+      background-color: #9dc594;
+      border: none;
+      border-radius: 2px;
+      color: white;
+      font-size: 18px;
+    }
+
+    .submitButton {
+      width: 100px;
+      height: 60px;
+      background-color: #017042;
+      border: none;
+      border-radius: 2px;
+      color: white;
+      font-size: 18px;
+    }
   }
 }

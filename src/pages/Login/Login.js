@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 const Login = () => {
   const [inputValues, setInputValues] = useState({
@@ -32,14 +33,14 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
           if (data.message === 'USER_CORRECT') {
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', data.accesstoken);
             navigate('/');
           } else {
             alert('잘못된 아이디나 비밀번호입니다');
           }
         });
     } else {
-      alert('email과 비밀번호를 입력해주세요');
+      alert('이메일과 비밀번호를 입력해주세요');
     }
   };
 
