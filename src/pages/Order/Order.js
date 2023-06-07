@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OrderInfo from '../Order/OrderInfo';
 import OrderAddress from './OrderAddress';
@@ -14,6 +14,31 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 function Order() {
+  const [userInfo, setUserInfo] = useState([]);
+  const [productInfo, setProductInfo] = useState([]);
+  const [isFetchTrueInfo, setIsFetchTrueInfo] = useState(false);
+  const [point, setIsPoint] = useState('');
+  const [isTotalPrice, setIsTotalPrice] = useState(0);
+
+  useEffect(() => {
+    // fetch('http://10.58.52.133:8000/order/7', { method: 'GET' })
+    fetch('data/order.json')
+      .then(res => res.json())
+      .then(data => {
+        setUserInfo(data.data[0].userInfo);
+        setProductInfo(data.data[0].productInfo);
+        setIsFetchTrueInfo(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    const totalPrice = productInfo.reduce(
+      (acc, cur) => acc + cur.price * Number(cur.quantity),
+      0
+    );
+    setIsTotalPrice(totalPrice);
+  }, [productInfo]);
+
   return (
     <div className="order">
       <div className="orderTop">
@@ -41,18 +66,29 @@ function Order() {
           상황에 따라 분리 배송 될 수 있습니다.
         </p>
       </div>
-      {/* OrderInfo 주문자 정보 컴포넌트 */}
-      <OrderInfo />
-      {/* OrderAddress 배송지 컴포넌트 */}
-      <OrderAddress />
-      {/* OrderPrduct 주문상품 컴포넌트 */}
-      <OrderProduct />
-      {/* OrderDisCount 할인/포인트 컴포너트 */}
-      <OrderDisCount />
-      {/* OrderPay 결제 컴포넌트*/}
-      <OrderPay />
-      {/* OrderMethod 결제수단 컴포넌트*/}
-      <OrderMethod />
+      <OrderInfo userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
+      <OrderAddress userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
+      <OrderProduct
+        productInfo={productInfo}
+        isFetchTrueInfo={isFetchTrueInfo}
+        setProductInfo={setProductInfo}
+      />
+      <OrderDisCount
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
+        isFetchTrueInfo={isFetchTrueInfo}
+        point={point}
+        setIsPoint={setIsPoint}
+      />
+      <OrderPay
+        isFetchTrueInfo={isFetchTrueInfo}
+        point={point}
+        isTotalPrice={isTotalPrice}
+      />
+      <OrderMethod
+        productInfo={productInfo}
+        isFetchTrueInfo={isFetchTrueInfo}
+      />
       <div className="orderBottom">
         <div className="orderBottomTitle">
           <span className="titleSpan">
@@ -60,7 +96,9 @@ function Order() {
           </span>
         </div>
         <div className="orderBottomInfo">
-          <button className="orderBtn">39,900원 결제하기</button>
+          <button className="orderBtn">
+            {isTotalPrice - point}원 결제하기
+          </button>
           <p className="descPtagBottom">
             - 무이자할부가 적용되지 않은 상품과 무이자할부가 가능한 상품을
             동시에 구매할 경우 전체 주문 상품 금액에 대해 무이자할부가 적용되지

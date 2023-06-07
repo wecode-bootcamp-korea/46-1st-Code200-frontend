@@ -3,7 +3,7 @@ import './OrderPay.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-function OrderPay() {
+function OrderPay({ isFetchTrueInfo, point, isTotalPrice }) {
   const [isPay, setIsPay] = useState(false);
   return (
     <div className="orderPay">
@@ -21,7 +21,7 @@ function OrderPay() {
         <div className="orderPayInner">
           <div className="orderPayInfo">
             <span>주문상품</span>
-            <span>39,900</span>
+            {isFetchTrueInfo && <span>{isTotalPrice}</span>}
           </div>
           <div className="orderPayInfo">
             <span>배송비</span>
@@ -29,11 +29,11 @@ function OrderPay() {
           </div>
           <div className="orderPayInfo">
             <span>할인/포인트</span>
-            <span>-0</span>
+            {isFetchTrueInfo && <span>-{point}</span>}
           </div>
           <div className="orderInner">
             <span>최종 결제 금액</span>
-            <span>39,900</span>
+            {isFetchTrueInfo && <span>{isTotalPrice - point}</span>}
           </div>
         </div>
       )}

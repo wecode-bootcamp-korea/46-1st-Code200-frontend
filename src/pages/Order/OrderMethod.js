@@ -8,6 +8,7 @@ import { PERIOD } from '../Order/OrderUiData/period';
 
 function OrderMethod() {
   const [isMethod, setIsMethod] = useState(false);
+  const [selectCard, setSelectCard] = useState();
   return (
     <div className="orderMethod">
       <div className="orderArea">
@@ -25,7 +26,15 @@ function OrderMethod() {
           <div className="payMethod">
             {PAY_METHOD.map(pay => {
               return (
-                <button className="payMethodBtn" key={pay.id}>
+                <button
+                  className={
+                    selectCard === pay.id ? 'selectedBtn' : 'payMethodBtn'
+                  }
+                  key={pay.id}
+                  onClick={() => {
+                    setSelectCard(pay.id);
+                  }}
+                >
                   {pay.name}
                 </button>
               );

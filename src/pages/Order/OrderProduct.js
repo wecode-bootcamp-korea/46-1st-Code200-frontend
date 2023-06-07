@@ -3,8 +3,16 @@ import './OrderProduct.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-function OrderProduct() {
+function OrderProduct({ productInfo, isFetchTrueInfo, setProductInfo }) {
   const [isProduct, setIsProduct] = useState(false);
+
+  const cancelProduct = id => {
+    const resultProduct = productInfo.filter(
+      productInfo => productInfo.id !== id
+    );
+    setProductInfo(resultProduct);
+  };
+
   return (
     <div className="orderProduct">
       <div className="orderArea">
@@ -19,23 +27,44 @@ function OrderProduct() {
       </div>
       {!isProduct && (
         <div className="orderProductInner">
-          <div className="orderProductImg">
-            <img
-              className="productOrder"
-              src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/wholebean/bean01.png"
-              alt="product"
-            />
-            <div className="orderProductInfo">
-              <p>(담곰이)날 안입겠담곰? 반팔 잠옷(BLACK)_SPPPD37U03</p>
-              <span className="grayFont">[옵션 : (19)BLACK/M(095)]</span>
-              <br />
-              <spa className="grayFont">수량 : 1개</spa>
-              <br />
-              <span className="">39,900</span>
-            </div>
-          </div>
+          {productInfo.map(product => {
+            return (
+              <div className="productFlexTop" key={product.id}>
+                <div className="productFlex">
+                  <div className="orderProductImg">
+                    <img
+                      className="productOrder"
+                      src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/wholebean/bean01.png"
+                      alt="product"
+                    />
+                  </div>
+                  {isFetchTrueInfo && (
+                    <div className="orderProductInfo">
+                      <p>{product.name}</p>
+                      <span className="grayFont">[{product.category}]</span>
+                      <br />
+                      <spa className="grayFont">
+                        수량 : {product.quantity}개
+                      </spa>
+                      <br />
+                      <span className="">{product.price}</span>
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <button
+                    className="cancelBtn"
+                    onClick={() => cancelProduct(product.id)}
+                  >
+                    ✖
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+
           <div className="orderInner">
-            <span>베송비</span>
+            <span>배송비</span>
             <span>0(무료)</span>
           </div>
         </div>
@@ -45,3 +74,9 @@ function OrderProduct() {
 }
 
 export default OrderProduct;
+
+const test = () => {
+  //
+};
+
+test();
