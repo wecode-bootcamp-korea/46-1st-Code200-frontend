@@ -64,7 +64,6 @@ function WeeklyBest() {
               </div>
 
               <ProductCard
-                prd={prd}
                 prdList={prdList}
                 setPrdList={setPrdList}
                 imgUrl={imageUrls}
