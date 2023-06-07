@@ -3,8 +3,8 @@ import { json, Link, useNavigate } from 'react-router-dom';
 import AGREEMENT_LIST from './Agreement';
 import INPUT_LIST from './inputList';
 import CHECK_LIST from './checkList';
-import './Signup.scss';
 import GENDER_CHECK_LIST from './GenderCheckList';
+import './Signup.scss';
 
 function Signup() {
   const navigate = useNavigate();

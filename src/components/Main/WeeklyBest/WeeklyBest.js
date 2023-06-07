@@ -75,28 +75,6 @@ function WeeklyBest() {
           );
         })}
       </div>
-
-      {/* 
-      <div className="prdListWrap">
-        {prdList.slice(0, 4).map(prd => {
-          return (
-            // <ul key={prd.id} className="prdList">
-            <ProductCard
-              key={prd.id}
-              prd={prd}
-              prdList={prdList}
-              setPrdList={setPrdList}
-              imgUrl={prd.imageUrls}
-              id={prd.id}
-              name={prd.name}
-              price={prd.price}
-              rating={prd.avgRating}
-              numReview={prd.countReview}
-            />
-            // </ul>
-          );
-        })}
-      </div> */}
     </div>
   );
 }
