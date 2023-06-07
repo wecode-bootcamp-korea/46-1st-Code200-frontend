@@ -1,7 +1,7 @@
 .reviewTitle {
-  border-bottom: 2px solid black;
   width: 90%;
   margin: auto;
+  border-bottom: 2px solid black;
   span {
     font-size: 20px;
     font-weight: 800;
@@ -14,17 +14,17 @@
 
 .reviewSummary {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 20px 10px;
-  text-align: center;
+  justify-content: center;
   width: 90%;
   margin: auto;
+  padding: 20px 10px;
   border-bottom: 1px solid lightgray;
+  text-align: center;
 
   .summary {
-    border-right: 1px solid lightgray;
     padding: 50px;
+    border-right: 1px solid lightgray;
   }
 
   p {
@@ -35,9 +35,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-items: center;
-    margin: auto;
     width: 200px;
+    margin: auto;
 
     .point {
       display: flex;
@@ -58,12 +57,12 @@
 
 .oneLineReview {
   .oneLineWrap {
-    border: 1px solid lightgrey;
-    border-radius: 2px;
     width: 90%;
     margin: 10px auto;
     padding: 14px 15px 18px 15px;
+    border: 1px solid lightgrey;
     border-top: 1px solid lightgray;
+    border-radius: 2px;
 
     .oneLine {
       margin-top: 10px;
@@ -86,10 +85,10 @@
 .submitReview {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 300px;
+  justify-content: center;
   width: 70%;
+  height: 300px;
   padding: 10px 10px 30px 70px;
 
   .submitRating {
@@ -97,8 +96,8 @@
     margin: auto;
 
     p {
-      font-size: 16px;
       margin: auto;
+      font-size: 16px;
     }
 
     .starts {
@@ -115,22 +114,22 @@
   .nonSubmitButton {
     width: 100%;
     height: 50px;
-    background-color: #9dc594;
+    margin-top: 10px;
     border: none;
     border-radius: 2px;
+    background-color: #9dc594;
     color: white;
     font-size: 18px;
-    margin-top: 10px;
   }
 
   .submitButton {
     width: 100%;
     height: 50px;
-    background-color: #017042;
+    margin-top: 10px;
     border: none;
     border-radius: 2px;
+    background-color: #017042;
     color: white;
     font-size: 18px;
-    margin-top: 10px;
   }
 }
