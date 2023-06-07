@@ -16,9 +16,9 @@ function WeeklyBest() {
     if (clicked === 'taps1') {
       url = 'http://10.58.52.198:8000/products';
     } else if (clicked === 'taps2') {
-      url = 'http://10.58.52.198:8000/products/?subcategoryId=12';
+      url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=12';
     } else if (clicked === 'taps3') {
-      url = 'http://10.58.52.198:8000/products/?subcategoryId=10';
+      url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=10';
     }
 
     if (url) {
@@ -27,7 +27,8 @@ function WeeklyBest() {
       })
         .then(res => res.json())
         .then(data => {
-          setPrdList(data.data);
+          console.log(data.data.products);
+          setPrdList(data.data.products);
         });
     }
   }, [clicked]);
