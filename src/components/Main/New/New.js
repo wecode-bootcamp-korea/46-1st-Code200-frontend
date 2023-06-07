@@ -1,6 +1,6 @@
 import React from 'react';
-import './New.scss';
 import NEW_LIST from '../Data/NewList';
+import './New.scss';
 
 function New() {
   return (
