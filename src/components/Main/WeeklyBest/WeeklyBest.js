@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './WeeklyBest.scss';
-import TAP_LIST from './TapList';
+import TAP_LIST from '../Data/TapList';
 
 function WeeklyBest() {
   const [clicked, setClicked] = useState('taps1');
