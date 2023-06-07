@@ -17,67 +17,61 @@ function Cart() {
   }, []);
 
   const fetchCartList = () => {
-    fetch('http://10.58.52.192:8000/carts', {
+    fetch('http://10.58.52.62:7000/carts', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setCartList(data.data);
-      })
+      .then(data => setCartList(data.data))
       .catch(error => console.error('error: ', error));
   };
 
   const addSelectedItems = cartId => {
-    // setSelectedItemIds([...selectedItemIds, cartId]);
-    if (query.includes(cartId)) {
-      console.log('included');
-      let lookFor = `cartId=${cartId}`;
-      const index = query.indexOf(lookFor);
-      console.log(index);
-      const test = '&' + lookFor;
-      if (index > 0) query = query.replace(test, '');
-      else query = query.replace(lookFor, '');
-      console.log(query);
-      return query;
+    const cartIdStr = `cartId=${cartId}`;
+    let newSelectedItemIds = [];
+    if (selectedItemIds.includes(cartIdStr)) {
+      const idx = selectedItemIds.indexOf(cartIdStr);
+      if (idx > -1) {
+        selectedItemIds.splice(idx, 1);
+        newSelectedItemIds = selectedItemIds;
+      }
+    } else {
+      newSelectedItemIds = [...selectedItemIds, cartIdStr];
     }
-    if (query.length > 0) query += '&';
-    query += `cartId=${cartId}`;
-    console.log(query);
+    setSelectedItemIds(newSelectedItemIds);
   };
 
+  useEffect(() => {
+    query = selectedItemIds.join('&');
+  }, [selectedItemIds]);
+
   const deleteItem = id => {
-    fetch(`http://10.58.52.192:8000/carts?cartId=${id}`, {
+    fetch(`http://10.58.52.62:7000/carts?cartId=${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     })
-      .then(response => {
-        if (response.ok) {
-          throw new Error('Delete was not successful');
-        }
-        setCartList(prevCartList =>
-          prevCartList.filter(item => item.cartId !== id)
-        );
+      .then(res => {
+        if (res.ok) fetchCartList();
       })
       .catch(error => console.error('error: ', error));
   };
 
   const deleteSelected = () => {
-    fetch(`http://10.58.52.192:8000/carts?${query}`, {
+    console.log('2 ', query);
+    fetch(`http://10.58.52.62:7000/carts?${query}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
-        'Content-Type': 'application/json;charset=utf-8',
       },
     })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) fetchCartList();
+      })
       .catch(error => console.error('error: ', error));
-    fetchCartList();
   };
 
   // const orderSelected = () => {
@@ -88,6 +82,7 @@ function Cart() {
   //     }),
   //   }).then(response => response.json());
   // };
+
   return (
     <div className="cart">
       <h1 className="header">장바구니</h1>
@@ -95,7 +90,7 @@ function Cart() {
         <thead>
           <tr>
             <th>
-              <button>v</button>
+              <input type="checkbox" className="checkbox" />
             </th>
             <th />
             <th>상품정보</th>
@@ -115,9 +110,11 @@ function Cart() {
             return (
               <tr key={data.cartId}>
                 <td className="checkbox">
-                  <button onClick={() => addSelectedItems(data.cartId)}>
-                    v
-                  </button>
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    onClick={() => addSelectedItems(data.cartId)}
+                  />
                 </td>
                 <td className="thumbnailBox">
                   <Link to="/product-detail">
