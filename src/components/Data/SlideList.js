@@ -2,15 +2,15 @@ const SLIDE_LIST = [
   {
     id: 1,
     leftLabel: 'sldie04',
-    img: 'https://github.com/dxxcw/code200-images/blob/main/images/Main/summeron.png?raw=true',
-    alt: 'summerOn',
+    img: ' https://github.com/dxxcw/code200-images/blob/main/images/Main/celebrate.png?raw=true',
+    alt: 'celebrate',
     rightLabel: 'slide02',
   },
   {
     id: 2,
     leftLabel: 'sldie01',
-    img: 'https://github.com/dxxcw/code200-images/blob/main/images/Main/celebrate.png?raw=true',
-    alt: 'celebrate',
+    img: 'https://github.com/dxxcw/code200-images/blob/main/images/Main/summeron.png?raw=truee',
+    alt: 'summerOn',
     rightLabel: 'slide03',
   },
   {
