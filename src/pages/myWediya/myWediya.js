@@ -55,16 +55,18 @@ function MyWediya() {
           <div className="mypageTitle">마이 페이지</div>
           <div className="myPageList">
             {MYPAGE_LIST.map(mypage => {
+              const { id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, title } =
+                mypage;
               return (
-                <ul key={mypage.id}>
-                  <li className="subTitle">{mypage.title}</li>
-                  <li>{mypage.sub1}</li>
-                  <li>{mypage.sub2}</li>
-                  <li>{mypage.sub3}</li>
-                  <li>{mypage.sub4}</li>
-                  <li>{mypage.sub5}</li>
-                  <li>{mypage.sub6}</li>
-                  <li>{mypage.sub7}</li>
+                <ul key={id}>
+                  <li className="subTitle">{title}</li>
+                  <li>{sub1}</li>
+                  <li>{sub2}</li>
+                  <li>{sub3}</li>
+                  <li>{sub4}</li>
+                  <li>{sub5}</li>
+                  <li>{sub6}</li>
+                  <li>{sub7}</li>
                 </ul>
               );
             })}
