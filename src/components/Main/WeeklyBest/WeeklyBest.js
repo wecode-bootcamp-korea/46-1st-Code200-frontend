@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../../ProductCard/ProductCard';
-import { Link } from 'react-router-dom';
 import TAP_LIST from '../Data/TapList';
 import './WeeklyBest.scss';
 
