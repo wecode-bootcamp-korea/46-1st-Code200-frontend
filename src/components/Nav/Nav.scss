@@ -123,5 +123,14 @@
       padding: 0;
       display: block;
     }
+
+    .redOn {
+      position: absolute;
+      background-color: #d1121c;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: -5px;
+    }
   }
 }

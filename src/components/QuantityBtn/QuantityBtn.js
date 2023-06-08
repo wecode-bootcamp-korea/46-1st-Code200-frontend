@@ -1,32 +1,38 @@
 import React from 'react';
 import './QuantityBtn.scss';
 
-const QuantityBtn = ({ count, productList, setProductList, id }) => {
+const QuantityBtn = ({ quantity, cartList, setCartList, cartId, userId }) => {
   const handleCount = value => {
-    const arr = productList.map(list => {
-      if (list.id === id) {
-        return { ...list, count: list.count + value };
+    const arr = cartList.map(list => {
+      if (list.cartId === cartId) {
+        return { ...list, quantity: list.quantity + value };
       } else {
         return list;
       }
     });
-    setProductList(arr);
-    postCount();
+    setCartList(arr);
+    postQuantity();
   };
 
-  const postCount = () => {
-    fetch('API 주소', {
-      method: 'POST',
+  const postQuantity = () => {
+    fetch(`http://10.58.52.192:8000/carts/${cartId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+        'Content-Type': 'application/json;charset=utf-8',
+      },
       body: JSON.stringify({
-        count: count,
+        quantity: quantity,
       }),
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   return (
     <div className="quantityBtn">
       <button onClick={() => handleCount(-1)}>-</button>
-      <div>{count}</div>
+      <div>{quantity}</div>
       <button onClick={() => handleCount(1)}>+</button>
     </div>
   );
