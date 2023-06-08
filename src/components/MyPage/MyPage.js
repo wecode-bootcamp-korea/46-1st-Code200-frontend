@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './MyPage.scss';
 
 function MyPage({ userId, setMyHide, myHide }) {
-  const handleLogOut = id => {
-    if (id === '2') {
+  const handleLogOut = name => {
+    if (name === 'LOGOUT') {
       localStorage.clear();
     } else {
       return;
@@ -24,7 +24,7 @@ function MyPage({ userId, setMyHide, myHide }) {
                     to={myPage.to}
                     onClick={() => {
                       setMyHide(!myHide);
-                      handleLogOut(myPage.id);
+                      handleLogOut(myPage.name);
                     }}
                   >
                     {myPage.name}
