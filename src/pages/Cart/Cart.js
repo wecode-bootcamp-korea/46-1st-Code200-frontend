@@ -28,19 +28,54 @@ function Cart() {
       .catch(error => console.error('error: ', error));
   };
 
-  const addSelectedItems = cartId => {
+  const handleSelectedItems = (e, cartId) => {
     const cartIdStr = `cartId=${cartId}`;
-    let newSelectedItemIds = [];
-    if (selectedItemIds.includes(cartIdStr)) {
-      const idx = selectedItemIds.indexOf(cartIdStr);
-      if (idx > -1) {
-        selectedItemIds.splice(idx, 1);
-        newSelectedItemIds = selectedItemIds;
-      }
+    let newSelectedItemIds = [...selectedItemIds];
+
+    if (e.target.checked) {
+      newSelectedItemIds.push(cartIdStr);
     } else {
-      newSelectedItemIds = [...selectedItemIds, cartIdStr];
+      const idx = newSelectedItemIds.indexOf(cartIdStr);
+      if (idx > -1) {
+        newSelectedItemIds.splice(idx, 1);
+      }
     }
     setSelectedItemIds(newSelectedItemIds);
+  };
+
+  // const handleSelectedItems = (e, cartId) => {
+  //   const cartIdStr = `cartId=${cartId}`;
+  //   let newSelectedItemIds = [];
+  //   if (e.target.checked) {
+  //     newSelectedItemIds = [...selectedItemIds, cartIdStr];
+  //   } else {
+  //     const idx = selectedItemIds.indexOf(cartIdStr);
+  //     if (idx > -1) {
+  //       selectedItemIds.splice(idx, 1);
+  //       newSelectedItemIds = selectedItemIds;
+  //     }
+  //   }
+  //   setSelectedItemIds(newSelectedItemIds);
+  // };
+
+  // const handleSelectAll = e => {
+  //   const selectEachCheckboxes = document.querySelectorAll('.selectEach');
+  //   const selectedIds = Array.from(selectEachCheckboxes).map(checkbox => {
+  //     checkbox.checked = e.target.checked;
+  //     return `cartId=${checkbox.dataset.cartId}`;
+  //   });
+  //   setSelectedItemIds(e.target.checked ? selectedIds : []);
+  // };
+
+  const handleSelectAll = e => {
+    if (!e.target.checked) {
+      setSelectedItemIds([]);
+    } else {
+      let aa = [];
+      let arr = [...cartList];
+      aa = arr.map(item => `cartId=${item.cartId}`);
+      setSelectedItemIds(aa);
+    }
   };
 
   useEffect(() => {
@@ -61,7 +96,6 @@ function Cart() {
   };
 
   const deleteSelected = () => {
-    console.log('2 ', query);
     fetch(`http://10.58.52.62:7000/carts?${query}`, {
       method: 'DELETE',
       headers: {
@@ -90,7 +124,11 @@ function Cart() {
         <thead>
           <tr>
             <th>
-              <input type="checkbox" className="checkbox" />
+              <input
+                type="checkbox"
+                className="checkbox selectAll"
+                onClick={e => handleSelectAll(e)}
+              />
             </th>
             <th />
             <th>상품정보</th>
@@ -112,8 +150,9 @@ function Cart() {
                 <td className="checkbox">
                   <input
                     type="checkbox"
-                    className="checkbox"
-                    onClick={() => addSelectedItems(data.cartId)}
+                    className="checkbox selectEach"
+                    checked={selectedItemIds.includes(`cartId=${data.cartId}`)}
+                    onClick={e => handleSelectedItems(e, data.cartId)}
                   />
                 </td>
                 <td className="thumbnailBox">
@@ -187,7 +226,9 @@ function Cart() {
         >
           쇼핑계속하기
         </button>
-        <button className="orderAllBtn">전체상품주문</button>
+        <Link to="/order">
+          <button className="orderAllBtn">전체상품주문</button>
+        </Link>
       </div>
     </div>
   );
