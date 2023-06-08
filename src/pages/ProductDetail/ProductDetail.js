@@ -13,13 +13,12 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 function ProductDetail() {
   const navigate = useNavigate();
   const [productDetail, setProductDetail] = useState({});
-  const [isProduct, setIsProduct] = useState(false);
+  const [count, setCount] = useState(1);
+  const [isHeart, setIsHeart] = useState(productDetail.isHeart || '');
   const params = useParams();
   const productId = params.id;
-  const [count, setCount] = useState(1);
   const price = productDetail?.price;
   const totalPrice = Number(price) * Number(count);
-  const [isHeart, setIsHeart] = useState(productDetail.isHeart || '');
   const userId = window.localStorage.getItem('userId');
 
   const CATEGORY_ARR = [
@@ -38,7 +37,7 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    fetch(`http://10.58.52.62:7000/products/1`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/products/${productId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -47,17 +46,17 @@ function ProductDetail() {
     })
       .then(res => res.json())
       .then(data => {
+        // console.log(data);
         setProductDetail(data.product[0]);
-        setIsProduct(true);
         setIsHeart(data.product[0].isLiked);
       });
-  }, []);
+  }, [productId]);
 
   const LikeUpdate = () => {
     const METHOD = isHeart ? 'DELETE' : 'POST';
 
     setIsHeart(!isHeart);
-    fetch('http://10.58.52.62:7000/likes/${productId}', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/likes/${productId}`, {
       method: METHOD,
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -67,7 +66,7 @@ function ProductDetail() {
   };
 
   const cartInput = () => {
-    fetch('http://10.58.52.198:8000/carts/create', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -98,18 +97,17 @@ function ProductDetail() {
         <div className="productDetailImg">
           <div className="detailTopImg">
             <ul className="detailTopImgUl">
-              {isProduct &&
-                productDetail.imageUrls.map((productDetailImg, index) => {
-                  return (
-                    <li className="detailTopImgli" key={index}>
-                      <img
-                        className="bestItemImg"
-                        src={productDetailImg}
-                        alt="bestItem"
-                      />
-                    </li>
-                  );
-                })}
+              {productDetail.imageUrls?.map((productDetailImg, index) => {
+                return (
+                  <li className="detailTopImgli" key={index}>
+                    <img
+                      className="bestItemImg"
+                      src={productDetailImg}
+                      alt="bestItem"
+                    />
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -137,7 +135,7 @@ function ProductDetail() {
             </div>
             <div className="productDetailInner">
               <div className="productAmount">
-                {isProduct && <span>{Number(price).toLocaleString()}</span>}
+                <span>{Number(price).toLocaleString()}</span>
               </div>
               <div className="productShare">
                 <img
