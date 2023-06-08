@@ -2,20 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MyPage.scss';
 
-function MyPage() {
+function MyPage({ userId, setMyHide, myHide }) {
   return (
     <div className="bottomNav">
       <div className="bottomNavMy">
         <ul className="myPageUl">
-          {MY_PAGE.map(myPage => {
-            return (
-              <li className="myPageLi" key={myPage.id}>
-                <Link className="myPageLink" to={myPage.to}>
-                  {myPage.name}
-                </Link>
-              </li>
-            );
-          })}
+          {userId !== null &&
+            LOGIN.map(myPage => {
+              return (
+                <li className="myPageLi" key={myPage.id}>
+                  <Link
+                    className="myPageLink"
+                    to={myPage.to}
+                    onClick={() => {
+                      setMyHide(!myHide);
+                    }}
+                  >
+                    {myPage.name}
+                  </Link>
+                </li>
+              );
+            })}
+          {userId === null &&
+            NOT_LOGIN.map(myPage => {
+              return (
+                <li className="myPageLi" key={myPage.id}>
+                  <Link
+                    className="myPageLink"
+                    to={myPage.to}
+                    onClick={() => {
+                      setMyHide(!myHide);
+                    }}
+                  >
+                    {myPage.name}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>
@@ -24,20 +47,23 @@ function MyPage() {
 
 export default MyPage;
 
-const MY_PAGE = [
+const LOGIN = [
   {
     id: '1',
-    name: 'LOGIN',
-    to: '/',
+    name: 'MYPAGE',
+    to: '/myWediya',
   },
   {
     id: '2',
     name: 'LOGOUT',
     to: '/',
   },
+];
+
+const NOT_LOGIN = [
   {
-    id: '3',
-    name: 'ORDER',
-    to: '/',
+    id: '1',
+    name: 'LOGIN',
+    to: '/login',
   },
 ];

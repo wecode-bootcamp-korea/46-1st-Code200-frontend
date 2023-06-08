@@ -1,22 +1,20 @@
-@import '../../styles/mixin';
-@import '../../styles/variables';
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
 
 .nav {
   @include componentSize(100%, 90px);
+  top: 0;
+  z-index: 1;
   position: sticky;
   position: -webkit-sticky;
-  z-index: 1;
-  top: 0;
   transition: all 0.5s;
   background-color: white;
-  font-family: 'Noto Sans KR', serif;
 
   .topLogo {
-    @include componentSize(15%, '');
-    width: 280px;
+    @include componentSize(280px, '');
+    margin-left: 10px;
+    margin-right: 10px;
     min-width: 280px;
-    margin-right: 18px;
-    padding-left: 20px;
   }
 
   .topNav {
@@ -30,40 +28,32 @@
   }
 
   .topMenu {
-    @include componentSize(1100px, '');
-    margin-right: 280px;
-    margin-left: 20px;
+    @include componentSize(900px, '');
+    min-width: 900px;
     text-align: center;
-  }
 
-  .topMenuCategoryUl {
-    @include flexSort(row, space-between, center);
-    @include componentSize(100%, 90px);
-    list-style: none;
-  }
-
-  .topMenuCategoryLi {
-    @include componentSize(150px, 90px);
-    display: inline;
-    margin-top: 40px;
-    padding: 20px 5px;
-    font-size: large;
-    text-align: left;
+    .topMenuCategoryLi {
+      @include componentSize(150px, 90px);
+      text-align: left;
+      margin-top: 40px;
+      padding: 20px 0;
+      font-size: large;
+      display: inline-block;
+    }
   }
 
   .navLink {
-    @include componentSize('', 90px);
-    display: inline-block;
     color: black;
     text-decoration: none;
+    display: inline-block;
 
     &:after {
       @include componentSize(100%, '');
-      content: '';
       display: block;
+      content: '';
+      border-bottom: solid 2px black;
       transform: scaleX(0);
       transition: transform 250ms ease-in-out;
-      border-bottom: solid 2px black;
     }
     &:hover:after {
       transform: scaleX(1);
@@ -71,8 +61,9 @@
   }
 
   .topMember {
-    @include componentSize(15%, 90px);
-    position: relative;
+    @include componentSize(280px, 90px);
+    min-width: 280px;
+    margin-top: 40px;
     top: 20px;
     right: 0;
 
@@ -83,10 +74,16 @@
   }
 
   .subCategory {
-    @include flexSort(row, center, '');
     @include componentSize(100%, 180px);
-    min-width: 100%;
+    @include flexSort(row, space-between, center);
     background-color: white;
+    min-width: 100%;
+    animation: modalShowTop 0.5s;
+  }
+
+  .topLogo {
+    width: 280px;
+    height: 90px;
   }
 
   .subCategoryImg {
@@ -99,34 +96,32 @@
   }
 
   .dev1Link {
-    margin: 2px;
     color: gray;
-    font-size: medium;
     text-decoration: none;
+    margin: 2px;
+    font-size: medium;
     &:hover {
       color: black;
     }
   }
   .dev {
-    @include componentSize(100%, '');
-    min-width: 100%;
-    padding-bottom: 20px;
-    padding-left: 300px;
+    @include componentSize(900px, '');
     background-color: white;
+    margin-left: -5px;
+    min-width: 900px;
 
     .bottomMenuCategoryUl {
+      @include componentSize(150px, '');
+      @include flexSort(row, space-between, center);
       display: inline-block;
-      width: 135px;
-      min-width: 135px;
-      margin-right: 50px;
       vertical-align: top;
     }
 
     .bottomMenuCategoryLi {
-      display: block;
-      margin: 10px 4px;
-      padding: 0;
+      margin: 10px 0;
       text-align: left;
+      padding: 0;
+      display: block;
     }
   }
 }

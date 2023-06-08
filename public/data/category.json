@@ -1,122 +1,139 @@
 {
   "data": [
     {
-      "category_id": 1,
-      "category_name": "음료",
+      "categoryId": 1,
+      "categoryName": "음료",
+      "link": "/product-list?categoryId=1",
       "subCategories": [
         {
-          "subCategory_id": 1,
-          "subCategory_name": "콜드브루"
+          "subCategoryId": 1,
+          "subCategoryName": "콜드브루",
+          "subLink": "/product-list?categoryId=1&subcategoryId=1"
         },
         {
-          "subCategory_id": 2,
-          "subCategory_name": "브루드커피"
+          "subCategoryId": 2,
+          "subCategoryName": "브루드커피",
+          "subLink": "/product-list?categoryId=1&subcategoryId=2"
         },
         {
-          "subCategory_id": 3,
-          "subCategory_name": "에스프레소"
+          "subCategoryId": 3,
+          "subCategoryName": "에스프레소",
+          "subLink": "/product-list?categoryId=1&subcategoryId=3"
         },
         {
-          "subCategory_id": 4,
-          "subCategory_name": "프라푸치노"
+          "subCategoryId": 4,
+          "subCategoryName": "프라푸치노",
+          "subLink": "/product-list?categoryId=1&subcategoryId=4"
         },
         {
-          "subCategory_id": 5,
-          "subCategory_name": "블렌디드"
+          "subCategoryId": 5,
+          "subCategoryName": "블렌디드",
+          "subLink": "/product-list?categoryId=1&subcategoryId=5"
         }
       ]
     },
     {
-      "category_id": 2,
-      "category_name": "푸드",
+      "categoryId": 2,
+      "categoryName": "원두",
+      "link": "/product-list?categoryId=2",
       "subCategories": [
         {
-          "subCategory_id": 6,
-          "subCategory_name": "브레드"
+          "subCategoryId": 6,
+          "subCategoryName": "블론드",
+          "subLink": "/product-list?categoryId=2&subcategoryId=6"
         },
         {
-          "subCategory_id": 7,
-          "subCategory_name": "케이크"
+          "subCategoryId": 7,
+          "subCategoryName": "미디엄",
+          "subLink": "/product-list?categoryId=2&subcategoryId=7"
         },
         {
-          "subCategory_id": 8,
-          "subCategory_name": "샌드위치&샐러드"
-        },
-        {
-          "subCategory_id": 9,
-          "subCategory_name": "따뜻한 푸드"
-        },
-        {
-          "subCategory_id": 10,
-          "subCategory_name": "과일 & 요거트"
+          "subCategoryId": 8,
+          "subCategoryName": "다크",
+          "subLink": "/product-list?categoryId=2&subcategoryId=8"
         }
       ]
     },
     {
-      "category_id": 3,
-      "category_name": "상품",
+      "categoryId": 3,
+      "categoryName": "상품",
+      "link": "/product-list?categoryId=3",
       "subCategories": [
         {
-          "subCategory_id": 11,
-          "subCategory_name": "머그"
+          "subCategoryId": 11,
+          "subCategoryName": "머그",
+          "subLink": "/product-list?categoryId=3&subcategoryId=11"
         },
         {
-          "subCategory_id": 12,
-          "subCategory_name": "글라스"
+          "subCategoryId": 12,
+          "subCategoryName": "글라스",
+          "subLink": "/product-list?categoryId=3&subcategoryId=12"
         },
         {
-          "subCategory_id": 13,
-          "subCategory_name": "텀블러"
+          "subCategoryId": 13,
+          "subCategoryName": "텀블러",
+          "subLink": "/product-list?categoryId=3&subcategoryId=13"
         },
         {
-          "subCategory_id": 14,
-          "subCategory_name": "커피 용품"
+          "subCategoryId": 14,
+          "subCategoryName": "커피 용품",
+          "subLink": "/product-list?categoryId=3&subcategoryId=14"
         }
       ]
     },
     {
-      "category_id": 4,
-      "category_name": "매장찾기",
+      "categoryId": 4,
+      "categoryName": "매장찾기",
+      "link": "/product-list?categoryId=4",
       "subCategories": [
         {
-          "subCategory_id": 15,
-          "subCategory_name": "퀵 검색"
+          "subCategoryId": 15,
+          "subCategoryName": "퀵 검색",
+          "subLink": "/product-list?categoryId=4&subcategoryId=15"
         },
         {
-          "subCategory_id": 16,
-          "subCategory_name": "지역 검색"
+          "subCategoryId": 16,
+          "subCategoryName": "지역 검색",
+          "subLink": "/product-list?categoryId=4&subcategoryId=16"
         }
       ]
     },
     {
-      "category_id": 5,
-      "category_name": "이벤트",
+      "categoryId": 5,
+      "categoryName": "이벤트",
+      "link": "/product-list?categoryId=5",
       "subCategories": [
         {
-          "subCategory_id": 17,
-          "subCategory_name": "공지사항"
+          "subCategoryId": 17,
+          "subCategoryName": "공지사항",
+          "subLink": "/product-list?categoryId=5&subcategoryId=17"
         },
         {
-          "subCategory_id": 18,
-          "subCategory_name": "고객지원"
+          "subCategoryId": 18,
+          "subCategoryName": "고객지원",
+          "subLink": "/product-list?categoryId=5&subcategoryId=18"
         }
       ]
     },
     {
-      "category_id": 6,
-      "category_name": "브랜드소식",
+      "categoryId": 6,
+      "categoryName": "브랜드소식",
+      "link": "/product-list?categoryId=6",
       "subCategories": [
         {
-          "subCategory_id": 19,
-          "subCategory_name": "지역사회참여활동"
+          "subCategoryId": 19,
+          "subCategoryName": "지역사회참여활동",
+          "subLink": "/product-list?categoryId=6&subcategoryId=19"
         },
         {
-          "subCategory_id": 20,
-          "subCategory_name": "환경보호활동"
+          "subCategoryId": 20,
+          "subCategoryName": "환경보호활동",
+          "subLink": "/product-list?categoryId=6&subcategoryId=20"
         },
         {
-          "subCategory_id": 21,
-          "subCategory_name": "윤리구매"
+          "subCategoryId": 21,
+          "subCategoryName": "윤리구매",
+          "subLink": "/product-list?categoryId=6&subcategoryId=21"
         }
       ]
     }

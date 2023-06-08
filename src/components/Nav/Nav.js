@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MyPage from '../MyPage/MyPage';
 import './Nav.scss';
+import './navShowTop.scss';
 
 const Nav = () => {
+  const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
   const [hide, setHide] = useState(true);
   const [myHide, setMyHide] = useState(true);
   const [isSubCategory, setIsSubCategory] = useState(false);
+  const userId = window.localStorage.getItem('userId');
 
+  const handleIcon = name => {
+    if (userId !== null) {
+      if (name === 'search') {
+        navigate('/');
+      } else if (name === 'wish') {
+        navigate('/');
+      } else if (name === 'cart') {
+        navigate('/cart');
+      }
+    } else {
+      alert('로그인 후 이용 바랍니다.');
+    }
+  };
   useEffect(() => {
     fetch('data/category.json')
       .then(response => response.json())
@@ -22,7 +38,13 @@ const Nav = () => {
     <div className="nav">
       <div className="topNav">
         <div className="topLogo">
-          <Link className="link" to="/">
+          <Link
+            className="link"
+            to="/"
+            onClick={() => {
+              setHide(true);
+            }}
+          >
             <img
               className="logoIcons"
               src="https://raw.githubusercontent.com/dxxcw/code200-images/35f700c12816ed36ec7194d724a60969c7efaad7/images/Main/logo/3.png"
@@ -31,23 +53,21 @@ const Nav = () => {
           </Link>
         </div>
         <div className="topMenu">
-          <ul className="topMenuCategoryUl">
-            {categoryList.map(category => {
-              return (
-                <li className="topMenuCategoryLi" key={category.category_id}>
-                  <Link
-                    className="navLink"
-                    to="/"
-                    onMouseEnter={() => {
-                      setHide(false);
-                    }}
-                  >
-                    {category.category_name}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          {categoryList.map(category => {
+            return (
+              <span className="topMenuCategoryLi" key={category.categoryId}>
+                <Link
+                  className="navLink"
+                  to={category.link}
+                  onMouseEnter={() => {
+                    setHide(false);
+                  }}
+                >
+                  {category.categoryName}
+                </Link>
+              </span>
+            );
+          })}
         </div>
         <div className="topMember">
           {IMG_SRC.map(img =>
@@ -57,12 +77,21 @@ const Nav = () => {
                 src={img.value}
                 alt={img.alt}
                 key={img.id}
+                onClick={() => {
+                  handleIcon(img.alt);
+                }}
               />
             ) : (
               <>
-                {!myHide && <MyPage />}
+                {!myHide && (
+                  <MyPage
+                    userId={userId}
+                    setMyHide={setMyHide}
+                    myHide={myHide}
+                  />
+                )}
                 <img
-                  className="imgIcons login"
+                  className="imgIcons"
                   src={img.value}
                   alt={img.alt}
                   onClick={() => {
@@ -82,22 +111,29 @@ const Nav = () => {
             setHide(true);
           }}
         >
+          <div className="topLogo" />
           <div className="dev">
             {isSubCategory &&
               categoryList.map(category => {
                 return (
                   <ul
                     className="bottomMenuCategoryUl"
-                    key={category.category_id}
+                    key={category.categoryId}
                   >
                     {category.subCategories.map(subCategory => {
                       return (
                         <li
                           className="bottomMenuCategoryLi"
-                          key={subCategory.subCategory_id}
+                          key={subCategory.subCategoryId}
                         >
-                          <Link className="dev1Link" to="/">
-                            {subCategory.subCategory_name}
+                          <Link
+                            className="dev1Link"
+                            to={subCategory.subLink}
+                            onClick={() => {
+                              setHide(true);
+                            }}
+                          >
+                            {subCategory.subCategoryName}
                           </Link>
                         </li>
                       );
@@ -106,6 +142,7 @@ const Nav = () => {
                 );
               })}
           </div>
+          <div className="topMember" />
         </div>
       )}
     </div>
