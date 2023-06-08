@@ -17,7 +17,7 @@ function Cart() {
   }, []);
 
   const fetchCartList = () => {
-    fetch('http://10.58.52.62:7000/carts', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts`, {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),

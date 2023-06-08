@@ -14,11 +14,11 @@ const ProductCard = ({
 }) => {
   return (
     <div className="product">
-      <Link to={`/product-detail/${id}`}>
+      <Link to="/product-detail/1">
         <img src={imgUrl} alt="coffee bean" className="thumbnail" />
       </Link>
       <div className="box">
-        <Link to={`/product-detail/${id}`}>
+        <Link to="/product-detail/1">
           <p className="name">{name}</p>
         </Link>
         <p className="price">{Number(price).toLocaleString()}</p>

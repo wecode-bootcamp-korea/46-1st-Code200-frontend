@@ -2,7 +2,7 @@
 @import '../../styles/variables.scss';
 
 .productDetail {
-  @include componentSize(100%, 2000px);
+  @include componentSize(100%, 100%);
 
   .productRoute {
     .productRouteCategory {

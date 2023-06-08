@@ -38,7 +38,7 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/products/${productId}`, {
+    fetch(`http://10.58.52.62:7000/products/1`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -47,7 +47,6 @@ function ProductDetail() {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         setProductDetail(data.product[0]);
         setIsProduct(true);
         setIsHeart(data.product[0].isLiked);
@@ -58,7 +57,7 @@ function ProductDetail() {
     const METHOD = isHeart ? 'DELETE' : 'POST';
 
     setIsHeart(!isHeart);
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/likes/${productId}`, {
+    fetch('http://10.58.52.62:7000/likes/${productId}', {
       method: METHOD,
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -68,14 +67,14 @@ function ProductDetail() {
   };
 
   const cartInput = () => {
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts/list`, {
+    fetch('http://10.58.52.198:8000/carts/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization: userId,
       },
       body: JSON.stringify({
-        productId: productId,
+        productId: 1,
         quantity: count,
         sizeId: 1,
         userId: userId,
@@ -235,7 +234,9 @@ function ProductDetail() {
           })}
         </div>
       </div>
-      <div className="review">{/* <Review /> */}</div>
+      <div className="review">
+        <Review />
+      </div>
     </div>
   );
 }

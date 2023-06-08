@@ -33,7 +33,7 @@ function Review() {
     // const userToken =
     //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
-    fetch('http://10.58.52.62:7000/reviews/2', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/reviews/1`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -43,7 +43,7 @@ function Review() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        console.log('review' + data);
         getReview();
         setInputReview('');
       })
@@ -52,7 +52,7 @@ function Review() {
 
   // 기존 리뷰
   const getReview = () => {
-    fetch('http://10.58.52.62:7000/products/2', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/products/1`, {
       method: 'GET',
     })
       .then(res => res.json())
