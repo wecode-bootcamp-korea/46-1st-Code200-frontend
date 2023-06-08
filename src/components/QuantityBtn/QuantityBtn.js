@@ -24,7 +24,7 @@ const QuantityBtn = ({ quantity, cartList, setCartList, cartId, userId }) => {
       body: JSON.stringify({
         quantity: quantity,
       }),
-    }).then(response => response.json());
+    });
   };
 
   return (
