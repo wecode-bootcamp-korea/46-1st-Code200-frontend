@@ -1,10 +1,11 @@
 .footer {
   display: grid;
+  position: absolute;
   align-items: start;
   width: 100%;
-  min-width: 100%;
+  min-width: 1200px;
   height: 380px;
-  margin-top: 60px;
+  margin-top: 80px;
   padding-top: 20px;
   background-color: #f4f4f4;
   color: gray;
@@ -12,7 +13,7 @@
 
   .all {
     width: 90%;
-    margin: 0 5%;
+    margin: 0 auto;
     padding: 0 20px;
 
     .topContainer {
@@ -38,14 +39,12 @@
       justify-content: space-between;
 
       .wrapalltop {
-        width: 800px;
         margin-top: 15px;
         font-size: 15px;
         line-height: 25px;
       }
 
       .wrapallmid {
-        width: 800px;
         margin-top: 15px;
         font-size: 15px;
         line-height: 25px;

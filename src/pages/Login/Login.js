@@ -51,7 +51,7 @@ const Login = () => {
         <p className="idcontent">이메일 아이디</p>
         <input
           type="text"
-          className="id"
+          className="id input"
           name="email"
           placeholder="이메일을 입력해 주세요."
           value={inputValues.email}
@@ -60,7 +60,7 @@ const Login = () => {
         <p className="passwordcontent">비밀번호 </p>
         <input
           type="password"
-          className="password"
+          className="password input"
           name="password"
           placeholder="비밀번호를 입력해 주세요."
           value={inputValues.password}
@@ -72,10 +72,14 @@ const Login = () => {
         </button>
       </div>
       <div className="findidd">
-        <a href="##">아이디/비밀번호 찾기</a>
+        <a href="##" className="findUserInfo">
+          아이디/비밀번호 찾기
+        </a>
       </div>
       <div className="signupp">
-        <Link to="/signup">이메일로 회원가입</Link>
+        <Link to="/signup" className="signupLink">
+          이메일로 회원가입
+        </Link>
       </div>
     </div>
   );
