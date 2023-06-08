@@ -100,12 +100,12 @@
   flex-direction: column;
   align-items: center;
   height: 200px;
-  width: 800px;
+  width: 100px;
   padding: 10px 10px 30px 70px;
 
   .submitRating {
     margin: auto;
-    width: 800px;
+    width: 400px;
 
     p {
       margin: auto;
@@ -121,11 +121,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 800px;
     margin: auto;
 
     .reviewBox {
-      width: 100%;
+      width: 350px;
       height: 60px;
       border: 1px solid lightgrey;
     }
