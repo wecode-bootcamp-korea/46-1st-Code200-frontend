@@ -83,7 +83,7 @@ function Cart() {
   }, [selectedItemIds]);
 
   const deleteItem = id => {
-    fetch(`http://10.58.52.62:7000/carts?cartId=${id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/cart/data/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -95,8 +95,8 @@ function Cart() {
       .catch(error => console.error('error: ', error));
   };
 
-  const deleteSelected = () => {
-    fetch(`http://10.58.52.62:7000/carts?${query}`, {
+  const deleteAll = () => {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/cart/data`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -193,12 +193,8 @@ function Cart() {
         </tbody>
       </table>
       <div className="deleteBtnBox">
-        <button className="deleteSelected" onClick={deleteSelected}>
-          선택상품 삭제
-        </button>
-        <button className="deleteAll" onClick={deleteSelected}>
-          장바구니비우기
-        </button>
+        <button className="deleteSelected">선택상품 삭제</button>
+        <button className="deleteAll">장바구니비우기</button>
       </div>
       <div className="priceSummary">
         <div className="totalItemPrice">

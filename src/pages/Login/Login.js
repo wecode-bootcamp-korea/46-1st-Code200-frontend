@@ -25,7 +25,7 @@ const Login = () => {
 
   const goMain = () => {
     if (isValid) {
-      fetch('http://10.58.52.62:7000/users/signin', {
+      fetch(`${process.env.REACT_APP_SERVER_HOST}/users/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         body: JSON.stringify(inputValues),

@@ -38,7 +38,7 @@ function ProductDetail() {
   ];
 
   useEffect(() => {
-    fetch(`http://10.58.52.62:7000/products/${productId}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/products/${productId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -47,6 +47,7 @@ function ProductDetail() {
     })
       .then(res => res.json())
       .then(data => {
+        // console.log(data);
         setProductDetail(data.product[0]);
         setIsProduct(true);
         setIsHeart(data.product[0].isLiked);
@@ -57,7 +58,7 @@ function ProductDetail() {
     const METHOD = isHeart ? 'DELETE' : 'POST';
 
     setIsHeart(!isHeart);
-    fetch('http://10.58.52.62:7000/likes/5', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/likes/${productId}`, {
       method: METHOD,
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -67,7 +68,7 @@ function ProductDetail() {
   };
 
   const cartInput = () => {
-    fetch('http://10.58.52.198:8000/carts/list', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts/list`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
