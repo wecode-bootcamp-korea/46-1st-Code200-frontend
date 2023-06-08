@@ -3,7 +3,7 @@ $primary-color: #017042;
 .login {
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 900px;
   padding-top: 3%;
   background: white;
   text-align: center;
@@ -21,14 +21,13 @@ $primary-color: #017042;
   box-sizing: border-box;
   align-items: center;
   width: 450px;
-  height: 400px;
   margin: 0 auto;
   line-height: 30px;
 }
 
 .idcontent {
   position: relative;
-  margin: 0;
+  margin: 10px 0;
   font-size: 20px;
   font-weight: 500;
   text-align: left;
@@ -37,7 +36,7 @@ $primary-color: #017042;
 .id {
   width: 100%;
   height: 70px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border: none;
   border-radius: 2px;
   background-color: #f7f7f7;
@@ -46,7 +45,7 @@ $primary-color: #017042;
 
 .passwordcontent {
   position: relative;
-  margin: 0;
+  margin: 10px 0;
   font-size: 20px;
   font-weight: 500;
   text-align: left;
@@ -55,7 +54,7 @@ $primary-color: #017042;
 .password {
   width: 100%;
   height: 70px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   border: none;
   border-radius: 2px;
   background-color: #f7f7f7;
@@ -66,13 +65,14 @@ $primary-color: #017042;
   width: 450px;
   height: 70px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   border: 0.5px solid gray;
   border-radius: 2px;
   background-color: $primary-color;
   color: white;
   font-size: 100%;
   font-weight: bold;
+
   &:hover {
     background: lighten($primary-color, 10%);
 
@@ -99,7 +99,17 @@ $primary-color: #017042;
   text-align: center;
 }
 
-a {
+.findUserInfo,
+.signupLink {
+  border: none;
   color: black;
   text-decoration: none;
+}
+
+.input {
+  border-radius: 2px;
+
+  &::placeholder {
+    padding-left: 15px;
+  }
 }
