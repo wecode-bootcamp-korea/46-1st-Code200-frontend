@@ -3,9 +3,9 @@ import '../Footer/Footer.scss';
 
 function Footer() {
   return (
-    <footer>
+    <footer className="footer">
       <nav className="all">
-        <div className="wrapallright1">
+        <div className="topContainer">
           <a href="##">
             <p>브랜드소개</p>
           </a>
