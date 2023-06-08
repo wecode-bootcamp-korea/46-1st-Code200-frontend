@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "average_rating": "4.250000",
+      "content": "너무 맛있어 계속 먹게되어요!, 자꾸 구매하게되네요!",
+      "description": "카페 베로나는 깊이 있고 달콤함이 특징인 이탈리안 로스트의 풍미와 부드러운 라틴 아메리카와 매혹적인 인도네시아산 원두가 블렌딩된 원두입니다. 이 유쾌한 조합은 초콜릿과 매우 잘 어울리기 때문에 발렌타인데이 기간의 인기 원두입니다. 연인의 애절한 로맨스가 연상 지어지는 커피, 카페 베로나. 아름다운 여인이여, 아름다운 베로나여~",
+      "name": "스노우아이스티",
+      "price": 6000.0,
+      "image": [
+        {
+          "imageUrl": "https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Main/coffe-bag/jon-tyson-KRedbshBxEk-unsplash.jpg"
+        },
+        {
+          "imageUrl": "https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/detail/detail01.png"
+        },
+        {
+          "imageUrl": "https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/detail/detail03.png"
+        },
+        {
+          "imageUrl": "https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/detail/detail02.png"
+        }
+      ],
+      "category": "음료",
+      "subcategory": "커피"
+    }
+  ]
+}

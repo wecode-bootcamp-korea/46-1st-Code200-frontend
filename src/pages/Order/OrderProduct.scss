@@ -9,10 +9,24 @@
 
   .orderProductInner {
     animation: modalShowTop 0.3s;
+    .productFlexTop {
+      @include flexSort(row, space-between, center);
+
+      .productFlex {
+        @include flexSort(row, flex-start, center);
+      }
+    }
+
+    .cancelBtn {
+      margin-right: 10px;
+      padding: 3px;
+      border: none;
+      color: rgba(0, 0, 0, 0.7);
+    }
   }
   .orderProductImg {
     @include flexSort(row, flex-start, center);
-    @include componentSize(100%, 150px);
+    @include componentSize('', 150px);
     margin-left: 20px;
 
     .productOrder {

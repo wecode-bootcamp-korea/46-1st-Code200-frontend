@@ -1,0 +1,185 @@
+@import '../../styles/mixin.scss';
+
+.myWediya {
+  position: relative;
+  flex-wrap: wrap;
+  margin: auto;
+  min-width: 1240px;
+  width: 90%;
+  height: 100%;
+
+  .mypageTop {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    width: 100%;
+
+    .mypageTitle {
+      float: left;
+      padding: 0 0 10px 0;
+      font-size: 20px;
+      font-weight: 500;
+      color: white;
+    }
+  }
+}
+
+.mainWrap {
+  display: flex;
+
+  .mypageTitle {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: white;
+  }
+
+  .mypageNum {
+    margin-right: 5px;
+    font-size: 24px;
+  }
+
+  .mypageNew {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  .mypageBox {
+    width: 250px;
+
+    p {
+      margin: 8px 0;
+      color: white;
+    }
+  }
+
+  .mainWrapList {
+    @include flexSort(column, center, center);
+    padding: 0 40px;
+    width: 100%;
+    height: 160px;
+    border-left: 1px solid grey;
+    background-color: #45525a;
+    color: white;
+  }
+}
+
+.pageWrap {
+  display: flex;
+
+  .mypageSide {
+    margin: auto 50px;
+    float: left;
+    width: 215px;
+    max-width: 215px;
+
+    .subTitle {
+      margin-top: 30px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a1a1a;
+      cursor: pointer;
+    }
+
+    li {
+      position: relative;
+      line-height: 33px;
+      font-size: 14px;
+      color: #707070;
+      cursor: pointer;
+    }
+  }
+
+  .mypageTitle {
+    padding: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1a1a1a;
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  .myPageMain {
+    width: 70%;
+
+    .myPageContent {
+      margin: 30px auto 0;
+      width: 100%;
+      background-color: #f7f7f7;
+
+      ul {
+        display: flex;
+      }
+
+      .firstchild {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        color: #1a1a1a;
+        box-sizing: border-box;
+        height: 160px;
+      }
+
+      .listStyle {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        font-size: 16px;
+        box-sizing: border-box;
+        color: #1a1a1a;
+        height: 160px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background-position: left center;
+        background: url('../../../public/images/next.png') no-repeat left center;
+      }
+
+      span {
+        margin-top: 15px;
+        font-size: 24px;
+        color: #1a1a1a;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .mypageTitle {
+    display: flex;
+    margin-top: 70px;
+  }
+
+  .myPageOrder {
+    th {
+      padding: 25px 10px 25px 0;
+      margin-bottom: 30px;
+      border-bottom: 1px solid lightgray;
+      font-size: 16px;
+      width: 150px;
+    }
+
+    .contents {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      margin-top: 80px;
+      color: grey;
+    }
+  }
+}
+
+.welcome {
+  float: left;
+  font-weight: 500;
+  padding-bottom: 10px;
+  margin: 40px 0 20px 0;
+  color: #1a1a1a;
+  padding: 0;
+  font-size: 20px;
+}

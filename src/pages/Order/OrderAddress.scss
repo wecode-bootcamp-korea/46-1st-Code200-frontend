@@ -23,16 +23,23 @@
       margin-left: 10px;
       font-size: 13px;
       border: 1px solid gray;
-      &:hover {
-        background-color: $primary-color;
-        color: white;
-      }
+    }
+    .selectedBtn {
+      @include componentSize(120px, 80%);
+      background-color: $primary-color;
+      margin-left: 10px;
+      font-size: 13px;
+      border: 1px solid gray;
+      color: white;
     }
   }
   .selectAddress {
     margin-top: 40px;
     margin-left: 20px;
     margin-bottom: 40px;
+    .addInput {
+      margin: 5px;
+    }
   }
   .userAddressInfo {
     @include componentSize(100%, 100%);
@@ -64,6 +71,27 @@
         @include componentSize(90%, 40px);
         margin: 3px;
       }
+      .userName {
+        @include componentSize(90%, 100%);
+        margin: 3px;
+        border: none;
+      }
+      .userAdd {
+        @include componentSize(60%, 40px);
+        margin: 3px;
+        border: none;
+      }
+      .userAdd2 {
+        @include componentSize(90%, 40px);
+        margin: 3px;
+        border: none;
+      }
+      .userPhone {
+        @include componentSize(90%, 40px);
+        margin: 3px;
+        border: none;
+      }
+
       .addSearchBtn {
         padding: 10px;
         margin-left: 2px;
@@ -91,6 +119,7 @@
   }
   .deliveryMessage {
     @include componentSize(90%, 40px);
+    margin-top: 10px;
     margin-left: 20px;
     margin-bottom: 10px;
 

@@ -33,9 +33,7 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
           if (data.message === 'USER_CORRECT') {
-            console.log(data);
             localStorage.setItem('token', data.accessToken);
-
             navigate('/');
           } else {
             alert('잘못된 아이디나 비밀번호입니다');

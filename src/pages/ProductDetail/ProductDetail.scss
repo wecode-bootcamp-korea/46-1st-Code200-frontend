@@ -1,0 +1,312 @@
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
+
+.productDetail {
+  @include componentSize(100%, 2000px);
+
+  .productRoute {
+    .productRouteCategory {
+      float: right;
+      color: gray;
+      margin-right: 3px;
+      text-decoration: none;
+      font-size: smaller;
+      .productSpan {
+        @include componentSize(10px, '');
+      }
+    }
+  }
+
+  .productContainer {
+    @include componentSize(100%, 1000px);
+    @include flexSort(row, center, space-between);
+  }
+
+  .productDetailImg {
+    @include componentSize(780px, 1000px);
+    border-bottom: 0.5px solid gainsboro;
+
+    .detailTopImg {
+      width: 800px;
+
+      .detailTopImgUl {
+        width: 100%;
+
+        .detailTopImgli {
+          width: 300px;
+          display: inline;
+        }
+      }
+    }
+  }
+
+  .bestItemImg {
+    @include componentSize(300px, 450px);
+    margin: 20px;
+    margin-left: 20px;
+    transition: scale(1);
+    transition: transform 0.5s;
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.5s;
+    }
+  }
+
+  .productDetailInfo {
+    @include componentSize(20%, 1000px);
+    @include flexSort(column, flex-start, center);
+    height: 1000px;
+    border-bottom: 0.5px solid gainsboro;
+
+    .productDetail {
+      @include flexSort(column, flex-start, '');
+      @include componentSize(350px, 200px);
+      margin-top: 100px;
+
+      .productTitle {
+        @include componentSize(100%, 50px);
+        font-size: x-large;
+      }
+      .productTag {
+        @include flexSort(row, flex-start, center);
+        @include componentSize(100%, 50px);
+        font-size: small;
+
+        .freePrd {
+          color: white;
+          padding: 2px;
+          margin: 2px;
+          background-color: black;
+        }
+        .redPrd {
+          color: white;
+          padding: 2px;
+          margin: 2px;
+          background-color: red;
+        }
+        .newPrd {
+          color: white;
+          padding: 2px;
+          margin: 2px;
+          background-color: gold;
+        }
+      }
+
+      .productDetailInner {
+        @include componentSize(350px, '');
+        @include flexSort(row, flex-end, '');
+
+        .userLevelPrice {
+          font-size: small;
+        }
+      }
+
+      .productAmount {
+        @include componentSize(100%, 50px);
+        font-size: x-large;
+        float: left;
+      }
+      .productShare {
+        float: right;
+      }
+    }
+
+    .detailDescription {
+      @include componentSize(350px, 80px);
+      @include flexSort(row, center, center);
+      border-top: 0.5px solid gainsboro;
+      border-bottom: 0.5px solid gainsboro;
+      .welcomeSpan {
+        color: gray;
+        margin-right: 20px;
+        font-size: smaller;
+      }
+      .welcomeLink {
+        color: black;
+        text-decoration: none;
+        font-size: smaller;
+      }
+    }
+
+    .detailSize {
+      @include flexSort(row, center, center);
+      @include componentSize(350px, 100px);
+      .detailSizeInner {
+        // @include flexSort(row, center, center);
+        .graySpan {
+          color: gray;
+          margin-right: 20px;
+          font-size: smaller;
+        }
+      }
+    }
+
+    .buttonArea {
+      @include flexSort(row, flex-start, center);
+      @include componentSize(350px, 100px);
+
+      .subCartMove {
+        @include componentSize(120px, 60px);
+        background-color: $primary-color;
+        color: white;
+        border: 0.5px solid gainsboro;
+        margin: 8px;
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+      .buyMove {
+        @include componentSize(120px, 60px);
+        background-color: $primary-color;
+        color: white;
+        border: 0.5px solid gainsboro;
+        margin: 8px;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+
+    .productReviewEventCard {
+      font-weight: 800;
+      padding: 10px;
+
+      .eventBigSpan {
+        font-size: xx-large;
+      }
+
+      .eventSmallSpan {
+        font-size: x-small;
+      }
+    }
+
+    .detailTotalAmount {
+      @include componentSize(350px, 100px);
+      border-bottom: 0.5px solid gainsboro;
+      padding: 10px;
+
+      .productAllAmount {
+        float: left;
+      }
+      .productAllCount {
+        float: right;
+
+        .productCountSmall {
+          font-size: medium;
+        }
+
+        .productCountBig {
+          font-weight: 800;
+        }
+      }
+    }
+    .detailInfo {
+      @include componentSize(350px, 50px);
+      font-size: small;
+      border-bottom: 0.5px solid gainsboro;
+
+      .detailInfoSpan {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        float: left;
+      }
+      .detailInfoLink {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        float: right;
+      }
+    }
+  }
+
+  .productInfo {
+    @include componentSize(60%, 400px);
+    @include flexSort(row, center, center);
+    margin: 0 20%;
+    margin-bottom: 150px;
+
+    .productInfoInner {
+      @include flexSort(column, center, center);
+      @include componentSize(750px, 100%);
+
+      .productDescArea {
+        @include componentSize(600px, 200px);
+        @include flexSort(column, center, center);
+        padding: 10px;
+
+        .productDescAreaPtag {
+          width: 628px;
+          line-height: 1.5;
+        }
+      }
+
+      .productDescAreaImg {
+        @include flexSort(row, center, space-between);
+        @include componentSize(600px, 50%);
+
+        .productDescImg {
+          @include componentSize(100%, 200px);
+          padding: 5px;
+        }
+      }
+    }
+  }
+
+  .productNoticeTop {
+    @include componentSize(40%, 325px);
+    @include flexSort(column, center, '');
+    margin-left: 30px;
+    margin-top: 75px;
+
+    .productNotice {
+      background-color: #f4f4f2;
+      width: 90%;
+      height: 100%;
+      padding: 30px 40px;
+
+      .productTastingNotes {
+        @include componentSize(100%, 50px);
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      .border {
+        border-bottom: 1px solid grey;
+      }
+
+      .productTastingNotesExp {
+        @include componentSize(100%, 30px);
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+
+      .productEnjoyWith {
+        @include componentSize(100%, 50px);
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      .productEnjoyWithExp {
+        @include componentSize(100%, 50px);
+        margin-left: 10px;
+      }
+      .bigSpan {
+        font-size: 22px;
+        font-weight: 500;
+      }
+      .smallSpan {
+        font-size: smaller;
+      }
+    }
+  }
+  .chevronRight {
+    color: #dcdcdc;
+  }
+
+  .review {
+    @include componentSize(60%, 400px);
+    margin: 0 20%;
+  }
+}
