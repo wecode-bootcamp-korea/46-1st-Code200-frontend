@@ -12,6 +12,8 @@ function Review() {
   const [inputReview, setInputReview] = useState('');
   const [review, setReview] = useState([]);
 
+  const userId = window.localStorage.getItem('token');
+
   // 별점
   const handleReviewRating = index => {
     setReviewRating(index);
@@ -28,14 +30,14 @@ function Review() {
       rating: reviewRating,
     };
 
-    const userToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
+    // const userToken =
+    //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2ODU4Nzc5Mjl9.V7MFmcHgiC4CBGg0WtAxwr19elCJ2Nlvn1tTfSsGbhk';
 
     fetch('http://10.58.52.62:7000/reviews/2', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization: userToken,
+        Authorization: userId,
       },
       body: JSON.stringify(newReview),
     })
@@ -132,7 +134,7 @@ function Review() {
             <div key={review.user_Id} className="oneLineWrap">
               <div className="starRationgWrap">
                 <div>{startRating(review.rating)}</div>
-                <span className="rantingNum">{parseInt(review.rating)}</span>
+                <span>{Math.floor(review.rating)}</span>
               </div>
 
               <div className="userWrap">
