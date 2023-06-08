@@ -235,17 +235,27 @@ const SORTING = [
   {
     id: 1,
     option: '최신순',
-    orderBy: 'incomingDsc',
+    orderBy: 'incomingDesc',
   },
   {
     id: 2,
     option: '인기순',
-    orderBy: 'best',
+    orderBy: 'isLikedDesc',
   },
   {
     id: 3,
     option: '별점순',
     orderBy: 'ratingAsc',
+  },
+  {
+    id: 3,
+    option: '가격낮은순',
+    orderBy: 'priceAsc',
+  },
+  {
+    id: 3,
+    option: '가격높은순',
+    orderBy: 'priceDesc',
   },
 ];
 
