@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import './MyPage.scss';
 
 function MyPage({ userId, setMyHide, myHide }) {
+  const handleLogOut = id => {
+    if (id === '2') {
+      localStorage.clear();
+    } else {
+      return;
+    }
+  };
+
   return (
     <div className="bottomNav">
       <div className="bottomNavMy">
@@ -16,6 +24,7 @@ function MyPage({ userId, setMyHide, myHide }) {
                     to={myPage.to}
                     onClick={() => {
                       setMyHide(!myHide);
+                      handleLogOut(myPage.id);
                     }}
                   >
                     {myPage.name}
