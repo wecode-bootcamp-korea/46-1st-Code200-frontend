@@ -14,11 +14,11 @@ function WeeklyBest() {
   useEffect(() => {
     let url = '';
     if (clicked === 'taps1') {
-      url = 'http://10.58.52.198:8000/products/?categoryId=2';
+      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=2`;
     } else if (clicked === 'taps2') {
-      url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=12';
+      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=3&subcategoryId=12`;
     } else if (clicked === 'taps3') {
-      url = 'http://10.58.52.198:8000/products/?categoryId=3&subcategoryId=10';
+      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=3&subcategoryId=10`;
     }
 
     if (url) {

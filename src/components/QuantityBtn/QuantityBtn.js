@@ -15,7 +15,7 @@ const QuantityBtn = ({ quantity, cartList, setCartList, cartId, userId }) => {
   };
 
   const postQuantity = () => {
-    fetch(`http://10.58.52.192:8000/carts/${cartId}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts/${cartId}`, {
       method: 'PATCH',
       headers: {
         Authorization: localStorage.getItem('token'),
