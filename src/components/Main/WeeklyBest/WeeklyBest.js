@@ -7,7 +7,6 @@ import './WeeklyBest.scss';
 function WeeklyBest() {
   const [clicked, setClicked] = useState('taps1');
   const [circle, setCircle] = useState('circle1');
-
   const [prdList, setPrdList] = useState([]);
 
   // 위클리 베스트 데이터 받아오기

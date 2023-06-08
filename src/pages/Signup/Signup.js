@@ -70,27 +70,33 @@ function Signup() {
   const handleSignUp = () => {
     const popType = isChecked ? 'nonPopup' : 'popupWrap';
     setPop(popType);
-
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/users/signup`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({
-        name: inputValues.name,
-        email: inputValues.email,
-        phone_number: inputValues.number,
-        birthday: inputValues.date,
-        gender: inputValues.gender,
-        address: inputValues.address,
-        address_detail: inputValues.detail,
-        password: inputValues.password,
-        point: 30000,
-        agreement_private: inputValues.useage ? 1 : 0,
-        agreement_marketing: inputValues.marketing ? 1 : 0,
-        agreement_terms: inputValues.terms ? 1 : 0,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => navigate('/login'));
+    if (!inputValues.useage || !inputValues.marketing || !inputValues.terms) {
+      setPop(popType);
+    } else {
+      fetch(`${process.env.REACT_APP_SERVER_HOST}/users/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify({
+          name: inputValues.name,
+          email: inputValues.email,
+          phone_number: inputValues.number,
+          birthday: inputValues.date,
+          gender: inputValues.gender,
+          address: inputValues.address,
+          address_detail: inputValues.detail,
+          password: inputValues.password,
+          point: 30000,
+          agreement_private: inputValues.useage ? 1 : 0,
+          agreement_marketing: inputValues.marketing ? 1 : 0,
+          agreement_terms: inputValues.terms ? 1 : 0,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          navigate('/login');
+          alert('회원가입 성공🫶');
+        });
+    }
   };
 
   useEffect(() => {
