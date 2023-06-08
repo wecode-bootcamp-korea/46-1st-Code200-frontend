@@ -15,7 +15,7 @@ function ProductList() {
   useEffect(() => {
     const query = searchParams.toString();
 
-    fetch(`http://10.58.52.198:8000/products/?${query}`)
+    fetch(`http://10.58.52.62:7000/products/?${query}`)
       .then(res => res.json())
       .then(data => {
         setDataList(data.data);
