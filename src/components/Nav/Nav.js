@@ -10,7 +10,7 @@ const Nav = () => {
   const [hide, setHide] = useState(true);
   const [myHide, setMyHide] = useState(true);
   const [isSubCategory, setIsSubCategory] = useState(false);
-  const userId = window.localStorage.getItem('userId');
+  const userId = window.localStorage.getItem('token');
 
   const handleIcon = name => {
     if (userId !== null) {
