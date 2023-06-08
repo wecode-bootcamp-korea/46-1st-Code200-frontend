@@ -115,6 +115,7 @@
     background-color: white;
 
     .bottomMenuCategoryUl {
+      position: relative;
       display: inline-block;
       width: 135px;
       min-width: 135px;
@@ -127,6 +128,15 @@
       margin: 10px 4px;
       padding: 0;
       text-align: left;
+    }
+
+    .redOn {
+      position: absolute;
+      background-color: #d1121c;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: -5px;
     }
   }
 }

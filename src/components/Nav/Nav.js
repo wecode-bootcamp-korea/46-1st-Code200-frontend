@@ -8,6 +8,7 @@ const Nav = () => {
   const [hide, setHide] = useState(true);
   const [myHide, setMyHide] = useState(true);
   const [isSubCategory, setIsSubCategory] = useState(false);
+  const [circle, setCircle] = useState('');
 
   useEffect(() => {
     fetch('data/category.json')
@@ -97,9 +98,30 @@ const Nav = () => {
                           className="bottomMenuCategoryLi"
                           key={subCategory.subCategory_id}
                         >
-                          <Link className="dev1Link" to="/">
+                          <Link
+                            className="dev1Link"
+                            to="/"
+                            onClick={() =>
+                              setCircle(subCategory.subCategory_name)
+                            }
+                          >
+                            <div
+                              className={`${
+                                circle === subCategory.subCategory_name
+                                  ? 'onRed'
+                                  : ''
+                              }`}
+                            />
                             {subCategory.subCategory_name}
                           </Link>
+
+                          {/* <div
+                            className={`${
+                              circle === subCategory.subCategory_name
+                                ? 'onRed'
+                                : ''
+                            }`}
+                          /> */}
                         </li>
                       );
                     })}
