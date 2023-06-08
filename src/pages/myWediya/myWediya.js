@@ -14,14 +14,16 @@ function MyWediya() {
             <li className="mainWrapList">
               <div className="mypageBox">
                 <span className="mypageNew">NEW</span>
-                <p classNeme="mypageText">다음 등급까지 남은 금액은 1입니다.</p>
+                <p classNeme="mypageText">다음 등급까지 남은 금액은 </p>
+                <span>1,000원입니다.</span>
+
                 <p classNeme="mypageText">회원 등급별 혜택보기 </p>
               </div>
             </li>
             <li className="mainWrapList">
               <div className="mypageTitle box">총 적립금</div>
               <div>
-                <span className="mypageNum">0</span>
+                <span className="mypageNum">100,000</span>
                 <span>원</span>
               </div>
             </li>
