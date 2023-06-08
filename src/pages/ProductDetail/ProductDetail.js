@@ -19,7 +19,7 @@ function ProductDetail() {
   const productId = params.id;
   const price = productDetail?.price;
   const totalPrice = Number(price) * Number(count);
-  const userId = window.localStorage.getItem('userId');
+  const userId = window.localStorage.getItem('token');
 
   const CATEGORY_ARR = [
     {
