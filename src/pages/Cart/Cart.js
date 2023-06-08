@@ -14,7 +14,7 @@ function Cart() {
   }, []);
 
   const deleteItem = id => {
-    fetch(`http://백엔드 주소/cart/data/${id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/cart/data/${id}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -28,7 +28,7 @@ function Cart() {
   };
 
   const deleteAll = () => {
-    fetch('http://백엔드 주소/cart/data', {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/cart/data`, {
       method: 'DELETE',
     })
       .then(response => {
