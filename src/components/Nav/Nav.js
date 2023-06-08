@@ -29,10 +29,14 @@ const Nav = () => {
     fetch('data/category.json')
       .then(response => response.json())
       .then(result => {
-        setCategoryList(result.data);
-        setIsSubCategory(true);
+        handleCategory(result);
       });
-  }, []);
+  }, [categoryList]);
+
+  const handleCategory = result => {
+    setCategoryList(result.data);
+    setIsSubCategory(true);
+  };
 
   return (
     <div className="nav">
