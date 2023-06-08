@@ -46,7 +46,6 @@ function ProductDetail() {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         setProductDetail(data.product[0]);
         setIsHeart(data.product[0].isLiked);
       });

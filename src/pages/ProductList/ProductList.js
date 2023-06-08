@@ -162,19 +162,28 @@ function ProductList() {
         <div className="productContainer">
           {products
             .filter(product => product.name.includes(searchInput))
-            .map(({ id, imageUrls, name, price, avgRating, countReview }) => {
-              return (
-                <ProductCard
-                  key={id}
-                  id={id}
-                  imgUrl={imageUrls}
-                  name={name}
-                  price={price}
-                  rating={avgRating}
-                  numReview={countReview}
-                />
-              );
-            })}
+            .map(
+              ({
+                productId,
+                imageUrls,
+                name,
+                price,
+                avgRating,
+                countReview,
+              }) => {
+                return (
+                  <ProductCard
+                    key={productId}
+                    id={productId}
+                    imgUrl={imageUrls}
+                    name={name}
+                    price={price}
+                    rating={avgRating}
+                    numReview={countReview}
+                  />
+                );
+              }
+            )}
         </div>
         <div className="pagination">
           {pagenationBtnArr.map((num, idx) => {
