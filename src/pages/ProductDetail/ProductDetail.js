@@ -46,7 +46,6 @@ function ProductDetail() {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         setProductDetail(data.product[0]);
         setIsHeart(data.product[0].isLiked);
       });
@@ -82,7 +81,11 @@ function ProductDetail() {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'POSTUP_SUCCESS') {
-          if (window.confirm('장바구니로 이동하시겠습니까?')) {
+          if (
+            window.confirm(
+              '장바구니에 담겼습니다 \n 장바구니로 이동하시겠습니까?'
+            )
+          ) {
             navigate('/cart');
           } else {
             return;

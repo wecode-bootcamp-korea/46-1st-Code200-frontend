@@ -25,18 +25,15 @@ const Nav = () => {
       alert('로그인 후 이용 바랍니다.');
     }
   };
+
   useEffect(() => {
     fetch('data/category.json')
       .then(response => response.json())
       .then(result => {
-        handleCategory(result);
+        setCategoryList(result.data);
+        setIsSubCategory(true);
       });
-  }, [categoryList]);
-
-  const handleCategory = result => {
-    setCategoryList(result.data);
-    setIsSubCategory(true);
-  };
+  }, []);
 
   return (
     <div className="nav">
