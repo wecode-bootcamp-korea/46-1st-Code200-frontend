@@ -57,7 +57,7 @@ function ProductDetail() {
     const METHOD = isHeart ? 'DELETE' : 'POST';
 
     setIsHeart(!isHeart);
-    fetch('http://10.58.52.62:7000/likes/1', {
+    fetch('http://10.58.52.62:7000/likes/${productId}', {
       method: METHOD,
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
