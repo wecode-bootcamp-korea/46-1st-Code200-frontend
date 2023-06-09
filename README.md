@@ -1,5 +1,5 @@
 # Project WEDIYA
-![waving](https://capsule-render.vercel.app/api?type=waving&height=200&fontAlignY=40&text=grön&color=gradient)
+![waving](https://capsule-render.vercel.app/api?type=waving&height=200&fontAlignY=40&text=WEDIYA&color=gradient)
 #### \*SPAO  웹사이트를 모델링한 프로젝트입니다.
 ## :남성_요정: 개발 기간 및 인원
 - 개발 기간 : 2023/05/26 ~ 2023/06/09
