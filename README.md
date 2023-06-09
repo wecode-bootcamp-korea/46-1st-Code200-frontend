@@ -1,7 +1,7 @@
 # Project WEDIYA
 ![waving](https://capsule-render.vercel.app/api?type=waving&height=200&fontAlignY=40&text=WEDIYA&color=gradient)
 #### \*SPAO  웹사이트를 모델링한 프로젝트입니다.
-## :남성_요정: 개발 기간 및 인원
+## ☕️ 개발 기간 및 인원
 - 개발 기간 : 2023/05/26 ~ 2023/06/09
 - 개발 인원 : 프론트엔드 4명 , 백엔드 2명
   - Product Manager: 손자현(F)
@@ -10,7 +10,7 @@
 - 깃헙 레포지토리
   - [Frontend](https://github.com/wecode-bootcamp-korea/46-1st-Code200-frontend.git)
   - [Backend](https://github.com/wecode-bootcamp-korea/46-1st-Code200-backend.git)
-## :화분에_심긴_식물: 서비스 소개
+## :☕️: 서비스 소개
 ### 1. 기획의도
 - “커피를 판매하지 않고 문화를 판매”
 - 감각적인 디자인 및 트렌디하고, 높은 브랜드 이미지를 내세워 원두, MD, 굿즈를 판매
