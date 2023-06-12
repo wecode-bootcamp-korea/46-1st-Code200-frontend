@@ -306,7 +306,7 @@
   }
 
   .review {
-    @include componentSize(60%, 400px);
+    @include componentSize(60%, '');
     margin: 0 20%;
   }
 }

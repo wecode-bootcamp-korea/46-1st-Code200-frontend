@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import OrderInfo from '../Order/OrderInfo';
 import OrderAddress from './OrderAddress';
 import OrderProduct from './OrderProduct';
@@ -14,30 +14,50 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 function Order() {
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState([]);
-  const [productInfo, setProductInfo] = useState([]);
   const [isFetchTrueInfo, setIsFetchTrueInfo] = useState(false);
   const [point, setIsPoint] = useState('');
   const [isTotalPrice, setIsTotalPrice] = useState(0);
+  const [cartList, setCartList] = useState([]);
 
+  const handleOrder = () => {
+    const result = window.confirm('주문하시겠습니까?👀');
+    if (result) {
+      alert('주문이 완료되었습니다 👍');
+      navigate('/product-list');
+    } else {
+      return;
+    }
+  };
   useEffect(() => {
-    // fetch('http://10.58.52.133:8000/order/7', { method: 'GET' })
     fetch('data/order.json')
       .then(res => res.json())
       .then(data => {
         setUserInfo(data.data[0].userInfo);
-        setProductInfo(data.data[0].productInfo);
         setIsFetchTrueInfo(true);
+        fetchCartList();
       });
   }, []);
 
+  const fetchCartList = () => {
+    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts`, {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => setCartList(data.data));
+  };
+
   useEffect(() => {
-    const totalPrice = productInfo.reduce(
+    const totalPrice = cartList.reduce(
       (acc, cur) => acc + cur.price * Number(cur.quantity),
       0
     );
     setIsTotalPrice(totalPrice);
-  }, [productInfo]);
+  }, [cartList]);
 
   return (
     <div className="order">
@@ -69,9 +89,10 @@ function Order() {
       <OrderInfo userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
       <OrderAddress userInfo={userInfo} isFetchTrueInfo={isFetchTrueInfo} />
       <OrderProduct
-        productInfo={productInfo}
+        cartList={cartList}
         isFetchTrueInfo={isFetchTrueInfo}
-        setProductInfo={setProductInfo}
+        setCartList={setCartList}
+        fetchCartList={fetchCartList}
       />
       <OrderDisCount
         userInfo={userInfo}
@@ -85,10 +106,7 @@ function Order() {
         point={point}
         isTotalPrice={isTotalPrice}
       />
-      <OrderMethod
-        productInfo={productInfo}
-        isFetchTrueInfo={isFetchTrueInfo}
-      />
+      <OrderMethod cartList={cartList} isFetchTrueInfo={isFetchTrueInfo} />
       <div className="orderBottom">
         <div className="orderBottomTitle">
           <span className="titleSpan">
@@ -96,7 +114,12 @@ function Order() {
           </span>
         </div>
         <div className="orderBottomInfo">
-          <button className="orderBtn">
+          <button
+            className="orderBtn"
+            onClick={() => {
+              handleOrder();
+            }}
+          >
             {isTotalPrice - point}원 결제하기
           </button>
           <p className="descPtagBottom">

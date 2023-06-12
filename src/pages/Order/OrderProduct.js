@@ -3,14 +3,26 @@ import './OrderProduct.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-function OrderProduct({ productInfo, isFetchTrueInfo, setProductInfo }) {
+function OrderProduct({
+  cartList,
+  isFetchTrueInfo,
+  setCartList,
+  fetchCartList,
+}) {
   const [isProduct, setIsProduct] = useState(false);
-
   const cancelProduct = id => {
-    const resultProduct = productInfo.filter(
-      productInfo => productInfo.id !== id
-    );
-    setProductInfo(resultProduct);
+    fetch(`http://10.58.52.62:7000/carts?cartId=${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => {
+        if (res.ok) fetchCartList();
+      })
+      .catch(error => console.error('error: ', error));
+    const resultProduct = cartList.filter(cartItem => cartItem.cartId !== id);
+    setCartList(resultProduct);
   };
 
   return (
@@ -27,34 +39,33 @@ function OrderProduct({ productInfo, isFetchTrueInfo, setProductInfo }) {
       </div>
       {!isProduct && (
         <div className="orderProductInner">
-          {productInfo.map(product => {
+          {cartList.map(product => {
             return (
-              <div className="productFlexTop" key={product.id}>
+              <div className="productFlexTop" key={product.cartId}>
                 <div className="productFlex">
                   <div className="orderProductImg">
                     <img
                       className="productOrder"
-                      src="https://raw.githubusercontent.com/dxxcw/code200-images/minji_images/images/Img/wholebean/bean01.png"
+                      src={product.image}
                       alt="product"
                     />
                   </div>
                   {isFetchTrueInfo && (
                     <div className="orderProductInfo">
                       <p>{product.name}</p>
-                      <span className="grayFont">[{product.category}]</span>
                       <br />
                       <spa className="grayFont">
                         수량 : {product.quantity}개
                       </spa>
                       <br />
-                      <span className="">{product.price}</span>
+                      <span className="">{Math.floor(product.price)}</span>
                     </div>
                   )}
                 </div>
                 <div>
                   <button
                     className="cancelBtn"
-                    onClick={() => cancelProduct(product.id)}
+                    onClick={() => cancelProduct(product.cartId)}
                   >
                     ✖
                   </button>
@@ -74,9 +85,3 @@ function OrderProduct({ productInfo, isFetchTrueInfo, setProductInfo }) {
 }
 
 export default OrderProduct;
-
-const test = () => {
-  //
-};
-
-test();
