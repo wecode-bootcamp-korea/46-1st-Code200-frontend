@@ -72,7 +72,7 @@ function ProductDetail() {
         Authorization: userId,
       },
       body: JSON.stringify({
-        productId: 1,
+        productId: productId,
         quantity: count,
         sizeId: 1,
         userId: userId,

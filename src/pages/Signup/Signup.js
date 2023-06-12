@@ -70,7 +70,7 @@ function Signup() {
   const handleSignUp = () => {
     const popType = isChecked ? 'nonPopup' : 'popupWrap';
     setPop(popType);
-    if (!inputValues.useage || !inputValues.marketing || !inputValues.terms) {
+    if (!inputValues.useage || !inputValues.terms) {
       setPop(popType);
     } else {
       fetch(`${process.env.REACT_APP_SERVER_HOST}/users/signup`, {

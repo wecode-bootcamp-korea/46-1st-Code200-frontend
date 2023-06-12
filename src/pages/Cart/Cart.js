@@ -17,14 +17,14 @@ function Cart() {
   }, []);
 
   const fetchCartList = () => {
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/carts`, {
+    fetch('http://10.58.52.62:7000/carts', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
-      .then(data => setCartList(data.data))
+      .then(data => setCartList(data.data.cartItems)) //setCartList(data.data)
       .catch(error => console.error('error: ', error));
   };
 
@@ -83,7 +83,7 @@ function Cart() {
   }, [selectedItemIds]);
 
   const deleteItem = id => {
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/cart/data/${id}`, {
+    fetch(`http://10.58.52.62:7000/carts?cartId=${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -95,8 +95,8 @@ function Cart() {
       .catch(error => console.error('error: ', error));
   };
 
-  const deleteAll = () => {
-    fetch(`${process.env.REACT_APP_SERVER_HOST}/cart/data`, {
+  const deleteSelected = () => {
+    fetch(`http://10.58.52.62:7000/carts?${query}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -165,7 +165,9 @@ function Cart() {
                   </Link>
                 </td>
                 <td className="productName">
-                  <Link to="/product-detail">{data.name}</Link>
+                  <Link to="/product-detail" className="productNameLink">
+                    {data.name}
+                  </Link>
                 </td>
                 <td className="quantity">
                   <QuantityBtn
@@ -176,7 +178,7 @@ function Cart() {
                     userId={data.userId}
                   />
                 </td>
-                <td className="shippingType">{data.shipping}</td>
+                <td className="shippingType">무료배송</td>
                 <td className="itemTotalPrice">{itemTotalPriceStr}</td>
                 <td className="deleteItem">
                   <button
@@ -193,8 +195,12 @@ function Cart() {
         </tbody>
       </table>
       <div className="deleteBtnBox">
-        <button className="deleteSelected">선택상품 삭제</button>
-        <button className="deleteAll">장바구니비우기</button>
+        <button className="deleteSelected" onClick={deleteSelected}>
+          선택상품 삭제
+        </button>
+        <button className="deleteAll" onClick={deleteSelected}>
+          장바구니비우기
+        </button>
       </div>
       <div className="priceSummary">
         <div className="totalItemPrice">

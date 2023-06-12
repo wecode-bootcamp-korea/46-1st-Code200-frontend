@@ -15,9 +15,9 @@ function WeeklyBest() {
     if (clicked === 'taps1') {
       url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=2`;
     } else if (clicked === 'taps2') {
-      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=3&subcategoryId=12`;
+      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=1`;
     } else if (clicked === 'taps3') {
-      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=3&subcategoryId=10`;
+      url = `${process.env.REACT_APP_SERVER_HOST}/products/?categoryId=3`;
     }
 
     if (url) {
